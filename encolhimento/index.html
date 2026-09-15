@@ -1,0 +1,1581 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../conformidade/">
+      
+      
+        <link rel="next" href="../limitacoes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Encolher os modelos - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#encolher-os-modelos-o-que-foi-medido-e-por-que-a-int8-foi-recusada" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Encolher os modelos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-foi-testado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que foi testado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-resultado-da-melhor-variante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O resultado da melhor variante
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-e-aqui-que-ela-e-recusada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E é aqui que ela é recusada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-variante-mista-medida-em-11092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A variante mista, medida em 11/09/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A variante mista, medida em 11/09/2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de-quem-e-a-culpa-entao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De quem é a culpa, então
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-o-que-isso-faz-com-a-maquina-de-1-gb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E o que isso faz com a máquina de 1 GB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-sobra-de-ganho-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que sobra de ganho real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-backend-onnx-em-producao-medido-em-15092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O backend ONNX em produção, medido em 15/09/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O backend ONNX em produção, medido em 15/09/2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#emocao-com-int8-so-nos-pesos-aceita-pelo-portao-nao-promovida-por-padrao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emoção com int8 só nos pesos — aceita pelo portão, não promovida por padrão
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-sobra-como-caminho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que sobra como caminho
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduzir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproduzir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-foi-testado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que foi testado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-resultado-da-melhor-variante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O resultado da melhor variante
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-e-aqui-que-ela-e-recusada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E é aqui que ela é recusada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-variante-mista-medida-em-11092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A variante mista, medida em 11/09/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A variante mista, medida em 11/09/2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de-quem-e-a-culpa-entao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De quem é a culpa, então
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-o-que-isso-faz-com-a-maquina-de-1-gb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E o que isso faz com a máquina de 1 GB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-sobra-de-ganho-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que sobra de ganho real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-backend-onnx-em-producao-medido-em-15092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O backend ONNX em produção, medido em 15/09/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O backend ONNX em produção, medido em 15/09/2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#emocao-com-int8-so-nos-pesos-aceita-pelo-portao-nao-promovida-por-padrao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emoção com int8 só nos pesos — aceita pelo portão, não promovida por padrão
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-sobra-como-caminho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que sobra como caminho
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduzir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproduzir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="encolher-os-modelos-o-que-foi-medido-e-por-que-a-int8-foi-recusada">Encolher os modelos — o que foi medido, e por que a int8 foi recusada<a class="headerlink" href="#encolher-os-modelos-o-que-foi-medido-e-por-que-a-int8-foi-recusada" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Medido em 10/09/2026, na máquina de desenvolvimento, contra os checkpoints
+reais. Nada aqui exigiu retreino: quantização dinâmica é transformação
+<strong>pós-treino</strong> sobre os pesos já aprendidos.</p>
+</blockquote>
+<h2 id="o-problema">O problema<a class="headerlink" href="#o-problema" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 BERTimbau (fp32)</td>
+<td>3 × 416 MB = <strong>1.249 MB</strong></td>
+</tr>
+<tr>
+<td><code>torch</code> que os executa</td>
+<td><strong>497 MB</strong></td>
+</tr>
+<tr>
+<td><strong>imagem de inferência</strong></td>
+<td><strong>~1,75 GB</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Isso limita hospedagem, encarece o container e — desde que o teto de função
+Python da Vercel subiu para 500 MB (24/02/2026) — é a única coisa entre o Fraus
+e um deploy serverless.</p>
+<h2 id="o-que-foi-testado">O que foi testado<a class="headerlink" href="#o-que-foi-testado" title="Permanent link">&para;</a></h2>
+<p>Quantização dinâmica int8, sobre <code>bertimbau-satisfacao</code>, com as mesmas dez
+sondas em todas as variantes:</p>
+<table>
+<thead>
+<tr>
+<th>estratégia</th>
+<th>tamanho</th>
+<th>max Δp</th>
+<th>classe mudou</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qint8 em tudo</td>
+<td>105,5 MB</td>
+<td>0,4535</td>
+<td>1 sonda</td>
+</tr>
+<tr>
+<td>qint8 só em MatMul</td>
+<td>172,0 MB</td>
+<td>0,4953</td>
+<td>1 sonda</td>
+</tr>
+<tr>
+<td>qint8 MatMul + <code>per_channel</code></td>
+<td>172,4 MB</td>
+<td>0,1385</td>
+<td>nenhuma</td>
+</tr>
+<tr>
+<td>quint8 só em MatMul</td>
+<td>172,0 MB</td>
+<td>0,2620</td>
+<td>1 sonda</td>
+</tr>
+<tr>
+<td><strong>qint8 em tudo + <code>per_channel</code></strong></td>
+<td><strong>105,9 MB</strong></td>
+<td><strong>0,1015</strong></td>
+<td><strong>nenhuma</strong></td>
+</tr>
+<tr>
+<td>qint8 tudo + <code>per_channel</code> + <code>reduce_range</code></td>
+<td>105,9 MB</td>
+<td>0,1798</td>
+<td>nenhuma</td>
+</tr>
+</tbody>
+</table>
+<p>Duas coisas valem ser registradas porque contrariam a intuição comum:</p>
+<ol>
+<li><strong><code>per_channel</code> é o que decide</strong>, não a escolha de quais operadores
+   quantizar. Ele dá a cada coluna de peso a própria faixa, em vez de espremer
+   a matriz inteira numa só — e numa camada de atenção as colunas têm
+   magnitudes muito diferentes.</li>
+<li><strong>"não quantize o embedding, só MatMul" saiu pior nas duas pontas</strong>: 63%
+   maior <em>e</em> menos fiel. Foi medido, não herdado de tutorial.</li>
+</ol>
+<h2 id="o-resultado-da-melhor-variante">O resultado da melhor variante<a class="headerlink" href="#o-resultado-da-melhor-variante" title="Permanent link">&para;</a></h2>
+<p>Aplicada aos três modelos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>modelo            antes     depois   redução   max Δp   classe mudou
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>satisfacao       416.2M     105.9M     3.93x   0.1015   nenhuma
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>emocao           416.2M     105.9M     3.93x   0.1129   nenhuma
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ironia           416.2M     105.8M     3.93x   0.1486   nenhuma
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>TOTAL           1248.6M     317.6M     3.93x
+</code></pre></div>
+<p>Velocidade: <strong>2,10× mais rápido</strong> em CPU (309 ms → 147 ms por lote de 10
+frases, <code>bertimbau-satisfacao</code>).</p>
+<p>Pela medida de classificador — nenhuma sonda mudou de classe vencedora — isso
+passaria.</p>
+<h2 id="e-e-aqui-que-ela-e-recusada">E é aqui que ela é recusada<a class="headerlink" href="#e-e-aqui-que-ela-e-recusada" title="Permanent link">&para;</a></h2>
+<p><strong>Diferença de probabilidade é a medida errada para este sistema.</strong> O score do
+Fraus é uma <em>projeção</em> das três probabilidades num eixo 0–100; a nota é o score
+arredondado; a categoria é a nota caindo numa faixa. Cada degrau absorve ou
+<strong>amplifica</strong> o erro do anterior.</p>
+<p>Medido ponta a ponta, com o motor inteiro montado dos dois jeitos, sobre 180
+conversas determinísticas do simulador:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>desvio médio de score</td>
+<td>0,83 pontos</td>
+</tr>
+<tr>
+<td><strong>desvio máximo</strong></td>
+<td><strong>25,65 pontos</strong></td>
+</tr>
+<tr>
+<td>notas diferentes</td>
+<td><strong>16 de 180</strong> (8,9%)</td>
+</tr>
+<tr>
+<td><strong>categorias diferentes</strong></td>
+<td><strong>3 de 180</strong> (1,7%)</td>
+</tr>
+</tbody>
+</table>
+<p>E o caso que encerra a discussão:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sim-0-635276501    59,95  -&gt;  85,61    detrator  -&gt;  promotor
+</code></pre></div>
+<p>Uma conversa atravessa <strong>duas faixas</strong> e troca de veredito. Categoria é o que a
+tela mostra e o que o NPS agrega: trocar o backend não pode trocar o veredito.</p>
+<blockquote>
+<p><strong>Decisão: os artefatos int8 NÃO são promovidos.</strong> Eles ficam em
+<code>modelos-onnx/</code> (fora do git) para quem quiser reproduzir a medição, e o
+portão de <code>scripts/comparar_backends.py</code> continua vermelho de propósito.</p>
+</blockquote>
+<h2 id="a-variante-mista-medida-em-11092026">A variante mista, medida em 11/09/2026<a class="headerlink" href="#a-variante-mista-medida-em-11092026" title="Permanent link">&para;</a></h2>
+<p>A tabela de caminhos abaixo listava "fp32 na satisfação, int8 no resto" como
+<strong>estimativa</strong>, nunca medida. A hipótese era que o flip vinha de quantizar o
+modelo que <em>governa</em> o score, e que poupá-lo resolveria. Foi medida, com o mesmo
+portão e as mesmas 180 conversas:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>int8 nos três</th>
+<th><strong>mista</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>desvio médio de score</td>
+<td>0,83</td>
+<td><strong>0,356</strong></td>
+</tr>
+<tr>
+<td>desvio máximo</td>
+<td>25,65</td>
+<td><strong>18,99</strong></td>
+</tr>
+<tr>
+<td>notas diferentes</td>
+<td>16 de 180</td>
+<td><strong>6 de 180</strong></td>
+</tr>
+<tr>
+<td>categorias diferentes</td>
+<td>3 de 180</td>
+<td><strong>2 de 180</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>A hipótese estava metade certa, e metade não basta.</strong> Poupar a satisfação corta
+o dano quase pela metade — e ainda troca o veredito de duas conversas. A mesma
+<code>sim-0-635276501</code> do caso original segue atravessando faixa (59,95 → 78,94).</p>
+<h3 id="de-quem-e-a-culpa-entao">De quem é a culpa, então<a class="headerlink" href="#de-quem-e-a-culpa-entao" title="Permanent link">&para;</a></h3>
+<p>A ironia <strong>saiu do vetor do Fusor</strong> em 04/09/2026 (ver <code>NOMES_FEATURES</code>), então
+quantizá-la não pode mover score nenhum. Isso deixa apenas a emoção como
+suspeita, e a medição confirma — satisfação fp32 + emoção fp32 + <strong>ironia int8</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>desvio medio de score :  0.000 pontos
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>desvio MAXIMO         :  0.000 pontos
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>notas diferentes      : 0 de 180
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>CATEGORIAS diferentes : 0 de 180
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ACEITO
+</code></pre></div>
+<p>Zero exato, nas 180. Duas coisas ficam provadas de uma vez:</p>
+<ol>
+<li><strong>ONNX fp32 é troca de executor, não de modelo.</strong> Δp máximo <code>0,0000</code> por
+   modelo, desvio <code>0,000</code> ponta a ponta. O que a conversão custa é nada.</li>
+<li><strong>A única cabeça quantizável de graça é a ironia</strong>, e exatamente porque ela
+   não pontua. As duas que pontuam não toleram int8.</li>
+</ol>
+<h3 id="e-o-que-isso-faz-com-a-maquina-de-1-gb">E o que isso faz com a máquina de 1 GB<a class="headerlink" href="#e-o-que-isso-faz-com-a-maquina-de-1-gb" title="Permanent link">&para;</a></h3>
+<p>Nada de bom. O <code>VM.Standard.E2.1.Micro</code> (o único shape com capacidade em
+sa-saopaulo-1 em 11/09/2026) tem 1 GB de RAM, e o sistema operacional come ~200:</p>
+<table>
+<thead>
+<tr>
+<th>variante</th>
+<th>pesos</th>
+<th>veredito</th>
+<th>cabe em ~800 MB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ONNX fp32 nos três</td>
+<td>1.250 MB</td>
+<td>✅ idêntico</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>fp32 + fp32 + ironia int8</strong></td>
+<td><strong>939 MB</strong></td>
+<td>✅ <strong>desvio 0,000</strong></td>
+<td>❌</td>
+</tr>
+<tr>
+<td>fp32 satisfação + int8 nas outras</td>
+<td>628 MB</td>
+<td>❌ 2/180 trocam</td>
+<td>⚠️ no limiar</td>
+</tr>
+<tr>
+<td>int8 nos três</td>
+<td>318 MB</td>
+<td>❌ 3/180 trocam</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>A ordem é cruelmente monótona: <strong>tudo que cabe troca veredito, e tudo que
+preserva o veredito não cabe.</strong> Não há ajuste no meio — a emoção precisa ficar em
+fp32, e aí são dois codificadores de 416 MB, que já estouram o orçamento sozinhos.</p>
+<div class="admonition warning">
+<p class="admonition-title">Medição de RAM pendente, e por que o número preliminar não serve</p>
+<p>Medindo o processo com o motor montado, o ONNX consumiu <strong>mais</strong> residente
+que o torch (pico 1.366 MB contra 1.075 MB): o <code>onnxruntime</code> carrega o grafo
+inteiro de imediato, enquanto o torch mapeia os <code>safetensors</code> e só paga as
+páginas que toca.</p>
+<p>Esse número <strong>não está limpo</strong>: a sonda importava <code>fraus.motor</code> e
+<code>fraus.fusor</code> antes de escolher o backend, e são eles que arrastam torch e
+sklearn — 354 MB de base nos dois casos. Medir o caminho ONNX de verdade
+exige uma venv <strong>sem</strong> torch, e hoje <code>torch&gt;=2.3</code> é dependência
+<strong>principal</strong> no <code>pyproject.toml</code>: a imagem sem torch que o extra <code>onnx</code>
+promete não existe sem mover essa dependência para um extra.</p>
+<p>A conclusão acima não depende disso — 939 MB de peso já passam de 800 —, mas
+a promessa de "ONNX corta a imagem em 2,6×" continua <strong>não verificada em
+RAM</strong>, só em disco.</p>
+</div>
+<h3 id="o-que-sobra-de-ganho-real">O que sobra de ganho real<a class="headerlink" href="#o-que-sobra-de-ganho-real" title="Permanent link">&para;</a></h3>
+<p>Independente da máquina pequena, a variante aceita <strong>é um ganho para o deploy na
+A1</strong>: desvio <code>0,000</code>, e a imagem perde os 497 MB do <code>torch</code> em disco (depois de
+mover a dependência). Na sessão de 11/09/2026 o envio do código e dos pesos para
+a VM era de 1,3 GB — cortar isso quase pela metade é menos tempo de deploy e
+menos coisa para dar errado no meio.</p>
+<p>E se 1 GB algum dia virar requisito de verdade, o caminho não é quantização: é
+<strong>um codificador com três cabeças</strong>. Os três checkpoints são ajustes finos do
+mesmo BERTimbau, então os 110M de parâmetros estão duplicados três vezes. Um
+encoder compartilhado com três cabeças de classificação daria ~416 MB em precisão
+cheia — cabe em 1 GB sem quantizar nada e sem risco de veredito. O preço é
+retreino, e portanto a invariante 10 de novo; não é ajuste de deploy.</p>
+<h2 id="o-backend-onnx-em-producao-medido-em-15092026">O backend ONNX em produção, medido em 15/09/2026<a class="headerlink" href="#o-backend-onnx-em-producao-medido-em-15092026" title="Permanent link">&para;</a></h2>
+<p>A variante aceita acima (satisfação e emoção fp32, ironia int8) virou um
+executor de verdade: <code>FRAUS_BACKEND=onnx</code>. O padrão continua <code>torch</code>, e não há
+detecção nem fallback — backend desconhecido ou grafo ausente derruba o boot
+(invariante 7). O <code>torch</code> saiu das dependências principais para o extra
+<code>torch</code>, e o import dele ficou preguiçoso: <code>fraus.motor</code> não o arrasta mais
+(há teste para isso).</p>
+<p>Isso destravou a <strong>medição de RAM que estava pendente</strong>, agora numa venv sem
+torch instalado (<code>uv sync --extra dev --extra onnx</code>), com o app montado por
+<code>criar_app_padrao</code> e 30 conversas atribuídas:</p>
+<table>
+<thead>
+<tr>
+<th>executor</th>
+<th>pico de RSS</th>
+<th>180 conversas (<code>atribuir</code>)</th>
+<th>categorias trocadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>torch</td>
+<td>1.848 MB</td>
+<td>53,7 s</td>
+<td>referência</td>
+</tr>
+<tr>
+<td>ONNX, 1 thread (config antiga)</td>
+<td>—</td>
+<td>45,2 s</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ONNX, todos os núcleos</td>
+<td>1.445 MB</td>
+<td>35,0 s</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>ONNX, todos os núcleos, sem arena</strong></td>
+<td><strong>1.347 MB</strong></td>
+<td><strong>33,2 s</strong></td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Desvio máximo de score contra o torch: <code>6,5e-5</code>. A venv sem torch ocupa 430 MB
+contra 5,0 GB, e a imagem Docker <code>--build-arg BACKEND=onnx</code> mede <strong>995 MB</strong>,
+já com o motor real respondendo <code>/analisar</code>.</p>
+<p>Duas coisas contrariam a intuição e foram medidas, não supostas:</p>
+<ol>
+<li><strong>A fusão offline <code>-O2</code> do otimizador de transformers saiu mais lenta</strong>
+   (41,2 s contra 35,0 s), embora tenha fundido tudo (12 <code>Attention</code>, 24
+   <code>SkipLayerNormalization</code>, 12 <code>BiasGelu</code>, GELU exata). A sessão já roda com
+   <code>ORT_ENABLE_ALL</code>, que funde na carga; o grafo pré-fundido só perde otimizações
+   que o runtime faria por conta própria. <strong>Recusada.</strong></li>
+<li><strong><code>intra_op_num_threads = 1</code> era o gargalo.</strong> Fazia sentido quando várias
+   requisições podiam entrar no modelo juntas. Agora o <code>Motor</code> deixa uma passada
+   por vez (<code>FRAUS_INFERENCIAS_SIMULTANEAS</code>), e a passada usa os núcleos
+   (<code>FRAUS_ONNX_THREADS</code>, padrão 0 = o runtime escolhe).</li>
+</ol>
+<h3 id="emocao-com-int8-so-nos-pesos-aceita-pelo-portao-nao-promovida-por-padrao">Emoção com int8 só nos pesos — aceita pelo portão, não promovida por padrão<a class="headerlink" href="#emocao-com-int8-so-nos-pesos-aceita-pelo-portao-nao-promovida-por-padrao" title="Permanent link">&para;</a></h3>
+<p>A int8 recusada acima é <strong>dinâmica</strong>: quantiza pesos <em>e</em> computa as ativações
+em int8. A variante <code>--precisao int8-pesos</code> (<code>MatMulNBits</code>, 8 bits, blocos de
+32, simétrica) guarda os pesos em int8 e mantém a ativação em fp32. Aplicada só
+à emoção, com satisfação fp32 e ironia int8, nas mesmas 180 conversas:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ONNX aceito (emoção fp32)</th>
+<th><strong>emoção int8-pesos</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>peso da emoção</td>
+<td>417 MB</td>
+<td><strong>184 MB</strong></td>
+</tr>
+<tr>
+<td>pico de RSS da API</td>
+<td>1.347 MB</td>
+<td><strong>1.056 MB</strong></td>
+</tr>
+<tr>
+<td>180 conversas (<code>atribuir</code>)</td>
+<td>33,2 s</td>
+<td>49,6 s</td>
+</tr>
+<tr>
+<td>desvio máximo de score</td>
+<td>0,0001</td>
+<td><strong>0,51 ponto</strong></td>
+</tr>
+<tr>
+<td>notas / categorias trocadas</td>
+<td>0 / 0</td>
+<td><strong>0 / 0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Ela passa no portão (zero categorias) e no do script (Δp 0,0148 &lt; 0,02). Mas,
+ao contrário do fp32, <strong>não é o mesmo número</strong>: meio ponto de score é margem
+que uma conversa encostada na fronteira 6/7 ou 8/9 pode atravessar num corpus
+maior que as 180. Por isso ela fica disponível e documentada, <strong>não</strong> como o
+padrão de <code>modelos-onnx/</code>. E 1.056 MB <strong>ainda não cabe</strong> numa máquina de 1 GB,
+então ela não resolve o caso que justificaria o risco.</p>
+<p>A conclusão sobre o encoder compartilhado abaixo não mudou.</p>
+<h2 id="o-que-sobra-como-caminho">O que sobra como caminho<a class="headerlink" href="#o-que-sobra-como-caminho" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>caminho</th>
+<th>tamanho estimado</th>
+<th>fidelidade</th>
+<th>cabe em 500 MB?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ONNX fp16</strong></td>
+<td>3 × 208 = 624 MB + ~50 MB de runtime</td>
+<td>quase idêntica</td>
+<td>❌ — mas corta a imagem de 1,75 GB para ~0,67 GB</td>
+</tr>
+<tr>
+<td><strong>fp32 na satisfação, int8 no resto</strong></td>
+<td>416 + 106 + 106 = 628 MB</td>
+<td>boa no que pontua</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>int8 nos três</strong></td>
+<td>318 MB + ~50 MB</td>
+<td><strong>1,7% troca de veredito</strong></td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>Ou seja: <strong>o orçamento de 500 MB só é alcançável pagando o preço que foi
+recusado acima.</strong> Isso não é um impasse técnico a resolver com mais tuning — é
+a Vercel serverless não sendo o alvo certo para este sistema, e vale mais dizer
+isso do que espremer o número até ele caber.</p>
+<p><strong>O ganho continua real fora da Vercel:</strong> ONNX fp16 num container corta a
+imagem em ~2,6× e remove o <code>torch</code>, sem custo de fidelidade digno de nota. Esse
+é o próximo experimento, e ele não precisa de retreino nenhum também.</p>
+<h2 id="reproduzir">Reproduzir<a class="headerlink" href="#reproduzir" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>conversao
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/encolher_modelos.py<span class="w">            </span><span class="c1"># converte e afere</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/comparar_backends.py<span class="w"> </span>--n<span class="w"> </span><span class="m">180</span><span class="w">   </span><span class="c1"># o portão que recusou</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

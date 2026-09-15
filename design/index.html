@@ -1,0 +1,2731 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../treinamento/">
+      
+      
+        <link rel="next" href="../conformidade/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Design da interface - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fraus-design-system" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design da interface
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-tese-e-por-que-ela-governa-a-composicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A tese, e por que ela governa a composição
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. A tese, e por que ela governa a composição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-o-que-e-notacao-e-o-que-e-decoracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 O que é notação e o que é decoração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-composicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Composição
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Composição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-o-que-sai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 O que sai
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-o-que-entra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 O que entra
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tokens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-o-fundo-e-papel-nao-vazio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 O fundo é papel, não vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-as-duas-vozes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 As duas vozes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 As duas vozes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-no-grafo-as-duas-vozes-viram-duas-familias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 No grafo, as duas vozes viram duas famílias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-na-partitura-da-fala-cada-emocao-tem-cor-e-a-ordem-faz-parte-da-cor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 Na partitura da fala, cada emoção tem cor — e a ordem faz parte da cor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-a-cor-da-marca-o-dourado-do-monograma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 A cor da marca: o dourado do monograma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#331-o-raio-acompanha-os-cortes-do-monograma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 O raio acompanha os cortes do monograma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-o-rotulo-dentro-do-botao-e-verificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 O rótulo dentro do botão é verificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-categorias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Categorias
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tipografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tipografia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tipografia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-a-prosa-metodologica-vira-aparato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 A prosa metodológica vira aparato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Estados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-movimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Movimento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-materialidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. A materialidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-os-temas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Os temas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Os temas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-a-tese-do-tema-chuva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 A tese do tema chuva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-o-que-o-tema-nao-toca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 O que o tema NÃO toca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-o-gate-passou-a-ser-ciente-de-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 O gate passou a ser ciente de tema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-onde-a-escolha-mora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Onde a escolha mora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-onde-a-chuva-pode-gritar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Onde a chuva pode gritar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-o-preco-o-vidro-da-chuva-e-mais-grosso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 O preço: o vidro da chuva é mais grosso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87-o-padrao-de-fabrica-espaco-profundo-01092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 O padrão de fábrica: espaço profundo (01/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-o-ciclo-de-verificacao-e-o-que-cada-gate-nao-ve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. O ciclo de verificação, e o que cada gate NÃO vê
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-tese-e-por-que-ela-governa-a-composicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A tese, e por que ela governa a composição
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. A tese, e por que ela governa a composição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-o-que-e-notacao-e-o-que-e-decoracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 O que é notação e o que é decoração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-composicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Composição
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Composição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-o-que-sai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 O que sai
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-o-que-entra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 O que entra
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tokens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-o-fundo-e-papel-nao-vazio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 O fundo é papel, não vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-as-duas-vozes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 As duas vozes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 As duas vozes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-no-grafo-as-duas-vozes-viram-duas-familias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 No grafo, as duas vozes viram duas famílias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-na-partitura-da-fala-cada-emocao-tem-cor-e-a-ordem-faz-parte-da-cor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 Na partitura da fala, cada emoção tem cor — e a ordem faz parte da cor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-a-cor-da-marca-o-dourado-do-monograma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 A cor da marca: o dourado do monograma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#331-o-raio-acompanha-os-cortes-do-monograma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 O raio acompanha os cortes do monograma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-o-rotulo-dentro-do-botao-e-verificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 O rótulo dentro do botão é verificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-categorias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Categorias
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tipografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tipografia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tipografia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-a-prosa-metodologica-vira-aparato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 A prosa metodológica vira aparato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Estados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-movimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Movimento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-materialidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. A materialidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-os-temas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Os temas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Os temas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-a-tese-do-tema-chuva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 A tese do tema chuva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-o-que-o-tema-nao-toca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 O que o tema NÃO toca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-o-gate-passou-a-ser-ciente-de-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 O gate passou a ser ciente de tema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-onde-a-escolha-mora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Onde a escolha mora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-onde-a-chuva-pode-gritar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Onde a chuva pode gritar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-o-preco-o-vidro-da-chuva-e-mais-grosso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 O preço: o vidro da chuva é mais grosso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87-o-padrao-de-fabrica-espaco-profundo-01092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 O padrão de fábrica: espaço profundo (01/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-o-ciclo-de-verificacao-e-o-que-cada-gate-nao-ve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. O ciclo de verificação, e o que cada gate NÃO vê
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<!-- GERADO POR scripts/reunir_docs.py A PARTIR DE dashboard/DESIGN.md -->
+<!-- Nao edite este arquivo: a edicao se perde no proximo build. -->
+
+<h1 id="fraus-design-system">Fraus — Design System<a class="headerlink" href="#fraus-design-system" title="Permanent link">&para;</a></h1>
+<p>Contrato visual da interface. Quem escrever UI neste projeto segue este
+documento. Ele não descreve como as telas estão hoje: descreve como elas devem
+ser.</p>
+<p><strong>Mundo:</strong> <em>Pauta</em> — a conversa notada como partitura.
+<strong>Chassi:</strong> shadcn/ui sobre Tailwind v4, tokens em OKLCH, <strong>dois temas, ambos
+escuros</strong> — espaço profundo (padrão de fábrica) e chuva de neon (ver seção 8).</p>
+<hr />
+<h2 id="1-a-tese-e-por-que-ela-governa-a-composicao">1. A tese, e por que ela governa a composição<a class="headerlink" href="#1-a-tese-e-por-que-ela-governa-a-composicao" title="Permanent link">&para;</a></h2>
+<p>Um atendimento é uma <strong>sequência temporal de turnos com duração</strong>. Isso é o que
+a notação musical resolve há quatrocentos anos, e resolve melhor do que a
+fileira de cartões que a categoria entrega.</p>
+<p>A notação faz uma coisa que nenhum dashboard genérico faz: ela <strong>separa o que
+está acima e o que está abaixo da linha</strong>. Acima vai o articulado — letra,
+dinâmica, expressão. Abaixo vai o medido — cifra, andamento, baixo contínuo.</p>
+<blockquote>
+<p><strong>Acima da linha é o que foi DITO. Abaixo da linha é o que foi MEDIDO.</strong></p>
+</blockquote>
+<p>Essa é a regra mestra da interface, e ela é <strong>estrutural antes de ser cromática</strong>.
+A metáfora de cor (âmbar/azul) permanece e passa a ter uma casa: âmbar mora
+acima, azul mora abaixo. Quando alguém precisa quebrar a regra de posição, a cor
+ainda desambigua — mas quebrar a posição é a exceção que se justifica no código.</p>
+<blockquote>
+<p><strong>Emenda de 04/09/2026 — <code>--linha</code> ganhou um segundo papel.</strong> Até aqui o
+token só fazia a régua do sistema, a linha que <strong>afirma</strong> dito/medido. Com a
+Task 6 (hierarquia), <code>CartaoIndicador</code> trocou <code>border-compasso</code> por
+<code>border-linha</code> como separador interno da armadura: <code>--compasso</code> foi
+desenhado mais fraco de propósito, para viver DENTRO de uma superfície de
+vidro, e a armadura deixou de ser painel — ela não tem vidro, chanfro nem
+borda —, então o filete que a separa por dentro precisa do peso de <code>--linha</code>
+para continuar visível sobre o papel nu. O token agora serve dois papéis —
+régua que afirma, e separador interno da armadura — porque o candidato mais
+fraco parou de bater no contexto novo; não é acúmulo por descuido.</p>
+</blockquote>
+<h3 id="11-o-que-e-notacao-e-o-que-e-decoracao">1.1 O que é notação e o que é decoração<a class="headerlink" href="#11-o-que-e-notacao-e-o-que-e-decoracao" title="Permanent link">&para;</a></h3>
+<p><strong>Nenhum glifo musical é desenhado.</strong> Sem clave, sem semínima, sem pentagrama de
+cinco linhas. A gramática entra como <strong>estrutura e ritmo</strong>, não como fantasia:</p>
+<table>
+<thead>
+<tr>
+<th>Elemento da notação</th>
+<th>O que ele é aqui</th>
+<th>Por quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a linha</td>
+<td>régua horizontal de referência que divide dito e medido</td>
+<td>dá eixo comum a séries de escalas diferentes</td>
+</tr>
+<tr>
+<td>a barra de compasso</td>
+<td>filete vertical marcando a virada do dia</td>
+<td>agrupa o tempo sem legenda</td>
+</tr>
+<tr>
+<td>a pausa</td>
+<td>intervalo proporcional à latência</td>
+<td>silêncio com duração notada é exatamente a espera</td>
+</tr>
+<tr>
+<td>a ligadura</td>
+<td>marcação do trecho que puxou a nota</td>
+<td>atribuição por sentença</td>
+</tr>
+<tr>
+<td>a dinâmica</td>
+<td>peso e tamanho do tipo, não cor</td>
+<td>intensidade sem gastar canal de cor</td>
+</tr>
+<tr>
+<td><strong>a cabeça tracejada</strong></td>
+<td>atendimento <strong>medido com evidência fraca</strong></td>
+<td>o valor está na escala, e a linha que o afirma é interrompida</td>
+</tr>
+<tr>
+<td><strong>a cabeça vazada</strong></td>
+<td>atendimento <strong>sem sinal</strong></td>
+<td>ocupa o tempo e não soa: a regra "ausência não é zero" vira forma</td>
+</tr>
+</tbody>
+</table>
+<p>A cabeça vazada é a peça mais importante desta lista. O princípio de produto
+"ausência de dado não é insatisfação" deixa de ser nota de rodapé e passa a ser
+<strong>notação</strong>: o marcador existe, ocupa a posição temporal, e é oco.</p>
+<p>Se em algum momento ler esta interface exigir saber solfejo, a regra foi
+aplicada errado. O modo é <strong>Operate</strong>: expressão nunca obscurece a tarefa.</p>
+<blockquote>
+<p><strong>Emenda de 04/09/2026 — a cabeça vazada saiu do papel.</strong> Esta seção prometia
+a peça desde 13/08/2026 e a chamava de a mais importante da lista; ela levou
+até 04/09/2026 para existir de fato, em <code>components/CabecaVazada.tsx</code>: um
+anel oco (<code>rounded-full border border-muted-foreground bg-transparent</code>), sem
+preenchimento, com rótulo textual obrigatório ao lado (<code>comRotulo</code>, padrão
+<code>true</code> — a exceção documentada é quando quem chama já escreve um rótulo
+equivalente perto, para não duplicar leitura de tela).</p>
+<p>O caso mais visível do vácuo era <code>EtiquetaCategoria</code>: <code>categoria: null</code>
+desenhava um ponto <strong>cheio cinza</strong> no mesmo slot dos três pontos cheios
+coloridos da escala (detrator/neutro/promotor) — exatamente "cinza dentro da
+escala", que a §5 proíbe por nome. Corrigido: <code>categoria: null</code> agora
+renderiza <code>&lt;CabecaVazada comRotulo={false} /&gt;</code> (o rótulo por extenso já é
+escrito por <code>EtiquetaCategoria</code> logo depois do anel), então o ausente deixou
+de competir por posição com os três valores reais.</p>
+<p><strong>Emenda de 10/09/2026 — a terceira forma fecha o trio.</strong> Havia duas formas,
+cheia e vazada, e entre elas um caso sem notação: <strong>tem dado e não há
+evidência suficiente para afirmar</strong>. Uma conversa cujo cliente escreveu só
+"ok" saía <strong>cheia</strong>, com a mesma confiança visual de uma de 40 turnos — as
+duas tinham nota, só uma tinha material para sustentá-la.</p>
+<table>
+<thead>
+<tr>
+<th>forma</th>
+<th>significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cheia</td>
+<td>medido, com evidência</td>
+</tr>
+<tr>
+<td><strong>tracejada</strong></td>
+<td>medido, evidência fraca</td>
+</tr>
+<tr>
+<td>vazada</td>
+<td>não medido</td>
+</tr>
+</tbody>
+</table>
+<p>A tracejada <strong>mantém a cor da classe</strong> e troca o preenchimento por contorno
+interrompido (<code>border-dashed</code>, <code>bg-transparent</code>). Não vira cinza: cinza é
+fora da escala, e é o significado reservado à ausência — a categoria
+continua valendo, o que está em dúvida é quanta fala a sustenta. E não vira
+meio-preenchida: isso seria uma segunda leitura quantitativa competindo com
+a nota.</p>
+<p>Ela vive dentro de <code>EtiquetaCategoria</code>, não num componente que quem chama
+escolhe. Esse é o <strong>slot único da cabeça</strong> — tabela, piores atendimentos,
+ficha do grafo e tela do atendimento passam todos por ele —, e três formas
+oferecidas em quatro lugares dariam uma que ninguém lembraria de trocar, e
+ela continuaria anunciando confiança que não existe.</p>
+<p><strong>O critério nunca é a probabilidade do modelo.</strong> Probabilidade não
+calibrada não é confiança, e apresentá-la como se fosse é exatamente a
+desonestidade que este produto recusa. A evidência é <strong>observável</strong> —
+quantas mensagens o cliente mandou, quantas palavras escreveu — derivada em
+<code>fraus/evidencia.py</code>, no servidor. Pelo mesmo motivo o campo se chama
+<code>evidencia_fraca</code> e <strong>não</strong> <code>confianca</code>.</p>
+<p>Rótulo obrigatório, como na vazada — e aqui ele vai além de nomear o estado
+e imprime o <strong>motivo</strong>: "evidência fraca" não aciona ninguém, "menos de 5
+palavras do cliente" aciona.</p>
+</blockquote>
+<hr />
+<h2 id="2-composicao">2. Composição<a class="headerlink" href="#2-composicao" title="Permanent link">&para;</a></h2>
+<h3 id="21-o-que-sai">2.1 O que sai<a class="headerlink" href="#21-o-que-sai" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>A fileira de cartões-KPI no topo.</strong> É o "template de métrica-herói", e ele
+  empurra a tese da tela para baixo da dobra.</li>
+<li><strong>O cartão como estrutura de página.</strong> Painel com borda e fundo próprio deixa
+  de ser o agrupador padrão; agrupa-se por <strong>espaço e régua</strong>.</li>
+</ul>
+<blockquote>
+<p><strong>Emenda de 21/08/2026.</strong> O painel voltou a ter fundo e borda próprios ao
+adotar o vidro líquido (ver seção 7). A regra original continua valendo no
+que ela realmente defendia — a página é uma pilha de sistemas, não uma
+grade de cartões, e quem agrupa continua sendo espaço mais régua. O que
+mudou é que o sistema agora tem <strong>material</strong>, e material precisa de
+superfície. Registrado como custo assumido, não como regra revogada.
+- <strong>O parágrafo explicativo acima de cada painel.</strong> A prosa metodológica não
+  some — muda de lugar (ver 4).</p>
+</blockquote>
+<h3 id="22-o-que-entra">2.2 O que entra<a class="headerlink" href="#22-o-que-entra" title="Permanent link">&para;</a></h3>
+<p><strong>O sistema é a unidade de composição.</strong> Como numa partitura, um <em>sistema</em> é uma
+faixa horizontal de largura total que carrega uma linha de tempo e tudo que a
+anota. A página é uma pilha de sistemas, não uma grade de cartões.</p>
+<p><strong>A armadura.</strong> Os indicadores agregados (NPS, CSAT, contenção, latência) vivem
+à esquerda do primeiro sistema, empilhados e compactos — como a armadura de
+clave, que se lê de uma vez e não se relê a cada compasso. Eles são <strong>rótulo
+mais número tabular</strong>, sem barra de progresso decorativa e sem cartão.</p>
+<p><strong>Ritmo vertical.</strong> Densidade varia entre sistemas: um sistema denso ganha o
+direito de um respiro depois. Mais espaço acima de um título do que abaixo.</p>
+<blockquote>
+<p><strong>Emenda de 04/09/2026 — a armadura deixou de ser painel, e ganhou nível.</strong>
+Esta seção já pedia isso ("sem cartão", "rótulo mais número tabular"), e até
+aqui a implementação não cumpria. <code>Painel</code> ganhou a prop <code>nivel</code>
+(<code>"dominante" | "apoio"</code>, padrão <code>apoio</code> — um painel que não declara nível
+não pode virar dominante por omissão, senão a tela passa a ter dois
+dominantes e nenhuma resposta principal), e o vocabulário — as duas classes
+de espessura de vidro que cada nível usa — mora em <code>lib/hierarquia.ts</code>, pelo
+mesmo motivo que cor mora em token: regra digitada de novo em outro lugar
+diverge.</p>
+<p>O mesmo arquivo expõe <code>DOMINANTE_POR_TELA</code>, um mapa de rota para o
+<strong>identificador estável</strong> do sistema que responde à pergunta que levou o
+analista àquela tela — não o título de exibição. A distinção importa: vários
+painéis montam o título em tempo de render, porque ele carrega período ou
+contagem (<code>Atendimentos de ${rotulo}</code>, <code>${n} nós, ${m} arestas</code>), e nenhuma
+string estática casaria com isso. Quem marca o dominante de fato é a própria
+tela, com <code>nivel="dominante"</code> no <code>Painel</code>; o mapa é documentação da
+intenção e uma referência para conferir "um por tela", não chave de busca.</p>
+</blockquote>
+<hr />
+<h2 id="3-tokens">3. Tokens<a class="headerlink" href="#3-tokens" title="Permanent link">&para;</a></h2>
+<p>Tokens em <code>app/globals.css</code>; consumo via classes utilitárias. Nada de hex solto
+em componente.</p>
+<p>Os valores abaixo são os do tema <strong>grafite</strong>, o padrão de fábrica. O tema chuva
+de neon sobrepõe apenas o chassi e não encosta na camada de dado — ver seção 8.</p>
+<h3 id="31-o-fundo-e-papel-nao-vazio">3.1 O fundo é papel, não vazio<a class="headerlink" href="#31-o-fundo-e-papel-nao-vazio" title="Permanent link">&para;</a></h3>
+<p>O fundo não é preto: é <strong>papel de ensaio grafite</strong>. Preto puro faz a régua
+flutuar no vácuo e transforma dado em néon. A superfície precisa parecer estoque
+de papel sob luz de escritório — o analista fica horas nela.</p>
+<blockquote>
+<p><strong>Emenda de 24/08/2026 — o papel é pautado.</strong> A regra acima dizia papel liso.
+O fundo passou a carregar <strong>linhas horizontais de ritmo constante</strong>, nos dois
+temas, por decisão do dono do projeto.</p>
+<p>O que <strong>não</strong> mudou, e é o que a regra original defendia de verdade: o fundo
+continua sendo papel e não vazio, continua sem preto puro, e continua sem
+competir com o dado — as linhas moram no ateliê, a camada que não carrega
+informação, e passam <strong>por baixo</strong> da luz.</p>
+<p><strong>Elas não são um pentagrama.</strong> A §1.1 proíbe desenhar glifo musical e manda a
+gramática entrar como estrutura e ritmo; agrupar em cincos seria desenhar a
+pauta, ritmo constante é papel pautado. A régua do sistema (<code>--linha</code>) segue
+sendo a única linha que <strong>afirma</strong> alguma coisa.</p>
+<p>O custo veio na hora e está pago: a textura levantou o pior caso das
+superfícies translúcidas nos dois temas. Os pisos foram <strong>remedidos</strong> (o
+grafite saiu de 0,25/0,24/0,23 para 0,309/0,28/0,246) e o vidro fino da chuva
+precisou engrossar de novo — 68% → 71% —, porque <code>--destructive</code> sobre ele
+havia caído para 4,46:1. A ordem de sempre: a espessura cede, o portão não.</p>
+<p><strong>Emenda de 24/08/2026 (segunda) — a marca é impressa no papel, e o papel
+ficou forte.</strong> A emenda anterior autorizou o papel pautado, mas a
+implementação entregou grafite a 5,5% de opacidade: 1px a cada 13px, a 5,5%,
+sobre fundo escuro, <strong>não chega a ser visto</strong>. A peça existia no código e não
+na tela. A contenção já tinha sido negociada e perdida; foi a implementação
+que continuou protegendo o contrato antigo. Corrigido: <strong>0,055 → 0,12</strong> no
+grafite e <strong>0,13 → 0,22</strong> na chuva.</p>
+<p>O fundo passou também a carregar o <strong>monograma da marca</strong>, sangrando pela
+quina inferior direita, nos dois temas.</p>
+<p><strong>É máscara, não imagem de fundo</strong>, e a distinção é o inteiro da peça.
+O arquivo da logo <strong>carrega um fundo opaco</strong> — o PNG era RGB sem canal alfa,
+e o SVG que o substituiu traz um <code>&lt;rect&gt;</code> preto cobrindo os 640×640. Usar
+qualquer um dos dois como <code>background-image</code> pintaria um quadrado opaco por
+cima do ateliê, que é exatamente o bug que o <code>SidebarInset</code> com
+<code>bg-background</code> já causou. <code>public/fraus-marca.svg</code> é o mesmo desenho <strong>sem
+esse fundo</strong> e com as duas letras forçadas a branco: quem pinta é o
+<code>background</code> do elemento, via <code>--marca-cor</code>. É isso que entrega "a logo com
+o tema respectivo aplicado" — dourada no grafite, magenta na chuva — sem
+gerar dois arquivos e sem tema novo pedir asset novo.</p>
+<p><strong>Emenda de 25/08/2026 — a fenda, e a rampa em token.</strong> O monograma ganhou uma
+diagonal (<code>M110,470L560,180</code>, 18 unidades de espessura) atravessando o <code>F</code> e o
+<code>S</code>. Aos 28 px da navegação ela dá 0,8 px: parada, lê como detalhe de desenho.
+Ela é a <strong>junta</strong> por onde a marca se abre no gesto dos cinco cliques — sem
+ela a revelação seria efeito colado por cima do desenho, e não o desenho se
+abrindo pela própria costura. <strong>Os dois arquivos a recebem</strong>, para
+continuarem sendo o mesmo desenho; na marca do ateliê ela é recorte de alfa.</p>
+<p>A rampa do gradiente virou dois tokens, <code>--marca-cor-pe</code> e <code>--marca-cor-topo</code>,
+e <strong>isso obrigou o desenho a virar SVG inline</strong> em <code>MarcaFraus.tsx</code>: um SVG
+servido por <code>&lt;img&gt;</code> é documento externo, onde <code>var(--…)</code> não atravessa a
+fronteira e animar uma parte não existe. <code>public/fraus-logo.svg</code> sobrevive com
+o dourado literal para o <code>og:image</code> e o README, que consomem a marca fora do
+React, onde token nenhum chega. A duplicação é o preço de a marca existir
+dentro e fora da aplicação, e fica registrada aqui para não ser "consertada"
+por engano.</p>
+<p><code>--marca-cor</code> (chapada) e a rampa (duas paradas) são coisas <strong>diferentes</strong>: a
+primeira pinta a marca impressa no fundo do ateliê, que é máscara e não tem
+gradiente. Trocar uma pela outra apaga o gradiente que <em>é</em> a marca.</p>
+<p><strong>Emenda de 25/08/2026 (segunda) — a única mentira autorizada da interface.</strong>
+Enquanto o painel dos cinco cliques está aberto, os quatro indicadores da
+visão geral exibem números <strong>falsos</strong>. É violação deliberada e <strong>encenada</strong> da
+§5 ("sem sinal é cabeça vazada, nunca zero") e da invariante 2, e ela só se
+sustenta porque encena. As quatro travas, em <code>lib/mentira.tsx</code>:</p>
+<ol>
+<li><strong>Nada sai da memória</strong> — zero escrita no banco, zero chamada à API. É
+   estado de render, e morre no fechamento. Nenhum agregado, export ou
+   ordenação chega perto disto.</li>
+<li><strong>Leitor de tela recebe a verdade</strong> — o número falso é <code>aria-hidden</code>, e um
+   <code>sr-only</code> ao lado diz que o valor foi falsificado e qual é o real.</li>
+<li><strong>O selo é inescapável</strong> — o aviso em <code>--destructive</code> fica no mesmo quadro
+   dos números. Não existe captura de tela da dashboard mentindo sem ele
+   dentro dela.</li>
+<li><strong>Volta sozinha</strong> — 8 s, <code>Esc</code> ou clique fora, e também no desmonte do
+   componente (quem navega com o painel aberto não deixa a mentira para trás).</li>
+</ol>
+<p><strong>Gráficos e tabela não mentem</strong>, por decisão: espalhar isso pelo Recharts é
+onde deixa de ser contido e passa a arriscar sobrar na tela depois do
+fechamento — o defeito que as travas existem para impedir. O trilho de
+referência <strong>some</strong> enquanto o número mente: o ponteiro marca a posição
+verdadeira, e ao lado de um número falso ele leria como bug de render, não
+como ironia.</p>
+<p>O "fade + gradiente" é uma <strong>segunda camada de máscara</strong> cortada por
+<code>mask-composite: intersect</code>: a marca nasce sólida onde sai da tela e se
+dissolve subindo. Sem isso ela leria como adesivo colado.</p>
+<p>O que <strong>não</strong> mudou: nada disso carrega dado. É a mesma camada do ateliê, o
+único lugar onde cor saturada não inventa canal de significado, e a §1.1
+continua valendo — o monograma é a marca, não um glifo musical.</p>
+<p>O custo, de novo pago na hora: <code>--muted-foreground</code> e <code>--destructive</code> sobre
+vidro fino caíram para 4,25 e 3,86. A espessura cedeu — 45% → 55% no fino e
+62% → 72% no médio no grafite, 71% → 81% e 75% → 85% na chuva. Ver §8.6.</p>
+<p><strong>Emenda de 24/08/2026 (terceira) — o fundo ganha grade e sol.</strong> O fundo
+passou a carregar uma <strong>grade em perspectiva</strong> (linhas convergindo para um
+horizonte a 320px, espaçadas a 44px, <code>--grade-op</code> em 0,1 no grafite e 0,2 na
+chuva) e um <strong>sol listrado</strong> no horizonte (<code>--sol-op</code> em 0,16 no grafite e
+0,3 na chuva), nos dois temas.</p>
+<p>O que <strong>não</strong> mudou: as duas peças moram no ateliê, a mesma camada do papel
+pautado e da marca impressa, não carregam dado, e passam <strong>por baixo</strong> da
+luz — a mesma garantia das duas emendas acima, agora estendida a mais duas
+peças.</p>
+<p>O custo, de novo em pisos e espessura de vidro: o vidro fino da chuva foi
+de 71% para <strong>74%</strong>, e o vidro médio da chuva <strong>recuou</strong> de 75% para 74% —
+ele havia subido para 81%/85% no meio do trabalho da Task 8 e voltou quando
+um bug de medição foi corrigido. O saldo desta sessão contra o início dela:
+fino subiu 3 pontos, médio caiu 1. No grafite, o vidro fino foi de 55% para
+<strong>64%</strong>; médio (72%) e denso (82%) da chuva (86%) ficaram como estavam.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Papel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--background</code></td>
+<td>estoque de papel; grafite neutro, nunca <code>#000</code></td>
+</tr>
+<tr>
+<td><code>--card</code></td>
+<td>segunda camada de papel, para o que precisa de leve elevação</td>
+</tr>
+<tr>
+<td><code>--linha</code></td>
+<td>a régua do sistema; meio ponto, sempre visível e nunca dominante</td>
+</tr>
+<tr>
+<td><code>--compasso</code></td>
+<td>filete de virada de dia; mais fraco que <code>--linha</code></td>
+</tr>
+<tr>
+<td><code>--foreground</code></td>
+<td>tinta</td>
+</tr>
+<tr>
+<td><code>--muted-foreground</code></td>
+<td><strong>piso de cor de texto</strong> — nada mais claro que ele carrega texto</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-as-duas-vozes">3.2 As duas vozes<a class="headerlink" href="#32-as-duas-vozes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Voz</th>
+<th>Onde mora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--dito</code></td>
+<td>âmbar — fala, texto, emoji, o que o cliente articulou</td>
+<td><strong>acima</strong> da linha</td>
+</tr>
+<tr>
+<td><code>--medido</code></td>
+<td>azul — score, probabilidade, latência, tendência</td>
+<td><strong>abaixo</strong> da linha</td>
+</tr>
+</tbody>
+</table>
+<p>Cada uma tem variante <code>-texto</code> com contraste verificado. Cor de marcação e cor
+de tipo não são a mesma coisa: <code>npm run contraste</code> é o juiz, e todo par que
+carrega texto cruza AA (4.5:1).</p>
+<h4 id="321-no-grafo-as-duas-vozes-viram-duas-familias">3.2.1 No grafo, as duas vozes viram duas <em>famílias</em><a class="headerlink" href="#321-no-grafo-as-duas-vozes-viram-duas-familias" title="Permanent link">&para;</a></h4>
+<p>O canvas do grafo da memória é a única tela com <strong>nove tipos de nó</strong>, e duas
+cores não distinguem nove coisas: <code>categoria</code>, <code>canal</code>, <code>fonte</code> e <code>feature</code>
+saíam todas do mesmo azul, e quem olhava não separava o eixo aprendido pelo
+fusor de um canal de atendimento.</p>
+<p>A regra não foi trocada — ela subiu de nível. <strong>A família continua dizendo
+dito/medido; o matiz dentro dela passou a dizer o tipo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Família</th>
+<th>Faixa de matiz</th>
+<th>Tipos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>dito</strong> (quente)</td>
+<td>30–95</td>
+<td><code>emoji</code> 30, <code>conversa</code> 60, <code>termo</code> 95</td>
+</tr>
+<tr>
+<td><strong>medido</strong> (frio)</td>
+<td>150–340</td>
+<td><code>fonte</code> 150, <code>canal</code> 195, <code>feature</code> 265, <code>categoria</code> 305, <code>desfecho</code> 340</td>
+</tr>
+</tbody>
+</table>
+<p>Tokens <code>--no-&lt;tipo&gt;</code>, todos em <strong>L 0.75 / C 0.14</strong>. Claridade e croma iguais são
+deliberados: matiz distingue o tipo, e claridade não pode virar hierarquia
+acidental — um nó mais claro pareceria mais importante, e nenhum tipo é mais
+importante que outro.</p>
+<p><code>--no-importacao</code> é a exceção, e ela é semântica: cinza acromático, porque
+importação é um nó <strong>solto</strong> cuja origem o schema não rastreia, e cinza é a
+ausência de afirmação — a mesma disciplina da cabeça vazada do <code>sem_sinal</code>.</p>
+<p>A leitura de longe ("isto é fala ou é medida?") sobrevive intacta; a de perto
+("que coisa é esta?") passa a existir. E porque essas nove cores só existem
+nesta tela, ela carrega <strong>legenda própria</strong> agrupada pelas duas famílias:
+nove matizes sem legenda seriam o grafo afirmando uma distinção que o leitor
+não tem como ler.</p>
+<h4 id="322-na-partitura-da-fala-cada-emocao-tem-cor-e-a-ordem-faz-parte-da-cor">3.2.2 Na partitura da fala, cada emoção tem cor — e a ordem faz parte da cor<a class="headerlink" href="#322-na-partitura-da-fala-cada-emocao-tem-cor-e-a-ordem-faz-parte-da-cor" title="Permanent link">&para;</a></h4>
+<p>Pedido do dono do projeto em 15/09/2026. Emoção é leitura <strong>medida</strong>, e a
+pauta mostra classe e emoção juntas, então os tons obedecem a duas exclusões:
+nenhum perto das três classes (<code>--detrator</code> 22, <code>--neutro</code> 90, <code>--promotor</code>
+190), senão "raiva" leria como "insatisfeito"; nenhum perto do âmbar do dito
+(60).</p>
+<p><strong>Nove cores num painel não se separam</strong> — medido, não suposto: com as três
+classes na conta, nenhum conjunto de 4 a 6 tons passou o validador em todos os
+pares. O que torna a paleta legítima são duas coisas juntas:</p>
+<ol>
+<li><strong>Cada linha tem o nome escrito.</strong> Cor nunca é a única identificação.</li>
+<li><strong>A validação é por vizinhos, numa ordem fixa.</strong> A ordem da pauta é
+   <code>medo · nojo · tristeza · raiva · surpresa · alegria · neutro</code> — negativas
+   agrupadas, neutro por último. Das 5040 ordens, 78 passam com os tons de
+   <code>--emo-*</code>; a ordem do modelo não passa. Pares vizinhos: CVD ΔE 12,5, visão
+   normal 16,2, as sete ≥ 3:1 sobre o card.</li>
+</ol>
+<p><code>--emo-neutro</code> é acromático pela mesma disciplina do <code>--no-importacao</code>:
+ausência de afeto. Desprezo, derivado de raiva + nojo, é a nota <strong>vazada</strong> no
+tom da raiva. A cor vai só na haste e na nota; o número segue em
+<code>foreground</code>/<code>muted-foreground</code>. Trocar um tom ou a ordem sem rodar o
+validador de novo é desfazer a medição.</p>
+<h3 id="33-a-cor-da-marca-o-dourado-do-monograma">3.3 A cor da marca: o dourado do monograma<a class="headerlink" href="#33-a-cor-da-marca-o-dourado-do-monograma" title="Permanent link">&para;</a></h3>
+<p><code>--primary</code> é o <strong>dourado do R da logo</strong>, medido do próprio arquivo: a letra é
+um gradiente, e o token é o meio da rampa dele — <code>oklch(0.78 0.085 80)</code>.</p>
+<blockquote>
+<p><strong>Nota de 24/08/2026 — a rampa deixou de ser amostrada e passou a ser lida.</strong>
+A medição original saiu do PNG por amostragem de pixel: <code>oklch(0.514 0.066 84)</code>
+no pé a <code>oklch(0.824 0.079 76)</code> no topo. Com a marca vetorial
+(<code>public/fraus-logo.svg</code>), a rampa vem das próprias paradas do gradiente e é
+exata: <code>oklch(0.642 0.084 76)</code> a <code>oklch(0.832 0.071 78)</code>. <strong>O token não
+mudou</strong> — <code>0.78 0.085 80</code> já caía dentro dela, e o argumento do croma fosco
+(0,085 contra os 0,15 do âmbar do "dito") sobrevive intacto. Registrado
+porque a fonte da verdade mudou de arquivo, não porque a cor mudou.</p>
+</blockquote>
+<p><strong>Por que deixou de ser lime.</strong> O <code>--primary</code> era <code>oklch(0.843 0.179 134)</code>,
+herdado do chassi. Nenhum pixel da logo é verde: a identidade é um monograma
+<strong>F branco + R dourado sobre quase-preto</strong>, e uma dashboard cuja cor de ação
+não existe na marca é uma identidade aplicada pela metade. O fundo grafite já
+concordava com o <code>#070707</code> do arquivo; faltava a cor de ação.</p>
+<p><strong>Por que isso não colide com o âmbar do “dito”</strong>, que é semântico e
+intocável: o que separa os dois <strong>não é o matiz, é o croma</strong>. O dourado da
+marca é fosco (<code>0.085</code>) e o âmbar do dito é saturado (<code>0.15</code>) — metálico
+contra pigmento. Some-se a isso que eles nunca dividem superfície:
+<code>--primary</code> preenche <strong>controle</strong>, <code>--dito</code> marca <strong>dado</strong>.</p>
+<p><strong>A regra que sustenta essa convivência, e que não pode ser afrouxada:</strong>
+nenhuma série, categoria ou barra usa <code>--primary</code>. A única exceção nomeada é
+<strong>o cursor de leitura</strong> — o filete vertical que marca onde você está na linha
+do tempo, como no editor de partitura —, e mesmo ele não codifica valor
+nenhum. Fora disso, <code>--primary</code> só aparece em ação primária e foco de teclado.
+Por isso <strong>promotor é teal, não verde</strong>: precisa estar longe do cursor.</p>
+<p><code>--warning</code> (<code>oklch(0.8 0.14 80)</code>) compartilha o matiz do dourado. Ele
+sobrevive porque é <strong>texto</strong> (<code>--warning-rich-text</code>, o rótulo “suspeito” das
+métricas) e nunca preenchimento — e porque o croma o separa, pelo mesmo
+argumento acima. Se um dia surgir um botão de alerta preenchido, este é o par
+que precisa ser repensado primeiro.</p>
+<h3 id="331-o-raio-acompanha-os-cortes-do-monograma">3.3.1 O raio acompanha os cortes do monograma<a class="headerlink" href="#331-o-raio-acompanha-os-cortes-do-monograma" title="Permanent link">&para;</a></h3>
+<p><code>--radius</code> era <code>0.375rem</code>, e antes disso <code>0.625rem</code>. O F e o R são chanfrados a
+45° e não têm uma curva de canto sequer; o raio de 0,625rem arredondava o
+controle a ponto de ele não ter parentesco nenhum com a marca. Em 0,375rem não
+ia a zero porque botão e campo totalmente quadrados brigariam com o chassi
+inteiro — cartão, popover, sheet — por causa de um detalhe.</p>
+<blockquote>
+<p><strong>Emenda de 24/08/2026 — o chassi endureceu, e a objeção caiu.</strong>
+<code>--radius</code> foi de <code>0.375rem</code> para <strong>0.125rem</strong> (2px), por decisão do dono do
+projeto. O argumento que segurava o raio em 0,375rem era o chassi arredondado
+ao redor — cartão, popover, sheet, sidebar; era essa vizinhança que um botão
+quase quadrado brigaria com. Essa vizinhança não existe mais: os painéis
+grandes (<code>Painel.tsx</code>, <code>FaixaIndicadores.tsx</code>) passaram a ser chanfrados a
+45° via <code>clip-path</code>, no mesmo desenho do F e do R, e a sombra migrou de
+<code>box-shadow</code> para <code>filter: drop-shadow()</code> porque <code>clip-path</code> descarta
+<code>box-shadow</code>. Com o chassi cortado a 45° em vez de arredondado, um raio quase
+reto deixou de ser a peça fora do lugar — passou a ser a única consistente.</p>
+</blockquote>
+<h3 id="332-o-rotulo-dentro-do-botao-e-verificado">3.3.2 O rótulo dentro do botão é verificado<a class="headerlink" href="#332-o-rotulo-dentro-do-botao-e-verificado" title="Permanent link">&para;</a></h3>
+<p><code>scripts/contraste.mjs</code> checava texto sobre fundo e <strong>não checava texto sobre
+superfície preenchida</strong> — ou seja, não checava o par mais clicado da
+interface. A lacuna apareceu justamente ao trocar o lime pelo dourado, que é
+o tipo de mudança capaz de derrubar a legibilidade do botão sem nenhum aviso.
+O script passou a cobrir <code>--primary-foreground</code> sobre <code>--primary</code> (hoje
+<strong>9,64:1</strong>) e o par equivalente da sidebar.</p>
+<h3 id="34-categorias">3.4 Categorias<a class="headerlink" href="#34-categorias" title="Permanent link">&para;</a></h3>
+<p>Detrator, neutro e promotor mantêm cores distintas e <strong>nunca</strong> são comunicadas
+só por cor — sempre acompanham rótulo textual.</p>
+<hr />
+<h2 id="4-tipografia">4. Tipografia<a class="headerlink" href="#4-tipografia" title="Permanent link">&para;</a></h2>
+<p>Uma família só, sans de sistema. O modo Operate tem permissão para isso, e o
+analista lê em DPI consistente: fonte de display em rótulo e dado é proibida.</p>
+<blockquote>
+<p><strong>Emenda de 31/08/2026 — a sans deixou de ser a de sistema.</strong> Etapa 1 do
+Pauta evoluído (<code>docs/superpowers/specs/2026-08-31-pauta-evoluido-design.md</code>),
+por decisão do dono do projeto: <strong>Inter</strong> variável na frente da pilha, com
+<code>font-feature-settings: "cv01", "ss03"</code> no body (o ajuste do Linear), e
+<strong>JetBrains Mono</strong> como <code>--fonte-mono</code> — o <code>.num</code> continua sendo quem liga
+numeral tabular por elemento. As duas entram por <code>next/font</code> no layout raiz:
+baixadas <strong>no build</strong> e servidas do próprio deploy, zero chamada de rede em
+runtime, que é a regra da casa. A pilha de sistema fica atrás como fallback.
+O que a regra original defendia sobrevive: continua sendo UMA família para
+rótulo e dado, e fonte de display segue proibida — a exceção nomeada é a
+<strong>LP</strong> (<code>app/page.tsx</code>), vitrine fora do modo Operate, onde o display usa
+<strong>Mona Sans</strong> variável em corpo grande com tracking até −0.02em. Ela entra
+por <code>next/font/local</code> a partir de <code>app/fontes/</code>, versionada no repo, e
+governa exatamente duas classes: <code>.display-vitrine</code> e <code>.titulo-vitrine</code>.
+<code>lib/tipografia.test.ts</code> varre o <code>globals.css</code> e barra qualquer TERCEIRA
+REGRA CSS que use <code>var(--fonte-display)</code> — essa via está coberta. Ele não
+pega classe utilitária arbitrária aplicada direto em JSX/TSX (algo como
+<code>className="font-[var(--fonte-display)]"</code>); cobrir esse caminho exigiria um
+harness de componente, que nenhuma dependência nova autoriza hoje. Essa via
+fica de vigilância manual em revisão de código, não de teste.</p>
+</blockquote>
+<ul>
+<li><strong>Escala fixa em rem</strong>, razão apertada (1.125–1.2). Nada fluido.</li>
+<li><strong>Numeral tabular e monoespaçado em todo número que se compara</strong> (<code>.num</code>).
+  Número que dança ao atualizar é ruído, não dado.</li>
+<li><strong>Dinâmica por peso e tamanho.</strong> Ênfase não gasta cor — a cor está reservada
+  para dito/medido.</li>
+<li>Medida de prosa 65–75ch.</li>
+</ul>
+<h3 id="41-a-prosa-metodologica-vira-aparato">4.1 A prosa metodológica vira aparato<a class="headerlink" href="#41-a-prosa-metodologica-vira-aparato" title="Permanent link">&para;</a></h3>
+<p>Os textos de honestidade <strong>permanecem, todos</strong>. O que muda é a posição: eles
+saem de cima do dado e vão para o <strong>aparato</strong> — o rodapé do sistema, na tipografia
+menor, onde a partitura põe nota de editor.</p>
+<p>Regra: o dado aparece primeiro, a explicação fica a um gesto de distância e
+<strong>nunca</strong> empurra o dado para baixo da dobra. Recolher é permitido; remover não.</p>
+<p>Os rótulos curtos — <code>estimativa</code>, <code>observado</code>, <code>sem sinal</code> — não são aparato:
+ficam colados ao número, sempre visíveis.</p>
+<blockquote>
+<p><strong>Emenda de 04/09/2026 — um aparato por tela, não um por painel.</strong> Com seis
+painéis numa tela, "Método e ressalvas" passou a se repetir seis vezes,
+idêntico, e repetição lê como ruído em vez de rigor. <code>AparatoDaTela.tsx</code>
+concentra as ressalvas de todos os painéis da página num único rodapé; cada
+painel continua produzindo a própria ressalva via <code>RessalvaDaTela</code>, só o
+<strong>container visual</strong> virou um. O que a regra original defendia continua de
+pé: <strong>os rótulos curtos continuam fora do aparato</strong>, colados ao número,
+sempre visíveis — só a prosa metodológica migrou para o container único.</p>
+<p><strong>A implementação usa portal, não estado copiado.</strong> A primeira versão deste
+arquivo guardava o JSX da ressalva em <code>useState</code> no momento do registro —
+e isso congelava a ressalva: um <code>FaixaIndicadores</code> que interpola
+<code>indicadores.comSinal</code> no rodapé ficava preso ao primeiro valor lido, mesmo
+com o número mudando na tela ao lado, o que é pior que a repetição que a
+mudança veio eliminar. <code>createPortal</code> resolve isso na raiz: o conteúdo nunca
+sai da árvore React do painel que o produz, só o destino no DOM é
+emprestado — ele volta a ser filho de verdade, e re-renderiza quando o
+painel de origem re-renderiza.</p>
+<p><strong>O aparato marca quando o sistema está em erro ou vazio.</strong> <code>RessalvaDaTela</code>
+aceita <code>estado?: "erro" | "vazio"</code> e imprime um rótulo curto (<code>não
+carregou</code> / <code>sem dado</code>) ao lado do título da ressalva no rodapé. Sem essa
+marcação, a nota metodológica leria como se tivesse se aplicado a um
+resultado que não existe — o texto continua verdadeiro (o sistema só não
+produziu dado desta vez), mas precisa dizer isso.</p>
+</blockquote>
+<hr />
+<h2 id="5-estados">5. Estados<a class="headerlink" href="#5-estados" title="Permanent link">&para;</a></h2>
+<p>Todo componente interativo tem: padrão, hover, foco, ativo, desabilitado,
+carregando, erro e vazio. Não se entrega metade.</p>
+<ul>
+<li><strong>Carregando</strong> é esqueleto com a forma do resultado, nunca roda girando.</li>
+<li><strong>Vazio</strong> nomeia o que falta e qual etapa ou endpoint resolveria.</li>
+<li><strong>Falha isolada:</strong> um sistema que não carrega mostra o próprio erro no lugar
+  dele, e os vizinhos continuam de pé.</li>
+<li><strong>Sem sinal</strong> é cabeça vazada, nunca zero, nunca cinza dentro da escala.</li>
+</ul>
+<h2 id="6-movimento">6. Movimento<a class="headerlink" href="#6-movimento" title="Permanent link">&para;</a></h2>
+<p>150–250 ms, e <strong>um momento autorado</strong> em vez de efeitos espalhados: o cursor de
+leitura deslizando ao percorrer a linha do tempo. Movimento comunica estado,
+não decora. <code>prefers-reduced-motion</code> desliga o deslize e mantém o cursor
+estático.</p>
+<p><strong>Emenda de 24/08/2026 — a entrada dos sistemas.</strong> A regra original desta seção
+era "sem sequência orquestrada de entrada: o analista chega para trabalhar, não
+para assistir a página carregar". Ela foi afrouxada num ponto e mantida no
+resto, e a distinção é a seguinte:</p>
+<ul>
+<li><strong>continua proibido</strong> animar na carga da página. Nada anima por ter montado;</li>
+<li><strong>passa a ser permitido</strong> um sistema subir 8 px ao <strong>entrar em cena pela
+  rolagem</strong>, uma única vez (<code>whileInView</code> + <code>once</code>). Isso não é abertura de
+  cortina: é a mesma resposta que o olho já espera de algo que aparece por
+  rolagem, e ela diz <em>de onde o bloco veio</em>.</li>
+</ul>
+<p>A armadura de indicadores escalona os quatro filhos em 40 ms. O intervalo é
+curto de propósito: os 80–100 ms de praxe fariam o quarto indicador chegar
+quase meio segundo depois do primeiro, e aí o analista <strong>espera</strong> — que é
+exatamente o que a regra original proíbe. 40 ms lê como um gesto só.</p>
+<p>O custo declarado: esta é a segunda peça de movimento da interface, e a seção
+dizia "um momento autorado". São dois agora — o cursor de leitura na linha do
+tempo e a entrada dos sistemas. Um terceiro precisa de argumento novo.</p>
+<blockquote>
+<p><strong>Nota de 25/08/2026 — a marca responde a gesto, e isso não é o terceiro
+momento.</strong> <code>MarcaFraus</code> reage a hover e a clique: o dourado varre pela fenda,
+os quatro primeiros cliques tremem, o quinto abre a marca. Parada, ela é
+<strong>imóvel</strong> — não anima por ter montado, não respira, não pulsa.</p>
+<p>A distinção que sustenta isso: <strong>momento autorado é o que a interface executa
+por conta própria</strong> — o cursor de leitura, a entrada dos sistemas. Resposta a
+gesto do usuário é outra categoria, a mesma dos <code>transition-colors</code> de 150 ms
+que a navegação inteira já usa. Se hover de botão contasse como momento
+autorado, esta seção já estaria violada em cada linha da navegação. <strong>A conta
+continua em dois.</strong></p>
+</blockquote>
+<p>O vocabulário (duração, curva, distância) mora em <code>lib/movimento.ts</code>, um lugar
+só, pelo mesmo motivo que a cor mora em token. <code>prefers-reduced-motion</code> é
+respeitado em duas frentes, porque uma não alcança a outra: o bloco no fim do
+<code>globals.css</code> zera transição de CSS, e o <code>&lt;Movimento&gt;</code> no layout raiz passa
+<code>reducedMotion="user"</code> ao Motion, que anima em JS e não obedeceria ao CSS.</p>
+<blockquote>
+<p><strong>Emenda de 04/09/2026 — a coreografia de rolagem da vitrine, e por que ela
+não é o terceiro momento.</strong> A LP (<code>app/page.tsx</code>) ganhou uma cena que
+responde à posição de rolagem: <code>lib/cena.ts</code> devolve, por camada do ateliê
+(grade, planeta, campo de estrelas), um <strong>fator</strong> de 0 a 1 em função do
+progresso da rolagem, e <code>hooks/useProgressoDaCena.ts</code> escreve esse fator
+direto no nó raiz a cada quadro (sem <code>useState</code>, para não re-renderizar a
+árvore atrás de tabela e gráfico).</p>
+<p><strong>O argumento, e é decisão do dono do projeto:</strong> esta seção governa o modo
+<strong>Operate</strong> — a ferramenta que o analista lê por horas. A LP é vitrine
+declarada, visitada por segundos, com a atenção inteira na tela. O
+precedente já existe nesta própria seção, na nota de 25/08/2026 sobre a
+marca respondendo a gesto, e mais explicitamente na §8.7, que abriu a mesma
+exceção para o campo de partículas em WebGL: "a ferramenta é lida por horas
+e não pode ter GPU girando atrás do dado; a vitrine é visita de 40 segundos".
+A coreografia de rolagem é a mesma exceção aplicada a uma segunda peça da
+mesma vitrine — <strong>a conta continua em dois na ferramenta</strong>: o cursor de
+leitura e a entrada dos sistemas.</p>
+<p><strong><code>prefers-reduced-motion</code> congela, não desacelera.</strong> Pela mesma decisão da
+§8.7, quem pede menos movimento não recebe uma versão lenta da cena — recebe
+a cena <strong>parada no estado inicial</strong> (<code>useProgressoDaCena</code> aplica o fator do
+topo da rolagem e não escuta o evento de scroll). Cena de rolagem devagar
+continua sendo cena de rolagem.</p>
+<p><strong>Correção da mesma emenda, 04/09/2026 — a armadilha do layout raiz.</strong> O
+parágrafo acima descrevia o desenho certo, mas o <code>Atelier</code> mora no layout
+<strong>raiz</strong> (<code>app/layout.tsx</code>), compartilhado por toda a árvore, e a primeira
+versão de <code>useProgressoDaCena</code> registrava o listener de <code>scroll</code>
+incondicionalmente. Resultado: a coreografia valia na ferramenta inteira, não
+só na vitrine — rolar <code>/dashboard/modelo</code> acendia e apagava grade, planeta e
+campo de estrelas atrás da tabela e do gráfico, que é exatamente a
+"decoração rodando o tempo todo" que esta seção proíbe, e o mesmo argumento
+da §8.7 que autoriza a exceção ("a vitrine é visita de 40 segundos") a
+condena fora dela. Estar no layout raiz não é a mesma coisa que estar só na
+LP; o código confundiu as duas coisas.</p>
+<p><strong>O conserto ficou na rota, num lugar só e nomeado.</strong>
+<code>lib/cena.ts</code> ganhou <code>ROTAS_COM_COREOGRAFIA</code> (hoje só <code>"/"</code>) e
+<code>coreografiaValeEm(pathname)</code>; <code>Atelier.tsx</code> lê <code>usePathname()</code> (ele já é
+client component) e passa o resultado para
+<code>useProgressoDaCena(ativo: boolean)</code>. Quando <code>ativo</code> é <code>false</code> — qualquer
+rota do Operate —, a função nem registra o listener de scroll: desligado é
+desligado, não "escutando e ignorando". Nos dois casos de desligamento (rota
+fora da vitrine, ou <code>prefers-reduced-motion</code>) o destino é o mesmo:
+<code>aplicar(0)</code>, o estado inicial em que os três fatores valem 1 — a cena de
+hoje, parada. O <code>Atelier</code> continua sendo uma peça só, a mesma instância nas
+duas bandas; só a reatividade é condicional.</p>
+</blockquote>
+<hr />
+<h2 id="7-a-materialidade">7. A materialidade<a class="headerlink" href="#7-a-materialidade" title="Permanent link">&para;</a></h2>
+<p>Adotada em 21/08/2026. Ver
+<code>docs/superpowers/specs/2026-08-21-vidro-liquido-design.md</code>.</p>
+<p>A superfície da interface é <strong>vidro líquido</strong>: quatro camadas com
+responsabilidades disjuntas.</p>
+<table>
+<thead>
+<tr>
+<th>Camada</th>
+<th>O que é</th>
+<th>Onde vive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 — ateliê</td>
+<td>manchas de luz fixas sobre o grafite</td>
+<td><code>components/shell/Atelier.tsx</code></td>
+</tr>
+<tr>
+<td>1 — vidro</td>
+<td>superfície translúcida com quina iluminada</td>
+<td><code>.vidro-fino</code>, <code>.vidro</code>, <code>.vidro-denso</code></td>
+</tr>
+<tr>
+<td>2 — especular</td>
+<td>realce que segue o ponteiro</td>
+<td><code>hooks/useEspecular.ts</code> + <code>.especular</code></td>
+</tr>
+<tr>
+<td>3 — dado</td>
+<td>régua, séries, números — opaco, sem blur</td>
+<td>os componentes de dado</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A camada 0 não é decoração.</strong> Vidro sobre fundo chapado é indistinguível de
+cinza mais claro: sem luz atrás, não há o que refratar. Ela é estática, e essa
+é uma decisão — luz derivada do dado criaria um canal de cor sem rótulo, contra
+a seção 3.4 e contra a regra de que a cor da marca nunca codifica valor.</p>
+<p><strong>Três espessuras, não uma escala.</strong> <code>backdrop-filter</code> é o efeito mais caro de
+CSS, e cada espessura resolve um problema distinto: o fino sinaliza flutuação,
+o médio é superfície de trabalho, o denso existe porque num menu suspenso o
+conteúdo atrás <strong>precisa</strong> sumir para o rótulo da opção ser legível.</p>
+<p><strong>A regra dura: nada que carrega dado é translúcido.</strong> Gráfico, tabela,
+transcrição e régua desenham em superfície opaca embutida no vidro — um visor.
+Blur atrás de uma série de meio ponto come a série, e a régua da pauta é meio
+ponto.</p>
+<p><strong>O contraste governa o vidro, não o contrário.</strong> Cada espessura declara um
+<code>--vidro-&lt;n&gt;-piso</code>: a cor mais clara que ela pode assumir, com o vidro composto
+sobre a mancha mais brilhante do ateliê. É contra esse pior caso que
+<code>npm run contraste</code> verifica o texto. Par que reprova faz a espessura ganhar
+opacidade — o gate nunca é afrouxado. Se um piso passar de <code>--muted</code> (L 0.274)
+em claridade, o vidro clareou demais.</p>
+<p><strong>O especular tem dois desligamentos</strong>, e o segundo é o esquecido:
+<code>prefers-reduced-motion</code> e <strong>ponteiro grosso</strong>. Toque não tem hover, e o realce
+congelaria no último ponto tocado — pior que não existir.</p>
+<hr />
+<h2 id="8-os-temas">8. Os temas<a class="headerlink" href="#8-os-temas" title="Permanent link">&para;</a></h2>
+<p><strong>Emenda de 24/08/2026.</strong> Até aqui este documento dizia "tema escuro único, sem
+alternador", e a §3.1 chama o fundo de <em>papel de ensaio</em>, com o argumento
+explícito de que preto puro "transforma dado em neon". Passa a haver um segundo
+tema, <strong>chuva de neon</strong>, por decisão do dono do projeto — e ele é exatamente a
+estética que aquele parágrafo recusava.</p>
+<p><strong>Emenda de 01/09/2026, em dois tempos no mesmo dia.</strong> Primeiro entrou um
+terceiro tema, <strong>espaço profundo</strong>, pela mesma porta e pela mesma decisão. Ele
+não custou arquitetura nenhuma: <code>aplicarTema</code> já limpava a classe de todos os
+temas prevendo o caso, e os dois gates (<code>contraste.mjs</code> e <code>pisos.mjs</code>) descobrem
+os blocos <code>.tema-*</code> por regex — ele entrou na verificação sem uma linha de
+mudança nos scripts.</p>
+<p><strong>Depois o grafite foi DESCARTADO</strong>, também por decisão do dono do projeto, e o
+espaço tomou o lugar dele como padrão de fábrica. Padrão de fábrica mora no
+<code>:root</code> e é a AUSÊNCIA de classe (ver <code>lib/tema.ts</code>), então a promoção foi mover
+os 54 valores de chassi do bloco <code>.tema-espacial</code> para o <code>:root</code> e apagar o
+bloco. Quem tinha <code>"grafite"</code> no <code>localStorage</code> cai no padrão sozinho:
+<code>temaValido</code> só aceita o que existe, então a migração não precisou de código.</p>
+<p><strong>O que do grafite sobreviveu</strong>, porque a pergunta foi feita explicitamente:
+o <strong>papel pautado</strong> (<code>--pauta-*</code>), que era a tese dele e aqui vira linha de
+varredura de instrumento; e o <strong>ouro fosco da marca</strong> (<code>--primary</code>, croma 0,085,
+rampa medida do SVG), que não só sobreviveu como parou de precisar de
+justificativa — no espaço, a luz quente é literalmente uma estrela. Morreu só o
+chassi cinza-quente: fundo, superfície e borda.</p>
+<p>Hoje são dois: <strong>espaço profundo</strong> (padrão) e <strong>chuva de neon</strong> (opção).</p>
+<h3 id="81-a-tese-do-tema-chuva">8.1 A tese do tema chuva<a class="headerlink" href="#81-a-tese-do-tema-chuva" title="Permanent link">&para;</a></h3>
+<p>Rua molhada à noite: neon frio de fachada refletido no asfalto, e a luz de
+<strong>sódio</strong> do poste — que é âmbar-dourada. É isso que resolve o conflito entre
+vaporwave e a marca: numa cena de chuva noturna, luz quente de poste ao lado de
+neon frio não é contradição, é o retrato. O dourado do monograma deixa de ser um
+metal solto sobre roxo e passa a ser a lâmpada da rua.</p>
+<h3 id="82-o-que-o-tema-nao-toca">8.2 O que o tema NÃO toca<a class="headerlink" href="#82-o-que-o-tema-nao-toca" title="Permanent link">&para;</a></h3>
+<p>Três regras, e elas eram o que separava "segundo tema" de "outro produto":</p>
+<ol>
+<li><strong>A camada de dado inteira fica como está.</strong> <code>--dito</code> continua âmbar,
+   <code>--medido</code> continua azul, e as sete famílias de sinal mantêm os matizes. O
+   magenta e o violeta do vaporwave vivem <strong>só no ateliê</strong>, que é a única
+   camada que não carrega dado — e é por não carregar dado que ela pode ter
+   croma alto sem inventar canal sem rótulo.</li>
+<li><strong>O dourado continua fora de dado</strong>, só em controle e marca.</li>
+<li><strong>Todo par de texto continua cruzando AA por cálculo</strong>, agora medido nos dois
+   temas.</li>
+</ol>
+<blockquote>
+<p><strong>Emenda de 24/08/2026 — a regra 1 deixa de valer, e a atribuição dela
+estava errada.</strong> A regra 1 acima ("a camada de dado inteira fica como
+está") deixou de valer por decisão do dono do projeto: as sete famílias de
+sinal, as três categorias de NPS e os oito nós coloridos do grafo subiram
+croma e claridade.</p>
+<p><strong>O que continua de pé:</strong> o matiz de cada família ficou <strong>congelado</strong> — só
+saturação e claridade mudaram, e o matiz é o canal que carrega o encoding;
+saturação nunca carregou significado nenhum. <code>--no-importacao</code> continua
+cinza. <code>--primary</code> continua fora de dado, regra 2 intacta. Categoria
+continua nunca comunicada só por cor, sempre com rótulo textual — regra 3
+intacta.</p>
+<p><strong>A correção de rota, e é a parte que importa:</strong> o texto acima chamava essa
+regra de "compromisso vinculante do <code>PRODUCT.md</code>". <strong>Não é, e nunca foi.</strong>
+Fomos reler o <code>PRODUCT.md</code>: ele exige duas coisas, e só duas — que todo par
+de cor que carrega texto cruze AA por cálculo, e que categoria nunca seja
+comunicada só por cor. Ambas continuam valendo e não foram violadas por
+esta emenda. "A camada de dado inteira fica como está" nunca esteve no
+<code>PRODUCT.md</code>; era decisão de design tomada pelo dono do projeto, e foi o
+mesmo dono do projeto que a revogou agora. Atribuir a um documento de
+produto uma regra que era decisão de design é o tipo de erro que este
+projeto não pode se dar ao luxo de deixar impresso.</p>
+</blockquote>
+<h3 id="83-o-gate-passou-a-ser-ciente-de-tema">8.3 O gate passou a ser ciente de tema<a class="headerlink" href="#83-o-gate-passou-a-ser-ciente-de-tema" title="Permanent link">&para;</a></h3>
+<p><code>scripts/contraste.mjs</code> mantinha <strong>um mapa único</strong> de tokens para o arquivo
+inteiro. Com dois temas declarando <code>--background</code>, o segundo sobrescreveria o
+primeiro e o relatório sairia verde tendo medido um tema só — falha silenciosa,
+que é o modo de falha que este gate existe para evitar.</p>
+<p>Ele agora recorta o bloco de cada tema, <strong>sobrepõe à base como a cascata do CSS
+faz</strong> (um tema só declara o que muda) e roda a matriz inteira por tema. Tema
+novo entra sem tocar no script: basta o seletor começar com <code>.tema-</code>.</p>
+<h3 id="84-onde-a-escolha-mora">8.4 Onde a escolha mora<a class="headerlink" href="#84-onde-a-escolha-mora" title="Permanent link">&para;</a></h3>
+<p>No <code>&lt;html&gt;</code>, como classe, e no <code>localStorage</code> — não em contexto de React. Quem
+precisa saber o tema é o CSS, e o CSS já sabe ler classe.</p>
+<p>O grafite é a <strong>ausência</strong> de classe, não uma classe própria: ele é o <code>:root</code>, e
+um tema padrão que precisasse se declarar para funcionar quebraria em toda tela
+renderizada antes do JavaScript. Um script inline no <code>&lt;head&gt;</code> aplica a classe
+antes da primeira pintura; sem ele, quem escolheu a chuva veria a tela pintar em
+grafite e trocar depois da hidratação, a cada navegação.</p>
+<h3 id="85-onde-a-chuva-pode-gritar">8.5 Onde a chuva pode gritar<a class="headerlink" href="#85-onde-a-chuva-pode-gritar" title="Permanent link">&para;</a></h3>
+<p>O tema foi empurrado para ser chamativo em 24/08/2026, e o empurrão respeita a
+regra de 8.2: <strong>só o que não carrega dado ganhou saturação.</strong></p>
+<blockquote>
+<p><strong>Nota de 24/08/2026 — a tabela vale para os dois temas.</strong> O título desta
+seção pressupõe um tema só, e não é bem assim: a decisão de 24/08/2026 foi
+<strong>estrutura igual nos dois temas</strong> — cada peça abaixo existe no componente
+tanto no grafite quanto na chuva, e é o tema, não o componente, quem decide
+cor e intensidade. No grafite <strong>só asfalto e chuva ficam em zero</strong>; as
+outras seis estão acesas, apenas contidas — marca impressa em 0,15, grade
+a laser em 0,1, sol listrado em 0,16, papel pautado em 0,12, e quina e
+sombra ativas com suas próprias cores. É a chuva que grita, não o grafite
+que apaga.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Peça</th>
+<th>O que faz</th>
+<th>Por que pode gritar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>quina do vidro</strong></td>
+<td>ciano na aresta de cima, magenta na de baixo</td>
+<td>é tubo de neon: a luz da fachada bate em cima, o reflexo do chão sobe embaixo. Toda superfície tem quina, então acender a aresta acende a interface inteira <strong>sem uma célula de dado mudar de cor</strong></td>
+</tr>
+<tr>
+<td><strong>sombra</strong></td>
+<td>deixa de ser preta e vira derrame violeta</td>
+<td>preto sob um painel apoiado em asfalto molhado lê como buraco; o halo lê como a luz do próprio painel vazando para o chão</td>
+</tr>
+<tr>
+<td><strong>especular</strong></td>
+<td>tingido de magenta</td>
+<td>realce branco no meio de uma paleta tingida lê como falha de renderização</td>
+</tr>
+<tr>
+<td><strong>reflexo no asfalto</strong></td>
+<td>faixa de luz subindo do rodapé</td>
+<td>é o que separa "fundo roxo com manchas" de "fachada espelhada em chão molhado"</td>
+</tr>
+<tr>
+<td><strong>chuva</strong></td>
+<td>riscos diagonais finos, <strong>estáticos</strong></td>
+<td>dá textura para o vidro refratar sem gastar quadro</td>
+</tr>
+<tr>
+<td><strong>marca impressa</strong></td>
+<td>o monograma sangrando pela quina inferior direita, em magenta</td>
+<td>é máscara pintada pelo tema, não imagem: mora no ateliê, não codifica valor nenhum, e o magenta é o mesmo par de néon da quina do vidro</td>
+</tr>
+<tr>
+<td><strong>grade a laser</strong></td>
+<td>grade em perspectiva convergindo para um horizonte</td>
+<td>é o piso do vaporwave clássico: converte o ateliê em cenário de fuga, sem tocar dado</td>
+</tr>
+<tr>
+<td><strong>sol listrado</strong></td>
+<td>sol com faixas horizontais no horizonte</td>
+<td>a segunda peça do mesmo cenário; nos dois temas, com intensidade decidida por tema</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A chuva não cai</strong>, e isso é decisão: a §6 já gastou os dois momentos de
+movimento que a interface se permite, e chuva animada seria um terceiro que não
+comunica estado nenhum — decoração rodando atrás de tabela e gráfico o tempo
+todo.</p>
+<p>As duas peças novas existem no componente nos <strong>dois</strong> temas; o grafite as
+mantém em opacidade zero. Um segundo componente de ateliê só para a variante
+custaria mais do que dois tokens.</p>
+<h3 id="86-o-preco-o-vidro-da-chuva-e-mais-grosso">8.6 O preço: o vidro da chuva é mais grosso<a class="headerlink" href="#86-o-preco-o-vidro-da-chuva-e-mais-grosso" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Nota de 04/09/2026 — os pisos "no grafite" citados nesta seção são
+históricos.</strong> O grafite é o tema descartado pela §8 em 01/09/2026; nenhum
+valor de piso, espessura de vidro ou contraste medido "no grafite" existe em
+produção. Ficam registrados pelo método que documentam — a conta que a
+§7 exige refazer sempre que o ateliê ganha luz nova —, não como referência
+de um tema vigente. Os pisos vigentes são os do <strong>espaço profundo</strong> (§8.7) e
+da <strong>chuva de neon</strong>, remedidos na emenda de 04/09/2026 ao fim desta seção.</p>
+</blockquote>
+<p>Acender o ateliê levantou o piso das superfícies translúcidas, e o portão
+reprovou três pares — <code>--destructive</code> sobre vidro fino caiu para <strong>3,53:1</strong>.</p>
+<p>A resolução seguiu a regra da seção 7: <strong>a espessura ganha opacidade até
+passar.</strong> 45% → 68% no fino, 62% → 74% no médio, 82% → 86% no denso. Baixar a
+luz para salvar o contraste teria sido resolver pelo lado errado, ainda mais num
+tema cujo pedido era justamente ficar mais chamativo.</p>
+<p>Os pisos deste tema são <strong>medidos, não estimados</strong>: as camadas do ateliê
+compostas no mesmo ponto (pior caso, ainda que geometricamente impossível — a
+mancha da marca fica no alto à esquerda e a fria embaixo à direita), cada
+espessura por cima, e a luminância resultante convertida de volta para OKLCH.
+Piso otimista é pior que piso nenhum: ele faz o portão devolver verde medindo
+uma superfície que não existe.</p>
+<blockquote>
+<p><strong>Emenda de 24/08/2026 — a medição virou script, e ela estava errada.</strong></p>
+<p>Esta conta já tinha sido feita três vezes à mão, e nas duas primeiras morreu
+num scratchpad. Agora é <code>dashboard/scripts/pisos.mjs</code> (<code>npm run pisos</code>): ele
+lê o <code>globals.css</code>, compõe o ateliê, aplica cada espessura e imprime o piso
+que cada uma deveria ter. Medição sem instrumento versionado vira chute na
+terceira rodada — e virou.</p>
+<p>Refeita a conta com o script, os pisos da chuva registrados aqui
+(0,307/0,294/0,257) eram <strong>otimistas mesmo para o ateliê daquela época</strong>: o
+vidro fino dava 0,333. O portão vinha medindo uma superfície mais escura que
+a real, ou seja, devolvendo verde com folga que não existia. É exatamente o
+modo de falha que o parágrafo acima descreve, e ele aconteceu aqui. Os
+valores vigentes estão no <code>globals.css</code> e batem com o script.</p>
+<p><strong>Um pessimismo a menos, e ele é lido da geometria.</strong> O papel pautado <strong>não
+soma</strong> com as peças do rodapé: a máscara dele
+(<code>radial-gradient(140% 100% at 50% -10%, black 15%, transparent 70%)</code>) zera
+por volta de 60% da altura da tela, então onde ele tem força as outras ainda
+não começaram. O script disputa "papel pautado" contra "marca impressa +
+grade a laser" e fica com a composição mais clara. O resto do pior caso segue
+impossível de propósito (as manchas de luz no mesmo ponto), porque ali a
+impossibilidade é barata.</p>
+<p><strong>Correção da revisão final (24/08/2026) — a marca e a grade NÃO eram
+disjuntas, e esta emenda afirmava que eram.</strong> A versão anterior deste
+parágrafo dava como prova a máscara antiga da marca
+(<code>radial-gradient(120% 120% at 100% 100%, ..., transparent 72%)</code>), estreita o
+bastante para deixar massa só num raio pequeno. Essa máscara foi <strong>alargada
+depois</strong>, de propósito, para a marca ficar visível: hoje é
+<code>radial-gradient(150% 150% at 100% 100%, black 34%, transparent 96%)</code> num
+elemento de 115vmin ancorado na quina inferior direita — e a grade ocupa a
+faixa <code>bottom-0 h-[45vh]</code> de largura total, mais forte justamente colada no
+rodapé. O pixel "linha da grade sobre traço do monograma" existe. O modelo de
+medição não acompanhou a mudança de geometria, e por isso os seis pisos
+ficaram otimistas. Corrigido: <strong>marca e grade somam</strong>; só o papel pautado
+continua disjunto. Premissa de disjunção é afirmação sobre geometria — quem
+mexer numa máscara do <code>Atelier.tsx</code> reconfere a lista em <code>pisos.mjs</code>.</p>
+<p><strong>O que continua sendo julgamento de olho.</strong> O ateliê só aparece nas calhas
+entre painéis e <strong>através</strong> do vidro; numa tela cheia, engrossar o vidro
+apaga a luz que a emenda acabou de acender. A intensidade da marca foi posta
+no teto em que ela ainda <strong>não</strong> é a camada que manda no piso — 0,15 no
+grafite, 0,22 na chuva —, e a presença dela veio de <strong>escala</strong> (115vmin), que
+é de graça: o pior caso já assume a cor da marca em algum pixel, então o
+tamanho não custa contraste nenhum.</p>
+<p><strong>Emenda de 24/08/2026 (segunda) — os números finais, e um par sem folga
+nenhuma.</strong> A grade, o sol e a marca impressa (0,12/0,22) levantaram o piso
+de novo, e a resolução foi a mesma de sempre: a espessura cede. Vidro fino
+do grafite foi de 55% para <strong>64%</strong>; médio (72%) e denso (82%) do grafite
+ficaram como estavam. Na chuva, vidro fino foi de 71% para <strong>74%</strong> e vidro
+médio <strong>recuou</strong> de 75% para <strong>74%</strong> — ele chegou a subir para 81%/85% no
+meio do caminho e voltou quando um bug de medição foi corrigido; denso
+(86%) não mudou. Contra o início desta sessão, o saldo da chuva é: fino
+subiu 3 pontos, médio caiu 1.</p>
+<p><strong>Um par ficou exatamente no fio.</strong> <code>--destructive</code> sobre o piso do vidro
+fino do grafite fecha em <strong>4,50:1</strong> — o limiar do WCAG AA, não um número
+acima dele. Zero folga: qualquer luz nova no ateliê do grafite — mais uma
+peça, mais opacidade em alguma das que já existem — derruba esse par sem
+precisar de erro nenhum no cálculo. Fica registrado como o candidato mais
+provável a reprovar na próxima rodada.</p>
+<p><strong>As nove cores que carregam texto foram convertidas de <code>hsl()</code> para
+<code>oklch()</code>.</strong> É conversão matematicamente equivalente, não repintura — o
+motivo foi o portão: <code>scripts/contraste.mjs</code> precisava enxergá-las para
+medir, e três delas nunca tinham sido medidas em tema nenhum antes desta
+sessão. As nove passam AA nos dois temas, incluindo essas três.</p>
+<p><strong>Emenda de 24/08/2026 (terceira) — os números depois de consertar a
+disjunção.</strong> Com marca e grade somadas (ver a correção acima), os seis pisos
+ficaram otimistas e o portão reprovou: <code>--destructive</code> × vidro fino caiu para
+<strong>4,29</strong> no grafite e <strong>4,39</strong> no fino e no médio da chuva. A regra de sempre:
+a espessura cede, a luz não. Vidro fino do grafite subiu de 1 em 1 —
+64% → 65% → 66% → 67% → 68% → <strong>69%</strong> —, remedindo o piso a cada passo; médio
+(72%) e denso (82%) do grafite não mudaram. Na chuva, fino e médio subiram
+juntos de 74% para <strong>76%</strong>; denso (86%) não mudou.</p>
+<p>O par crítico deixou o fio: <code>--destructive</code> × piso do vidro fino fecha em
+<strong>4,54</strong> no grafite e <strong>4,52</strong> na chuva. Continua sendo o par mais apertado
+da interface e o primeiro candidato a reprovar se o ateliê ganhar luz nova.</p>
+<p><strong>Emenda de 24/08/2026 (quarta) — o vidro afina, e o vermelho de erro paga
+a conta.</strong> Por decisão do dono do projeto: <em>"vamos diminuir a opacidade dos
+liquid glass para que eu consiga ver o fundo"</em>.</p>
+<p><strong>A folga era zero.</strong> Medido antes de mexer: dois pontos a menos em qualquer
+espessura já levavam <code>--destructive</code> × vidro fino de 4,52 para 4,44. O par
+que a emenda anterior deixou "no fio" era literalmente o teto.</p>
+<p><strong>E o teto não é o vidro, é o texto</strong> — esta é a parte que vale registrar,
+porque ela contraria a intuição. O que se enxerga do ateliê <em>através</em> de uma
+superfície translúcida <strong>é</strong> a claridade do piso dela. Pedir "mais fundo
+visível" é pedir piso mais claro, e piso mais claro exige texto mais claro.
+Não adianta afinar o vidro e escurecer o ateliê para compensar: as duas
+coisas são a mesma grandeza, e o portão mede exatamente ela. <strong>A única
+alavanca que compra fundo é subir a cor do texto que fica por cima.</strong></p>
+<p>Isso <strong>não afrouxa o portão</strong> — conserta a cor do texto, que é o outro lado
+da mesma regra da §7. O portão continua em 4,5 e mede tudo que media antes.</p>
+<p><code>--destructive</code> foi de <code>oklch(0.704 0.191 22.216)</code> para
+<code>oklch(0.79 0.121 22.216)</code>. <strong>O matiz não se moveu</strong>: vermelho continua sendo
+erro. É seguro porque <code>bg-destructive</code> cheio só pinta bolinha de status — o
+botão e o badge usam <code>/10</code> e <code>/20</code> com <code>text-destructive</code> por cima, então
+clarear melhora os dois usos e não há rótulo sobre preenchimento sólido.</p>
+<p><strong>O croma caiu de propósito.</strong> O valor antigo estava <strong>fora do gamut sRGB</strong>
+(R = 1,013) e o navegador já o cortava; subir a claridade mantendo 0,191
+pioraria isso (R = 1,319). 0,121 é o croma máximo dentro do gamut nessa
+claridade — <code>rgb(255,83,79)</code> —, então o token passa a declarar a cor que de
+fato renderiza, e ainda rende um pouco mais de contraste que a versão
+cortada. Token que declara cor que o navegador corta é a mesma classe de
+defeito de documento que afirma o que o código não faz.</p>
+<p><strong>O que isso comprou:</strong> oito pontos de vidro nas duas espessuras que o
+usuário enxerga. Grafite fino <strong>69% → 61%</strong>, médio <strong>72% → 64%</strong>. Chuva fino
+e médio <strong>76% → 68%</strong>. Denso não mudou em tema nenhum — ele existe para o
+conteúdo atrás sumir, e afiná-lo tem custo funcional, não só de contraste.</p>
+<p><strong>O gargalo trocou de dono, e o novo tem outro nome.</strong> O par mais apertado
+agora é <code>--detrator-texto</code> × piso do vidro fino, em <strong>4,54</strong> na chuva e
+<strong>4,72</strong> no grafite. <code>--detrator-texto</code> é <strong>cor de dado</strong> — a categoria de
+NPS —, não cromo. Afinar mais exigiria mexer na camada de dado, e isso é
+decisão de outra ordem: fica registrado aqui como a fronteira, não como
+pendência.</p>
+<p><strong>Emenda de 04/09/2026 — o pior caso virou trajetória, e nenhum piso mudou.</strong>
+Até aqui esta seção media o ateliê num único ponto (pior caso geométrico
+fixo). A §6 desta sessão deu à LP uma cena que responde à rolagem
+(<code>lib/cena.ts</code>), e isso trocou o pior caso de um ponto por uma <strong>trajetória</strong>:
+a claridade do ateliê varia ao longo da rolagem, e o piso de vidro precisa
+valer para o ponto mais claro dessa trajetória inteira, não só do herói.</p>
+<p><code>scripts/pisos.mjs</code> passou a <strong>ler</strong> <code>FATOR_MAXIMO_POR_CAMADA</code> de
+<code>lib/cena.ts</code> (por expressão regular — o próprio script documenta em
+maiúsculas que importar de verdade exigiria transpilar, e é justamente por
+isso que o script recorta o bloco do arquivo-fonte em vez de fazer <code>import</code>)
+e multiplicar cada fator pelo token de opacidade do tema
+vigente (<code>--grade-op</code>, <code>--sol-op</code>, <code>--estrelas-op</code>), em vez de ler só a
+opacidade estática do CSS — o mesmo motivo que fez <code>intensidadeDaCamada</code>
+nascer função pura em <code>lib/cena.ts</code>: fator escondido em JSX é fator que o
+script não lê, e o portão volta a medir uma superfície que não existe, como
+já aconteceu duas vezes nesta mesma seção.</p>
+<p><strong>E nenhum piso mudou.</strong> O motivo está na própria função: <code>cena.ts</code> devolve
+<strong>fator</strong> (0 a 1), não opacidade, e os três fatores valem exatamente 1 no
+topo da página (<code>progresso = 0</code>) — decisão registrada no código como
+correção de 04/09/2026, para o herói ficar idêntico ao de hoje pixel por
+pixel. Como o herói já era o ponto usado para medir o pior caso, e nenhum
+fator ultrapassa 1 em ponto nenhum da rolagem, a cena <strong>nunca fica mais
+clara que o herói de hoje</strong> — a trajetória inteira está contida no ponto que
+já era medido. O risco que a Task 12 antecipava — <code>--detrator-texto</code> × vidro
+fino em 4,54 na chuva, o par mais apertado da interface, cedendo com a nova
+fonte de luz — não se materializou.</p>
+<p><code>npm run contraste</code>: <strong>348 PASS / 0 FAIL</strong> nos dois temas vigentes (espaço
+profundo e chuva de neon). O par mais apertado continua sendo
+<code>--detrator-texto</code> × <code>--vidro-fino-piso</code> / <code>--vidro-piso</code>, em <strong>4,54</strong> na
+chuva — o mesmo valor, sem folga nova nem perdida.</p>
+</blockquote>
+<h3 id="87-o-padrao-de-fabrica-espaco-profundo-01092026">8.7 O padrão de fábrica: espaço profundo (01/09/2026)<a class="headerlink" href="#87-o-padrao-de-fabrica-espaco-profundo-01092026" title="Permanent link">&para;</a></h3>
+<p><strong>A tese: o vazio visto de dentro de uma cabine.</strong> Não é "fundo preto com
+estrelinhas". A cena tem três corpos, e cada peça do ateliê já existente virou um
+deles — <strong>nenhuma peça nova foi criada</strong> exceto o campo de estrelas:</p>
+<table>
+<thead>
+<tr>
+<th>corpo</th>
+<th>peça</th>
+<th>por quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a <strong>estrela</strong></td>
+<td>mancha da marca (<code>--atelie-marca</code>)</td>
+<td>no espaço a luz quente é literalmente uma estrela. A chuva precisou argumentar que o ouro era a lâmpada de sódio; aqui o ouro <strong>é</strong> o corpo luminoso, sem empréstimo</td>
+</tr>
+<tr>
+<td>a <strong>nebulosa</strong></td>
+<td>mancha fria (<code>--atelie-fria</code>)</td>
+<td>croma alto pode, porque esta camada não carrega dado</td>
+</tr>
+<tr>
+<td>o <strong>planeta</strong></td>
+<td>sol listrado (<code>--sol-*</code>)</td>
+<td>o disco com faixas lê como gigante gasoso assim que a paleta esfria. Mesma geometria, outra leitura</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Como ele não vira "chuva 2"</strong> — o risco real de um terceiro tema escuro e
+roxo: a chuva é urbana, saturada e <strong>cheia</strong>; este é vasto, escuro e <strong>vazio</strong>. O
+croma do chassi cai, a densidade de luz cai (<code>--atelie-op-*</code> são os menores dos
+três) e o que ocupa a tela é o espaço negativo entre poucos corpos. São opostos
+de temperamento, não vizinhos de matiz.</p>
+<p>As <strong>três regras da §8.2 valem sem emenda</strong>: camada de dado intacta, dourado fora
+de dado, todo par de texto cruzando AA por cálculo — nos dois temas vigentes.</p>
+<p><strong>O vidro deste tema é o mais FINO dos três</strong> (56%, contra 61/64/82 no grafite e
+68/68/86 na chuva), e isso inverte a §8.6 sem contradizê-la. A regra continua a
+mesma — a espessura responde ao piso, o portão manda no vidro. O que mudou foi o
+piso: ateliê menos aceso significa composto mais escuro, e composto mais escuro
+deixa o vidro afinar sem ameaçar texto nenhum. O número saiu do exercício,
+descendo de 4 em 4 e remedindo a cada passo: 68% → 64% → 60% → <strong>56%</strong> (último
+que passa) → 52% (reprova).</p>
+<p><strong>Duas correções pagas na tela, e não no token</strong> — as duas invisíveis para os
+gates, que é exatamente o que a §9 avisa:</p>
+<ol>
+<li><strong>O planeta chegou cinza.</strong> As faixas do disco são <code>oklch(0 0 0 / 0.85)</code>
+   cravadas no <code>Atelier.tsx</code> — barras pretas quase opacas. Sobre um azul-gelo de
+   croma 0,065 elas produzem uma média dessaturada, e o disco lia como borrão
+   listrado atrás da manchete. Corrigido subindo o croma (a cor que passa por
+   peneira preta tem que entrar mais forte do que se quer ver), engrossando a
+   faixa de 9px para 15px (nove pixels nesta escala viram moiré, banda larga lê
+   como gigante gasoso) e baixando a opacidade de 0,26 para 0,15, porque cenário
+   não disputa leitura com o único texto que a página precisa entregar.</li>
+<li><strong>O campo de partículas da LP nasceu tímido demais</strong> para ser percebido, e
+   subiu de 170/62 para 260/105 em contagem e tamanho de base.</li>
+</ol>
+<p><strong>O campo de estrelas</strong> é a única peça nova, e ela é CSS estático: três tiles de
+períodos primos entre si (137, 191, 89 px) com brilhos diferentes. Períodos sem
+divisor comum só repetem o conjunto a cada 137×191×89 px — ou seja, nunca dentro
+de uma tela —, e um <code>background-repeat</code> único ladrilharia visivelmente. O brilho
+variado é o que dá profundidade: estrela toda do mesmo peso lê como ruído de
+sensor.</p>
+<p>Ele é <strong>estático</strong> pela §6, como a chuva e a grade. O espetáculo em WebGL existe
+— <code>components/lp/CampoDeParticulas.tsx</code> —, mas <strong>só na LP</strong>, e a distinção é de
+contrato, não de gosto: a ferramenta é lida por horas e não pode ter GPU girando
+atrás do dado; a vitrine é visita de 40 segundos com a atenção inteira na tela, e
+ali o espetáculo <em>é</em> o produto. Quem pede <code>prefers-reduced-motion: reduce</code> não
+recebe uma versão mais lenta — recebe <code>null</code>, porque campo de partículas lento
+continua sendo campo de partículas.</p>
+<blockquote>
+<p><strong>Nota para <code>pisos.mjs</code>.</strong> O campo de estrelas entrou na lista de camadas com a
+contribuição <strong>ponderada pela cobertura areal</strong> (~8×10⁻⁵), e não pela
+opacidade do token. As outras camadas são lavagens de tela cheia, onde a
+opacidade já é a contribuição; esta são três pontos de ~1,5px² em tiles de
+~18.800px². A média é o número certo porque o que o script modela é o fundo
+visto através de <code>backdrop-filter: blur()</code>, e blur devolve a média local —
+medir a estrela pelo pico seria medir um pixel que o vidro nunca entrega.</p>
+</blockquote>
+<hr />
+<h2 id="9-o-ciclo-de-verificacao-e-o-que-cada-gate-nao-ve">9. O ciclo de verificação, e o que cada gate NÃO vê<a class="headerlink" href="#9-o-ciclo-de-verificacao-e-o-que-cada-gate-nao-ve" title="Permanent link">&para;</a></h2>
+<p>Cinco comandos verificam este sistema de design. Eles não se substituem, e a
+seção existe porque <strong>quatro deles já devolveram verde com o build quebrado</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que ele vê</th>
+<th>O que ele <strong>não</strong> vê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm run pisos</code></td>
+<td>se o piso gravado no CSS bate com o pior caso medido do ateliê</td>
+<td>qualquer coisa fora dos tokens que ele casa por regex</td>
+</tr>
+<tr>
+<td><code>npm run contraste</code></td>
+<td>todo par de cor que carrega texto ou marca, em todos os temas</td>
+<td>cor escrita em notação que o parser não lê; matiz; a tela</td>
+</tr>
+<tr>
+<td><code>npx tsc --noEmit</code></td>
+<td>tipos do TypeScript</td>
+<td>CSS, imagem, qualquer asset</td>
+</tr>
+<tr>
+<td><code>npm run lint</code></td>
+<td>as regras do ESLint</td>
+<td>CSS, imagem, qualquer asset</td>
+</tr>
+<tr>
+<td><code>npm run build</code></td>
+<td><strong>compila o CSS e processa os assets de verdade</strong></td>
+<td>a tela</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>npm run build</code> faz parte do ciclo, não só da conferência final.</strong> Em
+24/08/2026 ele pegou duas quebras no mesmo dia que os outros quatro deixaram
+passar em verde:</p>
+<ul>
+<li>um <code>favicon.ico</code> gerado a partir de imagem <strong>RGB</strong> — o processador do Next
+  exige RGBA e falha com <code>The PNG is not in RGBA format!</code>;</li>
+<li>um <code>*/</code> que fechou um comentário do <code>globals.css</code> cedo demais, deixando o
+  resto do texto como CSS solto (<code>Unknown word lime</code>).</li>
+</ul>
+<p>Nos dois casos <code>pisos</code>, <code>contraste</code>, <code>tsc</code> e <code>lint</code> passaram limpos. Os dois
+primeiros só casam token por expressão regular; os dois últimos não leem CSS
+nem imagem. <strong>Nenhum dos quatro compila coisa alguma.</strong></p>
+<p><strong>E nenhum dos cinco vê a tela.</strong> Uma peça de fundo pode estar geometricamente
+quebrada, invisível por opacidade baixa demais, ou ilegível por figura contra
+fundo de mesmo matiz, com os cinco verdes. Foi assim que o papel pautado saiu
+invisível a 5,5%, que a grade a laser colapsou numa faixa de 30px, e que o
+portão passou a medir uma superfície que não existe. <strong>Trabalho visual se
+confere olhando</strong>, nos dois temas, numa tela cheia e numa vazia.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
