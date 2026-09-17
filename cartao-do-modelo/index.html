@@ -1,0 +1,1153 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Cartão do modelo - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cartao-do-modelo" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cartão do modelo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uso-pretendido-e-uso-proibido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uso pretendido e uso proibido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#as-pecas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As peças
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onde-o-fusor-erra-avaliacao-por-fatia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onde o fusor erra — avaliação por fatia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversa-so-de-cortesia-sem-sinal-desde-15092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversa só de cortesia — sem sinal desde 15/09/2026
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-cabeca-de-ironia-taxa-de-erro-publicada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A cabeça de ironia — taxa de erro publicada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitacoes-que-valem-para-tudo-acima" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitações que valem para tudo acima
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cartao-do-modelo">Cartão do modelo<a class="headerlink" href="#cartao-do-modelo" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Formato de <em>model card</em> (Mitchell et al., 2019): o que cada peça é, com o que
+foi treinada, o que mediu, <strong>onde erra</strong> e para que <strong>não</strong> pode ser usada.
+Números de 15/09/2026. Os da seção de fatias são reproduzíveis com
+<code>FRAUS_BACKEND=onnx uv run python scripts/avaliar_por_fatias.py --n 600</code>
+(semente <code>20260915</code>).</p>
+</blockquote>
+<h2 id="uso-pretendido-e-uso-proibido">Uso pretendido e uso proibido<a class="headerlink" href="#uso-pretendido-e-uso-proibido" title="Permanent link">&para;</a></h2>
+<p><strong>Pretendido:</strong> estimar, a partir do texto e do ritmo de um atendimento de
+chatbot, se o cliente saiu insatisfeito, neutro ou satisfeito, e agregar isso
+num <strong>NPS estimado</strong> para quem opera o atendimento enxergar tendência e caso
+problemático. Toda exibição carrega a etiqueta de estimativa: o NPS é
+<strong>inferido</strong>, não perguntado.</p>
+<p><strong>Proibido:</strong></p>
+<ul>
+<li><strong>Pontuar atendente.</strong> A família <code>emocao_*</code> faz do Fraus um sistema de
+  reconhecimento de emoção pela letra do EU AI Act, e reconhecimento de emoção
+  no local de trabalho é proibido desde fev/2025. "Score por atendente" é
+  violação, não feature. Ver <a href="../conformidade/">Conformidade</a>.</li>
+<li><strong>Decidir sobre o cliente individualmente</strong> (crédito, prioridade, cobrança).
+  A nota de uma conversa é evidência para um humano olhar, não veredito.</li>
+<li><strong>Apresentar a nota como NPS declarado.</strong></li>
+</ul>
+<h2 id="as-pecas">As peças<a class="headerlink" href="#as-pecas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>peça</th>
+<th>o que é</th>
+<th>treino</th>
+<th>métrica declarada</th>
+<th>onde a métrica engana</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satisfação</td>
+<td>BERTimbau, 3 classes por mensagem</td>
+<td>B2W-Reviews01 (resenha de produto, não atendimento)</td>
+<td>acurácia 0,783 · F1-macro 0,782</td>
+<td>domínio: resenha ≠ conversa de suporte</td>
+</tr>
+<tr>
+<td>emoção</td>
+<td>BERTimbau, 7 classes (+ desprezo derivado de raiva+nojo)</td>
+<td><code>go_emotions_ptbr</code> (tradução automática)</td>
+<td>F1-macro 0,584; <strong>0,281 no XED-pt</strong> (sem tradução)</td>
+<td>a queda no XED-pt é a medida honesta</td>
+</tr>
+<tr>
+<td>ironia</td>
+<td>BERTimbau binário</td>
+<td>corpus <strong>gerado</strong> (<code>fraus.ingest.gerador_ironia</code>)</td>
+<td>acurácia 1,0</td>
+<td>otimista por construção — ver abaixo; <strong>não entra na nota</strong></td>
+</tr>
+<tr>
+<td>fusor</td>
+<td><code>LogisticRegression</code> sobre 39 features (espera em <code>log1p</code>)</td>
+<td>conversas sintéticas: texto do B2W + estrutura e tempo do simulador</td>
+<td>acurácia 0,947 · F1-macro 0,947 (holdout do notebook 02)</td>
+<td>o tempo é sintético; ver <a href="../treinamento/">Treinamento</a></td>
+</tr>
+</tbody>
+</table>
+<p>Os três BERTimbau rodam em CPU, por torch ou por ONNX Runtime
+(<code>FRAUS_BACKEND</code>), com <strong>0 de 180 categorias trocadas</strong> entre os dois
+executores. Ver <a href="../encolhimento/">Encolher os modelos</a>.</p>
+<h2 id="onde-o-fusor-erra-avaliacao-por-fatia">Onde o fusor erra — avaliação por fatia<a class="headerlink" href="#onde-o-fusor-erra-avaliacao-por-fatia" title="Permanent link">&para;</a></h2>
+<p>600 conversas do simulador, fora das sementes usadas em outras medições.
+<strong>Isto mede onde o modelo erra dentro do domínio sintético, não desempenho em
+atendimento real</strong>: o projeto não tem corpus PT-BR de atendimento rotulado com
+timestamps, e nenhum corpus público tem.</p>
+<p>Acurácia geral: <strong>0,940</strong> (598 conversas com sinal; 2 eram só cortesia).</p>
+<table>
+<thead>
+<tr>
+<th>eixo</th>
+<th>fatia</th>
+<th>n</th>
+<th>acurácia</th>
+<th>F1-macro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>falas do cliente</td>
+<td>1</td>
+<td>30</td>
+<td><strong>0,733</strong></td>
+<td><strong>0,735</strong></td>
+</tr>
+<tr>
+<td>falas do cliente</td>
+<td>2–3</td>
+<td>424</td>
+<td>0,936</td>
+<td>0,936</td>
+</tr>
+<tr>
+<td>falas do cliente</td>
+<td>4+</td>
+<td>144</td>
+<td>0,993</td>
+<td>0,992</td>
+</tr>
+<tr>
+<td>emoji</td>
+<td>com</td>
+<td>524</td>
+<td>0,952</td>
+<td>0,953</td>
+</tr>
+<tr>
+<td>emoji</td>
+<td>sem</td>
+<td>74</td>
+<td><strong>0,851</strong></td>
+<td><strong>0,836</strong></td>
+</tr>
+<tr>
+<td>escalou para humano</td>
+<td>não</td>
+<td>454</td>
+<td>0,947</td>
+<td>0,948</td>
+</tr>
+<tr>
+<td>escalou para humano</td>
+<td>sim</td>
+<td>144</td>
+<td>0,917</td>
+<td>0,887</td>
+</tr>
+<tr>
+<td>latência mediana</td>
+<td>&lt; 30 s</td>
+<td>236</td>
+<td>0,936</td>
+<td>0,918</td>
+</tr>
+<tr>
+<td>latência mediana</td>
+<td>30–180 s</td>
+<td>306</td>
+<td>0,941</td>
+<td>0,934</td>
+</tr>
+<tr>
+<td>latência mediana</td>
+<td>&gt; 180 s</td>
+<td>56</td>
+<td>0,946</td>
+<td>0,823</td>
+</tr>
+</tbody>
+</table>
+<p>O que a tabela diz, e o que ela <strong>não</strong> pode dizer:</p>
+<ol>
+<li><strong>Conversa de uma fala só é a fatia mais fraca</strong> (0,733). É esperado — há
+   menos texto para agregar —, e é o caso comum de "cliente respondeu uma vez e
+   sumiu". A nota dessas conversas merece menos confiança do que a das longas.</li>
+<li><strong>Sem emoji, o acerto cai 10 pontos.</strong> Suspeita declarada: o simulador sorteia
+   o emoji <strong>por rótulo</strong> (<code>EMOJIS_POR_ROTULO</code>), então parte do acerto "com
+   emoji" pode ser o modelo lendo uma pista que o gerador plantou — a mesma
+   família de defeito da invariante 10. Em atendimento real, onde emoji é mais
+   raro, <strong>espere o número da linha "sem"</strong>, não o da "com".</li>
+<li><strong>A fatia de latência é parcialmente circular</strong> pelo mesmo motivo: o
+   simulador sorteia a latência por rótulo. O F1 menor acima de 180 s é a
+   fatia a acompanhar: mesmo com a espera em <code>log1p</code> desde 15/09/2026, o relógio
+   ainda empata com o texto por volta de 10 min
+   (<code>scripts/medir_dominio_do_tempo.py</code>).</li>
+</ol>
+<h2 id="conversa-so-de-cortesia-sem-sinal-desde-15092026">Conversa só de cortesia — sem sinal desde 15/09/2026<a class="headerlink" href="#conversa-so-de-cortesia-sem-sinal-desde-15092026" title="Permanent link">&para;</a></h2>
+<p>"ok, obrigado" fecha atendimento bom <strong>e</strong> ruim, então não tem rótulo verdadeiro.
+Medido antes da regra, com o bot respondendo em 10 s, o Fraus dava:</p>
+<table>
+<thead>
+<tr>
+<th>fala</th>
+<th>score (antes)</th>
+<th>categoria (antes)</th>
+<th>hoje</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok, obrigado</td>
+<td>76,2</td>
+<td>neutro</td>
+<td>sem sinal</td>
+</tr>
+<tr>
+<td>ta bom</td>
+<td>75,7</td>
+<td>neutro</td>
+<td>sem sinal</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>79,0</td>
+<td>neutro</td>
+<td>sem sinal</td>
+</tr>
+<tr>
+<td>certo, entendi</td>
+<td>75,3</td>
+<td>neutro</td>
+<td>sem sinal</td>
+</tr>
+<tr>
+<td>valeu</td>
+<td>93,2</td>
+<td><strong>promotor</strong></td>
+<td>sem sinal</td>
+</tr>
+<tr>
+<td>obrigada</td>
+<td>92,9</td>
+<td><strong>promotor</strong></td>
+<td>sem sinal</td>
+</tr>
+</tbody>
+</table>
+<p>Uma palavra de agradecimento, sozinha, bastava para <strong>promotor</strong>: o texto de
+gratidão era lido como satisfação, e a emoção lia "ok, obrigado" como alegria
+0,98 — o mapeamento do GoEmotions para as 6 de Ekman juntou <code>gratitude</code> com
+<code>joy</code>. <strong>Decisão:</strong> conversa em que <em>toda</em> fala do cliente é fórmula de
+cortesia é <strong>sem sinal</strong> (<code>score: None</code>, invariante 2), e não sinal fraco. A
+lista é fechada e conservadora (<code>fraus/cortesia.py</code>): só casa a fala inteira, e
+"valeu, resolveu na hora" continua pontuada. O conserto de verdade é retreinar a
+emoção separando gratidão de alegria.</p>
+<h2 id="a-cabeca-de-ironia-taxa-de-erro-publicada">A cabeça de ironia — taxa de erro publicada<a class="headerlink" href="#a-cabeca-de-ironia-taxa-de-erro-publicada" title="Permanent link">&para;</a></h2>
+<p>Contra-exemplos escritos para quebrar o atalho que o gerador ensinou: falas
+<strong>sinceras com marcador de discurso</strong> ("nossa", "realmente", "né", "que ...") e
+<strong>ironias sem marcador</strong>, em que o elogio é desmentido pela situação.</p>
+<table>
+<thead>
+<tr>
+<th>conjunto</th>
+<th>erro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sincera com marcador marcada como irônica</td>
+<td><strong>70%</strong> (7 de 10)</td>
+</tr>
+<tr>
+<td>irônica sem marcador que passou como sincera</td>
+<td><strong>40%</strong> (4 de 10)</td>
+</tr>
+</tbody>
+</table>
+<p>Os erros vêm saturados: "realmente, agora funcionou" → 0,999 de ironia;
+"perfeito, cancelaram sem avisar" → 0,001. A cabeça aprendeu <strong>registro e
+marcador</strong>, não pragmática. É por isso que ela <strong>não entra na nota</strong> desde
+04/09/2026 e que a interface a mostra com ressalva, nunca como veredito. A lista
+completa, fala a fala, sai do script.</p>
+<h2 id="limitacoes-que-valem-para-tudo-acima">Limitações que valem para tudo acima<a class="headerlink" href="#limitacoes-que-valem-para-tudo-acima" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Tempo sintético.</strong> Latência, escalação e abandono do treino do fusor vêm de
+  distribuições da literatura, não de atendimento observado.</li>
+<li><strong>Texto fora de domínio.</strong> Satisfação aprendeu com resenha de produto; emoção,
+  com Reddit traduzido por máquina.</li>
+<li><strong>Acurácia alta é sintoma, não vitória</strong> (invariante 10). Os 0,947 e 0,940 acima
+  são de domínio sintético e devem ser lidos como teto, nunca como expectativa.</li>
+</ul>
+<p>Ver também <a href="../limitacoes/">Limitações conhecidas</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

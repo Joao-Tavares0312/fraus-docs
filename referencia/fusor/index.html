@@ -1,0 +1,1687 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../modelos/">
+      
+      
+        <link rel="next" href="../sinais/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Fusor - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/fraus.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#o-fusor-e-as-39-features" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fusor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.fusor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fusor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="fusor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.FusorIncompativelError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FusorIncompativelError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fusor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fusor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.escala_do_tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        escala_do_tempo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.pontuar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pontuar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.prever" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.contribuicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        contribuicoes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.eixo_global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eixo_global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.distribuicao_de_treino" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        distribuicao_de_treino
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.z_das_features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z_das_features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.assinatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assinatura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.importancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        importancias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.carregar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        carregar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.montar_features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        montar_features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.vetorizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vetorizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.fusor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fusor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="fusor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.FusorIncompativelError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FusorIncompativelError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fusor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fusor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.escala_do_tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        escala_do_tempo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.pontuar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pontuar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.prever" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.contribuicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        contribuicoes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.eixo_global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eixo_global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.distribuicao_de_treino" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        distribuicao_de_treino
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.z_das_features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z_das_features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.assinatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assinatura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.importancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        importancias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.Fusor.carregar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        carregar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.montar_features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        montar_features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.fusor.vetorizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vetorizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="o-fusor-e-as-39-features">O fusor e as 39 features<a class="headerlink" href="#o-fusor-e-as-39-features" title="Permanent link">&para;</a></h1>
+<p><code>NOMES_FEATURES</code> é <strong>o contrato</strong>. O comentário dele conta a história inteira do
+vetor — por que subiu para 40, por que a ironia saiu, e por que 39 é o número
+de hoje.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.fusor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.fusor</span>
+
+
+<a href="#fraus.fusor" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Fusor das sete familias de sinal que entram no vetor (de oito no sistema --
+a ironia continua existindo, so nao pontua mais; ver <code>NOMES_FEATURES</code>).</p>
+<p>LogisticRegression com padronizacao: interpretavel de proposito -- o trabalho
+precisa defender POR QUE um atendimento recebeu a nota, e coeficiente de
+regressao logistica responde isso; floresta densa nao.</p>
+<p>O peso da latencia e APRENDIDO aqui, nunca arbitrado: a relacao com satisfacao
+e nao-linear e moderada por contexto.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.fusor.FusorIncompativelError" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">FusorIncompativelError</span>
+
+
+<a href="#fraus.fusor.FusorIncompativelError" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="RuntimeError">RuntimeError</span></code></p>
+
+
+
+        <p>Artefato treinado (<code>.joblib</code>) nao bate com <code>NOMES_FEATURES</code> vigente.</p>
+<p>Distinta de <code>ModeloAusenteError</code> (fraus/sinais/texto.py) de proposito: as
+duas impedem servir predicao (invariante 7), mas o remedio e diferente. Um
+modelo AUSENTE pede treinar do zero; um modelo INCOMPATIVEL ja existe e
+foi treinado com um contrato antigo -- o remedio e RETREINAR com o
+contrato atual, nao gerar um artefato novo do nada. Misturar as duas
+mensagens levaria quem le o erro a rodar o notebook errado.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.fusor.Fusor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">Fusor</span>
+
+
+<a href="#fraus.fusor.Fusor" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="fraus.fusor.Fusor.escala_do_tempo" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">escala_do_tempo</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#fraus.fusor.Fusor.escala_do_tempo" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">escala_do_tempo</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Escala em que as features de espera foram aprendidas ("segundos" = antiga).</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.pontuar" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">pontuar</span>
+
+
+<a href="#fraus.fusor.Fusor.pontuar" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">pontuar</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Score 0-100: P(satisfeito) mais P(neutro) pesado por
+<code>PESO_NEUTRO_NO_SCORE</code>.</p>
+<p>O score e uma PROJECAO das tres probabilidades num eixo, nao uma quarta
+predicao: o modelo continua o mesmo, treinado do mesmo jeito. O peso do
+neutro decide onde a classe do meio pousa nesse eixo -- e, por
+composicao com a faixa de NPS, em qual categoria ela cai. A tabela e o
+raciocinio estao na constante.</p>
+<p>O que este metodo NAO e: um lugar para consertar predicao. Se o modelo
+confunde as classes, o conserto e treino -- as medianas por classe do
+<code>scripts/medir_faixas.py</code> sao justamente o que separa os dois casos.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.prever" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">prever</span>
+
+
+<a href="#fraus.fusor.Fusor.prever" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">prever</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Classe predita: 0 insatisfeito, 1 neutro ou 2 satisfeito.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.contribuicoes" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">contribuicoes</span>
+
+
+<a href="#fraus.fusor.Fusor.contribuicoes" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">contribuicoes</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Quanto cada feature empurrou a nota DESTA conversa, com sinal.</p>
+<p>Eixo: coeficiente da classe satisfeito menos coeficiente da classe
+insatisfeito, multiplicado pelo valor JA PADRONIZADO da feature (o
+<code>StandardScaler</code> do pipeline aplicado, nunca o valor bruto). Positivo
+empurrou a nota para cima (rumo a satisfeito); negativo puxou para
+baixo (rumo a insatisfeito). E o numero da CONVERSA, diferente de
+<code>importancias</code>, que e o peso medio GLOBAL aprendido pelo modelo.</p>
+<p>Se o modelo aprendeu menos de tres classes e nao tem as duas pontas
+(insatisfeito e satisfeito) para formar a diferenca, nao ha eixo
+interpretavel: a contribuicao volta zerada para todas as features,
+em vez de estourar.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.eixo_global" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">eixo_global</span>
+
+
+<a href="#fraus.fusor.Fusor.eixo_global" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">eixo_global</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Quanto cada feature empurra a nota NO MODELO INTEIRO, com sinal.</p>
+<p>Diferente de <code>importancias</code>, que e o peso ABSOLUTO (diz que a feature
+pesa, nao para que lado), e de <code>contribuicoes</code>, que e o numero de UMA
+conversa. O grafo da memoria consome este: ele responde "o que o modelo
+aprendeu que caracteriza um detrator".</p>
+<p>Nao ha padronizacao aqui porque nao ha conversa: e o coeficiente cru.</p>
+<p>Fusor nao treinado devolve <code>{}</code> -- e a ausencia de eixo, que o grafo
+distingue de "todas as features pesam zero".</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.distribuicao_de_treino" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">distribuicao_de_treino</span>
+
+
+<a href="#fraus.fusor.Fusor.distribuicao_de_treino" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">distribuicao_de_treino</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Media e desvio de cada feature NO CORPUS DE TREINO, por feature.</p>
+<p>O <code>StandardScaler</code> treinado guarda <code>mean_</code> e <code>scale_</code> -- e isso e o
+retrato da distribuicao em que o modelo aprendeu, ja gravado dentro do
+artefato. LER NAO E TREINAR: nao precisa do corpus, nem de notebook,
+nem de GPU.</p>
+<p>Existe para responder uma pergunta que a invariante 10 so sabia fazer
+no notebook: "esta conversa esta dentro da faixa em que o modelo foi
+treinado?". A guarda de vazamento olha a distribuicao no CORPUS; em
+runtime aparece latencia de tres horas que o corpus nunca teve, o
+z-score explode e o relogio assume a nota.</p>
+<p>Fusor nao treinado devolve <code>{}</code> -- ausencia do retrato, que e
+diferente de "todas as medias sao zero".</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.z_das_features" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">z_das_features</span>
+
+
+<a href="#fraus.fusor.Fusor.z_das_features" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">z_das_features</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Quantos desvios de treino cada feature desta conversa esta da media.</p>
+<p>E exatamente o que o <code>StandardScaler</code> entrega ao modelo -- o mesmo
+numero que multiplica o coeficiente. Por isso a sonda usa <code>transform</code>
+em vez de refazer a conta: uma segunda implementacao da padronizacao
+divergiria da real no dia em que o pipeline mudasse, e a rota de
+diagnostico passaria a diagnosticar a si mesma.</p>
+<p>Feature constante no treino tem <code>scale_</code> = 1 por decisao do proprio
+scikit-learn, entao nao ha divisao por zero aqui.</p>
+<p>Fusor nao treinado devolve <code>{}</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.assinatura" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">assinatura</span>
+
+
+<a href="#fraus.fusor.Fusor.assinatura" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">assinatura</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Impressao digital dos pesos aprendidos -- muda a cada retreino.</p>
+<p>Hash do que DECIDE a nota: media e escala do scaler, coeficientes,
+interceptos, ordem das classes e a escala do tempo. Existe para o banco
+saber com qual modelo cada conversa foi pontuada (<code>Motor.regua</code>). Fusor
+nao treinado nao tem assinatura.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.importancias" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">importancias</span>
+
+
+<a href="#fraus.fusor.Fusor.importancias" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">importancias</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Peso absoluto medio de cada feature -- alimenta a explicacao na dashboard.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.fusor.Fusor.carregar" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">carregar</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#fraus.fusor.Fusor.carregar" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">carregar</span><span class="p">(</span><span class="n">caminho</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fusor</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Carrega o artefato e VALIDA a forma contra <code>NOMES_FEATURES</code> antes de devolver.</p>
+<p><code>joblib.load</code> puro (o comportamento anterior) nao checava nada: um
+artefato de 40 features carregava sem erro contra um contrato de 38,
+a API subia normalmente, <code>/modelo/simular</code> funcionava (nao passa pelo
+fusor) e enganava quem testava a mao -- o <code>ValueError</code> do
+<code>StandardScaler</code> so estourava como HTTP 500 na primeira pontuacao
+real, em <code>/ingestao</code> ou <code>/conversas/importar</code>. Isso confundiu duas
+vezes na mesma semana. A invariante 7 pede falha alta e EXPLICITA
+para modelo incompativel, e "explicita" nao basta se so acontece na
+primeira predicao -- precisa ser na CARGA, que e quando a API sobe.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.fusor.montar_features" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">montar_features</span>
+
+
+<a href="#fraus.fusor.montar_features" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">montar_features</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">,</span> <span class="n">classificador</span><span class="p">,</span> <span class="n">classificador_emocao</span><span class="p">,</span> <span class="n">curadoria</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Junta as SETE familias de sinal do vetor numa linha unica de features.</p>
+<p>Sao sete familias NO VETOR -- oito sinais existem no sistema, porque a
+ironia continua sendo lida por mensagem (ver <code>Motor._ironia_de</code>), so nao
+entra aqui. Ver o comentario acima de <code>NOMES_FEATURES</code> para o porque.</p>
+<p>Os dois classificadores (texto e emocao) sao OBRIGATORIOS desde que o
+contrato subiu para 35: emocao deixou de ser leitura decorativa e passou a
+mover a nota. Aceitar <code>None</code> aqui produziria vetor incompleto, e vetor
+incompleto vira <code>KeyError</code> la em <code>vetorizar</code> -- com a diferenca de que o
+erro apontaria para o lugar errado. Note que NAO ha <code>classificador_ironia</code>
+aqui: a cabeca de ironia continua obrigatoria para o Motor (invariante 7),
+mas este montador de vetor nao precisa mais dela.</p>
+<p><code>curadoria</code> e opcional e chega POR PARAMETRO, nunca por estado global: e o
+que o analista ensinou ao lexico, lido a cada requisicao. Ela alcanca TRES
+familias -- <code>lexico_*</code>, <code>emoji_*</code> e <code>incongruencia_*</code>, que le os dois
+lexicos por dentro e portanto herda a curadoria deles -- e MAIS NENHUMA: o
+contrato continua de 39 chaves (invariante 9), e o que ela muda e o VALOR
+dessas familias, jamais o conjunto de features.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.fusor.vetorizar" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">vetorizar</span>
+
+
+<a href="#fraus.fusor.vetorizar" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">vetorizar</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Ordem canonica. Feature faltando e KeyError; feature sobrando e ValueError.</p>
+<p>Nenhum dos dois casos pode virar zero silencioso (invariante 9): falta
+ja estourava; sobra nao estourava -- um dict com as 39 chaves certas MAIS
+uma extra passava batido, gerando um vetor do tamanho certo por acaso. E
+justamente o cenario que aconteceria se uma familia de sinal saisse do
+contrato (como <code>ironia_*</code> saiu em 04/09/2026) mas continuasse sendo
+produzida por engano em algum chamador: o vetor ficaria certo e a
+regressao passaria despercebida.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

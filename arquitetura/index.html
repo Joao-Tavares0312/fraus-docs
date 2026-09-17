@@ -1,0 +1,1215 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../invariantes/">
+      
+      
+        <link rel="next" href="../treinamento/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Arquitetura - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arquitetura" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arquitetura
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-decisao-que-explica-o-desenho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A decisão que explica o desenho
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#as-sete-familias-que-pontuam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As sete famílias que pontuam
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-ironia-continua-carregada-e-nao-pontua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A ironia continua carregada, e não pontua
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regua-o-que-pontuou-uma-conversa-nao-e-fixo-no-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Régua: o que pontuou uma conversa não é fixo no tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repontuar-e-um-trabalho-nao-uma-requisicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repontuar é um trabalho, não uma requisição
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onde-cada-coisa-mora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onde cada coisa mora
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-decisao-que-explica-o-desenho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A decisão que explica o desenho
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#as-sete-familias-que-pontuam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As sete famílias que pontuam
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-ironia-continua-carregada-e-nao-pontua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A ironia continua carregada, e não pontua
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regua-o-que-pontuou-uma-conversa-nao-e-fixo-no-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Régua: o que pontuou uma conversa não é fixo no tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repontuar-e-um-trabalho-nao-uma-requisicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repontuar é um trabalho, não uma requisição
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onde-cada-coisa-mora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onde cada coisa mora
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="arquitetura">Arquitetura<a class="headerlink" href="#arquitetura" title="Permanent link">&para;</a></h1>
+<pre class="mermaid"><code>flowchart TD
+    A["CSV / Discord / WhatsApp / webhook"] --&gt;|"adapter de ingestão&lt;br/&gt;fraus/ingest/"| B["Conversa&lt;br/&gt;&lt;small&gt;modelo canônico único — fraus/modelos.py&lt;/small&gt;"]
+
+    B --&gt; texto["texto&lt;br/&gt;&lt;small&gt;BERTimbau por mensagem&lt;/small&gt;"]
+    B --&gt; emoji["emoji&lt;br/&gt;&lt;small&gt;lexicon + posição&lt;/small&gt;"]
+    B --&gt; tempo["tempo&lt;br/&gt;&lt;small&gt;latência, escalação&lt;/small&gt;"]
+    B --&gt; emocao["emoção&lt;br/&gt;&lt;small&gt;7 classes + desprezo&lt;/small&gt;"]
+    B --&gt; lexico["léxico&lt;br/&gt;&lt;small&gt;SentiLex-PT02 + negação&lt;/small&gt;"]
+    B --&gt; estilo["estilo&lt;br/&gt;&lt;small&gt;caixa alta, palavrão&lt;/small&gt;"]
+    B --&gt; incong["incongruência&lt;br/&gt;&lt;small&gt;emoji × texto&lt;/small&gt;"]
+    B -.-&gt; ironia["ironia*&lt;br/&gt;&lt;small&gt;cabeça binária — só tela&lt;/small&gt;"]
+
+    texto --&gt; V["39 features"]
+    emoji --&gt; V
+    tempo --&gt; V
+    emocao --&gt; V
+    lexico --&gt; V
+    estilo --&gt; V
+    incong --&gt; V
+
+    V --&gt; F["Fusor&lt;br/&gt;&lt;small&gt;LogisticRegression + StandardScaler&lt;/small&gt;"]
+    F --&gt;|"score 0–100"| N["nota 0–10 → categoria NPS → indicadores agregados"]
+    N --&gt; API["FastAPI"]
+    API --&gt; D["dashboard Next.js"]
+    ironia -.-&gt;|"por mensagem, direto pra tela"| D
+
+    style ironia stroke-dasharray: 4 4</code></pre>
+<p><em>* a cabeça de ironia é lida por mensagem e mostrada na tela, mas </em><em>não
+entra</em><em> nas 39 features do Fusor — ver a seção abaixo.</em></p>
+<h2 id="a-decisao-que-explica-o-desenho">A decisão que explica o desenho<a class="headerlink" href="#a-decisao-que-explica-o-desenho" title="Permanent link">&para;</a></h2>
+<p><strong>Um modelo canônico, muitos adaptadores.</strong> CSV, Totalk, transcrição de
+<code>.docx</code>/<code>.pdf</code> e webhook desembocam todos em <code>Conversa</code> — e o resto do sistema
+não sabe de onde o dado veio. Adicionar uma fonte é escrever um adaptador, não
+tocar em sinal, fusor ou indicador.</p>
+<h2 id="as-sete-familias-que-pontuam">As sete famílias que pontuam<a class="headerlink" href="#as-sete-familias-que-pontuam" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>família</th>
+<th>o que mede</th>
+<th>por que existe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>texto</strong></td>
+<td>P(insatisfeito/neutro/satisfeito) por mensagem</td>
+<td>o sinal principal — o único fine-tunado para a tarefa</td>
+</tr>
+<tr>
+<td><strong>emoji</strong></td>
+<td>polaridade e <strong>posição relativa</strong></td>
+<td>emoji no fim da conversa não vale o mesmo que no começo</td>
+</tr>
+<tr>
+<td><strong>tempo</strong></td>
+<td>latências, escalação, abandono</td>
+<td>espera longa degrada satisfação (literatura de live chat)</td>
+</tr>
+<tr>
+<td><strong>emoção</strong></td>
+<td>7 de Ekman + desprezo derivado</td>
+<td>raiva e frustração distinguem <em>tipos</em> de insatisfação</td>
+</tr>
+<tr>
+<td><strong>léxico</strong></td>
+<td>SentiLex-PT02 com escopo de negação</td>
+<td>âncora determinística, auditável, imune a retreino</td>
+</tr>
+<tr>
+<td><strong>estilo</strong></td>
+<td>caixa alta, alongamento, palavrão, censura</td>
+<td>intensidade que o classificador de sentença perde</td>
+</tr>
+<tr>
+<td><strong>incongruência</strong></td>
+<td>elogio convivendo com situação negativa</td>
+<td>é o que alcança a frase canônica do projeto</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-ironia-continua-carregada-e-nao-pontua">A ironia continua carregada, e não pontua<a class="headerlink" href="#a-ironia-continua-carregada-e-nao-pontua" title="Permanent link">&para;</a></h2>
+<p>A oitava cabeça existe, é obrigatória para a API subir e aparece na tela <strong>por
+mensagem</strong> — mas <strong>saiu do vetor</strong> em 04/09/2026.</p>
+<p>Medida no próprio corpus de treino do fusor (B2W-Reviews01), ela marca <strong>74% das
+resenhas satisfeitas</strong> como irônicas contra <strong>9% das insatisfeitas</strong>: naquele
+corpus ela é um detector de sentimento <strong>positivo</strong>, não de ironia. O fusor
+aprendeu peso <strong>+0,77</strong> para <code>ironia_prob_media</code>, empurrando ironia para
+<em>satisfeito</em> — o inverso do que o nome promete.</p>
+<blockquote>
+<p><strong>Feature que mede outra coisa que não o nome dela é pior que feature
+ausente.</strong> Ela some do vetor sem que ninguém perceba a inversão, porque a
+acurácia global continua ótima.</p>
+</blockquote>
+<p>Ver <a href="../treinamento/">Treinamento</a> para a medição completa.</p>
+<h2 id="regua-o-que-pontuou-uma-conversa-nao-e-fixo-no-tempo">Régua: o que pontuou uma conversa não é fixo no tempo<a class="headerlink" href="#regua-o-que-pontuou-uma-conversa-nao-e-fixo-no-tempo" title="Permanent link">&para;</a></h2>
+<p>Cada conversa é gravada com a <strong>régua</strong> que a pontuou: a assinatura do motor
+servindo (<code>Motor.regua</code>, <code>None</code> no motor dublê) mais a versão da curadoria
+(<code>lexico_versao</code>). Trocar de checkpoint, trocar de backend (torch/onnx) ou o
+analista ensinar um termo novo ao léxico muda a régua — e o banco passa a ter
+conversas antigas pontuadas por uma régua que não é mais a vigente.</p>
+<p>O sistema não recalcula sozinho: ele <strong>avisa</strong>. <code>GET /indicadores</code> expõe
+<code>pontuadas_com_regua_antiga</code>, contando contra a régua vigente lida a cada
+requisição (nunca guardada em memória, pelo mesmo motivo de <code>faixas_vigentes</code>
+e <code>curadoria_vigente</code> — sem cópia de estado envelhecendo). A tela mostra o
+aviso com o motivo (checkpoint novo, léxico curado, ou os dois), nunca um
+número solto sem explicação.</p>
+<h2 id="repontuar-e-um-trabalho-nao-uma-requisicao">Repontuar é um trabalho, não uma requisição<a class="headerlink" href="#repontuar-e-um-trabalho-nao-uma-requisicao" title="Permanent link">&para;</a></h2>
+<p>Zerar o aviso de régua misturada significa rodar os três BERTimbau de novo em
+cada conversa do banco — em milhares de atendimentos isso estoura qualquer
+timeout HTTP. <code>POST /conversas/repontuar</code> (<code>fraus/api/repontuacao.py</code>) só
+dispara uma thread em segundo plano; <code>GET /conversas/repontuar</code> lê o progresso
+(<code>total</code>, <code>feitas</code>, <code>estado</code>, <code>erro</code>) que a tela transforma em barra. Não é
+fila — é <strong>um trabalho por vez</strong>: uma segunda chamada enquanto a primeira roda
+recebe 409, porque duas repontuações em paralelo gravariam o mesmo banco com
+duas curadorias diferentes. O estado mora na memória do processo (reiniciar a
+API no meio perde o progresso, não o que já foi gravado — cada conversa salva
+já carrega sua própria <code>lexico_versao</code> e régua).</p>
+<pre class="mermaid"><code>sequenceDiagram
+    actor T as Tela
+    participant API as FastAPI
+    participant R as Repontuacao (thread)
+    participant M as Motor (3× BERTimbau)
+    participant DB as banco
+
+    T-&gt;&gt;API: POST /conversas/repontuar
+    API-&gt;&gt;R: iniciar(ctx)
+    Note over R: le curadoria, faixas e régua&lt;br/&gt;UMA vez — janela fechada
+    R--&gt;&gt;API: estado=rodando, total=N
+    API--&gt;&gt;T: 202 (ou 409 se já rodando)
+    R-&gt;&gt;M: dispara thread em segundo plano
+
+    loop cada conversa do lote
+        M-&gt;&gt;M: pontuar_conversa
+        M-&gt;&gt;DB: salvar(score, lexico_versao, régua)
+        R-&gt;&gt;R: feitas += 1
+    end
+
+    loop enquanto roda
+        T-&gt;&gt;API: GET /conversas/repontuar
+        API--&gt;&gt;T: {total, feitas, estado}
+        Note over T: barra de progresso
+    end
+
+    R--&gt;&gt;API: estado=concluido (ou falhou)
+    T-&gt;&gt;API: GET /conversas/repontuar
+    API--&gt;&gt;T: estado final</code></pre>
+<h2 id="onde-cada-coisa-mora">Onde cada coisa mora<a class="headerlink" href="#onde-cada-coisa-mora" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>caminho</th>
+<th>responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fraus/modelos.py</code></td>
+<td><code>Conversa</code> / <code>Mensagem</code> — o modelo canônico</td>
+</tr>
+<tr>
+<td><code>fraus/ingest/</code></td>
+<td>adaptadores de entrada, um por formato</td>
+</tr>
+<tr>
+<td><code>fraus/sinais/</code></td>
+<td>as oito famílias de sinal</td>
+</tr>
+<tr>
+<td><code>fraus/sinais/curadoria.py</code></td>
+<td>o que o analista ensinou ao léxico — vence o SentiLex</td>
+</tr>
+<tr>
+<td><code>fraus/fusor.py</code></td>
+<td><code>NOMES_FEATURES</code> (39) e o <code>Fusor</code></td>
+</tr>
+<tr>
+<td><code>fraus/indicadores.py</code></td>
+<td>NPS, CSAT, contenção, falso containment, série</td>
+</tr>
+<tr>
+<td><code>fraus/evidencia.py</code></td>
+<td>evidência fraca — a cabeça tracejada</td>
+</tr>
+<tr>
+<td><code>fraus/deriva.py</code></td>
+<td>deriva de distribuição — a invariante 10 em runtime</td>
+</tr>
+<tr>
+<td><code>fraus/cortesia.py</code></td>
+<td>"ok, obrigado" sozinho é sem sinal, não promotor</td>
+</tr>
+<tr>
+<td><code>fraus/api/</code></td>
+<td>FastAPI: <code>criar_app</code> (fábrica) e as rotas por domínio</td>
+</tr>
+<tr>
+<td><code>fraus/api/contexto.py</code></td>
+<td>faixas, curadoria e régua vigentes, lidas por requisição</td>
+</tr>
+<tr>
+<td><code>fraus/api/repontuacao.py</code></td>
+<td>repontuar em segundo plano, com progresso e 409 se já rodando</td>
+</tr>
+<tr>
+<td><code>fraus/api/vazao.py</code></td>
+<td>teto de <code>/auth/*</code> por IP e de <code>/ingestao</code> por fonte</td>
+</tr>
+<tr>
+<td><code>dashboard/</code></td>
+<td>Next.js — ver <a href="../design/">Design</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

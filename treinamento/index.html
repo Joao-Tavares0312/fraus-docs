@@ -1,0 +1,2741 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../arquitetura/">
+      
+      
+        <link rel="next" href="../design/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Treinamento - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#treinamento-dos-modelos-do-fraus" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Treinamento
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-abrir-no-colab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como abrir no Colab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-01-classificador-de-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 01 — classificador de texto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 01 — classificador de texto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exigencia-de-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exigencia de GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onde-o-checkpoint-fica-no-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onde o checkpoint fica no Drive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-onde-copiar-o-artefato-no-repo-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para onde copiar o artefato no repo local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapeamento-de-rotulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento de rotulo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-02-fusor-dos-tres-sinais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 02 — fusor dos tres sinais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 02 — fusor dos tres sinais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rotulo-do-fusor-recommend_to_a_friend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotulo do fusor: recommend_to_a_friend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitacao-metodologica-a-declarar-no-relatorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitacao metodologica a declarar no relatorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-vazamento-do-primeiro-fusor-13082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O vazamento do primeiro fusor — 13/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-fusor-de-35-features-24082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O fusor de 35 features — 24/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consequencia-no-nps-a-classe-neutra-cai-em-detrator-historico-fusor-de-16-features-ate-24082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consequencia no NPS: a classe neutra cai em detrator — HISTORICO (fusor de 16 features, ate 24/08/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retreino-do-fusor-apos-as-features-de-incongruencia-03092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retreino do fusor apos as features de incongruencia (03/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-ironia-sai-do-vetor-04092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A ironia sai do vetor (04/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-fusor-de-38-features-04092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O fusor de 38 features — 04/09/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-contrato-sobe-para-39-incongruencia-implicita-04092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O contrato sobe para 39: incongruencia implicita (04/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conferencia-do-artefato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conferencia do artefato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrato-de-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato de features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-03-classificador-de-emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 03 — classificador de emocao
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 03 — classificador de emocao">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordem-canonica-das-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordem canonica das classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corpus-go_emotions_ptbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corpus: go_emotions_ptbr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-desequilibrio-e-por-que-nao-subamostrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O desequilibrio, e por que NAO subamostrar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-teto-do-desprezo-a-declarar-no-relatorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O teto do desprezo — a declarar no relatorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-desprezo-nao-e-treinado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o desprezo NAO e treinado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-04-classificador-de-ironia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 04 — classificador de ironia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 04 — classificador de ironia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-corpus-nao-tem-download-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O corpus NAO tem download aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternativas-ao-idpt-levantamento-de-14082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternativas ao IDPT — levantamento de 14/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onde-existe-corpus-pt-br-de-ironia-e-como-pedir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onde existe corpus PT-BR de ironia (e como pedir)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-padrao-corpus-sintetico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O padrao: corpus sintetico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinal-lexico-sentilex-pt02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sinal lexico — SentiLex-PT02
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinal-de-estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sinal de estilo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-05-calibracao-e-por-que-ele-nao-retreina-nada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 05 — calibração, e por que ele não retreina nada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-02-a-secao-10-e-uma-pendencia-nao-uma-etapa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 02 — a seção 10 é uma pendência, não uma etapa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 02 — a seção 10 é uma pendência, não uma etapa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-tres-saidas-medidas-em-15092026-decidido-so-log1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As três saídas, medidas em 15/09/2026 — decidido: só log1p
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promovido-em-15092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Promovido em 15/09/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-abrir-no-colab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como abrir no Colab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-01-classificador-de-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 01 — classificador de texto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 01 — classificador de texto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exigencia-de-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exigencia de GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onde-o-checkpoint-fica-no-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onde o checkpoint fica no Drive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-onde-copiar-o-artefato-no-repo-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para onde copiar o artefato no repo local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapeamento-de-rotulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento de rotulo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-02-fusor-dos-tres-sinais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 02 — fusor dos tres sinais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 02 — fusor dos tres sinais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rotulo-do-fusor-recommend_to_a_friend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotulo do fusor: recommend_to_a_friend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitacao-metodologica-a-declarar-no-relatorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitacao metodologica a declarar no relatorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-vazamento-do-primeiro-fusor-13082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O vazamento do primeiro fusor — 13/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-fusor-de-35-features-24082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O fusor de 35 features — 24/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consequencia-no-nps-a-classe-neutra-cai-em-detrator-historico-fusor-de-16-features-ate-24082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consequencia no NPS: a classe neutra cai em detrator — HISTORICO (fusor de 16 features, ate 24/08/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retreino-do-fusor-apos-as-features-de-incongruencia-03092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retreino do fusor apos as features de incongruencia (03/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-ironia-sai-do-vetor-04092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A ironia sai do vetor (04/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-fusor-de-38-features-04092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O fusor de 38 features — 04/09/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-contrato-sobe-para-39-incongruencia-implicita-04092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O contrato sobe para 39: incongruencia implicita (04/09/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conferencia-do-artefato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conferencia do artefato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrato-de-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato de features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-03-classificador-de-emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 03 — classificador de emocao
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 03 — classificador de emocao">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordem-canonica-das-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordem canonica das classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corpus-go_emotions_ptbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corpus: go_emotions_ptbr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-desequilibrio-e-por-que-nao-subamostrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O desequilibrio, e por que NAO subamostrar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-teto-do-desprezo-a-declarar-no-relatorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O teto do desprezo — a declarar no relatorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-desprezo-nao-e-treinado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o desprezo NAO e treinado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-04-classificador-de-ironia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 04 — classificador de ironia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 04 — classificador de ironia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-corpus-nao-tem-download-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O corpus NAO tem download aberto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternativas-ao-idpt-levantamento-de-14082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternativas ao IDPT — levantamento de 14/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onde-existe-corpus-pt-br-de-ironia-e-como-pedir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onde existe corpus PT-BR de ironia (e como pedir)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-padrao-corpus-sintetico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O padrao: corpus sintetico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinal-lexico-sentilex-pt02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sinal lexico — SentiLex-PT02
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinal-de-estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sinal de estilo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-05-calibracao-e-por-que-ele-nao-retreina-nada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 05 — calibração, e por que ele não retreina nada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook-02-a-secao-10-e-uma-pendencia-nao-uma-etapa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebook 02 — a seção 10 é uma pendência, não uma etapa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notebook 02 — a seção 10 é uma pendência, não uma etapa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-tres-saidas-medidas-em-15092026-decidido-so-log1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As três saídas, medidas em 15/09/2026 — decidido: só log1p
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promovido-em-15092026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Promovido em 15/09/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="treinamento-dos-modelos-do-fraus">Treinamento dos modelos do Fraus<a class="headerlink" href="#treinamento-dos-modelos-do-fraus" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Notebook</th>
+<th>O que produz</th>
+<th>GPU?</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>notebooks/01_treino_bertimbau.ipynb</code></td>
+<td><code>modelos/bertimbau-satisfacao/</code> — classificador de texto (3 classes), fine-tune do <code>neuralmind/bert-base-portuguese-cased</code> sobre o B2W-Reviews01</td>
+<td><strong>sim</strong></td>
+<td>pronto</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>notebooks/02_treino_fusor.ipynb</code></td>
+<td><code>modelos/fusor.joblib</code> e <code>modelos/importancias.json</code> — a regressao logistica que funde os sinais</td>
+<td>nao</td>
+<td>pronto</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>notebooks/03_treino_emocao.ipynb</code></td>
+<td><code>modelos/bertimbau-emocao/</code> e <code>modelos/metricas_emocao.json</code> — classificador das sete classes de emocao</td>
+<td><strong>sim</strong></td>
+<td>pronto</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>notebooks/04_treino_ironia.ipynb</code></td>
+<td><code>modelos/bertimbau-ironia/</code> e <code>modelos/metricas_ironia.json</code> — classificador binario de ironia</td>
+<td><strong>sim</strong></td>
+<td>pronto, <strong>mas o corpus precisa ser solicitado</strong></td>
+</tr>
+</tbody>
+</table>
+<p>O notebook 02 <strong>depende do artefato do 01</strong>: ele carrega o BERTimbau treinado para extrair o sinal de texto de cada conversa. A primeira celula do 02 falha com erro explicito se <code>modelos/bertimbau-satisfacao</code> nao estiver no Drive.</p>
+<p>Os notebooks 03 e 04 sao <strong>independentes entre si e do 01</strong> — treinam cabecas separadas, em corpora proprios. O 02 e que passa a depender dos tres, porque e ele que monta o vetor de features completo. Ordem de execucao: 01, 03 e 04 em qualquer ordem, e o 02 por ultimo.</p>
+<p>O sinal lexico (<code>fraus/sinais/lexico.py</code>) <strong>nao tem notebook</strong>: o SentiLex-PT nao e treinado, e recurso pronto, versionado em <code>fraus/dados/sentilex_pt02.csv</code>. Ver <a href="#sinal-lexico-sentilex-pt02">Sinal lexico</a> no fim.</p>
+<p><strong>Os dois artefatos sao obrigatorios para o app real subir.</strong> <code>fraus/api/main.py</code> carrega o classificador e o fusor no boot e propaga o erro sem fallback — servir predicao sem modelo carregado e pior do que estar fora do ar. Com so um dos dois, o unico servidor que sobe e <code>scripts/api_demo.py</code>, que usa motor duble e nao serve para producao.</p>
+<p>O treino roda inteiramente no Google Colab, fora deste repositorio — nao ha teste automatizado local para essas etapas.</p>
+<h2 id="como-abrir-no-colab">Como abrir no Colab<a class="headerlink" href="#como-abrir-no-colab" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Va em <a href="https://colab.research.google.com">colab.research.google.com</a>.</li>
+<li><code>Arquivo &gt; Fazer upload de notebook</code> e selecione o notebook (ou abra direto do GitHub se o repositorio estiver acessivel a partir da sua conta).</li>
+</ol>
+<h2 id="notebook-01-classificador-de-texto">Notebook 01 — classificador de texto<a class="headerlink" href="#notebook-01-classificador-de-texto" title="Permanent link">&para;</a></h2>
+<h3 id="exigencia-de-gpu">Exigencia de GPU<a class="headerlink" href="#exigencia-de-gpu" title="Permanent link">&para;</a></h3>
+<p>O notebook so funciona com acelerador de GPU habilitado. Antes de rodar qualquer celula:</p>
+<p><code>Ambiente de execucao &gt; Alterar tipo de ambiente de execucao &gt; GPU</code></p>
+<p>A primeira celula do notebook faz <code>assert torch.cuda.is_available()</code> e falha com uma mensagem explicita se o ambiente de execucao estiver sem GPU.</p>
+<h3 id="onde-o-checkpoint-fica-no-drive">Onde o checkpoint fica no Drive<a class="headerlink" href="#onde-o-checkpoint-fica-no-drive" title="Permanent link">&para;</a></h3>
+<p>O notebook monta o Google Drive (<code>drive.mount('/content/drive')</code>) e usa dois diretorios dentro dele, para sobreviver a uma queda de sessao do Colab — o mesmo padrao ja usado no notebook de RVC do projeto Neuro-ai:</p>
+<ul>
+<li><code>/content/drive/MyDrive/fraus/checkpoints</code> — checkpoints intermediarios salvos pelo <code>Trainer</code> a cada epoca (<code>save_strategy="epoch"</code>, <code>save_total_limit=2</code>). Se a sessao cair, o proximo <code>Trainer.train()</code> pode retomar a partir do ultimo checkpoint salvo aqui.</li>
+<li><code>/content/drive/MyDrive/fraus/modelos/bertimbau-satisfacao</code> — destino final do modelo treinado, do tokenizador e do <code>metricas.json</code>, escritos na ultima celula do notebook.</li>
+</ul>
+<h3 id="para-onde-copiar-o-artefato-no-repo-local">Para onde copiar o artefato no repo local<a class="headerlink" href="#para-onde-copiar-o-artefato-no-repo-local" title="Permanent link">&para;</a></h3>
+<p>Depois que o notebook terminar (celula de avaliacao e export), baixe a pasta <code>fraus/modelos/bertimbau-satisfacao</code> do Google Drive e copie o conteudo para:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>modelos/bertimbau-satisfacao/
+</code></pre></div>
+<p>na raiz deste repositorio. Os arquivos esperados sao:</p>
+<ul>
+<li><code>config.json</code></li>
+<li><code>model.safetensors</code></li>
+<li><code>tokenizer.json</code></li>
+<li><code>tokenizer_config.json</code></li>
+<li><code>special_tokens_map.json</code></li>
+<li><code>metricas.json</code> — <code>{"acuracia": float, "f1_macro": float, "classes": ["insatisfeito", "neutro", "satisfeito"]}</code></li>
+</ul>
+<p><code>fraus/sinais/texto.py</code> carrega esse diretorio para servir o classificador — e o notebook 02 tambem, para extrair o sinal de texto das conversas de treino do fusor.</p>
+<p><strong>Importante:</strong> <code>modelos/</code> esta no <code>.gitignore</code> deste repositorio. O artefato do modelo treinado (pesos, tokenizer, metricas) <strong>nao vai para o git</strong> — ele fica local, versionado apenas via o checkpoint no Drive.</p>
+<h3 id="mapeamento-de-rotulo">Mapeamento de rotulo<a class="headerlink" href="#mapeamento-de-rotulo" title="Permanent link">&para;</a></h3>
+<p>O rotulo de satisfacao vem do campo <code>overall_rating</code> (nota de 1 a 5) do B2W-Reviews01:</p>
+<table>
+<thead>
+<tr>
+<th><code>overall_rating</code></th>
+<th>rotulo</th>
+<th>indice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>insatisfeito</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>neutro</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4–5</td>
+<td>satisfeito</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>O corpus e balanceado por subamostragem da classe majoritaria antes do split de treino/teste, porque as notas 4-5 dominam o corpus e enviesariam o classificador.</p>
+<h2 id="notebook-02-fusor-dos-tres-sinais">Notebook 02 — fusor dos tres sinais<a class="headerlink" href="#notebook-02-fusor-dos-tres-sinais" title="Permanent link">&para;</a></h2>
+<p>Roda DEPOIS do 01, sem GPU. O que ele faz, em sequencia:</p>
+<ol>
+<li>monta o Drive e confere <code>modelos/bertimbau-satisfacao</code> (falha alto apontando o notebook 01 se faltar);</li>
+<li>clona este repositorio e instala o pacote <code>fraus</code> — a extracao de features usa o MESMO codigo da API (<code>fraus.fusor.montar_features</code>), nunca uma reimplementacao;</li>
+<li>carrega o B2W-Reviews01 e rotula por <code>recommend_to_a_friend</code> (ver abaixo);</li>
+<li>costura as frases em conversas sinteticas com <code>fraus.ingest.simulador.gerar_lote</code>, deterministico por semente, com latencia log-normal e emoji calibrados por rotulo;</li>
+<li>extrai as features de cada conversa com o BERTimbau do notebook 01 carregado — hoje sao <strong>39</strong> (ver <a href="#contrato-de-features">Contrato de features</a>);</li>
+<li>treina o <code>Fusor</code> (<code>treinar(exemplos, rotulos)</code>);</li>
+<li>avalia num conjunto de teste separado — conversas geradas com outra semente e a partir de frases disjuntas — imprimindo acuracia e F1-macro;</li>
+<li>exporta <code>fusor.joblib</code> (via <code>Fusor.salvar</code>) e <code>importancias.json</code> (o retorno de <code>Fusor.importancias()</code>, que vira o grafico "qual sinal pesou mais" da apresentacao).</li>
+</ol>
+<p>Os dois arquivos saem em <code>/content/drive/MyDrive/fraus/modelos/</code>. Baixe para <code>modelos/</code> na raiz do repositorio local, ao lado de <code>bertimbau-satisfacao/</code>.</p>
+<h3 id="rotulo-do-fusor-recommend_to_a_friend">Rotulo do fusor: <code>recommend_to_a_friend</code><a class="headerlink" href="#rotulo-do-fusor-recommend_to_a_friend" title="Permanent link">&para;</a></h3>
+<p>Esta e a etapa em que o campo <code>recommend_to_a_friend</code> do B2W-Reviews01 entra. A spec (secao 5.1) o declara como a <strong>ancora do NPS inferido</strong> — "sem ele, o NPS da dashboard seria metrica inventada" — e o alvo do fusor e justamente a categoria de NPS que a dashboard exibe. O notebook 01 usou <code>overall_rating</code> porque treinava sentimento de texto; o 02 usa a recomendacao porque treina NPS.</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>valor</th>
+<th>classe</th>
+<th>indice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recommend_to_a_friend</code></td>
+<td><code>Yes</code></td>
+<td>satisfeito</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>recommend_to_a_friend</code></td>
+<td><code>No</code></td>
+<td>insatisfeito</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>overall_rating</code></td>
+<td><code>3</code></td>
+<td>neutro</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Por que a linha do neutro existe.</strong> <code>recommend_to_a_friend</code> e binario, e as classes do projeto sao tres. Um fusor de duas classes zeraria o termo do neutro no score (<code>100 * (P(satisfeito) + 0.5 * P(neutro))</code>) e empurraria todo atendimento morno para uma das pontas, inflando o NPS nos dois sentidos. A alternativa seria treinar em duas classes e recortar o neutro por uma faixa de score — mas isso trocaria um rotulo observado por um limiar arbitrado a mao depois do treino. Aqui o neutro e <code>overall_rating == 3</code>, um rotulo do corpus, e a nota 3 tem precedencia sobre a recomendacao para que a mesma resenha nao caia em duas classes. As duas pontas — as unicas que contam no NPS, ja que neutros nao entram na formula — seguem ancoradas em <code>recommend_to_a_friend</code>.</p>
+<p>As tres classes sao subamostradas ao tamanho da menor (a nota 3 e minoria no corpus), o mesmo balanceamento do notebook 01.</p>
+<h3 id="limitacao-metodologica-a-declarar-no-relatorio">Limitacao metodologica a declarar no relatorio<a class="headerlink" href="#limitacao-metodologica-a-declarar-no-relatorio" title="Permanent link">&para;</a></h3>
+<p>O fusor e treinado sobre conversas SINTETICAS: nenhum corpus publico de resenha PT-BR tem timestamps de dialogo, entao a latencia, a escalacao e o abandono saem de distribuicoes calibradas pela literatura de live chat, nao de atendimento observado. O texto e real (B2W), o tempo nao e.</p>
+<p>As metricas do notebook 02 continuam OTIMISTAS mesmo depois da correcao descrita abaixo: elas medem que o fusor aprendeu a combinar os sinais no dominio sintetico, nao que ele acertaria essa taxa em atendimento real.</p>
+<h3 id="o-vazamento-do-primeiro-fusor-13082026">O vazamento do primeiro fusor — 13/08/2026<a class="headerlink" href="#o-vazamento-do-primeiro-fusor-13082026" title="Permanent link">&para;</a></h3>
+<p>O primeiro fusor treinado marcou <strong>99,3% de acuracia e F1-macro 0,993</strong>, e era inutil. Vale registrar porque o modo de falha e silencioso e pode voltar.</p>
+<p><strong>O sintoma.</strong> Carregado no repositorio local e alimentado com conversas escritas a mao, o fusor devolvia praticamente a mesma nota para tudo:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>latencia 5s</th>
+<th>30s</th>
+<th>200s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>texto otimo (BERTimbau: 0,96 satisfeito)</td>
+<td>52,48</td>
+<td>51,32</td>
+<td>50,02</td>
+</tr>
+<tr>
+<td>texto pessimo (BERTimbau: 0,98 insatisfeito)</td>
+<td>49,94</td>
+<td>49,92</td>
+<td>49,84</td>
+</tr>
+</tbody>
+</table>
+<p>Dois textos que o classificador de texto separa com mais de 95% de confianca saiam com <strong>2,5 pontos</strong> de diferenca, ambos colados em 50 e ambos classificados como neutro.</p>
+<p><strong>A causa.</strong> O <code>PERFIL_POR_ROTULO</code> do simulador amostrava latencia de faixas <strong>disjuntas</strong> — insatisfeito 60-400s, neutro 15-60s, satisfeito 3-15s. Sem sobreposicao nenhuma, a latencia <em>era</em> o rotulo: dava para acertar a classe olhando so o relogio, sem ler uma letra do texto. A regressao logistica fez exatamente isso. Os quatro maiores pesos aprendidos eram todos de tempo (<code>latencia_p90_s</code> 2,06 · <code>latencia_mediana_s</code> 2,03 · <code>latencia_primeira_resposta_s</code> 1,91 · <code>duracao_total_s</code> 1,52), contra 1,39 e 1,12 das features de texto. Fora da variedade que ele decorou, o modelo respondia "neutro" para tudo.</p>
+<p>Os 99,3% nao mediam fusao. Mediam que o simulador vazava o gabarito.</p>
+<p><strong>Um segundo achado, do mesmo diagnostico.</strong> As features <code>emoji_score_medio</code>, <code>emoji_frac_positivos</code> e <code>emoji_frac_negativos</code> tinham coeficiente <strong>0,0000</strong>: o simulador nunca emitia emoji, entao elas eram constantes no treino e um dos tres sinais da arquitetura nao contribuia nada.</p>
+<p><strong>A correcao</strong> (<code>fraus/ingest/simulador.py</code>, coberta por <code>tests/test_simulador.py</code>):</p>
+<ul>
+<li>a latencia passou a ser <strong>log-normal</strong> com caudas que se cruzam. As medianas continuam ordenadas, como manda a literatura de live chat, mas ~11% das conversas satisfeitas sao mais lentas que a mediana das insatisfeitas, e vice-versa. Existe atendimento rapido que termina mal;</li>
+<li>as falas do cliente passaram a levar <strong>emoji do lexicon</strong>, com cruzamento deliberado — cliente irritado manda 🙏 (+0,418), cliente satisfeito manda 😩 (-0,368) — para o emoji nao virar o proximo gabarito.</li>
+</ul>
+<p><strong>Como saber se voltou.</strong> Acuracia alta e sintoma que pede investigacao, nao veredito. Depois da correcao o notebook 02 marcou <strong>0,96</strong>, e desta vez o numero se sustentou: os pesos aprendidos mudaram de lugar.</p>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>fusor vazado</th>
+<th>fusor corrigido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emoji_score_medio</code></td>
+<td><strong>0,0000</strong> (morto)</td>
+<td><strong>1,6662</strong> (1º)</td>
+</tr>
+<tr>
+<td><code>texto_prob_satisfeito_media</code></td>
+<td>1,3858</td>
+<td>1,6026 (2º)</td>
+</tr>
+<tr>
+<td><code>texto_prob_insatisfeito_media</code></td>
+<td>1,1212</td>
+<td>1,4722 (3º)</td>
+</tr>
+<tr>
+<td><code>latencia_p90_s</code></td>
+<td><strong>2,0575</strong> (1º)</td>
+<td>0,0674</td>
+</tr>
+<tr>
+<td><code>latencia_mediana_s</code></td>
+<td>2,0329</td>
+<td>0,1621</td>
+</tr>
+<tr>
+<td><code>latencia_primeira_resposta_s</code></td>
+<td>1,9068</td>
+<td>0,0138</td>
+</tr>
+</tbody>
+</table>
+<p>O mesmo teste de sanidade que expos o vazamento — mesmo texto, so mudando o relogio — passou de 2,5 pontos de separacao para <strong>99,6</strong>: texto otimo pontua 99,98 e texto pessimo 0,35, com a latencia mexendo fracoes de ponto. O sinal de tempo virou o modificador fraco que ele deve ser.</p>
+<p><strong>O criterio, entao, nao e o numero sozinho.</strong> Diante de acuracia alta, olhe os PESOS: se as features que lideram forem as que carregam o conteudo (texto, emoji), o modelo aprendeu; se forem as circunstanciais (tempo, contagem de turnos), procure o vazamento.</p>
+<h3 id="o-fusor-de-35-features-24082026">O fusor de 35 features — 24/08/2026<a class="headerlink" href="#o-fusor-de-35-features-24082026" title="Permanent link">&para;</a></h3>
+<p>O contrato subiu de 16 para 35 features em 21/08 (emocao, lexico, ironia e estilo entraram no vetor) e o <strong>artefato ficou tres dias para tras</strong>. Nesse intervalo a API real nao subia: o <code>StandardScaler</code> de 16 rejeitava o vetor de 35 na carga. Falha alta e explicita, que e o comportamento que as invariantes 7 e 9 pedem — mas ainda assim tres dias de API parada por artefato desatualizado.</p>
+<p>O notebook 02 rodou de novo e o artefato daquele momento passou a ter <code>n_features_in_ = 35</code>, na ordem exata de <code>NOMES_FEATURES</code>. (Historico: o artefato vigente hoje tem 38 — ver as secoes de 03/09 e 04/09 abaixo.)</p>
+<p><strong>A acuracia caiu de 0,96 para 0,93, e a queda e o resultado saudavel.</strong> O fusor de 16 features media um problema mais facil. Dezenove features novas entraram, tres delas vindas de uma cabeca de ironia com vazamento de corpus conhecido e nao consertado — um numero MENOR e o esperado. Pela regra desta secao, o que decide nao e o numero e sim onde os pesos foram parar:</p>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>fusor de 16</th>
+<th>fusor de 35</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>texto_prob_satisfeito_media</code></td>
+<td>1,6026 (2º)</td>
+<td><strong>1,6572 (1º)</strong></td>
+</tr>
+<tr>
+<td><code>texto_prob_insatisfeito_media</code></td>
+<td>1,4722 (3º)</td>
+<td>1,3867 (2º)</td>
+</tr>
+<tr>
+<td><code>emoji_score_medio</code></td>
+<td><strong>1,6662 (1º)</strong></td>
+<td>1,3354 (3º)</td>
+</tr>
+<tr>
+<td><code>emoji_frac_positivos</code></td>
+<td>0,8430</td>
+<td>0,8098</td>
+</tr>
+<tr>
+<td><code>emocao_surpresa_media</code></td>
+<td>—</td>
+<td>0,6655</td>
+</tr>
+<tr>
+<td><code>emocao_desprezo_derivado</code></td>
+<td>—</td>
+<td>0,4757</td>
+</tr>
+<tr>
+<td><code>latencia_mediana_s</code></td>
+<td>0,1621</td>
+<td>0,1200</td>
+</tr>
+<tr>
+<td><code>latencia_p90_s</code></td>
+<td>0,0674</td>
+<td>0,1419</td>
+</tr>
+<tr>
+<td><code>duracao_total_s</code></td>
+<td>0,4964</td>
+<td>0,3397</td>
+</tr>
+</tbody>
+</table>
+<p>O topo continua sendo <strong>texto e emoji</strong>, e as features de tempo continuam no rodape, onde devem estar. As de emocao entram no meio da tabela com peso real sem deslocar o conteudo — <code>desprezo_derivado</code>, que e a diade calculada e nao uma classe do modelo, puxa 0,48. Nao ha sinal de vazamento novo.</p>
+<p><strong>A divida que este fusor assume.</strong> Ele foi treinado com a cabeca de ironia vazando (ver a pendencia 1 do README: 6 em 10 frases sinceras saem marcadas como ironicas). <code>ironia_prob_media</code> e <code>ironia_prob_max</code> pesam 0,30 e 0,31 — nao e desprezivel. <strong>Retreinar a ironia obriga a retreinar o fusor de novo</strong>, e essa ordem esta registrada aqui para nao se perder.</p>
+<p><strong>Teste de sanidade ponta a ponta</strong>, com os tres BERTimbau carregados, sobre conversas do simulador: rotulo insatisfeito pontua ~0, neutro ~73–75, satisfeito ~99, e as tres categorias de NPS saem certas em 9 de 9. <strong>Isso nao e evidencia de qualidade</strong> — sao conversas do proprio gerador sintetico, o dominio em que o fusor foi treinado. O numero honesto continua sendo 0,93 no conjunto de teste separado, e a ressalva do topo desta secao continua valendo: as metricas do notebook 02 medem fusao no dominio sintetico, nao acerto em atendimento real.</p>
+<h3 id="consequencia-no-nps-a-classe-neutra-cai-em-detrator-historico-fusor-de-16-features-ate-24082026">Consequencia no NPS: a classe neutra cai em detrator — HISTORICO (fusor de 16 features, ate 24/08/2026)<a class="headerlink" href="#consequencia-no-nps-a-classe-neutra-cai-em-detrator-historico-fusor-de-16-features-ate-24082026" title="Permanent link">&para;</a></h3>
+<p><strong>Esta secao mede o fusor de 16 features, NAO o vigente.</strong> Ela ficou aqui sem
+data enquanto o artefato foi trocado, e passou a ler como se descrevesse o
+fusor atual — que e o defeito mais caro deste projeto. Fica registrada porque o
+raciocinio sobre o score continua valendo, e porque a medicao dela e o
+contraponto do que o fusor de 35 features entrega.</p>
+<p><strong>A consequencia DEIXOU de valer com o fusor de 35 features.</strong> Base: o teste de
+sanidade ponta a ponta da secao anterior, com os tres BERTimbau carregados —
+rotulo neutro pontua <strong>~73–75</strong>, cai na faixa 7–8 e as tres categorias de NPS
+saem certas em 9 de 9. Ou seja, o neutro nao cai mais em detrator. Ressalva do
+mesmo tamanho: aquele teste corre sobre conversas do proprio simulador, o
+dominio em que o fusor foi treinado, entao ele desmente a medicao abaixo no
+dominio sintetico e nao promete nada sobre atendimento real.</p>
+<p>Medido em 90 conversas do simulador, 30 por classe, o fusor corrigido separa bem — medianas <strong>0,11 / 50,99 / 99,03</strong> por rotulo verdadeiro. Mas a categoria de NPS derivada sai <strong>67% detrator · 29% promotor · 4% neutro</strong>, com <strong>NPS -38</strong> num lote equilibrado por construcao.</p>
+<p>Nao e falha do treino. O score e <code>100 * (P(satisfeito) + 0.5 * P(neutro))</code>, entao conversa classificada com certeza como neutra pontua 50, vira nota 5 e cai na faixa 0-6. A faixa neutra do NPS (7-8) so seria alcancada com <code>P(satisfeito)</code> entre 0,4 e 0,8 — um empate entre classes, nao uma neutralidade confiante. As tres classes do modelo e as tres categorias do NPS foram decididas em lugares separados e nunca se encontraram.</p>
+<p><strong>Decisao de projeto: manter e declarar.</strong> A alternativa avaliada era subir o peso do neutro de 0,5 para 0,75 (o centro da faixa passiva do NPS), o que faria neutro puro pontuar 75, virar nota 8 e cair em neutro — alinhando as tres classes as tres categorias. Ficou registrada aqui e na docstring de <code>Fusor.pontuar</code> para nao ser "corrigida" por engano.</p>
+<h3 id="retreino-do-fusor-apos-as-features-de-incongruencia-03092026">Retreino do fusor apos as features de incongruencia (03/09/2026)<a class="headerlink" href="#retreino-do-fusor-apos-as-features-de-incongruencia-03092026" title="Permanent link">&para;</a></h3>
+<p>O contrato subiu de 35 para 40 features: a familia <code>incongruencia_*</code> (<code>incongruencia_polaridade</code>,
+<code>incongruencia_emoji_texto</code>, <code>incongruencia_marcador_contraste</code>, <code>incongruencia_hiperbole</code>,
+<code>incongruencia_aspas_ironicas</code>) entrou em <code>NOMES_FEATURES</code>, anexada ao FIM da
+lista para preservar a ordem das 35 antigas. O fusor salvo em <code>modelos/</code>
+foi treinado com 35 e <code>vetorizar</code> agora produz 40 — ele NAO serve mais.
+<code>Fusor.carregar</code> (<code>joblib.load</code> puro, sem validacao de forma) carrega esse
+artefato sem erro nenhum -- a API real SOBE com ele. O erro de dimensao no
+<code>StandardScaler</code> so aparece na primeira pontuacao de verdade (<code>/ingestao</code> ou
+<code>/conversas/importar</code>), como HTTP 500, nao na carga do servidor. Isso e risco
+de demonstracao ao vivo, nao uma trava de subida -- ver a tabela do Fusor no
+README para o detalhe medido. A intencao da invariante 7 (falha alta e
+explicita) so se cumpre na metade "explicita"; a metade "na carga" fica para
+o retreino resolver o descompasso, nao para uma validacao que este codigo
+ainda nao tem.</p>
+<p><strong>O corpus sintetico tambem mudou, e isso importa mais do que a contagem de
+features.</strong> <code>FRASES_POR_ROTULO</code>, em <code>fraus/ingest/simulador.py</code>, ganhou frases
+novas em duas levas para curar dois vazamentos de rotulo — o mesmo tipo de
+falha silenciosa que ja custou o primeiro fusor (ver acima), so que desta vez
+em features que ainda nao estavam no vetor:</p>
+<ul>
+<li><strong>Intensificadores.</strong> Antes, <code>incongruencia_hiperbole</code> era nao-zero na
+  maior parte das conversas do rotulo satisfeito e ZERO nos rotulos
+  insatisfeito e neutro — um previsor unilateral quase perfeito de
+  "satisfeito". A literatura inclui hiperbole na deteccao de ironia
+  justamente porque elogio hiperbolico e a forma classica da ironia, entao o
+  fusor teria aprendido a feature ao contrario do que ela significa. Depois
+  da correcao, medido com <code>gerar_lote(FRASES_POR_ROTULO, 180, semente=7)</code> —
+  o mesmo lote e semente da guarda <code>test_nenhuma_feature_e_previsor_unilateral</code>
+  em <code>tests/test_simulador.py</code>: <code>insatisfeito 34/60 | neutro 0/60 | satisfeito
+  39/60</code>.</li>
+<li><strong>Negacao.</strong> <code>lexico_frac_negados</code> era nao-zero so no rotulo insatisfeito e
+  ZERO nos outros dois — previsor unilateral de "insatisfeito", pre-existente
+  desde antes da familia <code>incongruencia_*</code> e nunca notado por falta de guarda
+  na familia <code>lexico_*</code>. Depois, medido com o mesmo lote e semente acima:
+  <code>insatisfeito 15/60 | neutro 17/60 | satisfeito 21/60</code>.</li>
+</ul>
+<p><strong>Consequencia pratica: o notebook 02 precisa REGERAR o corpus sintetico, nao
+reusar um lote cacheado de uma execucao anterior.</strong> O notebook 02 ja gera o
+lote do zero a cada execucao — <code>gerar_lote</code> roda na propria celula, com
+semente fixa, e nao le nenhum artefato salvo de rodada passada — entao rodar
+o notebook de novo, sem alterar nada, ja traz o corpus corrigido. O risco e
+so para quem tiver guardado um <code>.csv</code>/<code>.pkl</code> de conversas de uma sessao
+antiga do Colab e tentar reaproveitar: um lote assim traz os dois vazamentos
+de volta.</p>
+<p><strong>O notebook ja importa o contrato do pacote, nao repete a lista.</strong> A celula
+marcada com o comentario <code># 5. Os SETE sinais de cada conversa, pelo MESMO
+codigo que a API usa</code> (indice 8 do <code>.ipynb</code>, contando a partir de 0) faz
+<code>from fraus.fusor import NOMES_FEATURES, montar_features</code> e chama
+<code>montar_features</code> com os tres classificadores — as cinco features novas
+entram sozinhas, sem editar o notebook. Isso ja era assim antes desta rodada
+(o vazamento do ramo obsoleto registrado na celula 2 foi outra causa, a de
+importar de um ramo desatualizado do repositorio, nao de reimplementar a
+lista) — nao ha lista duplicada para divergir aqui.</p>
+<p>Passos, no Colab:</p>
+<ol>
+<li>Conferir que a celula do clone do repositorio (<code>RAMO</code>) aponta para <code>main</code>
+   com a Task 5 mergeada, e rodar o notebook do inicio — sem tentar
+   reaproveitar nenhum lote de conversas salvo de uma execucao anterior.</li>
+<li>Antes de subir ao Colab (ou depois, localmente), rodar as guardas de
+   vazamento: <code>uv run pytest tests/test_simulador.py -k unilateral</code>. Elas
+   cobrem as familias <code>lexico_*</code>, <code>emoji_*</code>, <code>estilo_*</code> e <code>incongruencia_*</code>
+   contra previsor unilateral e precisam estar verdes antes do treino valer
+   a pena.</li>
+<li>Conferir a acuracia contra a do fusor de 35 features (0,93). <strong>Acuracia
+   alta demais e sintoma, nao vitoria</strong> — se saltar muito acima do valor
+   anterior, suspeite de vazamento antes de comemorar, releia a secao "O
+   vazamento do primeiro fusor" acima e confira os PESOS, nao so o numero:
+   se as features que lideram forem as de conteudo (texto, emoji), o modelo
+   aprendeu; se forem as circunstanciais, procure o vazamento.</li>
+<li>Conferir os coeficientes das cinco features novas em <code>Fusor.importancias()</code>
+   / <code>Fusor.eixo_global()</code>.</li>
+</ol>
+<p><strong>CORRECAO DE 04/09/2026, e a licao vale mais que o numero:</strong> este passo
+   dizia para esperar peso proximo de zero em
+   <code>incongruencia_marcador_contraste</code> e <code>incongruencia_aspas_ironicas</code>,
+   porque as duas sao constantes em zero no corpus do SIMULADOR. A previsao
+   estava errada, e o erro foi confundir dois corpora diferentes. O simulador
+   fornece a ESTRUTURA temporal (latencia, turnos, escalacao) a partir de seis
+   frases por rotulo; o TEXTO do treino e o B2W-Reviews01, resenha real de
+   e-commerce, onde marcador de contraste e aspas ironicas ocorrem
+   normalmente. Medir uma feature de texto no gerador de estrutura e olhar
+   para o corpus errado.</p>
+<p>Os pesos reais do primeiro retreino de 40 features, no eixo
+   satisfeito-menos-insatisfeito:</p>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>incongruencia_emoji_texto</code></td>
+<td>−0,95</td>
+</tr>
+<tr>
+<td><code>incongruencia_hiperbole</code></td>
+<td>−0,65</td>
+</tr>
+<tr>
+<td><code>incongruencia_marcador_contraste</code></td>
+<td>−0,38</td>
+</tr>
+<tr>
+<td><code>incongruencia_polaridade</code></td>
+<td>−0,37</td>
+</tr>
+<tr>
+<td><code>incongruencia_aspas_ironicas</code></td>
+<td>−0,15</td>
+</tr>
+</tbody>
+</table>
+<p>As cinco sairam NEGATIVAS, que e a direcao que a literatura preve: mais
+   incongruencia empurra a nota para insatisfeito. A hiperbole em −0,65 e a
+   evidencia de que o cruzamento do corpus (secao acima) funcionou — sem ele
+   ela teria aprendido o sinal contrario.</p>
+<p>O que continua valendo da versao anterior deste passo: as guardas de
+   vazamento medem o SIMULADOR e sao sobre a estrutura, nao sobre o texto do
+   B2W. <code>incongruencia_hiperbole</code> melhorou
+   mas nao chegou aos tres: depois da correcao ela dispara em DOIS dos tres
+   rotulos — <code>insatisfeito 34/60</code> e <code>satisfeito 39/60</code> (numeros medidos
+   acima, na secao do retreino) —, e <code>neutro</code> continua em <code>0/60</code>. Isso e
+   limitacao declarada, nao vazamento remanescente: fala neutra raramente
+   intensifica termo polar com hiperbole, e a decisao foi nao forcar uma
+   frase artificial no gerador so para a classe deixar de ficar muda. A
+   guarda <code>test_nenhuma_feature_e_previsor_unilateral</code>
+   (<code>tests/test_simulador.py</code>) tolera isso por construcao — ela so falha
+   quando a feature dispara em EXATAMENTE UM rotulo, entao 2-de-3 passa
+   verde. Isso e posicao aceita sobre o corpus sintetico atual, nao
+   descuido: fica registrado aqui para o proximo leitor nao achar que a
+   guarda promete "sinal nos tres rotulos" quando ela so promete "nao
+   previsor unilateral de UM rotulo so". A guarda nao foi alterada.
+5. Copiar <code>fusor.joblib</code> e <code>importancias.json</code> para <code>modelos/</code> na raiz do
+   repositorio local (guardando o artefato anterior como <code>.bak-&lt;N&gt;</code>, onde N e
+   o numero de features dele) e entao, nesta ordem:
+   <code>uv run python scripts/conferir_fusor.py</code> e <code>uv run pytest -q</code> inteiro. O
+   laudo faz automaticamente os passos 3 e 4 desta lista — ver "Conferencia do
+   artefato" abaixo.</p>
+<h3 id="a-ironia-sai-do-vetor-04092026">A ironia sai do vetor (04/09/2026)<a class="headerlink" href="#a-ironia-sai-do-vetor-04092026" title="Permanent link">&para;</a></h3>
+<p>Medicao sobre o proprio corpus de treino do fusor (B2W-Reviews01, amostra
+equilibrada de 500 resenhas por rotulo, semente 20260904), rodando so a cabeca
+de ironia:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>resenha NEGATIVA (nao): media P(ironia) = 0,1012  mediana 0,0013  frac(P&gt;0,5) = 0,092
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>resenha POSITIVA (sim): media P(ironia) = 0,7146  mediana 0,9687  frac(P&gt;0,5) = 0,740
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                                                        diferenca (sim-nao) = +0,6134
+</code></pre></div>
+<p>A cabeca, treinada no IDPT 2021 (tweet e noticia), aplicada a resenha de
+e-commerce funciona na pratica como <strong>detector de sentimento positivo</strong>: marca
+74% das resenhas satisfeitas como ironicas contra 9% das insatisfeitas. O
+fusor de 40 features aprendeu <strong>+0,77</strong> de peso para <code>ironia_prob_media</code> no
+eixo satisfeito-menos-insatisfeito — mais ironia empurrando para SATISFEITO,
+o inverso do que o nome da feature promete. O fusor de 35 ja tinha o mesmo
+sinal (+0,48), entao nao e regressao desta rodada: e o mesmo vazamento medido
+de novo, agora com numero.</p>
+<p>Consequencia observavel: a frase canonica de ironia deste projeto — "que
+atendimento maravilhoso, so esperei 3 horas" — pontuava <strong>99,98 / nota 10 /
+promotor</strong> no fusor de 40, porque as duas features de ironia empurravam para
+cima em vez de para baixo. (A cabeca isolada acerta essa frase: 0,998 nela,
+0,002 num elogio sincero. Quem lia ao contrario era o fusor, e so por causa
+do corpus.)</p>
+<p><strong>Decisao: <code>ironia_prob_media</code> e <code>ironia_prob_max</code> saem de <code>NOMES_FEATURES</code>.</strong>
+Feature que mede outra coisa que nao o nome dela e pior que feature ausente —
+ela nao adiciona sinal, duplica <code>texto_prob_satisfeito_*</code> com ruido, e inverte
+o caso que o projeto usa como exemplo de manual. A cabeca de ironia CONTINUA
+carregada e obrigatoria (invariante 7) e continua sendo lida por mensagem e
+exibida na dashboard, onde e honesta e ja vem com a ressalva de confiabilidade
+que a tela mostra — o que muda e que ela para de pontuar. O retreino com 38
+features foi executado no mesmo dia; ver a secao seguinte.</p>
+<p><strong>Nota sobre a janela entre a mudanca do contrato e o artefato novo.</strong> Enquanto
+<code>modelos/fusor.joblib</code> era o artefato de 40 e o contrato ja estava em 38, a API
+<strong>nao subia</strong> — <code>Fusor.carregar</code> passou a comparar <code>n_features_in_</code> com
+<code>len(NOMES_FEATURES)</code> e levantar <code>FusorIncompativelError</code> (PR #29, 04/09/2026).
+Antes dessa validacao, o mesmo desencontro deixava a API subir normalmente e
+estourar HTTP 500 so na primeira pontuacao real — falha tardia, no pior momento
+possivel. A validacao troca isso por falha alta e explicita na subida, que e o
+que a invariante 7 pede.</p>
+<h3 id="o-fusor-de-38-features-04092026">O fusor de 38 features — 04/09/2026<a class="headerlink" href="#o-fusor-de-38-features-04092026" title="Permanent link">&para;</a></h3>
+<p>Notebook 02 rodado de novo com a ironia fora do vetor. <strong>Acuracia 0,9433</strong>
+(f1_macro 0,9436), contra 0,9467 do fusor de 40. A queda de ~0,003 e o
+resultado saudavel e esperado: as duas features removidas <em>estavam</em> ajudando
+o classificador — so que como detectores de sentimento positivo duplicando
+<code>texto_prob_satisfeito_*</code>, nao como medida de ironia. Perder um pouco de
+acuracia trocando uma feature que mente por nenhuma feature e o negocio certo.</p>
+<p>Conferido com <code>uv run python scripts/conferir_fusor.py</code> (ver secao
+"Conferencia do artefato" abaixo): contrato 38/38, <code>classes_ = [0, 1, 2]</code>
+(invariante 8), nenhuma feature com peso perto de zero, e as cinco de
+incongruencia mantiveram a direcao negativa que a literatura preve:</p>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>fusor de 40</th>
+<th>fusor de 38</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>incongruencia_emoji_texto</code></td>
+<td>−0,95</td>
+<td>−1,03</td>
+</tr>
+<tr>
+<td><code>incongruencia_hiperbole</code></td>
+<td>−0,65</td>
+<td>−0,64</td>
+</tr>
+<tr>
+<td><code>incongruencia_polaridade</code></td>
+<td>−0,37</td>
+<td>−0,37</td>
+</tr>
+<tr>
+<td><code>incongruencia_marcador_contraste</code></td>
+<td>−0,38</td>
+<td>−0,27</td>
+</tr>
+<tr>
+<td><code>incongruencia_aspas_ironicas</code></td>
+<td>−0,15</td>
+<td>−0,19</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tres pesos com sinal aparentemente invertido, e por que NAO sao vazamento.</strong>
+O laudo sinaliza <code>texto_prob_satisfeito_ultima</code> (−0,50),
+<code>emoji_frac_positivos</code> (−0,18) e <code>emoji_frac_negativos</code> (+0,60) como suspeitos,
+porque o nome promete o sinal contrario. Conferidos contra os artefatos de 40 e
+de 35, os tres ja estavam assim nos dois — nao e efeito da remocao da ironia.
+A explicacao e <strong>colinearidade</strong>: <code>texto_prob_satisfeito_media</code> pesa +2,81 e
+<code>emoji_score_medio</code> +1,56, e features fortemente correlacionadas com elas
+recebem coeficiente negativo de correcao na regressao logistica. E o
+comportamento normal do modelo com features redundantes, nao inversao de
+semantica como a de <code>ironia_prob_media</code>. A diferenca entre os dois casos e
+verificavel: a ironia foi medida diretamente no corpus e provou medir outra
+coisa; estas tres continuam medindo o que o nome diz, so nao carregam
+informacao independente das dominantes. Fica registrado aqui porque o laudo
+vai sinalizar as tres em todo retreino futuro, e o proximo leitor precisa
+saber que ja foram investigadas.</p>
+<p><strong>O que este retreino NAO resolveu.</strong> A frase canonica do projeto continua
+pontuando alto:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&quot;que atendimento maravilhoso, so esperei 3 horas&quot;   score 99,95  nota 10
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>&quot;otimo, mais uma vez ninguem resolveu nada&quot;          score 99,74  nota 10
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>&quot;resolveu rapido, muito obrigado! adorei&quot;            score 97,82  nota 10
+</code></pre></div>
+<p>As cinco features de incongruencia dao <strong>0,0 nas duas frases ironicas</strong> e
+disparam na satisfeita de verdade (<code>polaridade</code> 0,5, <code>hiperbole</code> 0,5) — ou
+seja, hoje elas pegam entusiasmo genuino e nao pegam ironia. Nao e regressao:
+e o limite estrutural das cinco, todas funcao de <code>anotar_texto</code>/emoji, e
+"so esperei 3 horas" nao tem nenhuma palavra polar no SentiLex — e negativo
+por pragmatica. O diagnostico completo e a rota proposta
+(<code>incongruencia_situacao_negativa</code>, que levaria o vetor a 39 e exige mais um
+retreino) estao em
+<code>docs/superpowers/specs/2026-09-04-incongruencia-implicita-design.md</code>.</p>
+<p>Corrigindo a previsao registrada na secao anterior: esperava-se que a frase
+deixasse de ser empurrada para cima com a saida da ironia. Nao foi o que
+aconteceu — o <code>texto_prob_satisfeito_media</code> da propria cabeca de texto e 0,858
+nela, e domina o eixo sozinho. A remocao consertou o vetor; nao tocou nesta
+frase.</p>
+<h3 id="o-contrato-sobe-para-39-incongruencia-implicita-04092026">O contrato sobe para 39: incongruencia implicita (04/09/2026)<a class="headerlink" href="#o-contrato-sobe-para-39-incongruencia-implicita-04092026" title="Permanent link">&para;</a></h3>
+<p><code>incongruencia_situacao_negativa</code> entrou em <code>NOMES_FEATURES</code> -- elogio
+convivendo com situacao negativa de atendimento na mesma fala. E a unica das
+seis que alcanca a frase canonica do projeto, porque nao depende de um segundo
+termo polar no lexicon.</p>
+<p><strong>O retreino do notebook 02 e OBRIGATORIO antes de a API voltar a subir.</strong> O
+artefato de 38 nao carrega mais: <code>Fusor.carregar</code> valida a dimensao e levanta
+<code>FusorIncompativelError</code>. Isso e o comportamento desejado, nao um bug.</p>
+<p>Medido ANTES de aceitar, no B2W-Reviews01 (2000 resenhas por rotulo, semente
+20260904) -- que e o corpus que da o TEXTO do treino:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>insatisfeito  82/2000 = 4,10%
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>neutro        53/2000 = 2,65%
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>satisfeito    35/2000 = 1,75%
+</code></pre></div>
+<p>Dispara nos tres rotulos, gradiente suave, razao 2,3:1 entre os extremos.
+Compare com a cabeca de ironia que saiu do vetor no mesmo dia (74% contra 9%,
+razao 8:1): aquilo era disjuncao pratica, isto e sinal.</p>
+<p><strong>Uma armadilha de metodo que quase repeti.</strong> Medir esta feature no corpus do
+SIMULADOR dava zero nos tres rotulos, e eu quase concluí que ela nasceria com
+peso zero. Errado, e pelo mesmo motivo registrado na correcao de 04/09 mais
+acima: <code>FRASES_POR_ROTULO</code> <strong>nao treina o fusor</strong>. O notebook 02 usa 400 frases
+do B2W por classe e pega do simulador so a ESTRUTURA da conversa. O simulador
+importa para a guarda <code>test_nenhuma_feature_e_previsor_unilateral</code>, nao para o
+peso aprendido. As frases dos tres rotulos foram cruzadas mesmo assim -- sem
+isso a feature ficava constante em zero la e a guarda passaria por vacuidade,
+que e o modo de falha silencioso dela.</p>
+<h3 id="conferencia-do-artefato">Conferencia do artefato<a class="headerlink" href="#conferencia-do-artefato" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/conferir_fusor.py<span class="w">              </span><span class="c1"># laudo completo</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/conferir_fusor.py<span class="w"> </span>--sem-sonda<span class="w">  </span><span class="c1"># pula as frases-sonda</span>
+</code></pre></div>
+<p>Laudo do artefato vigente em <code>modelos/</code>, em seis itens: contrato, ordem das
+classes, sinal dos pesos por familia, pesos perto de zero, tres frases-sonda e
+as metricas do treino. Instrumento, nao botao — nao escreve nada, no modelo de
+<code>scripts/medir_faixas.py</code>.</p>
+<p>Ele existe porque <strong>acuracia nao denuncia</strong> os dois defeitos que esta semana
+custaram dois retreinos: o peso invertido de <code>ironia_prob_media</code> e o vazamento
+de <code>incongruencia_hiperbole</code>. Os dois so apareceram porque alguem olhou o sinal
+dos coeficientes e a distribuicao por rotulo — exatamente o que uma pessoa
+cansada depois de um treino longo pula. Por isso a acuracia nunca e impressa
+sozinha no laudo: vem sempre com o lembrete da invariante 10, e com alerta
+explicito acima de 0,97.</p>
+<h2 id="contrato-de-features">Contrato de features<a class="headerlink" href="#contrato-de-features" title="Permanent link">&para;</a></h2>
+<p><code>NOMES_FEATURES</code>, em <code>fraus/fusor.py</code>, e a lista canonica. <code>vetorizar</code> levanta <code>KeyError</code> se faltar chave — nunca zero silencioso (invariante 9).</p>
+<p>Hoje sao <strong>39 features</strong>, de SETE familias no vetor (OITO sinais existem no
+sistema — a ironia continua existindo e sendo lida por mensagem, so nao entra
+mais aqui, ver a secao acima). O contrato subiu de 16 para 35 em 21/08/2026,
+quando os notebooks 03 e 04 passaram a existir e a condicao que justificava a
+espera acabou; de 35 para 40 em 03/09/2026, quando a familia <code>incongruencia_*</code>
+entrou (ver <a href="#retreino-do-fusor-apos-as-features-de-incongruencia-03092026">Retreino do fusor apos as features de
+incongruencia</a>
+acima); e caiu de 40 para 38 em 04/09/2026, quando <code>ironia_prob_media</code> e
+<code>ironia_prob_max</code> sairam (ver <a href="#a-ironia-sai-do-vetor-04092026">A ironia sai do
+vetor</a> acima).</p>
+<table>
+<thead>
+<tr>
+<th>sinal</th>
+<th>modulo</th>
+<th>features</th>
+<th>no vetor?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>texto</td>
+<td><code>fraus/sinais/texto.py</code></td>
+<td>4</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>emoji</td>
+<td><code>fraus/sinais/emoji.py</code></td>
+<td>5</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>tempo</td>
+<td><code>fraus/sinais/tempo.py</code></td>
+<td>7</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>emocao</td>
+<td><code>fraus/sinais/emocao.py</code></td>
+<td>8</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>lexico</td>
+<td><code>fraus/sinais/lexico.py</code></td>
+<td>3</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>ironia</td>
+<td><code>fraus/sinais/ironia.py</code></td>
+<td>2</td>
+<td><strong>nao</strong> (lida por mensagem, nao pontua)</td>
+</tr>
+<tr>
+<td>estilo</td>
+<td><code>fraus/sinais/estilo.py</code></td>
+<td>6</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>incongruencia</td>
+<td><code>fraus/sinais/incongruencia.py</code></td>
+<td>5</td>
+<td>sim</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consequencia:</strong> <code>montar_features</code> exige DOIS classificadores (texto e
+emocao); <code>Motor</code> continua exigindo os TRES (a ironia entra na atribuicao por
+mensagem, nao no vetor), e a API nao sobe sem os tres artefatos em <code>modelos/</code>.
+E o comportamento correto da invariante 7.</p>
+<h2 id="notebook-03-classificador-de-emocao">Notebook 03 — classificador de emocao<a class="headerlink" href="#notebook-03-classificador-de-emocao" title="Permanent link">&para;</a></h2>
+<p>Requisito de banca: distinguir as <strong>sete emocoes humanas</strong>. A cabeca treinada tem sete classes, e a setima emocao e derivada — ver abaixo.</p>
+<p>A ordem das classes <strong>nao e redigitada no notebook</strong>: ele importa <code>NOMES_EMOCOES</code> de <code>fraus.sinais.emocao</code>, a mesma lista que o sinal usa para ler as probabilidades. Redigitar seria o jeito mais facil de treinar <code>raiva</code> no indice 2 e le-la no indice 3.</p>
+<h3 id="ordem-canonica-das-classes">Ordem canonica das classes<a class="headerlink" href="#ordem-canonica-das-classes" title="Permanent link">&para;</a></h3>
+<p><code>fraus/sinais/emocao.py</code> fixa a ordem, e ela vale no notebook, no sinal e no fusor. Inverter nao gera erro: atribui a emocao errada em silencio, a mesma armadilha da invariante 8.</p>
+<table>
+<thead>
+<tr>
+<th>indice</th>
+<th>classe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>alegria</td>
+</tr>
+<tr>
+<td>1</td>
+<td>tristeza</td>
+</tr>
+<tr>
+<td>2</td>
+<td>raiva</td>
+</tr>
+<tr>
+<td>3</td>
+<td>medo</td>
+</tr>
+<tr>
+<td>4</td>
+<td>nojo</td>
+</tr>
+<tr>
+<td>5</td>
+<td>surpresa</td>
+</tr>
+<tr>
+<td>6</td>
+<td>neutro</td>
+</tr>
+</tbody>
+</table>
+<h3 id="corpus-go_emotions_ptbr">Corpus: <code>go_emotions_ptbr</code><a class="headerlink" href="#corpus-go_emotions_ptbr" title="Permanent link">&para;</a></h3>
+<p>Traducao PT-BR do GoEmotions (Demszky et al., 2020 — 58k comentarios do Reddit, 27 emocoes + neutro), com 43.410 exemplos de treino, 5.426 de validacao e 5.427 de teste. Licenca Apache 2.0. As 27 categorias sao reduzidas as seis de Ekman pelo <strong>mapeamento oficial que o proprio GoEmotions publica</strong> — nao por agrupamento inventado aqui.</p>
+<p>O arquivo vem no formato CRU do GoEmotions — <strong>uma linha por anotador</strong>, nao por exemplo. Um rotulo conta quando <strong>pelo menos 2 anotadores</strong> o marcaram (a maioria dos exemplos tem 3 anotadores, entao 2 e maioria simples), e exemplos que caem em mais de uma classe de Ekman sao descartados: a tarefa e multiclasse de rotulo unico, e forcar vencedor entre duas emocoes empatadas inventaria rotulo.</p>
+<p>O limiar mais alto rende MAIS exemplos, o que so parece contra-intuitivo ate ver o motivo — com 1 anotador quase todo exemplo recebe varios rotulos Ekman e cai fora do filtro de rotulo unico:</p>
+<table>
+<thead>
+<tr>
+<th>limiar</th>
+<th>exemplos com rotulo unico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 anotador</td>
+<td>17.367</td>
+</tr>
+<tr>
+<td><strong>2 anotadores</strong></td>
+<td><strong>46.014</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="o-desequilibrio-e-por-que-nao-subamostrar">O desequilibrio, e por que NAO subamostrar<a class="headerlink" href="#o-desequilibrio-e-por-que-nao-subamostrar" title="Permanent link">&para;</a></h3>
+<p>Distribuicao medida com limiar 2:</p>
+<table>
+<thead>
+<tr>
+<th>classe</th>
+<th>exemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alegria</td>
+<td>19.284</td>
+</tr>
+<tr>
+<td>neutro</td>
+<td>13.603</td>
+</tr>
+<tr>
+<td>raiva</td>
+<td>5.155</td>
+</tr>
+<tr>
+<td>surpresa</td>
+<td>4.339</td>
+</tr>
+<tr>
+<td>tristeza</td>
+<td>2.601</td>
+</tr>
+<tr>
+<td>medo</td>
+<td>588</td>
+</tr>
+<tr>
+<td><strong>nojo</strong></td>
+<td><strong>444</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Sao <strong>43:1</strong> entre a maior e a menor. Os notebooks 01 e 02 balanceiam por subamostragem, mas aqui isso seria destrutivo: cortar tudo ao tamanho de <code>nojo</code> deixaria <strong>3.108 exemplos</strong> para sete classes, jogando fora 93% do corpus.</p>
+<p><strong>Escolha: pesos de classe na perda</strong>, pela formula <code>n / (k * n_c)</code> — a mesma do <code>class_weight='balanced'</code> do scikit-learn. Os 46 mil exemplos ficam. Por isso a metrica de selecao do melhor checkpoint e o <strong>F1-macro, nunca a acuracia</strong>: com 43:1, um modelo que chutasse <code>alegria</code> sempre marcaria 42% sem ter aprendido nada.</p>
+<h3 id="o-teto-do-desprezo-a-declarar-no-relatorio">O teto do desprezo — a declarar no relatorio<a class="headerlink" href="#o-teto-do-desprezo-a-declarar-no-relatorio" title="Permanent link">&para;</a></h3>
+<p><code>nojo</code> e a classe mais rara do corpus, e o <strong>desprezo e derivado de raiva x nojo</strong>. A qualidade do desprezo fica limitada de cima pela qualidade da pior classe do modelo: se o F1 de <code>nojo</code> sair baixo, o desprezo herda isso. O notebook imprime esse teto explicitamente e grava o F1 por classe em <code>metricas_emocao.json</code>, para o numero aparecer no relatorio em vez de ser descoberto pela banca.</p>
+<p><strong>Limitacao a declarar:</strong> a traducao foi feita por maquina (Google Tradutor), sem revisao humana. Por isso a avaliacao reporta tambem o <strong>XED-pt</strong> (7.220 linhas, CC-BY, Plutchik 8 + neutro) como conjunto de teste independente, que nao passou por traducao automatica. O mapeamento Plutchik -&gt; Ekman descarta <em>anticipation</em> e <em>trust</em>; o resto casa 1:1.</p>
+<p>Duas ressalvas sobre o XED-pt: ele e <strong>portugues europeu</strong> ("pa", "artola"), enquanto o treino e PT-BR — diferenca de variedade, nao so de dominio; e o numero dele vai sair <strong>mais baixo</strong> que o interno, o que e esperado e e justamente o ponto, porque e ele que responde "mas nao e so traducao automatica?".</p>
+<h3 id="por-que-o-desprezo-nao-e-treinado">Por que o desprezo NAO e treinado<a class="headerlink" href="#por-que-o-desprezo-nao-e-treinado" title="Permanent link">&para;</a></h3>
+<p>A setima emocao e o <strong>desprezo</strong>, e nenhum corpus rotulado em portugues o anota. Havia um corpus multilingue sintetico com <code>contempt</code> entre os rotulos, e ele foi <strong>recusado de proposito</strong>: treinar seis classes com dado humano e so o desprezo com dado de outra procedencia ensinaria o modelo a reconhecer o <em>estilo do texto sintetico</em> em vez do desprezo. E o mesmo vazamento da latencia disjunta, com outra roupa.</p>
+<p>O desprezo e derivado da <strong>diade primaria raiva + nojo</strong>, que e como Plutchik (1980) o define — referencia citavel, nao rotulo inventado. A composicao usa media <strong>geometrica</strong>, nao aritmetica: desprezo exige as duas emocoes juntas, e a aritmetica devolveria 0,5 para raiva pura sem nojo nenhum, o que e raiva e nao desprezo.</p>
+<h2 id="notebook-04-classificador-de-ironia">Notebook 04 — classificador de ironia<a class="headerlink" href="#notebook-04-classificador-de-ironia" title="Permanent link">&para;</a></h2>
+<p>Classificacao binaria: 0 nao-ironico, 1 ironico.</p>
+<p><strong>Corpus:</strong> IDPT 2021, a tarefa de <em>Irony Detection in Portuguese</em> do IberLEF — 15,2k tweets e 18,4k noticias anotados.</p>
+<h3 id="o-corpus-nao-tem-download-aberto">O corpus NAO tem download aberto<a class="headerlink" href="#o-corpus-nao-tem-download-aberto" title="Permanent link">&para;</a></h3>
+<p>Diferente dos outros notebooks, o 04 <strong>nao baixa o corpus sozinho</strong>: o IDPT 2021 nao esta publicado para download livre — nao ha copia no GitHub nem no Hugging Face, e a pagina da tarefa nao expoe link direto. E preciso <strong>solicitar aos organizadores</strong> em <a href="https://sites.google.com/inf.ufpel.edu.br/idpt2021/">https://sites.google.com/inf.ufpel.edu.br/idpt2021/</a>.</p>
+<p>O notebook aceita <strong>tres origens</strong> para o corpus, escolhidas na variavel <code>ORIGEM</code> da celula 3. Todas alimentam a mesma pasta e a mesma deteccao de esquema, entao trocar de fonte nao muda o resto do notebook:</p>
+<table>
+<thead>
+<tr>
+<th><code>ORIGEM</code></th>
+<th>Quando usar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sintetico</code> (<strong>padrao</strong>)</td>
+<td>gera o corpus com <code>fraus.ingest.gerador_ironia</code> — nao depende de liberacao de ninguem</td>
+</tr>
+<tr>
+<td><code>drive</code></td>
+<td>os arquivos ja estao em <code>DIR_CORPUS</code> — foi assim que o IDPT entrou, se liberado</td>
+</tr>
+<tr>
+<td><code>kaggle</code></td>
+<td>baixa da conta Kaggle; exige <code>KAGGLE_USERNAME</code>/<code>KAGGLE_KEY</code> nos Secrets do Colab</td>
+</tr>
+<tr>
+<td><code>upload</code></td>
+<td>seletor de arquivos do navegador, para corpus que chegou por e-mail</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alternativas-ao-idpt-levantamento-de-14082026">Alternativas ao IDPT — levantamento de 14/08/2026<a class="headerlink" href="#alternativas-ao-idpt-levantamento-de-14082026" title="Permanent link">&para;</a></h3>
+<p>Registrado para ninguem repetir a busca. O que <strong>nao serve</strong>, e por que:</p>
+<table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Veredito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arbml/multilingual_irony</code> (HF)</td>
+<td>so <code>tweet_id</code> + <code>label</code>, <strong>sem texto</strong>; reidratar exige API paga do Twitter</td>
+</tr>
+<tr>
+<td><code>ramondomiingos/ptbr-irony-idioms-regionalism</code> (HF)</td>
+<td>&lt; 1.000 linhas, e e <em>benchmark de LLM</em> com gabarito em prosa — nao e corpus de classificacao</td>
+</tr>
+<tr>
+<td><code>rafaelanchieta/PiLN</code> (GitHub)</td>
+<td>sao os <strong>modelos</strong> treinados do IDPT, nao o corpus; embeddings dependem de servidor antigo do NILC</td>
+</tr>
+<tr>
+<td>IroSvA / SemEval-2018 traduzidos</td>
+<td><strong>desaconselhado</strong>: traducao automatica reintroduz o vazamento de procedencia que ja custou o primeiro fusor</td>
+</tr>
+</tbody>
+</table>
+<p>O candidato mais citado e o corpus de <strong>Goncalves et al., BraSNAM 2015</strong> ("Bazinga! Caracterizando e Detectando Sarcasmo e Ironia no Twitter", UFMG), que circula no Kaggle. Lendo o artigo: sao ~2.628 tweets por classe coletados pelas hashtags <strong><code>#sarcasm</code> e <code>#irony</code></strong> e caracterizados com LIWC — ou seja, e um trabalho brasileiro sobre o Twitter <strong>anglofono</strong>. Corpus em ingles. Usa-lo aqui seria o vazamento de procedencia com selo academico.</p>
+<p>Verificado tambem e descartado: <code>OpenNeuro ds004533</code> ("Ironia VEV") e <strong>neuroimagem</strong> — ressonancia de 40 sujeitos ouvindo frases ironicas, sem nenhuma frase rotulada para treino.</p>
+<h3 id="onde-existe-corpus-pt-br-de-ironia-e-como-pedir">Onde existe corpus PT-BR de ironia (e como pedir)<a class="headerlink" href="#onde-existe-corpus-pt-br-de-ironia-e-como-pedir" title="Permanent link">&para;</a></h3>
+<p>Dois, os dois <strong>sem download publico</strong>:</p>
+<ol>
+<li><strong>Vieira e Silva, A. (2025)</strong> — <em>Deteccao automatica de ironia por meio de representacoes contextuais</em>, tese de doutorado em Linguistica, USP, orientacao de Marcos Lopes. Produziu um corpus de ironia em portugues com conversas da rede X: <strong>1.186 exemplos</strong> finais (de 1.200), anotados por <strong>tres voluntarios humanos</strong>, com o contexto da conversa. Achado relevante para o relatorio: os anotadores precisaram do <strong>contexto de producao em ~30% dos casos</strong> — evidencia direta de que ironia em mensagem isolada tem teto baixo, e ela vale citada mesmo sem o corpus em maos.</li>
+<li><strong>Projeto IDPT / UFPel</strong> — <a href="https://institucional.ufpel.edu.br/projetos/id/u3345">https://institucional.ufpel.edu.br/projetos/id/u3345</a>, coordenacao de <strong>Larissa Astrogildo de Freitas</strong>. E o grupo por tras do IDPT 2021. Enderece o pedido a coordenacao.</li>
+</ol>
+<p><strong>Tamanho importa aqui:</strong> 1.186 exemplos anotados a mao nao treinam um BERT do zero, mas sao excelentes como <strong>conjunto de teste independente</strong> — exatamente o papel que o XED-pt cumpre no notebook 03. E a arquitetura de honestidade que o projeto ja usa: treinar no que ha em volume, medir no que ha em qualidade.</p>
+<h3 id="o-padrao-corpus-sintetico">O padrao: corpus sintetico<a class="headerlink" href="#o-padrao-corpus-sintetico" title="Permanent link">&para;</a></h3>
+<p>Enquanto nenhum dos dois chega, o notebook gera o proprio corpus com <code>fraus.ingest.gerador_ironia</code>. E o mesmo impasse do sinal de tempo e a mesma saida ja aceita: o fusor treina em conversas sinteticas porque nenhum corpus de review tem timestamps.</p>
+<p>O gerador foi escrito <strong>contra</strong> o vazamento que matou o primeiro fusor. A armadilha obvia seria "ironico = elogio + fato ruim", que ensinaria o modelo a procurar fato ruim em vez da incongruencia. Tres cruzamentos impedem isso, cada um travado por teste em <code>tests/test_gerador_ironia.py</code>:</p>
+<ul>
+<li>os mesmos <strong>fatos ruins</strong> aparecem nas reclamacoes diretas (nao-ironicas);</li>
+<li>as mesmas <strong>palavras elogiosas</strong> aparecem em elogios sinceros e em reclamacoes que comecam agradecendo;</li>
+<li><strong>numeros e unidades de tempo</strong> aparecem nas duas classes;</li>
+<li>ha uma familia de ironia <strong>por atenuacao</strong>, sem palavra elogiosa nenhuma, para que "tem elogio" nao seja condicao necessaria.</li>
+</ul>
+<p><strong>A metrica interna sera otimista por construcao</strong> — ela mede o quanto o modelo aprendeu estes padroes, nao o quanto le ironia humana. Isso precisa estar no relatorio.</p>
+<p>Por isso o <code>metricas_ironia.json</code> grava a <strong>procedencia derivada de <code>ORIGEM</code></strong>, nunca <code>IDPT 2021</code> fixo: artefato que mente sobre a propria fonte e pior que artefato ausente.</p>
+<p>Como o notebook <strong>nunca viu os arquivos</strong>, a celula de carga tem esquema <strong>configuravel</strong>: ela le todo <code>.csv</code>/<code>.tsv</code> da pasta, imprime as colunas encontradas, tenta achar a de texto e a de rotulo pelos nomes mais provaveis e <strong>para nomeando as colunas disponiveis</strong> se nao achar. Rotulo fora do mapeamento tambem para com erro, em vez de virar 0 silenciosamente.</p>
+<p><strong>Se o corpus nao for liberado a tempo</strong>, a saida honesta e declarar a ironia como trabalho futuro no relatorio. Trocar por um corpus de sarcasmo em ingles traduzido repetiria, com outro nome, o vazamento de procedencia que ja custou o primeiro fusor.</p>
+<p>A metrica de selecao do melhor checkpoint e o <strong>F1 da classe ironica isolada</strong>, nao a macro nem a acuracia: e essa classe que o sinal consome, e corpus de ironia costuma ser desequilibrado o bastante para um modelo que responde "nao e ironia" sempre marcar boa acuracia. O treino tambem usa pesos de classe, pelo mesmo motivo.</p>
+<p><strong>Por que uma cabeca separada</strong> e nao mais uma classe do sinal de texto: ironia nao e um sentimento, e uma relacao entre o que o texto DIZ e o que ele SIGNIFICA. "Que atendimento maravilhoso, so esperei 3 horas" e lexicamente positivo e pragmaticamente negativo ao mesmo tempo. Como quarta classe de satisfacao, o modelo seria obrigado a escolher uma das duas leituras — e a informacao de que ha conflito, que e justamente o sinal de ironia, se perderia.</p>
+<p><strong>Limitacao a declarar:</strong> o IDPT e anotado em tweets e comentarios de noticia, nao em atendimento de chatbot. A transferencia de dominio nao esta verificada — ironia em reclamacao de suporte pode ter forma diferente de ironia em comentario de politica.</p>
+<h2 id="sinal-lexico-sentilex-pt02">Sinal lexico — SentiLex-PT02<a class="headerlink" href="#sinal-lexico-sentilex-pt02" title="Permanent link">&para;</a></h2>
+<p>Nao tem notebook: e recurso pronto, nao treinado.</p>
+<p><strong>Fonte:</strong> SentiLex-PT02 — Silva, Carvalho e Sarmento, <em>"Building a Sentiment Lexicon for Social Judgement Mining"</em> (PROPOR 2012), CC-BY. 82.347 formas flexionadas na origem, <strong>79.189</strong> depois da conversao.</p>
+<p><strong>Preparo:</strong> <code>scripts/preparar_sentilex.py</code> converte o arquivo original em <code>fraus/dados/sentilex_pt02.csv</code> e imprime o relatorio do que mexeu — 315 entradas cuja polaridade veio do complemento (<code>POL:N1</code>), 9 com sinal normalizado (marcadas <code>REV:POL</code> na fonte, com o contador vazado no campo de polaridade) e 2.032 formas homografas com polaridades conflitantes, que foram <strong>zeradas</strong> em vez de decididas pela ordem do arquivo.</p>
+<p><strong>Por que um lexicon se o BERTimbau ja le o texto:</strong> porque ele nao foi treinado nos mesmos dados nem carrega os mesmos vieses. Dois sinais de procedencia independente que concordam sustentam a nota melhor que um sozinho — e a <strong>discordancia</strong> entre eles e o formato tipico da ironia.</p>
+<p><strong>Negacao por escopo:</strong> "nao foi otimo" inverte a polaridade de "otimo", com alcance de tres tokens, e o escopo <strong>morre na pontuacao forte</strong> — em "nao chegou. otimo atendimento" o <em>otimo</em> continua positivo.</p>
+<p><strong>Acento:</strong> o SentiLex e acentuado e cliente de chat nem sempre. Ha indice de reserva sem acento; das 74.443 chaves resultantes, apenas <strong>24</strong> colidem (<code>incomodo</code>/<code>incomodo</code>, <code>ingenua</code>/<code>ingenua</code>) e essas ficam zeradas — chute de polaridade errado e pior que termo ausente.</p>
+<p><strong>Limitacao do recurso, a declarar:</strong> o SentiLex e lexicon de <strong>julgamento social</strong> — anota polaridade dirigida a entidades humanas. E forte no adjetivo que julga (<code>pessimo</code>, <code>otimo</code>, <code>incompetente</code>) e <strong>neutro em verbo de afeto do proprio falante</strong>: <code>gostar</code>, <code>adorar</code> e <code>odiar</code> valem 0 nele. Por isso o sinal lexico complementa o BERTimbau e nao o substitui — quem le "adorei o produto" e o transformer.</p>
+<h2 id="sinal-de-estilo">Sinal de estilo<a class="headerlink" href="#sinal-de-estilo" title="Permanent link">&para;</a></h2>
+<p>Nao tem notebook: e <strong>deterministico</strong>, nao treinado — <code>fraus/sinais/estilo.py</code> mede a FORMA da escrita (caixa alta, pontuacao enfatica, alongamento, palavrao com gradacao, censura), nao o conteudo.</p>
+<p><strong>Por que deterministico e nao um classificador.</strong> O BERTimbau nao aprende enfase porque o B2W-Reviews01 — resenha moderada de e-commerce — praticamente nao contem gritaria nem xingamento. Modelo nao aprende fenomeno que o corpus de treino nao tem, e mais epocas sobre o mesmo texto so reproduziriam o mesmo artefato. Regra escrita a mao cobre exatamente o que falta: forma, nao semantica.</p>
+<p><strong>Fonte do lexicon de palavrao:</strong> <code>fraus/dados/palavroes_ptbr.csv</code>, curadoria propria, ~172 termos, colunas <code>termo,intensidade,alvo</code>. A intensidade e graduada (<code>leve</code>/<code>medio</code>/<code>pesado</code>, mapeada para 0,33/0,66/1,0) porque "que droga" e "vai tomar no cu" nao sao o mesmo evento, e o alvo (<code>pessoa</code>/<code>desabafo</code>) existe porque xingar o PRODUTO e reclamacao enquanto xingar o ATENDENTE e ruptura da conversa. Nenhuma dependencia externa entrou para isso, e o SentiLex-PT02 tambem nao serve — ele anota polaridade de julgamento, nao gradacao de baixo calao nem alvo do xingamento.</p>
+<p><strong>Ordem censura-antes-de-normalizacao.</strong> <code>tem_censura</code> roda sobre a palavra CRUA, com a mascara (<code>*@#$%&amp;</code>) ainda intacta, e so depois <code>normalizar</code> reverte homoglifo e apaga acento. Inverter a ordem apagaria a marca de censura antes de ela ser vista — "p*rra" perderia o asterisco e viraria uma palavra qualquer, nunca reconhecida como autocensura.</p>
+<p><strong>Casamento por curinga.</strong> <code>casar_censurado</code> trata cada simbolo de mascara como uma letra qualquer (regex com <code>.</code> no lugar do simbolo), nao como uma letra fixa: <code>p*rra</code> casa <code>porra</code>, <code>c*ralho</code> casa <code>caralho</code>. Mapear o simbolo para uma vogal fixa acertaria um caso e erraria o outro em silencio. Quando mais de um termo do lexicon casa o mesmo padrao com curinga, o desempate e pela MAIOR intensidade — deterministico, e nao pela ordem em que a linha aparece no CSV, o que deixaria o resultado dependente de onde alguem inseriu a linha.</p>
+<p><strong>A excecao do <code>kkkk</code>.</strong> Alongamento de caractere (<code>MINIMO_ALONGAMENTO = 3</code> repeticoes seguidas) e tratado como enfase, exceto para as letras de riso (<code>k</code>, <code>h</code>): "kkkk" e o marcador POSITIVO mais comum do chat brasileiro, e contar risada junto de "naooooo" inverteria o sentido da feature em boa parte das conversas reais.</p>
+<p><strong>Limitacao a declarar:</strong> o lexicon de palavrao e curadoria propria, nao recurso academico publicado. Diferente do SentiLex-PT02 (Silva, Carvalho e Sarmento, PROPOR 2012) e do Emoji Sentiment Ranking usados pelos outros sinais, <code>palavroes_ptbr.csv</code> nao tem paper citavel nem revisao por pares — a cobertura e a gradacao vieram de julgamento proprio, e isso precisa aparecer no relatorio como o que e.</p>
+<hr />
+<h2 id="notebook-05-calibracao-e-por-que-ele-nao-retreina-nada">Notebook 05 — calibração, e por que ele não retreina nada<a class="headerlink" href="#notebook-05-calibracao-e-por-que-ele-nao-retreina-nada" title="Permanent link">&para;</a></h2>
+<p>Acrescentado em 10/09/2026. Ele ajusta <strong>um escalar por cabeça</strong> (a
+temperatura) sobre os checkpoints que já existem, e mede o quanto isso aproxima
+a confiança declarada da frequência empírica — o <strong>ECE</strong>, mais o diagrama de
+confiabilidade.</p>
+<p><strong>Temperature scaling não muda a decisão do modelo.</strong> Dividir todos os logits
+pelo mesmo <code>T &gt; 0</code> preserva a ordem, então acurácia e F1 ficam idênticos. É a
+única forma de calibração que não pode piorar o classificador — e o notebook
+tem uma asserção que falha se o <code>argmax</code> mudar, porque isso seria defeito de
+código, não propriedade do método.</p>
+<p>Ele produz <code>modelos/calibracao.json</code>. <strong>Nada no runtime consome esse arquivo
+ainda, e isso é deliberado:</strong> aplicar a temperatura muda o score de toda
+conversa do banco, e a régua deste projeto para trocar o que gera número é
+medir o efeito em <code>score</code>/<code>nota</code>/<code>categoria</code> antes de promover — a mesma
+disciplina que recusou a quantização int8 (ver <code>docs/encolhimento.md</code>).</p>
+<p><strong>A ironia é o caso a não confundir.</strong> Calibrar vai melhorar o ECE dela e ela
+vai continuar errando 6 em 10 falas sinceras de atendimento. Temperatura ajusta
+<em>o quanto</em> o modelo se diz confiante, não <em>sobre o que</em> ele está confiante.
+Apresentar a melhora do ECE como conserto do domínio seria falso.</p>
+<h2 id="notebook-02-a-secao-10-e-uma-pendencia-nao-uma-etapa">Notebook 02 — a seção 10 é uma pendência, não uma etapa<a class="headerlink" href="#notebook-02-a-secao-10-e-uma-pendencia-nao-uma-etapa" title="Permanent link">&para;</a></h2>
+<p>A saturação das features de tempo está descrita lá com a medição, o conserto
+(<code>winsorizar no p99</code> + <code>log1p</code> antes do scaler) e — o que mais importa — <strong>o
+acoplamento</strong>: a transformação precisa existir no notebook <em>e</em> no runtime, ou o
+score sai errado em silêncio. Um <code>fusor.joblib</code> treinado sem a compressão contra
+um runtime que comprime continua tendo <code>n_features_in_ = 39</code>, então
+<code>Fusor.carregar</code> <strong>não pega</strong> essa incompatibilidade.</p>
+<h3 id="as-tres-saidas-medidas-em-15092026-decidido-so-log1p">As três saídas, medidas em 15/09/2026 — decidido: só <code>log1p</code><a class="headerlink" href="#as-tres-saidas-medidas-em-15092026-decidido-so-log1p" title="Permanent link">&para;</a></h3>
+<p>O instrumento (hoje <code>scripts/retreinar_fusor_local.py</code>; a versão de medição
+está no commit <code>e719218</code>) reproduz este notebook localmente (mesmo
+B2W, mesmas sementes, mesmo <code>montar_features</code>, extração por ONNX) e <strong>confere a
+reprodução antes de medir</strong>: acurácia 0,9500 nos dois, score diferindo no
+máximo 0,0001 do <code>fusor.joblib</code> vigente. Nada foi promovido.</p>
+<p>A coluna de espera é a frase canônica (texto 0,858 satisfeito, todo o resto na
+média do treino), com score, nota e categoria:</p>
+<table>
+<thead>
+<tr>
+<th>variante</th>
+<th>acurácia</th>
+<th>F1</th>
+<th>categorias ≠ vigente (de 300)</th>
+<th>60 s</th>
+<th>300 s</th>
+<th>600 s</th>
+<th>1800 s</th>
+<th>3 h</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vigente</td>
+<td>0,9500</td>
+<td>0,9501</td>
+<td>—</td>
+<td>99,9 · 10 P</td>
+<td>98,1 · 10 P</td>
+<td>44,5 · 4 D</td>
+<td>0,0 · 0 D</td>
+<td>0,0 · 0 D</td>
+</tr>
+<tr>
+<td>só <code>log1p</code></td>
+<td>0,9467</td>
+<td>0,9469</td>
+<td>6</td>
+<td>99,7 · 10 P</td>
+<td>96,6 · 10 P</td>
+<td>90,1 · 9 P</td>
+<td>59,5 · 6 D</td>
+<td>7,0 · 1 D</td>
+</tr>
+<tr>
+<td>só teto p99</td>
+<td>0,9433</td>
+<td>0,9434</td>
+<td>1</td>
+<td>99,9 · 10 P</td>
+<td>96,1 · 10 P</td>
+<td>18,4 · 2 D</td>
+<td>3,2 · 0 D</td>
+<td>3,2 · 0 D</td>
+</tr>
+<tr>
+<td>p99 + <code>log1p</code></td>
+<td>0,9467</td>
+<td>0,9469</td>
+<td>5</td>
+<td>99,7 · 10 P</td>
+<td>96,6 · 10 P</td>
+<td>90,7 · 9 P</td>
+<td>87,9 · 9 P</td>
+<td>87,9 · 9 P</td>
+</tr>
+</tbody>
+</table>
+<p>O que a tabela muda na recomendação escrita acima:</p>
+<ul>
+<li><strong>p99 + <code>log1p</code> conserta o relógio mandando sozinho apagando a espera longa.</strong>
+  O teto do treino é ~7 min (<code>latencia_mediana_s</code> p99 = 424 s), então três horas
+  pesam o mesmo que dez minutos: a frase canônica, que é <strong>irônica</strong>, sai
+  promotor. Consertar um defeito criando o oposto não é conserto.</li>
+<li><strong>Só teto</strong> não resolve nada: o penhasco só muda de lugar (10 min → nota 2).</li>
+<li><strong>Só <code>log1p</code></strong> é a única que mantém a espera <strong>monótona e sem penhasco</strong>: 10 min
+  ainda promotor, 30 min detrator 6, 3 h detrator 1 — o texto modula, o relógio
+  pesa cada vez mais devagar, e nenhum dos dois apaga o outro. Custa 0,33 ponto
+  de acurácia no teste sintético.</li>
+<li><strong>Ablação da invariante 10:</strong> só as quatro features de tempo acertam 0,513
+  (cru) e 0,527 (p99+log1p), contra 0,333 do acaso. O relógio carrega sinal do
+  rótulo no simulador por construção, e nenhuma das variantes muda isso.</li>
+</ul>
+<h3 id="promovido-em-15092026">Promovido em 15/09/2026<a class="headerlink" href="#promovido-em-15092026" title="Permanent link">&para;</a></h3>
+<p>As três partes indivisíveis, feitas juntas:</p>
+<ol>
+<li><strong>Função única.</strong> <code>log1p</code> mora em <code>fraus.fusor.vetorizar</code>, sobre
+   <code>FEATURES_EM_LOG</code>. As chaves continuam em segundos (atribuição, tela e deriva
+   leem segundos); só o vetor que o scaler recebe é comprimido. Treino,
+   pontuação, contribuição e deriva passam pela mesma função.</li>
+<li><strong>Artefato regerado</strong> por <code>scripts/retreinar_fusor_local.py --promover</code>:
+   acurácia 0,9467, F1-macro 0,9469. O anterior ficou em
+   <code>modelos/fusor.joblib.bak-segundos</code>. O artefato agora carrega
+   <code>fraus_escala_do_tempo = "log1p"</code>, e <code>Fusor.carregar</code> <strong>recusa</strong> artefato sem
+   essa marca: é o caso que <code>n_features_in_</code> não pega.</li>
+<li><strong>Medição de categoria.</strong> No teste do B2W, 27 notas e 6 de 300 categorias
+   mudam. Nas 180 conversas do simulador, 23 notas e 7 categorias, com a
+   distribuição indo de 60/63/57 para 60/60/60 (detrator/neutro/promotor).</li>
+</ol>
+<p><code>scripts/medir_dominio_do_tempo.py</code> contra o artefato novo: o relógio empata com
+o texto em <strong>613 s</strong> (antes 411 s), e com 3 h pesa <strong>2,1×</strong> o texto (antes 20×).
+Uma conversa sincera ("resolveu, muito obrigado") com 30 min de espera saía
+0,30; agora sai 55,3, ainda detrator. Com 3 h, 21,95 em vez de 0,00.</p>
+<p><strong>Quem tem o artefato em outro lugar precisa regerar</strong> (a VM, o Drive): um
+<code>fusor.joblib</code> de antes de 15/09 não sobe mais, e isso é o comportamento
+correto da invariante 7.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

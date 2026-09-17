@@ -1,0 +1,1219 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../design/">
+      
+      
+        <link rel="next" href="../encolhimento/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Conformidade (AI Act) - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#conformidade-regulatoria-o-fraus-e-o-eu-ai-act" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Conformidade (AI Act)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-por-que-este-documento-existe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Por que este documento existe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-escopo-do-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Escopo do sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-as-tres-obrigacoes-que-ja-valem-e-a-que-vem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. As três obrigações que já valem, e a que vem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. As três obrigações que já valem, e a que vem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-transparencia-art-503-desde-02082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Transparência — Art. 50(3), desde 02/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-proibicao-no-local-de-trabalho-desde-02022025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Proibição no local de trabalho — desde 02/02/2025
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regra-o-fraus-nao-pontua-atendentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regra: o Fraus não pontua atendentes.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-alto-risco-anexo-iii-aplicacao-em-02122027" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Alto risco (Anexo III) — aplicação em 02/12/2027
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-limitacoes-que-importam-para-quem-le-um-numero-do-fraus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Limitações que importam para quem lê um número do Fraus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fontes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Fontes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-por-que-este-documento-existe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Por que este documento existe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-escopo-do-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Escopo do sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-as-tres-obrigacoes-que-ja-valem-e-a-que-vem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. As três obrigações que já valem, e a que vem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. As três obrigações que já valem, e a que vem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-transparencia-art-503-desde-02082026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Transparência — Art. 50(3), desde 02/08/2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-proibicao-no-local-de-trabalho-desde-02022025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Proibição no local de trabalho — desde 02/02/2025
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regra-o-fraus-nao-pontua-atendentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regra: o Fraus não pontua atendentes.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-alto-risco-anexo-iii-aplicacao-em-02122027" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Alto risco (Anexo III) — aplicação em 02/12/2027
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-limitacoes-que-importam-para-quem-le-um-numero-do-fraus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Limitações que importam para quem lê um número do Fraus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fontes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Fontes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="conformidade-regulatoria-o-fraus-e-o-eu-ai-act">Conformidade regulatória — o Fraus e o EU AI Act<a class="headerlink" href="#conformidade-regulatoria-o-fraus-e-o-eu-ai-act" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Escrito em 10/09/2026. Este documento existe porque o Fraus <strong>classifica
+emoção</strong>, e isso tem nome no regulamento europeu. Ele descreve o escopo, o
+que o sistema infere, o que ele nunca decide sozinho e — a parte que virou
+regra de código — <strong>o que ele está proibido de fazer</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="1-por-que-este-documento-existe">1. Por que este documento existe<a class="headerlink" href="#1-por-que-este-documento-existe" title="Permanent link">&para;</a></h2>
+<p><code>fraus/sinais/emocao.py</code> classifica <strong>sete emoções</strong> (as de Ekman) e deriva
+<strong>desprezo</strong> da díade raiva + nojo. Pela letra do Regulamento (UE) 2024/1689 —
+o <em>AI Act</em> — isso é um <strong>sistema de reconhecimento de emoções</strong>: um sistema de
+IA destinado a identificar ou inferir emoções de pessoas naturais a partir de
+dados biométricos ou comportamentais.</p>
+<p>Não importa que o Fraus rode local, sem LLM e sem câmera. O que classifica o
+sistema é <strong>o que ele infere sobre pessoas</strong>, não o tamanho do modelo.</p>
+<h2 id="2-escopo-do-sistema">2. Escopo do sistema<a class="headerlink" href="#2-escopo-do-sistema" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>O que analisa</strong></td>
+<td>transcrições de atendimento por chatbot, já encerradas</td>
+</tr>
+<tr>
+<td><strong>Sobre quem infere</strong></td>
+<td>o <strong>cliente</strong> — e apenas o cliente</td>
+</tr>
+<tr>
+<td><strong>O que infere</strong></td>
+<td>satisfação (score 0–100 → nota 0–10 → categoria NPS), emoção por mensagem, ironia por mensagem, indicadores agregados</td>
+</tr>
+<tr>
+<td><strong>Quando roda</strong></td>
+<td>em lote, sobre conversa terminada. Nunca em tempo real durante o atendimento</td>
+</tr>
+<tr>
+<td><strong>O que decide sozinho</strong></td>
+<td><strong>nada</strong></td>
+</tr>
+<tr>
+<td><strong>Base do modelo</strong></td>
+<td>três BERTimbau fine-tunados + regressão logística, inferência local em CPU</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-as-tres-obrigacoes-que-ja-valem-e-a-que-vem">3. As três obrigações que já valem, e a que vem<a class="headerlink" href="#3-as-tres-obrigacoes-que-ja-valem-e-a-que-vem" title="Permanent link">&para;</a></h2>
+<h3 id="31-transparencia-art-503-desde-02082026">3.1 Transparência — Art. 50(3), desde 02/08/2026<a class="headerlink" href="#31-transparencia-art-503-desde-02082026" title="Permanent link">&para;</a></h3>
+<p>O regulamento exige que o <em>deployer</em> de um sistema de reconhecimento de emoções
+<strong>informe as pessoas naturais expostas</strong> a ele.</p>
+<p><strong>Como o Fraus cumpre:</strong> toda tela onde a leitura de emoção aparece
+(<code>components/CabecasDeLeitura.tsx</code>, compartilhado pelo simulador e pela análise)
+carrega a etiqueta de exposição, em linguagem de gente, junto da nota
+metodológica que já qualificava o NPS como inferido. A obrigação de <em>informar o
+cliente final</em> é de quem opera o chatbot — o Fraus fornece o texto e diz que ela
+existe; ele não fala com o cliente.</p>
+<h3 id="32-proibicao-no-local-de-trabalho-desde-02022025">3.2 Proibição no local de trabalho — desde 02/02/2025<a class="headerlink" href="#32-proibicao-no-local-de-trabalho-desde-02022025" title="Permanent link">&para;</a></h3>
+<p>Reconhecimento de emoção <strong>no ambiente de trabalho é proibido</strong>, sem exceção
+comercial. Isso não é obrigação a cumprir: é uma fronteira que o produto não
+pode cruzar.</p>
+<blockquote>
+<h3 id="regra-o-fraus-nao-pontua-atendentes">Regra: <strong>o Fraus não pontua atendentes.</strong><a class="headerlink" href="#regra-o-fraus-nao-pontua-atendentes" title="Permanent link">&para;</a></h3>
+<p>O atendente humano aparece no transcript — a escalação é parte do dado — e o
+classificador de texto <strong>recusa pontuar mensagem que não seja do cliente</strong>
+(<code>sinais/texto.py</code>; <code>qtd_humano</code> e <code>latencia_mediana_humano_s</code> são contagem e
+relógio, nunca julgamento). "Score de performance por atendente" é a sugestão
+mais recorrente em analytics de atendimento, e no Fraus ela está <strong>fechada
+por desenho</strong>, não esquecida no backlog.</p>
+<p>Vale com o mesmo peso das invariantes do <code>CLAUDE.md</code>: implementar isso não é
+feature nova, é violação.</p>
+</blockquote>
+<h3 id="33-alto-risco-anexo-iii-aplicacao-em-02122027">3.3 Alto risco (Anexo III) — aplicação em 02/12/2027<a class="headerlink" href="#33-alto-risco-anexo-iii-aplicacao-em-02122027" title="Permanent link">&para;</a></h3>
+<p>Reconhecimento de emoção voltado ao <strong>cliente</strong> é permitido, mas reclassificado
+como alto risco, com obrigações que entram em 02/12/2027: avaliação de
+conformidade, supervisão humana, logging, avaliação de impacto em direitos
+fundamentais e monitoramento pós-mercado.</p>
+<p>Onde o Fraus já está, hoje, em relação a cada uma:</p>
+<table>
+<thead>
+<tr>
+<th>Obrigação</th>
+<th>Estado no Fraus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Supervisão humana</strong></td>
+<td>o sistema não decide nada. O analista curou o léxico (<code>sinais/curadoria.py</code>), move as faixas de NPS (<code>PUT /configuracoes</code>) e lê os transcritos. Nenhuma saída aciona ação automática sobre ninguém</td>
+</tr>
+<tr>
+<td><strong>Logging</strong></td>
+<td><code>entregas_webhook</code> registra toda entrega e toda recusa, com veredito e motivo. É o embrião da trilha de auditoria</td>
+</tr>
+<tr>
+<td><strong>Transparência</strong></td>
+<td>etiqueta de estimativa em todo número inferido; limitações declaradas em tela e em <code>docs/treinamento.md</code></td>
+</tr>
+<tr>
+<td><strong>Monitoramento pós-mercado</strong></td>
+<td><code>GET /saude/deriva</code> reporta quais features estão fora da faixa de distribuição em que o modelo foi treinado</td>
+</tr>
+<tr>
+<td><strong>Avaliação de conformidade</strong></td>
+<td>não feita. É trabalho de quem for colocar isto em produção comercial, e está fora do escopo do TCC</td>
+</tr>
+<tr>
+<td><strong>Avaliação de impacto em direitos fundamentais</strong></td>
+<td>não feita, pelo mesmo motivo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Isto não é uma declaração de conformidade.</strong> É um mapeamento honesto do que já
+está de pé e do que não está.</p>
+<h2 id="4-limitacoes-que-importam-para-quem-le-um-numero-do-fraus">4. Limitações que importam para quem lê um número do Fraus<a class="headerlink" href="#4-limitacoes-que-importam-para-quem-le-um-numero-do-fraus" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>O NPS é inferido do texto, não perguntado.</strong> O intervalo de confiança que a
+  interface mostra cobre a <strong>incerteza amostral</strong> — não a incerteza do modelo.</li>
+<li><strong>A cabeça de ironia é pouco confiável</strong> e por isso <strong>não pontua</strong> desde
+  04/09/2026: no corpus de treino ela funciona como detector de sentimento
+  positivo. Continua sendo exibida, com a ressalva colada.</li>
+<li><strong>O sinal de tempo é treinado em dados sintéticos</strong>, calibrados por
+  literatura, porque nenhum corpus público em português tem timestamps de
+  diálogo. Fora da faixa de latência do treino, o relógio domina a nota — é
+  limitação medida e declarada, e <code>GET /saude/deriva</code> a torna visível.</li>
+<li><strong>Desprezo não é classe treinada</strong>; é derivado da díade raiva + nojo.</li>
+<li><strong>Ausência de dado nunca vira zero.</strong> Conversa sem fala do cliente sai "sem
+  sinal", em toda superfície.</li>
+</ul>
+<h2 id="5-fontes">5. Fontes<a class="headerlink" href="#5-fontes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://artificialintelligenceact.eu/">Regulamento (UE) 2024/1689 — AI Act</a></li>
+<li><a href="https://artificialintelligenceact.eu/transparency-rules-article-50/">Art. 50 — obrigações de transparência</a></li>
+<li><a href="https://www.hunton.com/privacy-and-cybersecurity-law-blog/european-commission-issues-eu-ai-act-transparency-guidelines">Diretrizes de transparência da Comissão Europeia</a></li>
+<li><a href="https://www.cooley.com/news/insight/2026/2026-08-03-eu-ai-act-transparency-obligations-take-effect-2-august-2026">Obrigações de transparência em vigor desde 02/08/2026 — Cooley</a></li>
+<li><a href="https://www.cxtoday.com/contact-center/customer-emotion-ai-august-2026-compliance-cliff/">Emotion AI de cliente vira alto risco — CX Today</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
