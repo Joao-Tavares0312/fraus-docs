@@ -1,0 +1,1944 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../integracao-tars/">
+      
+      
+        <link rel="next" href="../conformidade/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Design da interface - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#design-system-fraus-instrumento" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design da interface
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Colors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secondary-as-duas-vozes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secondary (as duas vozes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tertiary-categorias-familias-grafo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tertiary (categorias, famílias, grafo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutral
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typography
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Typography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-rules_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#named-rules_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elevation-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elevation &amp; Depth
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elevation &amp; Depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#named-rules_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shapes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#segmentoled-peca-assinatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SegmentoLED (peça-assinatura)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#telemetriatopo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TelemetriaTopo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navegacao-numerada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navegação numerada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#painel-hairline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Painel (hairline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#armadura-de-indicadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Armadura de indicadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cabeca-da-categoria-etiquetacategoria-slot-unico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cabeça da categoria (EtiquetaCategoria, slot único)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vitrine-vt-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vitrine (vt-*)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icone-de-acao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ícone de ação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estados-coreografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estados (coreografia)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easter-egg-da-mentira-libmentiratsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easter egg da mentira (lib/mentira.tsx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dos-and-donts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do's and Don'ts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do&#39;s and Don&#39;ts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Don't:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temas-e-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temas e gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adicoes-e-desvios-conscientes-desta-rodada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adições e desvios conscientes desta rodada
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Colors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secondary-as-duas-vozes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secondary (as duas vozes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tertiary-categorias-familias-grafo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tertiary (categorias, famílias, grafo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neutral
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typography
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Typography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-rules_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#named-rules_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elevation-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elevation &amp; Depth
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elevation &amp; Depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#named-rules_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Named Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shapes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#segmentoled-peca-assinatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SegmentoLED (peça-assinatura)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#telemetriatopo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TelemetriaTopo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navegacao-numerada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navegação numerada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#painel-hairline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Painel (hairline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#armadura-de-indicadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Armadura de indicadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cabeca-da-categoria-etiquetacategoria-slot-unico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cabeça da categoria (EtiquetaCategoria, slot único)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vitrine-vt-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vitrine (vt-*)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icone-de-acao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ícone de ação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estados-coreografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estados (coreografia)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easter-egg-da-mentira-libmentiratsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easter egg da mentira (lib/mentira.tsx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dos-and-donts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do's and Don'ts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do&#39;s and Don&#39;ts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Don't:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temas-e-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temas e gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adicoes-e-desvios-conscientes-desta-rodada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adições e desvios conscientes desta rodada
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<!-- GERADO POR scripts/reunir_docs.py A PARTIR DE dashboard/DESIGN.md -->
+<!-- Nao edite este arquivo: a edicao se perde no proximo build. -->
+
+<hr />
+<p>name: Fraus — Instrumento
+description: Painel de instrumento de laboratório sobre quase-preto neutro; todo número é um display de sete segmentos e a ausência de dado é um segmento apagado.
+colors:
+  background: "oklch(0.14 0.004 285)"
+  foreground: "oklch(0.96 0.003 285)"
+  card: "oklch(0.185 0.005 285)"
+  popover: "oklch(0.175 0.005 285)"
+  sidebar: "oklch(0.16 0.004 285)"
+  muted: "oklch(0.245 0.006 285)"
+  muted-foreground: "oklch(0.74 0.01 285)"
+  linha: "oklch(0.96 0.003 285 / 26%)"
+  compasso: "oklch(0.96 0.003 285 / 9%)"
+  border: "oklch(0.96 0.003 285 / 13%)"
+  primary: "oklch(0.83 0.095 84)"
+  primary-foreground: "oklch(0.15 0.02 84)"
+  dito: "oklch(0.78 0.14 72)"
+  dito-texto: "oklch(0.85 0.125 72)"
+  medido: "oklch(0.74 0.13 250)"
+  medido-texto: "oklch(0.82 0.105 250)"
+  detrator: "oklch(0.67 0.24 22)"
+  neutro: "oklch(0.78 0.15 90)"
+  promotor: "oklch(0.79 0.18 190)"
+  sem-sinal: "oklch(0.705 0.015 286.067)"
+  destructive: "oklch(0.79 0.121 22.216)"
+  success: "oklch(0.78 0.16 150)"
+  warning: "oklch(0.8 0.14 80)"
+  atelie-halo: "oklch(0.62 0.2 320)"
+typography:
+  display-vitrine:
+    fontFamily: "Bricolage Grotesque, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.6rem, min(8vw, 10.5vh), 6.5rem)"
+    fontWeight: 500
+    lineHeight: 0.95
+    letterSpacing: "-0.035em"
+  titulo-vitrine:
+    fontFamily: "Bricolage Grotesque, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.1rem, 4.6vw, 3.75rem)"
+    fontWeight: 500
+    lineHeight: 1.02
+    letterSpacing: "-0.028em"
+  titulo-instrumento:
+    fontFamily: "Martian Mono, ui-monospace, Cascadia Mono, monospace"
+    fontWeight: 500
+    letterSpacing: "-0.02em"
+  rotulo-instrumento:
+    fontFamily: "Martian Mono, ui-monospace, Cascadia Mono, monospace"
+    fontSize: "0.6875rem"
+    fontWeight: 400
+    lineHeight: 1.3
+    letterSpacing: "0.14em"
+  prosa:
+    fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    lineHeight: 1.7
+  dado:
+    fontFamily: "Martian Mono, ui-monospace, Cascadia Mono, monospace"
+    fontFeature: "tabular-nums"
+rounded:
+  none: "0"
+  pilula: "999px"
+  cabeca: "50%"
+spacing:
+  telemetria: "34px"
+  gutter-vitrine: "clamp(1rem, 4vw, 3rem)"
+  secao-vitrine: "clamp(4.5rem, 9vw, 8rem)"
+  pauta: "13px"
+components:
+  telemetria-topo:
+    backgroundColor: "{colors.background}"
+    textColor: "{colors.muted-foreground}"
+    typography: "{typography.rotulo-instrumento}"
+    height: "34px"
+  painel:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.none}"
+    padding: "16px 20px"
+  botao-primario-vitrine:
+    backgroundColor: "{colors.background}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.none}"
+    padding: "0 1.6rem"
+    height: "3rem"
+  botao-acessar-nav:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.primary-foreground}"
+    rounded: "{rounded.pilula}"
+    padding: "0.6rem 1rem"
+  segmento-led:
+    textColor: "{colors.medido}"</p>
+<hr />
+<h1 id="design-system-fraus-instrumento">Design System: Fraus — Instrumento<a class="headerlink" href="#design-system-fraus-instrumento" title="Permanent link">&para;</a></h1>
+<p>Registrado em 30/09/2026 a partir do que foi <strong>construído</strong> (<code>app/globals.css</code>, <code>app/vitrine.css</code>, <code>components/instrumento/**</code>, <code>components/lp/**</code>, <code>components/shell/**</code>), não do plano. Substitui por inteiro o mundo "Pauta / espaço profundo", que foi descartado; o que dele continua vivo está aqui, com o motivo. Contrato da rodada: <code>docs/superpowers/specs/2026-09-30-instrumento-design.md</code>. Verdade de produto: <code>PRODUCT.md</code>.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><strong>Creative North Star: "O Instrumento de Bancada"</strong></p>
+<p>Um painel de laboratório sobre quase-preto neutro. Todo número medido é um display de sete segmentos; o segmento <strong>apagado também é desenhado</strong>, então "sem sinal" é um medidor ligado que não leu nada, nunca um <code>0</code>. É a invariante 2 do CLAUDE.md virada objeto. Superfície é retângulo de hairline de 1px, raio zero, rótulo em mono caixa alta. Nada de cartão colorido, nada de cenário: o único cenário que sobra é o orbe da vitrine.</p>
+<p>A tese que atravessa a interface inteira não mudou: <strong>o dito fica acima da régua, o medido abaixo</strong>. Âmbar é o que o cliente articulou (fala, texto, emoji); azul é o que o sistema mediu (score, probabilidade, latência, tendência). O produto vende a distância entre os dois, então ela nunca pode ficar invisível. O LED é azul porque número é medido.</p>
+<p>Fusão aprovada pelo dono sobre mockups estáticos (seed 197a1d0c): <strong>Régua</strong> (telemetria, hairlines, mono, nav numerado, a régua dito/medido) + <strong>Segmento</strong> (LED, apagado = ausência, lâmpada sempre com palavra) + <strong>Aurora</strong> (só na vitrine: orbe, headline gigante, nav de vidro em pílula, CTA de borda cônica, halo e grão). <strong>Tinta e tom</strong> foi retirado da fusão por decisão do dono: nada de balão, halftone, linhas de velocidade ou sarjeta.</p>
+<p><strong>Key Characteristics:</strong>
+- Quase-preto neutro (croma 0,004) com traço de matiz 285; degraus de superfície são passos de claridade, não de cor.
+- Hairline 1px e raio 0; a linha de 26% (<code>--linha</code>) <strong>afirma</strong>, a de 9% (<code>--compasso</code>) só agrupa.
+- Martian Mono em rótulo, dado e título de tela; Inter na prosa; Bricolage só no display da vitrine.
+- Três cores com dono: âmbar dito, azul medido, dourado só em ação, foco e marca. Magenta só no orbe e no halo.
+- Um momento vivo na vitrine (o orbe); a ferramenta é estática.</p>
+<h2 id="colors">Colors<a class="headerlink" href="#colors" title="Permanent link">&para;</a></h2>
+<p>Estratégia: <strong>neutro quase-preto restrito, com duas vozes de dado e um metal de marca</strong>. Tudo em OKLCH; o frontmatter é a fonte normativa e <code>scripts/contraste.mjs</code> só lê <code>oklch()</code> literal.</p>
+<h3 id="primary">Primary<a class="headerlink" href="#primary" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ouro fosco do monograma</strong> (<code>--primary</code>, oklch 0.83 0.095 84): cor de <strong>ação e foco</strong>, medida do próprio <code>public/fraus-logo.svg</code>. Preenche controle, anel de foco, cursor <code>█</code> do nav ativo, o <code>00</code> da telemetria. <strong>Nunca</strong> codifica dado. Separa-se do âmbar do dito pelo croma (fosco 0,095 contra saturado 0,14): metálico contra pigmento; e por nunca dividirem superfície.</li>
+</ul>
+<h3 id="secondary-as-duas-vozes">Secondary (as duas vozes)<a class="headerlink" href="#secondary-as-duas-vozes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Âmbar do dito</strong> (<code>--dito</code> 0.78 0.14 72; texto <code>--dito-texto</code> 0.85 0.125 72): fala, texto, emoji. Acima da régua.</li>
+<li><strong>Azul do medido</strong> (<code>--medido</code> 0.74 0.13 250; texto <code>--medido-texto</code> 0.82 0.105 250): score, probabilidade, latência. Abaixo da régua. Cor padrão do <code>SegmentoLED</code>.</li>
+<li>Variantes <code>-fraco</code> (18% de mistura) para preenchimento; <code>-texto</code> para tipo. Cor de marcação e cor de tipo não são a mesma coisa.</li>
+</ul>
+<h3 id="tertiary-categorias-familias-grafo">Tertiary (categorias, famílias, grafo)<a class="headerlink" href="#tertiary-categorias-familias-grafo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Escala de NPS</strong>: <code>--detrator</code> (0.67 0.24 22), <code>--neutro</code> (0.78 0.15 90), <code>--promotor</code> (0.79 0.18 190, teal, longe do dourado de propósito). Sempre com rótulo escrito.</li>
+<li><strong>Sem sinal</strong> (<code>--sem-sinal</code>, 0.705 0.015 286): cinza fora da escala, de propósito.</li>
+<li><strong>Famílias do fusor</strong>: <code>--emocao</code> (10), <code>--lexico</code> (140), <code>--ironia</code> (230), <code>--estilo</code> (170), <code>--incongruencia</code> (290, croma 0,15: o gamut estreita nesse matiz), <code>--tempo</code> (320, série sempre tracejada). Cada família tem <code>-fraco</code> e <code>-texto</code>; matiz de nenhuma é reciclado. <code>--outros-sinal</code> é cinza para prefixo que nenhuma família reconhece.</li>
+<li><strong>Sete emoções</strong> (<code>--emo-medo</code> 315, <code>-nojo</code> 160, <code>-tristeza</code> 245, <code>-raiva</code> 0, <code>-surpresa</code> 280, <code>-alegria</code> 125, <code>-neutro</code> cinza acromático): cor de <strong>marca, nunca de texto</strong>. Validadas por vizinhos na ordem fixa da pauta (<code>ORDEM_EMOCOES</code> em <code>lib/partitura.ts</code>: medo, nojo, tristeza, raiva, surpresa, alegria, neutro). Nove cores num painel não se separam sozinhas; o que as legitima é o nome escrito em cada linha e a validação por vizinhos (CVD ΔE 12,5, visão normal 16,2, ≥3:1 sobre o card, medidos em 15/09/2026). Trocar um tom ou a ordem sem rodar o validador desfaz a medição. Desprezo (raiva + nojo) é a nota vazada no tom da raiva.</li>
+<li><strong>Grafo, nove tipos de nó</strong>: <code>--no-*</code> com L 0,79 / C 0,19 iguais e só o matiz variando. Quente (30–95) = dito: emoji 30, conversa 60, termo 95. Frio (150–340) = medido/cadastrado: fonte 150, canal 195, feature 265, categoria 305, desfecho 340. <code>--no-importacao</code> é cinza (0.7 0 0): nó solto sem origem rastreável, ausência de afirmação. Claridade igual é deliberada: nenhum tipo é mais importante que outro. A tela carrega legenda própria agrupada nas duas famílias.</li>
+<li><strong>Erro / sucesso / aviso</strong>: <code>--destructive</code>, <code>--success</code>, <code>--warning</code> (este compartilha o matiz do dourado e só vive como texto, nunca como preenchimento) e as trincas <code>-rich</code>, <code>-rich-border</code>, <code>-rich-text</code>.</li>
+</ul>
+<h3 id="neutral">Neutral<a class="headerlink" href="#neutral" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Quase-preto</strong> (<code>--background</code>), <strong>card</strong> 0.185, <strong>popover</strong> 0.175, <strong>sidebar</strong> 0.16, <strong>muted/secondary/accent</strong> 0.245. Não é preto puro: preto puro faz a régua de meio ponto flutuar no vácuo (argumento herdado do grafite).</li>
+<li><strong><code>--muted-foreground</code></strong> (0.74 0.01 285) é o <strong>piso de cor de texto</strong>: nada mais escuro que isto carrega texto.</li>
+<li><strong>Halo</strong> (<code>--atelie-halo</code>, magenta 0.62 0.2 320): cenografia da vitrine. Sem canal de significado.</li>
+</ul>
+<h3 id="named-rules">Named Rules<a class="headerlink" href="#named-rules" title="Permanent link">&para;</a></h3>
+<p><strong>A Regra do Dito e do Medido.</strong> Âmbar acima da linha, azul abaixo. Onde as duas séries são medidas (NPS × latência) a régua <strong>não</strong> entra, senão vira notação decorativa. <code>Painel</code> aceita a prop <code>regua</code> só quando o dado realmente se divide.
+<strong>A Regra do Ouro Fora do Dado.</strong> <code>--primary</code> nunca aparece numa série, barra, categoria ou célula. Só ação primária, foco de teclado, cursor do nav, valor de telemetria e a marca. Uma exceção nomeada legada: o cursor de leitura da partitura (não codifica valor).
+<strong>A Regra do Magenta Cenográfico.</strong> Magenta só no orbe, no halo e na borda cônica do CTA da vitrine. Nunca em dado.
+<strong>A Regra do Piso.</strong> Todo par de cor que carrega texto cruza AA (4,5:1) por cálculo. O portão manda no vidro; o vidro nunca afrouxa o portão.</p>
+<h2 id="typography">Typography<a class="headerlink" href="#typography" title="Permanent link">&para;</a></h2>
+<p><strong>Display Font:</strong> Bricolage Grotesque (fallback <code>ui-sans-serif, system-ui</code>), <strong>só na vitrine</strong>.
+<strong>Body Font:</strong> Inter (fallback pilha de sistema), com <code>cv01</code> e <code>ss03</code>.
+<strong>Label/Mono Font:</strong> Martian Mono (fallback <code>ui-monospace, Cascadia Mono, Consolas</code>).</p>
+<p>Todas por <code>next/font/google</code> no <code>app/layout.tsx</code>, baixadas no build e servidas do próprio deploy: zero rede em runtime. Variáveis: <code>--fonte-martian</code>, <code>--fonte-inter</code>, <code>--fonte-bricolage</code>; tokens de uso <code>--fonte-mono</code>, <code>--fonte-sans</code>, <code>--fonte-display</code>.</p>
+<p><strong>Caráter:</strong> mono de instrumento para tudo que é rótulo ou número, prosa humana onde mono cansa, e um display de contraste violento apenas onde o visitante chega de passagem.</p>
+<h3 id="hierarchy">Hierarchy<a class="headerlink" href="#hierarchy" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Display da vitrine</strong> (<code>.display-vitrine</code>, 500, <code>clamp(2.6rem, min(8vw, 10.5vh), 6.5rem)</code>, 0,95, -0,035em): manchete. O teto depende da altura (<code>min</code> com <code>vh</code>) para o hero não estourar em monitor largo e baixo. No hero o <code>h1</code> sobrepõe corpo <code>clamp(2.6rem, min(8.4vw, 10svh), 5.6rem)</code> e peso 800; o <code>.vt-sec .titulo-vitrine</code> sobe para 700.</li>
+<li><strong>Título de seção da vitrine</strong> (<code>.titulo-vitrine</code>, 500, <code>clamp(2.1rem, 4.6vw, 3.75rem)</code>, 1,02, -0,028em).</li>
+<li><strong>Título de tela</strong> (<code>.titulo-instrumento</code>): mono, 500, caixa alta, -0,02em. Nunca display.</li>
+<li><strong>Rótulo</strong> (<code>.rotulo-instrumento</code>, 0,6875rem, 0,14em, caixa alta, <code>muted-foreground</code>): campo, painel, telemetria, grupo do menu.</li>
+<li><strong>Dado</strong> (<code>.num</code>): mono + <code>tabular-nums</code>. Todo número comparável.</li>
+<li><strong>Prosa</strong> (Inter): transcrição, explicação, aparato; na vitrine <code>.vt-prosa</code> 1,0625rem / 1,7, máx. 34rem.</li>
+</ul>
+<h3 id="named-rules_1">Named Rules<a class="headerlink" href="#named-rules_1" title="Permanent link">&para;</a></h3>
+<p><strong>A Regra dos 11px.</strong> Nenhum texto abaixo de 11px (0,6875rem); a banca lê em projetor. <code>lib/tipografia.test.ts</code> varre TSX por <code>text-[..]</code> e o <code>globals.css</code> por <code>font-size</code> literal.
+<strong>A Regra da Display Contida.</strong> Bricolage entra só via <code>.display-vitrine</code> e <code>.titulo-vitrine</code>, ambas em <code>globals.css</code>. <code>tipografia.test.ts</code> falha se <code>--fonte-display</code> ou <code>--fonte-bricolage</code> vazar para qualquer outra regra, ou se <code>--fonte-sans</code>/<code>--fonte-mono</code> deixarem de apontar para Inter/Martian. <code>vitrine.css</code> sobrepõe só tamanho e peso, nunca família.
+<strong>A Regra do Tracking Inverso.</strong> Tipo grande fecha (-0,03 a -0,04em), rótulo pequeno abre (0,12 a 0,16em). A escala da vitrine não vale para a dashboard.</p>
+<h2 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h2>
+<p><strong>Dashboard.</strong> Pilha de "sistemas" (<code>Painel</code>), não grade de cartões: quem agrupa é espaço mais régua. Cada tela abre com a telemetria de 34px, depois a <strong>armadura horizontal</strong> (quatro células lado a lado, largura total, mesma altura curta, separadas por régua), depois o painel dominante. Um dominante por tela (<code>lib/hierarquia.ts</code>, <code>DOMINANTE_POR_TELA</code>); <code>apoio</code> é o padrão para ninguém virar dominante por omissão. Padding: dominante <code>p-4 sm:p-6</code>, apoio <code>p-4 sm:p-5</code>. Nav lateral colapsável para 32px (só o número sobrevive).</p>
+<p><strong>Vitrine (01/10/2026).</strong> <code>.vt-wrap</code> máx. 82rem com gutter <code>clamp(1rem, 4vw, 3rem)</code>; seções com <code>padding-block: clamp(4.5rem, 9vw, 8rem)</code> separadas por hairline <code>--compasso</code>. Ordem: hero (manchete à esquerda, orbe à direita), constelação fixada, sem sinal, sistema em linhas, fecho. Abaixo de 900px a constelação empilha (palco em cima, texto embaixo) e os rótulos das famílias saem do palco — a contagem segue no texto.</p>
+<p><strong>A dobra por altura.</strong> A manchete do hero usa <code>clamp(3rem, min(9.2vw, 13.5vh), 8.75rem)</code>: a 1280×720 o CTA fica acima da dobra. No celular o orbe ocupa o topo e o hero abre com <code>padding-top: 74vw</code> para o título começar abaixo dele (orbe atrás de manchete derruba o contraste). O <code>body</code> nunca rola na horizontal (<code>.vt</code> usa <code>overflow-x: clip</code>, que não quebra o <code>sticky</code>). Mobile 390 sem corte.</p>
+<p><strong>Ritmo.</strong> Pauta de 13px, peso 1px, opacidade 0,03 (papel de ensaio virou ruído de instrumento). Grade de 1px da seção Sistema: <code>gap: 1px</code> sobre fundo <code>--linha</code>.</p>
+<h3 id="named-rules_2">Named Rules<a class="headerlink" href="#named-rules_2" title="Permanent link">&para;</a></h3>
+<p><strong>A Regra da Dobra.</strong> Toda mudança no hero se confere a 1280×720 e a 390px de largura: CTA visível, sem rolagem horizontal.
+<strong>A Regra da Régua Única.</strong> Só a linha <code>--linha</code> afirma; filete interno é <code>--compasso</code>. Não empilhe bordas.</p>
+<h2 id="elevation-depth">Elevation &amp; Depth<a class="headerlink" href="#elevation-depth" title="Permanent link">&para;</a></h2>
+<p><strong>Plano por padrão; profundidade é opacidade e hairline.</strong> A superfície é quase opaca (fino/médio ~90–92% de <code>--card</code>, denso 97%), com <code>border: 1px solid var(--linha)</code> e uma sombra de assentamento <code>0 1px 0 oklch(0 0 0 / 30%)</code>. Sem quina iluminada, sem halo, sem chanfro. Blur só onde há sobreposição real: o denso (<code>blur(16px) saturate(1.2)</code>: popover/sheet), a faixa sticky do cabeçalho (<code>blur(12px)</code>) e o nav de pílula da vitrine (<code>blur(14px) saturate(1.3)</code>). Sem <code>backdrop-filter</code> o navegador recebe o <strong>piso</strong> opaco (<code>--vidro-*-piso</code>), medido por <code>npm run pisos</code>.</p>
+<p>As classes <code>.vidro-fino</code>, <code>.vidro</code>, <code>.vidro-denso</code> e <code>.chanfro</code> <strong>permanecem</strong> (30 componentes as carregam) mas o Instrumento as reduz a hairline e <code>clip-path: none</code>; só o tema chuva as reativa por baixo. Pisos medidos em 30/09/2026: 0.192 / 0.191 / 0.188.</p>
+<p>O ateliê é <strong>calmo</strong>: planeta, estrelas, grade laser, sol listrado e marca impressa em opacidade 0; sobra a mancha fria a 0,07 e o papel pautado. A mancha dourada foi zerada na revisão final porque esquentava cabeçalho e sidebar; <strong>o dourado é ação, foco e marca, não luz de ambiente</strong>.</p>
+<h3 id="named-rules_3">Named Rules<a class="headerlink" href="#named-rules_3" title="Permanent link">&para;</a></h3>
+<p><strong>A Regra da Espessura como Opacidade.</strong> Vidro engrossa por opacidade, nunca por luz baixa. Par que reprova no <code>contraste</code> faz a espessura ganhar opacidade.</p>
+<h2 id="shapes">Shapes<a class="headerlink" href="#shapes" title="Permanent link">&para;</a></h2>
+<p><strong>Raio zero</strong> (<code>--radius: 0</code>): retângulo de hairline. O chanfro de 45° do F e do R saiu junto com o vidro. Exceções explícitas, sempre com <code>rounded-full</code>: a cabeça da categoria, o ponto de status, o nav em pílula da vitrine (999px), o orbe (50%). Botão da vitrine é retangular. Marcadores de lâmpada são quadrados de 0,5rem com brilho.</p>
+<h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
+<h3 id="segmentoled-peca-assinatura">SegmentoLED (peça-assinatura)<a class="headerlink" href="#segmentoled-peca-assinatura" title="Permanent link">&para;</a></h3>
+<p><code>components/instrumento/SegmentoLED.tsx</code> + <code>lib/segmentos.ts</code> (parte pura, testável sem React).
+- <strong>Alfabeto:</strong> <code>0-9</code>, <code>-</code> (e o menos tipográfico U+2212, mesmo sinal), <code>+</code> (segmento do meio + traço vertical), <code>,</code>, <code>.</code>, <code>:</code>, espaço. Caractere fora do alfabeto <strong>não some</strong>: entra como texto cru em mono (um display que engole caractere muda o número em silêncio).
+- <strong>Vírgula com cauda:</strong> a vírgula do pt-BR é um ponto com cauda descendo à esquerda; o ponto (<code>.</code>) é célula própria, só círculo. Sem a cauda, <code>66,1</code> lia como <code>66.1</code> (milhar em pt-BR).
+- <strong><code>null</code> é apagado:</strong> renderiza N células (padrão 3) com os sete segmentos a 10% de opacidade, nunca <code>0</code>. <code>aria-label</code> vira <code>${rotulo}: sem sinal</code>.
+- <strong><code>rotulo</code> obrigatório:</strong> SVG de polígonos não diz nada a leitor de tela, e "2,9" de quê não diz nada a quem vê.
+- <strong>Não calcula, não arredonda, não converte.</strong> Recebe a string já formatada em pt-BR (<code>formatarNps</code>, <code>formatarSegundosLED</code>...). Uma fonte só de formatação (invariante 3).
+- <strong>Cor:</strong> <code>medido</code> (azul, padrão), <code>marca</code> (dourado, fatos da marca), <code>tinta</code> (foreground, observado e não inferido), <code>erro</code> (só o easter egg). Brilho: um <code>drop-shadow(0 0 3px currentColor)</code> no grupo aceso, não por polígono. Sem estado, serve em Server Component.</p>
+<h3 id="telemetriatopo">TelemetriaTopo<a class="headerlink" href="#telemetriatopo" title="Permanent link">&para;</a></h3>
+<p>Faixa de 34px no topo de cada tela: mono 11px, caixa alta, 0,14em, <code>border-b border-linha</code>, fundo <code>--background</code>. Carrega <strong>só fatos verdadeiros do produto</strong> ("NPS ESTIMATIVA", "LLM 00"), nunca métrica inventada. <code>TelemetriaValor</code> põe o valor em dourado (marca, não dado). O lado direito some abaixo de <code>sm</code>. <code>TelemetriaDaRota</code> escolhe pela rota.</p>
+<h3 id="navegacao-numerada">Navegação numerada<a class="headerlink" href="#navegacao-numerada" title="Permanent link">&para;</a></h3>
+<p>Lateral: mono 11px, caixa alta, filete inferior, sem raio. Item <code>01_VISÃO GERAL</code> com o <strong>cursor <code>█</code> dourado</strong> na tela ativa; ativa também leva <code>aria-current="page"</code> (cor nunca é o único canal). A numeração vem de <code>lib/navegacao.ts</code>, a mesma fonte da telemetria; a ordem é a da tela e não a do papel (<code>usuario</code> vê 01 e 02, que continuam sendo 01 e 02). Grupos: Seções (5 de olhar), Referência (docs, aparece só com <code>NEXT_PUBLIC_URL_DOCS</code>, ícone de saída, aba nova), Ajustes (só <code>dev</code>). Rodapé: "Modelos locais / Sem LLM em runtime". Cada item carrega o período na URL.</p>
+<h3 id="painel-hairline">Painel (hairline)<a class="headerlink" href="#painel-hairline" title="Permanent link">&para;</a></h3>
+<p>Sistema de largura total: cabeçalho com <code>rotulo-instrumento</code> e <code>border-b border-linha</code>; corpo; prosa metodológica sobe para o <strong>aparato da tela</strong> (<code>RessalvaDaTela</code>), recolhível mas nunca removida. Rótulos curtos (<code>estimativa</code>, <code>observado</code>, <code>sem sinal</code>) ficam colados ao dado. Props <code>erro</code> e <code>vazio</code> substituem o conteúdo no lugar dele; <code>regua</code> divide dito/medido. Entrada: sobe 8px uma vez ao entrar em cena (<code>whileInView</code> + <code>once</code>).</p>
+<h3 id="armadura-de-indicadores">Armadura de indicadores<a class="headerlink" href="#armadura-de-indicadores" title="Permanent link">&para;</a></h3>
+<p><code>FaixaIndicadores</code>: quatro células em fileira, rótulo + LED, sem barra de progresso decorativa. NPS e CSAT levam "estimativa" e o sublinhado pontilhado (<code>.estimado</code>); contenção e latência são observadas e não levam. Cada célula falha sozinha.</p>
+<h3 id="cabeca-da-categoria-etiquetacategoria-slot-unico">Cabeça da categoria (<code>EtiquetaCategoria</code>, slot único)<a class="headerlink" href="#cabeca-da-categoria-etiquetacategoria-slot-unico" title="Permanent link">&para;</a></h3>
+<p>Três formas, nesta ordem de honestidade, num só componente que tabela, piores atendimentos, ficha do grafo e tela do atendimento atravessam:
+- <strong>cheia</strong>: medido, com evidência, ponto colorido.
+- <strong>tracejada</strong>: medido, evidência <strong>fraca</strong>, anel tracejado <strong>na cor da classe</strong>; texto por extenso "evidência fraca: motivo". Vem do servidor (<code>fraus/evidencia.py</code>), derivada de fala observável (quantas mensagens e palavras), <strong>nunca</strong> da probabilidade do modelo: probabilidade não calibrada não é confiança.
+- <strong>vazada</strong>: não medido, anel oco cinza (<code>CabecaVazada</code>), nunca quarto ponto cheio; escreve "sem sinal" por extenso.
+Um componente irmão daria três formas em quatro lugares, e o que ninguém lembrasse de trocar continuaria mentindo confiança.</p>
+<h3 id="vitrine-vt-">Vitrine (<code>vt-*</code>)<a class="headerlink" href="#vitrine-vt-" title="Permanent link">&para;</a></h3>
+<p>Direção aprovada pelo dono em 01/10/2026 sobre uma mescla de protótipos: hero e orbe da v0, fósforo de osciloscópio da v1, máscara da v6 virando a constelação da v4.
+- <strong>Cena</strong> (<code>components/lp/CenaVitrine.tsx</code> + <code>lib/vitrine/motor.ts</code>): UM canvas fixo, UM contexto WebGL escrito à mão, quatro programas — fósforo (retícula, traço âmbar do dito e azul do medido, scanline, vinheta) com o orbe por cima, pontos da constelação, fios até o fusor, aglomerado do sem sinal. Sem three.js e sem GSAP: a seção fixada é <code>position: sticky</code> com progresso medido pelo motor (o pin do GSAP injeta wrapper no DOM e briga com o React). Lenis faz a rolagem suave.
+- <strong>Orbe</strong>: um objeto só que atravessa a página por quadros de rolagem (<code>lib/vitrine/coreografia.ts</code>, parte pura e testada). <strong>A cor é canal</strong>: o peso de cada mancha muda por seção — âmbar (dito) domina na entrada da conversa e no fecho, azul (medido) domina no fusor, magenta só oscila. No sem sinal, saturação 0 e giro parado.
+- <strong>Constelação</strong> (<code>components/lp/Constelacao.tsx</code>): as falas sintéticas viram pontos, os pontos montam a máscara (metade âmbar, metade azul), a máscara se desfaz em <strong>um nó por feature agrupado na contagem real</strong> (<code>FAMILIAS_DO_VETOR</code>, guardada contra <code>NOMES_FEATURES</code> por <code>tests/test_derivacoes_dashboard.py</code>) e os nós caem no orbe-fusor; aí aparece a nota 2,9 e "quem puxou a nota". Quatro passos de texto trocam em fade; sem JS ou com movimento reduzido aparecem empilhados.
+- <strong>Cartões minimalistas</strong> (pedido do dono): nada de caixa com fundo, chip ou painel com cabeçalho na vitrine. Fala é citação tipográfica com rótulo mono; o Sistema é lista de linhas com hairline.
+- <strong>LED fino</strong>: <code>SegmentoLED traco="fino"</code> — mesma célula e alfabeto, segmento de 4 em vez de 12, sem brilho, apagado a 8%. Só na vitrine; a ferramenta segue no traço cheio.
+- <strong>CTA primário</strong> (<code>.vt-botao--feixe</code>): miolo <code>--background</code>, borda cônica dourado → magenta. Secundário <code>--contorno</code>: hairline, hover dourado.</p>
+<h3 id="icone-de-acao">Ícone de ação<a class="headerlink" href="#icone-de-acao" title="Permanent link">&para;</a></h3>
+<p><code>components/IconeDeAcao.tsx</code>. <strong>Um verbo, um desenho:</strong> todo botão de ação leva o ícone do VERBO (salvar, cancelar, remover, copiar, criar, atualizar, executar…), tirado de um mapa único, à esquerda do texto; só "próxima" o leva à direita. "Salvar faixas" e "Salvar equipe" têm o mesmo desenho. Controle de <strong>seleção</strong> (perfil, ordem de data, linha clicável de lista) não leva ícone de verbo: ele escolhe, não faz, e o estado já é dito por <code>aria-pressed</code>. O ícone é sempre decorativo (<code>aria-hidden</code>); o nome do botão é o texto.
+<strong>Traço:</strong> os ícones vêm do lucide e são redesenhados por CSS (<code>.lucide</code> em <code>globals.css</code>): 1,5px, ponta reta, junta viva. Ponta redonda a 2px é desenho de app amigável sobre uma superfície de hairline e raio zero. A regra cobre todo ícone da ferramenta; a vitrine não usa lucide.</p>
+<h3 id="estados-coreografia">Estados (coreografia)<a class="headerlink" href="#estados-coreografia" title="Permanent link">&para;</a></h3>
+<p>Todo componente interativo tem padrão, hover, foco, ativo, desabilitado, carregando, erro e vazio.
+- <strong>Carregando</strong> = esqueleto com a <strong>forma</strong> do resultado (<code>app/dashboard/loading.tsx</code>: armadura de quatro células, gráfico, lista), <code>aria-busy</code>. <strong>Nunca desenha LED apagado</strong>: apagado quer dizer "o medidor leu e não há sinal", e aqui ele ainda não leu. Nunca roda girando.
+- <strong>Vazio</strong> (<code>EstadoVazio</code>) nomeia o que falta e o endpoint ou a etapa que resolveria (<code>Resolvido por ...</code>, <code>Falta rodar: ...</code>). Moldura tracejada. Nunca preenche com número simulado. Com API fora, fala menos: a ação está na faixa do topo e a prosa recolhe para aparato.
+- <strong>Erro isolado</strong>: o sistema que falha mostra o próprio erro no lugar dele, com o peso dele; os vizinhos continuam de pé.
+- <strong>Sem sinal</strong>: LED apagado ou cabeça vazada. Nunca zero, nunca cinza dentro da escala.
+- <strong>Foco</strong>: anel de 2px <code>--ring</code> (dourado) em <code>:focus-visible</code>, também para <code>summary</code> e links.</p>
+<h3 id="easter-egg-da-mentira-libmentiratsx">Easter egg da mentira (<code>lib/mentira.tsx</code>)<a class="headerlink" href="#easter-egg-da-mentira-libmentiratsx" title="Permanent link">&para;</a></h3>
+<p>Com o painel do easter egg aberto, os indicadores da visão geral exibem números <strong>falsos</strong>: violação deliberada e <strong>encenada</strong> da invariante 2, sustentada por quatro travas: (1) nada sai da memória (zero escrita, zero API; estado de render); (2) leitor de tela recebe a verdade (o falso é <code>aria-hidden</code> e um <code>sr-only</code> diz que foi falsificado e qual o real); (3) selo <code>--destructive</code> inescapável no mesmo quadro; (4) volta sozinha em 8s, <code>Esc</code> ou clique fora. Gráficos e tabela <strong>não</strong> mentem. O falso é determinístico (<code>(d*7+3)%10</code> só nos algarismos, sem <code>Math.random</code>) e o LED vai a <code>cor="erro"</code>. Qualquer variação que quebre uma trava não é o easter egg, é defeito.</p>
+<h3 id="motion">Motion<a class="headerlink" href="#motion" title="Permanent link">&para;</a></h3>
+<p>Vocabulário em <code>lib/movimento.ts</code> (150–250 ms, curva <code>--ease-fluid</code> <code>cubic-bezier(0.32, 0.72, 0, 1)</code>). Na <strong>ferramenta</strong>, dois momentos autorados: o cursor de leitura na linha do tempo e a entrada dos sistemas (8px, uma vez, escalonada em 40 ms na armadura). Resposta a gesto (hover, a marca <code>MarcaFraus</code> que responde a cinco cliques) é outra categoria e não conta.</p>
+<p><strong>A exceção da vitrine (cena WebGL).</strong> Desde 01/10/2026 a vitrine tem um canvas WebGL com laço de quadros — decisão do dono, que inverte a de 30/09 (orbe em CSS puro, sem canvas). A regra que sobrevive é onde ele mora: <strong>só em <code>app/page.tsx</code></strong>, nunca no layout raiz, porque a ferramenta é lida por horas e não pode ter GPU girando atrás de tabela e gráfico. Contexto WebGL é liberado ao desmontar (<code>WEBGL_lose_context</code>). Sem WebGL, o canvas some e a página segue legível. <code>scripts/validar-lp-playwright.mjs</code> cobra exatamente um canvas e o regime certo.
+<strong><code>prefers-reduced-motion</code> congela, não desacelera:</strong> na vitrine o motor entra no regime <code>vt-estatico</code> — nenhum laço, um quadro redesenhado só quando a página rola, orbe parado, constelação no estágio dos nós, seção não fixa. As animações CSS da vitrine (entrada da manchete, borda do CTA, seta) também param. Na ferramenta, o bloco global zera transições e o <code>&lt;Movimento&gt;</code> passa <code>reducedMotion="user"</code> ao Motion.</p>
+<h2 id="dos-and-donts">Do's and Don'ts<a class="headerlink" href="#dos-and-donts" title="Permanent link">&para;</a></h2>
+<h3 id="do">Do:<a class="headerlink" href="#do" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Do</strong> passar ao <code>SegmentoLED</code> a string já formatada em pt-BR e sempre um <code>rotulo</code>; <code>valor={null}</code> para ausência.</li>
+<li><strong>Do</strong> manter âmbar acima e azul abaixo; use <code>-texto</code> quando a cor carrega tipo.</li>
+<li><strong>Do</strong> manter o dourado em ação, foco, cursor e marca, e o magenta no orbe e no halo.</li>
+<li><strong>Do</strong> rodar <code>npm run contraste</code> e <code>npm run pisos</code> ao tocar token de cor, vidro ou ateliê, e <code>npm run build</code> (ele compila o CSS e processa assets; os outros gates não).</li>
+<li><strong>Do</strong> conferir trabalho visual olhando, a 1280×720 e a 390px, nos dois temas.</li>
+<li><strong>Do</strong> rotular amostras sintéticas como tal em todo lugar em que aparecem.</li>
+<li><strong>Do</strong> nomear o que falta em estado vazio, com a etapa ou o endpoint.</li>
+<li><strong>Do</strong> derivar score, nota e categoria no servidor; o LED apresenta, não calcula.</li>
+</ul>
+<h3 id="dont">Don't:<a class="headerlink" href="#dont" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Don't</strong> renderizar <code>0</code> para ausência; <code>null</code> é segmento apagado e "sem sinal" por extenso.</li>
+<li><strong>Don't</strong> usar kickers/eyebrows acima de título na vitrine (removidos na revisão final).</li>
+<li><strong>Don't</strong> usar dourado em série, barra, categoria ou célula de dado, nem como luz de ambiente.</li>
+<li><strong>Don't</strong> usar Bricolage fora de <code>.display-vitrine</code>/<code>.titulo-vitrine</code>, nem display em rótulo ou dado.</li>
+<li><strong>Don't</strong> pôr orbe, halo, grade ou coreografia atrás de tabela, gráfico ou qualquer rota do Operate.</li>
+<li><strong>Don't</strong> escrever texto abaixo de 11px.</li>
+<li><strong>Don't</strong> empilhar bordas, reintroduzir chanfro, raio ou quina iluminada no tema Instrumento.</li>
+<li><strong>Don't</strong> reciclar matiz de família nem reordenar/retocar as sete emoções sem rodar o validador.</li>
+<li><strong>Don't</strong> pontuar atendentes: nenhum elemento de interface pode transformar reconhecimento de emoção em score de performance por pessoa (CLAUDE.md, EU AI Act).</li>
+<li><strong>Don't</strong> pôr comentário ou regra que cite <code>.tema-chuva</code> antes do bloco real dele: o gate recorta pela primeira ocorrência da string e mede o bloco errado (ver Temas e gates).</li>
+</ul>
+<h2 id="temas-e-gates">Temas e gates<a class="headerlink" href="#temas-e-gates" title="Permanent link">&para;</a></h2>
+<p><strong>Dois temas, ambos escuros.</strong> O padrão é o Instrumento (<code>:root, .dark</code>, o app renderiza sempre com <code>.dark</code>); a segunda opção é <strong>chuva de neon</strong> (<code>.tema-chuva</code>), que sobrepõe só o chassi: asfalto índigo, dourado de sódio (<code>0.81 0.1 82</code>), quina de neon ciano/magenta, atelier aceso e vidro mais grosso. Ela <strong>não toca a camada de dado</strong>: <code>--dito</code> continua âmbar, <code>--medido</code> azul, famílias intactas; o dourado segue fora de dado; todo par de texto cruza AA nos dois temas.</p>
+<p><strong>Gate ciente de tema.</strong> <code>scripts/contraste.mjs</code> recorta o bloco base (<code>:root, .dark {</code>) e cada bloco cujo seletor começa com <code>.tema-</code>, sobrepõe à base como a cascata (um tema só declara o que muda) e roda a matriz inteira por tema. Um mapa único deixaria o segundo tema sobrescrever o primeiro e o relatório sairia verde medindo um tema só. <code>scripts/pisos.mjs</code> mede o pior caso de vidro sobre o ateliê (só lê <code>oklch()</code> literal, por isso os pisos são pré-calculados, não <code>color-mix</code>).
+<strong>O cuidado com <code>.tema-chuva</code>.</strong> O laço que descobre temas usa <code>^(\.tema-…)\s*\{</code> (ancorado no início de linha), mas <code>recortarBloco</code> localiza o bloco por <code>indexOf</code> do seletor <strong>em qualquer ponto do arquivo</strong>, e depois abre na primeira <code>{</code> seguinte. Logo, qualquer comentário ou regra anterior ao bloco real que escreva a string <code>.tema-chuva</code> (por exemplo <code>.tema-chuva .vidro-fino</code>) faz o gate recortar o trecho errado e medir o bloco errado, com relatório verde. Em <code>globals.css</code> o bloco real vem antes de toda outra menção e o comentário que o antecede fala do tema sem escrever o seletor. Mantenha assim.</p>
+<p><strong>Ciclo de verificação:</strong> <code>pisos</code>, <code>contraste</code>, <code>tsc --noEmit</code>, <code>lint</code> e <code>build</code> não se substituem, e nenhum vê a tela. Quatro já devolveram verde com o build quebrado.</p>
+<h2 id="adicoes-e-desvios-conscientes-desta-rodada">Adições e desvios conscientes desta rodada<a class="headerlink" href="#adicoes-e-desvios-conscientes-desta-rodada" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Revisão final (30/09/2026):</strong> kickers removidos da LP; dourado só em ação e marca (mancha dourada do ateliê zerada, LED da faixa de fatos em <code>tinta</code>); hero a 1280×720 com CTA na dobra (orbe por altura); mobile 390 sem corte nem rolagem horizontal; armadura da visão geral em faixa curta com leitura do NPS em faixa própria; grafo com respiro e reenquadramento ao redimensionar.</li>
+<li><strong><code>.lp-*</code> no <code>globals.css</code></strong> é resíduo da vitrine anterior; a LP nova vive em <code>vitrine.css</code> com prefixo <code>vt-</code> justamente para não herdar hover de peça extinta.</li>
+<li><strong>Nove tipos de nó do grafo não foram alterados nesta rodada, mesmo com o revisor pedindo.</strong> Os matizes estão congelados: a família (quente/fria) já diz dito/medido de longe, o matiz diz o tipo de perto, a legenda agrupa os nove, e claridade/croma iguais impedem hierarquia acidental. Mexer nas cores em rodada de chassi, sem validar de novo legenda, contraste e leitura no canvas, trocaria uma decisão medida por gosto. Reabra só como decisão própria, com validação.</li>
+<li><strong>Vidro que não é mais vidro:</strong> <code>--vidro-*-fundo</code>, <code>--vidro-quina</code>, <code>.chanfro</code>, <code>.especular</code> ficam como vocabulário porque o tema chuva os usa. Em <code>lib/hierarquia.ts</code>, a diferença entre <code>vidro</code> e <code>vidro-fino</code> é hoje só o padding e o tipo; não leia como duas opacidades.</li>
+<li><strong>Não canonizado (defeitos carregados, não regras):</strong> comentários do <code>globals.css</code> ainda citam croma "0.085"/"0.15" para dourado/âmbar (o token vigente é 0.095/0.14) e "DESIGN.md secão 4" numerada como no arquivo antigo. Os ícones <code>lucide-react</code> deixaram de ser defeito carregado em 02/10/2026: ganharam traço próprio e regra de uso (ver "Ícone de ação"); o glifo <code>█</code> do cursor continua sendo texto, e continua sendo a peça.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
