@@ -1,0 +1,1352 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../treinamento/">
+      
+      
+        <link rel="next" href="../integracao-tars/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ironia: corpus e Laya - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ironia-corpus-e-laya" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ironia: corpus e Laya
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e Laya
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e Laya
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-consertar-o-corpus-antes-de-treinar-o-laya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo: consertar o corpus antes de treinar o Laya
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-idpt-entrega-o-rotulo-e-nenhum-encoder-escapa-disso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O IDPT entrega o rótulo, e nenhum encoder escapa disso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#treinar-so-ironia-exige-mexer-em-sete-celulas-e-num-rotulo-de-producao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Treinar só ironia exige mexer em sete células e num rótulo de produção
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consertar-o-negativo-vale-mais-que-trocar-o-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consertar o negativo vale mais que trocar o encoder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tres-treinos-e-uma-regua-de-300-pares-separam-as-causas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Três treinos e uma régua de 300 pares separam as causas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-ganho-esperado-e-de-poucos-pontos-e-vem-do-dado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O ganho esperado é de poucos pontos, e vem do dado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regua-de-pares-minimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Régua de pares mínimos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusão
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-consertar-o-corpus-antes-de-treinar-o-laya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo: consertar o corpus antes de treinar o Laya
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-idpt-entrega-o-rotulo-e-nenhum-encoder-escapa-disso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O IDPT entrega o rótulo, e nenhum encoder escapa disso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#treinar-so-ironia-exige-mexer-em-sete-celulas-e-num-rotulo-de-producao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Treinar só ironia exige mexer em sete células e num rótulo de produção
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consertar-o-negativo-vale-mais-que-trocar-o-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consertar o negativo vale mais que trocar o encoder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tres-treinos-e-uma-regua-de-300-pares-separam-as-causas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Três treinos e uma régua de 300 pares separam as causas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-ganho-esperado-e-de-poucos-pontos-e-vem-do-dado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O ganho esperado é de poucos pontos, e vem do dado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regua-de-pares-minimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Régua de pares mínimos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusão
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ironia-corpus-e-laya">Ironia: corpus e Laya<a class="headerlink" href="#ironia-corpus-e-laya" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Estado em 08/10/2026.</strong> O BERTimbau de ironia foi retreinado no notebook 04
+com a divisão por autor corrigida (treino 28.365 linhas, 58,8% irônicas; teste
+4.778, 59,2%). Deu F1-macro de <strong>0,994</strong> no teste interno (0,991 só nos tweets)
+e P(irônico) = <strong>1,000</strong> em frases neutras de atendimento, como "qual o prazo
+de entrega do meu pedido" e "ok, obrigado". O modelo <strong>não foi exportado</strong> e o
+Laya não foi treinado. Esta página explica por quê e o que fazer antes do
+próximo treino. Medições e passos da sessão: nota interna
+<code>docs/notas/2026-10-08-ironia-corpus.md</code>.</p>
+<p><strong>Produção não muda:</strong> a ironia em produção é lida pelo Laya sem treino
+(<code>laya-onnx</code>) e não entra no vetor do Fusor.</p>
+</blockquote>
+<h2 id="resumo-consertar-o-corpus-antes-de-treinar-o-laya">Resumo: consertar o corpus antes de treinar o Laya<a class="headerlink" href="#resumo-consertar-o-corpus-antes-de-treinar-o-laya" title="Permanent link">&para;</a></h2>
+<p>Treinar o Laya (mmBERT-base, <code>laya==0.3.21</code>) só em ironia é fácil de fazer e não resolve o problema que motivou a ideia. O vício do IDPT 2021 está nos dados, não no modelo nem na mistura de tarefas: a classe não irônica dos tweets é <strong>100% de tweets com #economia</strong>, publicados por ~658 contas, quase todas portais de notícia, só em maio e junho de 2017 (<a href="https://raw.githubusercontent.com/fabio-ricardo/deteccao-ironia/b735dd95e92adacb73ed27b2a243d5461d7fda93/nao-ironico.csv">arquivo bruto</a>). As notícias foram rotuladas <strong>pelo site de origem</strong>, "sem nenhuma rotulação manual" (<a href="https://sol.sbc.org.br/index.php/eniac/article/download/12172/12037">Marten &amp; de Freitas, ENIAC 2020</a>). Qualquer encoder afinado nesse rótulo aprende registro e procedência, seja o Laya sozinho, o Laya multitarefa ou o BERTimbau. O formato de pergunta do Laya não protege contra isso, porque a instrução e os critérios são tokens idênticos em todos os exemplos e o gradiente vem só do texto. Chegar a "100% de exatidão" nesse teste não seria a prova esperada. Pela invariante 10 do projeto, seria o sintoma: ironia é uma tarefa em que anotadores humanos concordam pouco, e um acerto perfeito mostra que o teste mede a fonte. O ganho real virá de três coisas: trocar o negativo por fala coloquial sincera, medir numa régua de domínio com 200 a 400 itens em pares mínimos e rodar três treinos que separem as causas. Pela literatura, a diferença de encoder entre o Laya e o BERTimbau deve ficar em poucos pontos. Contra o multitarefa de 02/10, o Laya só-ironia quase certamente vai "ganhar" no teste interno, mas esse ganho virá da divisão corrigida, e não do fato de treinar só ironia.</p>
+<h2 id="o-idpt-entrega-o-rotulo-e-nenhum-encoder-escapa-disso">O IDPT entrega o rótulo, e nenhum encoder escapa disso<a class="headerlink" href="#o-idpt-entrega-o-rotulo-e-nenhum-encoder-escapa-disso" title="Permanent link">&para;</a></h2>
+<p>O achado de 08/10 confirma o que os próprios arquivos mostram. No <code>nao-ironico.csv</code>, o commit <code>b735dd9</code> que o Fraus fixa, as hashtags dominantes são <strong>2.519 <code>#economia</code> e 185 <code>#econom</code></strong>, e as datas vão só de 2017-05 a 2017-06. As contas mais frequentes são <code>noticiaminutobr</code>, <code>TSFRadio</code> (rádio portuguesa) e <code>portalR7</code>, e há tweets em espanhol e em português europeu no meio. Do outro lado, o <code>ironia.csv</code> tem ~12.700 tweets auto-marcados com <code>#ironia</code>, de ~9.300 autores, publicados entre 2014 e 2017. Só 78 tweets irônicos falam de economia, contra ~2.564 não irônicos (<a href="https://raw.githubusercontent.com/fabio-ricardo/deteccao-ironia/b735dd95e92adacb73ed27b2a243d5461d7fda93/nao-ironico.csv">dados verificados</a>). O <code>scripts/preparar_corpus_ironia.py</code> remove a hashtag <code>#ironia</code>, mas o vazamento continua no tópico, na fonte e na época. Nas notícias, <code>estadao.json</code> é sempre 0, e <code>sensacionalista.json</code> e <code>the_piaui_herald.json</code> são sempre 1. Ou seja, a tabela fonte × rótulo tem <strong>células vazias</strong>: nenhum tweet coloquial sincero e nenhuma notícia séria irônica.</p>
+<p>O histórico público do IDPT já mostrava isso antes do Fraus. O treino oficial tem 15.212 tweets e 18.494 notícias, enquanto os testes são "300 tweets and 300 news gathered and annotated by the organizers" (<a href="https://ceur-ws.org/Vol-2943/idpt_paper3.pdf">García Subies, CEUR Vol-2943</a>). No teste de tweets, anotado por humanos, <strong>o melhor time chegou a 0,52 de acurácia balanceada</strong> (<a href="https://sol.sbc.org.br/index.php/brasnam/article/download/24802/24623">Luz et al., BraSNAM 2023</a>), e o BERTimbau afinado ficou em 0,49–0,50, abaixo do acaso (<a href="https://ceur-ws.org/Vol-2943/idpt_paper3.pdf">García Subies</a>). Enquanto isso, o SiDi-NLP relatou <strong>F1 1,000 na validação de tweets</strong>, tanto com BERTimbau quanto com mBERT (<a href="https://ceur-ws.org/Vol-2943/idpt_paper6.pdf">CEUR Vol-2943</a>). O F1 de 0,99 que o BERTimbau retreinado deu no teste interno do Fraus, junto com P(irônico)=1,0 em frases neutras de atendimento, repete esse padrão: um número alto dentro da distribuição que desaba quando o rótulo vem de um humano. O padrão é conhecido na literatura. Quando o rótulo de sarcasmo passa a ser dado pelo próprio autor, o melhor modelo cai de F1 0,874 para 0,364 (<a href="https://aclanthology.org/2020.acl-main.118">Oprea &amp; Magdy, ACL 2020</a>). Filtrar os vieses do SNLI derruba um modelo de 92% para 62% (<a href="https://arxiv.org/abs/2002.04108">Le Bras et al., 2020</a>).</p>
+<p>A esperança de que o Laya "evitaria dados viciados" esbarra em como ele aprende. O fine-tuning do script oficial é completo, com encoder e cabeça juntos, sem LoRA. A sequência sempre começa com a mesma instrução e os mesmos critérios A/B de <code>PERGUNTA_IRONIA</code> (<a href="https://pypi.org/project/laya/0.3.21/"><code>laya/common.py</code></a>, <code>build_sequence</code>). O que separa A de B é só o <code>state</code>, isto é, o texto. Se registro, língua ou gênero textual predizem o rótulo, o mmBERT aprende isso igualzinho ao BERTimbau. O próprio guia do Laya avisa: "The loop is only as good as the targets… treat their quality as the ceiling" (<a href="https://github.com/NandhaKishorM/laya/blob/d8a2e59781ca135169a36095056132e273cd9938/docs/finetune.md">finetune.md</a>). O único ponto a favor do Laya tinha sido o prior zero-shot. Sem treino, ele fez F1 0,554 no teste interno e 0,524 na régua, com 0% de falso positivo, melhor que o BERTimbau. O run de 02/10 mostrou que o fine-tuning completo apaga esse prior (nota interna de 02/10, <code>docs/notas/2026-10-02-treino-laya.md</code>).</p>
+<p>O "100% de exatidão" é inalcançável por um motivo independente do corpus: ironia é ambígua até para humanos. No Tweets8JanSPI, anotado à mão, o Fleiss κ da ironia foi <strong>0,38</strong>, contra 0,59 do sentimento (<a href="https://sol.sbc.org.br/index.php/brasnam/article/download/43258/43024/">BraSNAM 2026</a>). O MultiPICo usa em média cinco anotadores por item justamente porque o julgamento varia (<a href="https://aclanthology.org/2024.acl-long.849.pdf">ACL 2024</a>). Um modelo não pode concordar com um rótulo mais do que os humanos concordam entre si, a menos que esteja lendo outra coisa. A invariante 10 diz isso com outras palavras: "acurácia alta demais é sintoma, não vitória".</p>
+<h2 id="treinar-so-ironia-exige-mexer-em-sete-celulas-e-num-rotulo-de-producao">Treinar só ironia exige mexer em sete células e num rótulo de produção<a class="headerlink" href="#treinar-so-ironia-exige-mexer-em-sete-celulas-e-num-rotulo-de-producao" title="Permanent link">&para;</a></h2>
+<p>O pacote <code>laya==0.3.21</code> só faz inferência e não tem API de treino. O fine-tuning roda pelo script de pesquisa <code>finetune_single_device.py</code>, no commit <code>d8a2e597</code> (<a href="https://raw.githubusercontent.com/NandhaKishorM/laya/d8a2e59781ca135169a36095056132e273cd9938/research/scripts/finetune_single_device.py">script</a>). O notebook 07 já o executa em subprocesso e confere o SHA-256. O script aceita tarefa única direto: basta o JSONL ter apenas linhas de <code>caso_ironia(texto, p)</code>, com <code>gold.ironia.probabilities = {"A": p, "B": 1-p}</code>, em que A = irônico. A ordem das chaves de <code>criteria</code> define a ordem do alvo. Por isso <code>PERGUNTA_IRONIA</code> tem de ser importada de <code>fraus/sinais/ironia_laya.py</code> e nunca redigitada, que é o mesmo cuidado que a invariante 8 pede para a ordem das classes.</p>
+<p>As mudanças no notebook 07 (<code>notebooks/07_treino_laya.ipynb</code>) são estas, pela numeração "#" dos comentários das células:</p>
+<table>
+<thead>
+<tr>
+<th>Célula</th>
+<th>Hoje</th>
+<th>Para só ironia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#2 (imports)</td>
+<td>importa emoção e ironia</td>
+<td>pode ficar; os nomes de emoção deixam de ser usados</td>
+</tr>
+<tr>
+<td>#4 (corpus de emoção)</td>
+<td>GoEmotions-pt + XED-pt</td>
+<td><strong>pular inteira</strong>; define <code>dados_emocao</code>, <code>emocao_teste</code>, <code>frases_xed</code>, usados adiante</td>
+</tr>
+<tr>
+<td>#5 (divisão de ironia)</td>
+<td><code>dividir_por_autor</code>, <code>conferir_divisao</code>, guarda de impressão contra <code>metricas_ironia.json</code></td>
+<td><strong>não mexer</strong>: é o que garante que o BERTimbau do notebook 04 foi treinado na mesma divisão</td>
+</tr>
+<tr>
+<td>#6 (JSONL)</td>
+<td>laço de emoção com <code>repeticoes_por_classe</code> + ironia suavizada 0,05</td>
+<td>só ironia; <code>proibidos</code> = teste de ironia ∪ régua; manter o <code>assert</code> de vazamento</td>
+</tr>
+<tr>
+<td>#7 (treino)</td>
+<td><code>MODO_FUMACA</code>, <code>EPOCAS=4</code></td>
+<td>fumaça primeiro (600 casos), depois completo</td>
+</tr>
+<tr>
+<td>#8 (comparação)</td>
+<td>confere <code>DIR_BERT_EMOCAO</code>, prevê emoção e XED</td>
+<td>tirar a emoção; manter <code>prever_*</code>, <code>comparar</code>, <code>laya.load</code></td>
+</tr>
+<tr>
+<td>#9 (ironia)</td>
+<td>teste interno, recortes <code>tweets</code>/<code>noticias</code>, régua</td>
+<td>sem mudança</td>
+</tr>
+<tr>
+<td>#10 (poda + ONNX)</td>
+<td>vocabulário com emoção, <code>cobertura_xed</code></td>
+<td><code>perguntas = {**PERGUNTA_IRONIA}</code>; a cobertura precisa de outro texto independente</td>
+</tr>
+<tr>
+<td>#11 (manifesto)</td>
+<td><code>perguntas: ["emocao","ironia"]</code></td>
+<td><code>["ironia"]</code>; <strong>ver a armadilha abaixo</strong></td>
+</tr>
+<tr>
+<td>#12 (laudo)</td>
+<td>conjuntos de emoção e ironia</td>
+<td>só <code>ironia_interno</code>, <code>ironia_tweets</code>, <code>ironia_noticias</code>, <code>ironia_regua</code></td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>armadilha do manifesto</strong> é a parte que não aparece no notebook. Em <code>fraus/sinais/emocao_laya.py</code>, <code>laya_treinado_pelo_fraus(diretorio)</code> devolve <code>"emocao" in perguntas_do_artefato(diretorio)</code>, e um manifesto ausente equivale a <code>("ironia",)</code>. Assim, um artefato treinado só em ironia é <strong>indistinguível do checkpoint base</strong>, e a dashboard o rotularia como "Laya sem treino", o que é falso. Há um segundo efeito, mais silencioso: <code>obter_classificador_emocao_laya_onnx</code> reaproveita o mesmo agente e responderia emoção com uma cabeça afinada só em ironia. A correção precisa vir antes do treino e com TDD. O manifesto ganha um marcador explícito de procedência, por exemplo <code>"treinado_pelo_fraus": true</code> junto com a revisão e <code>rodada_de_fumaca: false</code>. <code>laya_treinado_pelo_fraus</code> passa a ler esse campo, e a leitura de emoção pelo Laya passa a recusar, com falha alta, um artefato que não declara <code>emocao</code>. Os dois testes falham primeiro com o manifesto só-ironia e passam depois.</p>
+<p>Os hiperparâmetros estão quase todos fixos no código do script. A linha de comando aceita só <code>--data</code>, <code>--model-dir</code>, <code>--output-dir</code>, <code>--device</code>, <code>--epochs</code> e <code>--seed</code>. Mudar qualquer outra coisa obriga a editar o arquivo, o que quebra o SHA-256 conferido e precisa ser declarado como desvio do caminho oficial.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Valor no script</th>
+<th>Recomendação para só ironia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Micro-lote / acumulação</td>
+<td>8 / nenhuma (lote efetivo 8)</td>
+<td>manter; a receita 2×T4 do autor usa lote efetivo 64, mas isso exige editar o script</td>
+</tr>
+<tr>
+<td>LR encoder / cabeça</td>
+<td>2,5e-5 / 1e-4, AdamW wd 0,01</td>
+<td>manter</td>
+</tr>
+<tr>
+<td>Agenda</td>
+<td>cosseno até 1e-6, sem warmup; σ do ruído de 0,4 a 0,1</td>
+<td>manter</td>
+</tr>
+<tr>
+<td>Precisão</td>
+<td>fp16 autocast + gradient checkpointing, clip 1,0</td>
+<td>manter</td>
+</tr>
+<tr>
+<td><code>max_len</code></td>
+<td>1024 (forçado)</td>
+<td>controlar pelo <code>MAX_CARACTERES</code> do notebook: <strong>280–400</strong> em vez de 1200, para aproximar o tamanho de uma mensagem de chat e baratear o treino</td>
+</tr>
+<tr>
+<td>Épocas</td>
+<td>padrão 4</td>
+<td><strong>2 a 3</strong>: o corpus tem um atalho forte, e mais épocas tendem a decorá-lo</td>
+</tr>
+<tr>
+<td>Semente</td>
+<td>padrão 0</td>
+<td>42 e mais duas sementes se o tempo couber, porque o fine-tuning é instável entre sementes (<a href="https://arxiv.org/abs/2002.06305">Dodge et al. 2020</a>; <a href="https://arxiv.org/abs/2006.04884">Mosbach et al. 2021</a>)</td>
+</tr>
+<tr>
+<td>Peso de classe</td>
+<td>inexistente</td>
+<td>dispensável: a divisão corrigida tem 59% de irônicas dos dois lados (≈1,4:1)</td>
+</tr>
+<tr>
+<td>Suavização do alvo</td>
+<td>0,05</td>
+<td>considerar 0,1: rótulo por procedência não sustenta certeza de 0,975</td>
+</tr>
+<tr>
+<td>Calibração</td>
+<td>temperatura por LBFGS em <code>min(400, n//10)</code> itens separados antes do treino</td>
+<td>manter; ela não muda o argmax, mas muda qualquer limiar de 0,5</td>
+</tr>
+</tbody>
+</table>
+<p>Sobre o tempo na T4: o run de 02/10 processou 142.204 itens (71.102 × 2 épocas) em 89 minutos, cerca de 26,6 itens/s com a carga incluída (nota interna de 02/10, <code>docs/notas/2026-10-02-treino-laya.md</code>). Com os 28.365 itens de treino da divisão corrigida, a conta direta dá <strong>~18 minutos por época, ~35 minutos para 2 épocas e ~70–75 minutos para 4</strong>. Essa é uma extrapolação de um único run. As notícias são bem mais longas que as frases do GoEmotions que dominavam aquele treino, então o tempo real pode ser 1,5 a 2× maior. A estimativa que vale é a que a rodada de fumaça imprime. O script não salva checkpoint por época. Chamá-lo várias vezes com <code>--epochs 1</code> também não equivale a um treino de N épocas, porque reinicia o cosseno, a σ do ruído e o otimizador e separa de novo a fatia de calibração. Como 2 a 3 épocas cabem numa sessão T4, o caminho mais simples é o atual: copiar para o Drive no fim.</p>
+<h2 id="consertar-o-negativo-vale-mais-que-trocar-o-encoder">Consertar o negativo vale mais que trocar o encoder<a class="headerlink" href="#consertar-o-negativo-vale-mais-que-trocar-o-encoder" title="Permanent link">&para;</a></h2>
+<p>Os métodos de debiasing que mexem no modelo, como product-of-experts, autoviés, group DRO e DANN, só redistribuem peso entre exemplos que <strong>contradizem</strong> o atalho (<a href="https://arxiv.org/abs/1909.03683">Clark et al. 2019</a>; <a href="https://arxiv.org/abs/1911.08731">Sagawa et al. 2020</a>). Com as células "coloquial × não irônico" e "notícia séria × irônico" vazias, não existe exemplo conflitante para repesar. Se a fonte é quase igual ao rótulo, apagar a fonte por treino adversarial apaga o rótulo junto. A correção tem de ser nos dados. O primeiro passo custa minutos: imprimir a tabela de contingência fonte × rótulo e, além dela, treinar um classificador "adivinhe a fonte". Se o rótulo sai da fonte, o corpus reprova antes de qualquer GPU, do mesmo jeito que a invariante 10 manda checar a sobreposição de distribuições por rótulo.</p>
+<p>Não existe hoje um corpus PT-BR de ironia que seja grande, anotado por humanos e com negativos coloquiais naturais. O melhor candidato é o <strong>MultiPICo-PT</strong>: 1.994 pares post-resposta de Reddit e Twitter, metade brasileira e metade europeia, 49 anotadores nativos, ~38% irônicos, licença CC BY 4.0 e acesso livre no Hugging Face (<a href="https://aclanthology.org/2024.acl-long.849.pdf">MultiPICo, ACL 2024</a>; <a href="https://huggingface.co/datasets/Multilingual-Perspectivist-NLU/MultiPICo">HF</a>). As duas classes saem da mesma amostragem e o rótulo vem do julgamento humano, não da fonte. O formato post-resposta combina com o Fraus, em que a fala do bot vem antes da do cliente. O Tweets8JanSPI (2.935 tweets, 224 irônicos, κ 0,38) tem o mesmo desenho, mas é distribuído desidratado, só com IDs, e trata de um único tópico (<a href="https://sol.sbc.org.br/index.php/brasnam/article/download/43258/43024/">BraSNAM 2026</a>). O Kaggle "viniciuscleves" é um clone do mesmo corpus do IDPT (<a href="https://www.kaggle.com/datasets/viniciuscleves/irony-and-sarcasm-in-brazilian-portuguese">Kaggle</a>). O de manchetes The Onion × HuffPost reproduz o rótulo por procedência (<a href="https://arxiv.org/abs/2212.06035">Misra &amp; Arora</a>).</p>
+<p>A receita recomendada tem quatro camadas, da mais à menos importante. A primeira é <strong>descartar as notícias</strong>, porque nenhum dos dois lados é fala de cliente, e <strong>substituir o <code>nao-ironico.csv</code></strong> por negativos coloquiais estratificados por polaridade: muito elogio sincero e muita reclamação literal, por exemplo B2W com 5 e com 1 estrela (licença CC BY-NC-SA 4.0, compatível com uso acadêmico (<a href="https://raw.githubusercontent.com/americanas-tech/b2w-reviews01/main/README.md">README B2W</a>)) e frases do GoEmotions-PT, que é Apache 2.0. Isso ataca o modo de falha já medido: a cabeça atual marca 74% das resenhas positivas da B2W como irônicas, contra 9% das negativas (<code>docs/treinamento.md</code>, 04/09/2026). A segunda é <strong>somar o MultiPICo-PT</strong>, como fatia de treino e de validação. A terceira são os <strong>pares mínimos escritos à mão</strong> no domínio de atendimento, no molde da subtarefa pareada do iSarcasmEval (<a href="https://aclanthology.org/2022.semeval-1.111">Abu Farha et al. 2022</a>) e dos negativos por micro-edição do Puntuguese (<a href="https://huggingface.co/datasets/Superar/Puntuguese/blob/main/README.md">HF</a>). Um exemplo de par: "ótimo serviço, resolveram rápido" × "ótimo serviço, só esperei 3 horas". Esses pares rendem mais como teste do que como treino, porque dados contrafactuais protegem as features perturbadas, mas podem piorar as que não foram perturbadas (<a href="https://aclanthology.org/2022.acl-long.256">Joshi &amp; He 2022</a>). A quarta é <strong>minerar positivos de domínio</strong> com heurística (elogio + situação negativa, "só que não", "parabéns" numa nota 1) e <strong>confirmar cada um à mão</strong>. Se a heurística virar o rótulo, o projeto volta ao rótulo por marcador. Os tweets irônicos do IDPT podem continuar como positivos, desde que tenham negativos do mesmo meio. Normalizar o estilo (minúsculas, sem URL, @, hashtag nem ponto final) é barato e remove pistas tipográficas, mas não remove o léxico de registro ("PIB", "Meirelles"). Por isso o efeito tem de ser medido com o baseline de estilo, antes e depois.</p>
+<h2 id="tres-treinos-e-uma-regua-de-300-pares-separam-as-causas">Três treinos e uma régua de 300 pares separam as causas<a class="headerlink" href="#tres-treinos-e-uma-regua-de-300-pares-separam-as-causas" title="Permanent link">&para;</a></h2>
+<p>O colapso de 02/10 tem uma explicação demonstrada que não depende da multitarefa. A divisão saiu com treino 86% irônico e teste 43% irônico, porque as 18.373 notícias sem autor caíam todas no teste. O Laya treinado chegou a recall de <strong>0,988 no irônico e 0,087 no não irônico</strong>, com F1-macro de 0,388. A mesma divisão fez o BERTimbau ficar em 0,511, e a rodada de fumaça já mostrava 100% de falso positivo (nota interna de 02/10, <code>docs/notas/2026-10-02-treino-laya.md</code>). Ainda assim, a hipótese de interferência entre tarefas tem base. No pre-finetuning multitarefa, o desempenho cai quando há poucas tarefas (<a href="https://arxiv.org/abs/2101.11038">Muppet</a>), e a mistura de 02/10 era 83% emoção para 17% ironia. Mas emoção e sentimento como tarefas auxiliares <strong>ajudam</strong> o sarcasmo em outros trabalhos (<a href="https://aclanthology.org/2020.acl-main.401/">Chauhan et al. 2020</a>). Só um desenho controlado decide.</p>
+<table>
+<thead>
+<tr>
+<th>Treino</th>
+<th>O que varia</th>
+<th>Comparação que responde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(i) Laya só ironia</td>
+<td>tarefa única, divisão corrigida</td>
+<td>(i) × (ii): a multitarefa atrapalha?</td>
+</tr>
+<tr>
+<td>(ii) Laya emoção + ironia <strong>balanceado</strong></td>
+<td>amostragem por temperatura ou uma época de ironia por época de emoção</td>
+<td>(i) × (ii): se Δ ≈ 0, a hipótese da multitarefa cai</td>
+</tr>
+<tr>
+<td>(iii) BERTimbau só ironia (notebook 04)</td>
+<td>encoder</td>
+<td>(i) × (iii): o encoder importa, com dado e tarefa iguais?</td>
+</tr>
+</tbody>
+</table>
+<p>Os três treinos usam a mesma divisão, conferida pela impressão de <code>metricas_ironia.json</code>, e a mesma semente. Cada um deve rodar duas vezes: uma no IDPT corrigido e outra no corpus consertado da seção anterior. A troca de corpus é o fator que a literatura indica como dominante, e esse fator 2 × 3 é o que a banca vai querer ver. A divisão por autor não basta para medir o atalho. Hoje cada notícia sem autor vira um grupo próprio e se espalha pelos dois lados. Por isso é preciso uma função irmã de <code>dividir_por_autor</code> que agrupe por <strong>fonte</strong> (leave-one-source-out) e reaproveite <code>conferir_divisao</code>. Essa função vai falhar alto se a fonte for quase igual ao rótulo, e essa falha já é o diagnóstico.</p>
+<p>O teste interno não decide nada, já que o BERTimbau marca 0,99 nele. Quem decide é uma <strong>régua de domínio independente</strong>, escrita por quem não viu as predições, congelada com <code>impressao_dos_textos</code> antes da primeira avaliação e marcada <code>independente=True</code> no laudo. A régua tem <strong>200 a 400 itens em pares mínimos</strong> e quatro estratos: elogio sincero, elogio irônico, reclamação literal (que separa ironia de sentimento negativo) e ironia sem marcador. Inclui ainda testes de invariância no estilo do CheckList (<a href="https://arxiv.org/abs/2005.04118">Ribeiro et al. 2020</a>): o mesmo texto com e sem ponto final, em caixa alta ou baixa e com um emoji neutro tem de receber a mesma predição. A métrica principal é a <strong>acurácia por par</strong>, em que o modelo acerta os dois membros. O acaso aqui é 25%, e um modelo de estilo não consegue acertar os dois lados de um par com o mesmo registro. O tamanho sai de uma conta binomial própria: com acurácia em torno de 0,8, n=100 dá IC de ±7,8 pontos, n=200 dá ±5,5 e n=400 dá ±3,9. A régua atual tem 20 itens e IC de −0,28 a +0,17, larga demais para decidir qualquer coisa. Pares mínimos com troca de rótulo derrubam modelos em até 25% em relação ao teste original (<a href="https://arxiv.org/abs/2004.02709">Gardner et al. 2020</a>), e é essa queda que o Fraus precisa conseguir medir.</p>
+<p>Três baselines entram como modelos extras em <code>preditos_por_modelo</code>, no espírito do baseline "só a hipótese", que acerta ~67% no SNLI (<a href="https://arxiv.org/abs/1803.02324">Gururangan et al. 2018</a>). O primeiro é <strong>só estilo</strong>: regressão logística sobre ~15 features sem léxico (comprimento, proporção de maiúsculas, ponto final, <code>!?…</code>, dígitos e R$, URL, @, hashtag, emoji, alongamento, "kkk"). O segundo é <strong>só fonte</strong>. O terceiro é <strong>TF-IDF + LR</strong>, que mostra a parte lexical do registro. Se o baseline de estilo também chega perto de 0,99 no teste interno, o teste mede procedência. O modelo só conta como detector de ironia se vencer o baseline de estilo <strong>na régua</strong>, com diferença demonstrada. <code>fraus/comparacao_modelos.py</code> já tem <code>mcnemar_exato</code>, <code>bootstrap_da_diferenca</code> (2.000 reamostras, F1-macro), <code>avaliar_conjunto</code> e <code>montar_laudo</code>, que já distinguem procedência igual de independente. As quatro peças que faltavam já existem no mesmo módulo: IC de um único modelo, <strong>bootstrap por par</strong> (reamostrar pares, e não itens, para preservar a dependência dentro do par), acurácia por par e <strong>ECE</strong> com diagrama de confiabilidade (<a href="https://arxiv.org/abs/1706.04599">Guo et al. 2017</a>). O ECE importa porque o Laya sai superconfiante e a temperatura dele é ajustada numa fatia do próprio corpus viciado. Para o McNemar, o que conta são os pares discordantes: com ~20 discordantes, só uma divisão de 15:5 ou mais dá p&lt;0,05. Como guarda de regressão, entra a medição que já existe em <code>docs/treinamento.md</code>: P(irônico) médio por estrela da B2W. Se a diferença entre resenhas positivas e negativas continuar grande, o atalho continua lá.</p>
+<h2 id="o-ganho-esperado-e-de-poucos-pontos-e-vem-do-dado">O ganho esperado é de poucos pontos, e vem do dado<a class="headerlink" href="#o-ganho-esperado-e-de-poucos-pontos-e-vem-do-dado" title="Permanent link">&para;</a></h2>
+<p>Contra o multitarefa de 02/10, o Laya só-ironia vai melhorar muito no teste interno: de 0,388 para algo bem acima, talvez perto do 0,99 do BERTimbau. Esse salto vem da divisão corrigida e da proporção de 59/59, que eliminam o colapso "tudo é irônico". Ele não deve ser atribuído ao treino em tarefa única nem apresentado como detecção de ironia. Na comparação justa, o treino (i) contra o (ii) balanceado, o tamanho de efeito publicado para multitarefa é de <strong>poucos pontos, em qualquer direção</strong> (<a href="https://arxiv.org/abs/1905.07553">Standley et al. 2020</a>; <a href="https://aclanthology.org/2020.acl-main.401/">Chauhan et al. 2020</a>). O que se espera é empate dentro do IC.</p>
+<p>Contra o BERTimbau, com tarefa e dado iguais, a literatura não dá motivo para esperar diferença grande. Em PT-BR, o BERTimbau vence o mBERT por margens de 2 a 4 pontos, por exemplo 89,2 contra 86,8 de F1 no ASSIN2 RTE (<a href="https://github.com/neuralmind-ai/portuguese-bert">neuralmind-ai</a>). O mmBERT-base supera o XLM-R base no XTREME (72,8 contra 70,4), mas português é só ~2,4% da mistura de pré-treino, e o artigo não traz nenhum benchmark de classificação em português (<a href="https://arxiv.org/html/2509.06888">Marone et al. 2025</a>). Há um precedente em que o mmBERT-base venceu o BERTimbau em NER clínico em português, com micro-F1 de 0,76, num preprint ainda sem revisão (<a href="https://arxiv.org/abs/2603.26510">arXiv 2603.26510</a>). Não existe resultado de mmBERT, XLM-R ou Laya no IDPT, nem de afinação do Laya em ironia em qualquer língua. Na CPU, o Laya é mais lento: 459 ms contra 273 ms por mensagem na ironia, com ressalva, porque o Laya rodou em ONNX FP32 e o BERTimbau em PyTorch (nota interna de 02/10, <code>docs/notas/2026-10-02-treino-laya.md</code>). A velocidade do ModernBERT só aparece em GPU e em sequências longas.</p>
+<p>A única vantagem estrutural do Laya para ironia é o vocabulário multilíngue, que permite misturar o MultiPICo das outras oito línguas. A literatura, porém, é desfavorável à transferência de ironia entre línguas: o viés de tópico dos corpora atrapalha (<a href="https://boa.unimib.it/handle/10281/451401">Ortega-Bueno et al. 2023</a>), e detectores de sarcasmo não generalizam entre datasets (<a href="https://aclanthology.org/2024.naacl-long.238">Jang &amp; Frassinelli 2024</a>). O ganho que de fato muda o produto aparece na régua de domínio, quando se troca o corpus. Um modelo treinado no IDPT deve ficar perto do acaso por par, como o 0,52 oficial nos tweets. Um modelo treinado com negativos coloquiais e pares mínimos tem espaço para ganhar dezenas de pontos ali, na escala das quedas de 25 a 30 pontos que a literatura de contrast sets e filtragem adversarial atribui ao viés. Essa magnitude é inferência por analogia e não foi medida em português. A régua de 300 pares existe justamente para medi-la.</p>
+<h2 id="regua-de-pares-minimos">Régua de pares mínimos<a class="headerlink" href="#regua-de-pares-minimos" title="Permanent link">&para;</a></h2>
+<p>Estado: <strong>rascunho pronto, anotação em andamento.</strong> Spec em
+<code>docs/superpowers/specs/2026-10-08-regua-pares-ironia-design.md</code> (interno).</p>
+<ul>
+<li>150 pares (elogio, reclamação, neutra), registro equilibrado conferido por
+  <code>conferir_registro_equilibrado</code> e, par a par, mesma vírgula e mesmo número
+  de "?" nos dois lados. O baseline só de estilo acerta 0,18 dos pares fora
+  da amostra no rascunho, abaixo do acaso (0,25). O rascunho é autoral; o
+  rótulo que vale é o da anotação às cegas.</li>
+<li>A anotação mora no Fraus, por link e sem conta: <code>scripts/criar_link_anotacao.py
+  --quantos N</code> chama <code>POST /anotacao/anotadores</code> (só dev) e imprime
+  <code>&lt;id&gt;  https://fraus-one.vercel.app/anotar/&lt;token&gt;</code>. O banco guarda só o hash do
+  token e um id opaco (<code>a_</code> + 8 hex), nunca nome. A página recebe de
+  <code>GET /anotacao/&lt;token&gt;</code> só <code>id</code> e <code>texto</code>, na ordem daquele anotador, e grava
+  por <code>POST /anotacao/&lt;token&gt;/respostas</code>; o instante é do servidor. A primeira
+  rodada (João, na página antiga do claude.ai) está versionada em
+  <code>fraus/dados/anotacao_regua/anotador-claude-ai.json</code>, anotador <code>claude-ai-1</code>.</li>
+<li>Para um grupo de mensagens, <code>scripts/criar_link_anotacao.py --grupo 5</code> cria
+  <strong>um</strong> link (<code>https://fraus-one.vercel.app/anotar/grupo/&lt;token&gt;</code>) com 5
+  vagas. Cada pessoa que o abre ganha o próprio anotador (a vaga é ocupada de
+  forma serializada no banco, então 5 não viram 6) e a página guarda o link
+  pessoal só naquele navegador. Em outro aparelho, abrir o link do grupo de
+  novo gasta outra vaga e começa do zero; quem quiser trocar de aparelho guarda
+  o endereço da página pessoal. Repassar o link do grupo também gasta vaga.
+  Grupo cheio responde "Este link já foi usado por todas as pessoas previstas".
+  Revogar o grupo (<code>POST /anotacao/grupos/&lt;g_id&gt;/revogar</code>) fecha a entrada;
+  com <code>?anotadores=1</code> revoga também quem entrou, e as respostas saem do export.</li>
+<li>O token viaja na URL e fica nos logs de requisição da Vercel e no histórico
+  do navegador, como o link de convite. Link vazado se revoga com
+  <code>scripts/criar_link_anotacao.py --revogar &lt;id&gt;</code>; as respostas desse anotador
+  saem do export.</li>
+<li><strong>Critério de promoção de qualquer cabeça de ironia:</strong> vencer o baseline só
+  de estilo (<code>fraus/baseline_estilo.py</code>) em acurácia por par na régua, com IC
+  95% da diferença excluindo zero. O teste interno do IDPT não entra. No
+  laudo isso é o campo <code>candidato_vence_por_par</code> (limite inferior do IC da
+  diferença acima de zero). <code>por_par_demonstrada</code> só diz que o IC exclui zero
+  e também acende quando o candidato é significativamente pior; para promover,
+  vale <code>candidato_vence_por_par</code>.</li>
+<li>Depois da anotação: <code>uv run python scripts/exportar_anotacao.py respostas-fraus.json</code>
+  baixa <code>GET /anotacao/respostas</code> (só dev) e
+  <code>uv run python scripts/consolidar_regua_ironia.py fraus/dados/anotacao_regua/anotador-claude-ai.json respostas-fraus.json</code>
+  concatena os arquivos e consolida. Menos de 100 pares confirmados para o
+  script com erro dizendo quantos faltam.</li>
+<li>Cada registro é
+  <code>{"anotador": "...", "frase_id": "...", "resposta": "ironico|nao_ironico|contexto", "instante": "2026-10-08T12:00:00.000000+00:00"}</code>;
+  o script usa a última resposta de cada anotador por frase.</li>
+<li>A página embaralha a ordem por anotador (semente derivada do id) e nunca põe
+  os dois lados de um par em sequência. A régua congelada guarda duas
+  impressões no meta: uma dos textos e outra de <code>par_id|rótulo|texto</code>, de modo
+  que trocar um rótulo ou mover um par também falha alto na carga.</li>
+</ul>
+<h2 id="conclusao">Conclusão<a class="headerlink" href="#conclusao" title="Permanent link">&para;</a></h2>
+<p>A pergunta "Laya ou BERTimbau, só ironia ou multitarefa" foi formulada sobre um corpus que não sustenta nenhuma das quatro respostas, porque nele o rótulo é a fonte. A decisão que de fato move o resultado vem antes do encoder. São três passos: trocar o <code>nao-ironico.csv</code> de #economia e as notícias por fala coloquial sincera, construir a régua de pares mínimos e comparar cada modelo com um baseline de estilo que não sabe nada de ironia. O Laya só-ironia continua valendo como experimento, como a célula (i) de um desenho controlado e não como conserto, e só depois de corrigir <code>laya_treinado_pelo_fraus</code> para que o produto não rotule um modelo treinado como "sem treino".</p>
+<p>Para a banca, a meta de 100% se transforma num argumento a favor do projeto. Mostrar que o BERTimbau marca 0,99 no teste interno, que um classificador de pontuação e caixa alta chega perto disso, e que ambos caem para perto do acaso numa régua de pares mínimos é uma demonstração empírica da invariante 10 em ironia. Essa demonstração convence mais do que qualquer número alto. Promover o modelo depende de ele vencer o baseline de estilo na régua independente, com IC que exclua zero. O teste interno não serve para essa decisão.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
