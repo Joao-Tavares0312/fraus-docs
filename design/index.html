@@ -1,0 +1,1754 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../integracao-tars/">
+      
+      
+        <link rel="next" href="../redesign-2026-10-16/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Design da interface - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#design-da-interface-contexto-nao-certeza" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design da interface
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ironia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e Laya
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#direcao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direção
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cor-e-significado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cor e significado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipografia-e-icones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipografia e ícones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrutura-e-conteudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrutura e conteúdo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fundo-continuo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fundo contínuo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fr-e-orcamento-de-renderizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR e orçamento de renderização
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numeros-ausencia-e-proveniencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Números, ausência e proveniência
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encaixe-secreto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encaixe secreto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acesso-acessibilidade-e-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acesso, acessibilidade e estados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-e-manutencao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação e manutenção
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redesign-2026-10-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antes e depois da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cartao-do-modelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cartão do modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diferenciais
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diferenciais
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/relatorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório de entrega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/concorrentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concorrentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/roteiro-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demonstração
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#direcao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direção
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cor-e-significado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cor e significado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipografia-e-icones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipografia e ícones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrutura-e-conteudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrutura e conteúdo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fundo-continuo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fundo contínuo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fr-e-orcamento-de-renderizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FR e orçamento de renderização
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numeros-ausencia-e-proveniencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Números, ausência e proveniência
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encaixe-secreto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encaixe secreto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acesso-acessibilidade-e-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acesso, acessibilidade e estados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-e-manutencao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação e manutenção
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<!-- GERADO POR scripts/reunir_docs.py A PARTIR DE dashboard/DESIGN.md -->
+<!-- Nao edite este arquivo: a edicao se perde no proximo build. -->
+
+<hr />
+<p>name: Fraus — Contexto, não certeza
+description: Grafite, monograma FR em camadas e tipografia quadrada. Uma chegada expressiva e uma ferramenta de leitura calma, com temas escuro e claro.
+colors:
+  background: "#171819"
+  foreground: "#F3F4F5"
+  card: "#222426"
+  muted-foreground: "#B3B9C0"
+  border: "#454B52"
+  primary: "#D6BA72"
+  dito: "#EDB466"
+  medido: "#8DC8F5"
+typography:
+  display:
+    fontFamily: "Chakra Petch, system-ui, sans-serif"
+    fontWeight: 500
+    lineHeight: 1.06
+    letterSpacing: "-0.025em"
+  prosa:
+    fontFamily: "Chakra Petch, system-ui, sans-serif"
+    fontWeight: 400
+    lineHeight: 1.75
+  dado:
+    fontFamily: "Chakra Petch, system-ui, sans-serif"
+    fontFeature: "tabular-nums"
+rounded:
+  controle: "8px"
+  regiao: "12px"
+spacing:
+  sidebar: "224px"
+  sidebar-recolhida: "64px"
+  gutter-lp-desktop: "64px"
+  gutter-lp-mobile: "24px"</p>
+<hr />
+<h1 id="design-da-interface-contexto-nao-certeza">Design da interface — Contexto, não certeza<a class="headerlink" href="#design-da-interface-contexto-nao-certeza" title="Permanent link">&para;</a></h1>
+<p>Direção aprovada no protótipo v3 e implementada em 16/10/2026. Este documento
+substitui as regras visuais do <strong>Instrumento / Chuva de neon</strong>; não é uma camada
+adicional sobre elas. A comparação histórica está em
+<a href="../redesign-2026-10-16/">Antes e depois da interface</a>.</p>
+<p>A verdade de produto continua em <code>dashboard/PRODUCT.md</code>. Tokens executáveis
+moram em <code>dashboard/app/globals.css</code>; a LP tem seu escopo em <code>dashboard/app/lp.css</code>.
+Os valores abaixo documentam o código, não constituem uma segunda configuração.</p>
+<h2 id="direcao">Direção<a class="headerlink" href="#direcao" title="Permanent link">&para;</a></h2>
+<p><strong>A marca tem matéria; a ferramenta tem clareza.</strong> A LP combina o monograma FR,
+camadas com profundidade, tipografia angular e pinceladas diagonais. A dashboard
+usa a mesma família tipográfica e as mesmas vozes de cor, mas não recebe uma cena
+atrás dos dados. A fenda do monograma reaparece como pequeno detalhe de identidade,
+não como recorte que prejudica texto ou alvo de clique.</p>
+<ul>
+<li>Grafite, branco mineral e ouro fosco na chegada.</li>
+<li>Cabeçalhos e navegação em caixa normal; sem telemetria numerada decorativa.</li>
+<li>Números como texto legível, não polígonos de sete segmentos.</li>
+<li>Controles de 8px e regiões de 12px; borda simples e superfície opaca.</li>
+<li>Uma região dominante por tela; apoio não disputa o mesmo peso visual.</li>
+</ul>
+<h2 id="cor-e-significado">Cor e significado<a class="headerlink" href="#cor-e-significado" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Escuro</th>
+<th>Claro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundo</td>
+<td><code>#171819</code></td>
+<td><code>#F3F4F5</code></td>
+</tr>
+<tr>
+<td>Superfície / popover / sidebar</td>
+<td><code>#222426</code></td>
+<td><code>#FFFFFF</code></td>
+</tr>
+<tr>
+<td>Texto principal</td>
+<td><code>#F3F4F5</code></td>
+<td><code>#202326</code></td>
+</tr>
+<tr>
+<td>Texto secundário</td>
+<td><code>#B3B9C0</code></td>
+<td><code>#565D65</code></td>
+</tr>
+<tr>
+<td>Ação e foco</td>
+<td><code>#D6BA72</code></td>
+<td><code>#735713</code></td>
+</tr>
+<tr>
+<td>Dito</td>
+<td><code>#EDB466</code></td>
+<td><code>#8A4B00</code></td>
+</tr>
+<tr>
+<td>Medido</td>
+<td><code>#8DC8F5</code></td>
+<td><code>#165E9D</code></td>
+</tr>
+<tr>
+<td>Borda</td>
+<td><code>#454B52</code></td>
+<td><code>#D5D9DE</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Âmbar é dito; azul é medido.</strong> Fala, texto e emoji pertencem ao primeiro.
+Probabilidade, nota, tempo e tendência pertencem ao segundo. Uma régua entre os
+dois só aparece quando existe essa divisão real; NPS × latência são duas medidas,
+não uma fala confrontada com uma medida.</p>
+<p><strong>Ouro não é dado.</strong> Pertence a marca, ação, foco e seleção. Não colore série,
+barra, categoria ou valor de indicador para parecer bom resultado.</p>
+<p>Categorias, famílias, emoções e tipos de nó conservam seus significados. No tema
+claro, a luminância se adapta ao fundo, não se troca a família de matiz. Toda
+categoria leva rótulo; cor não é o único canal. Os validadores medem texto e marcas
+nos dois temas, inclusive as cores do grafo.</p>
+<h2 id="tipografia-e-icones">Tipografia e ícones<a class="headerlink" href="#tipografia-e-icones" title="Permanent link">&para;</a></h2>
+<p><strong>Chakra Petch local</strong>, pesos 400, 500 e 600, com licença SIL OFL em
+<code>dashboard/public/identidade/</code>. <code>next/font/local</code> serve os arquivos do próprio
+produto; não há busca de fonte no Google no build ou no navegador.</p>
+<ul>
+<li>Texto, títulos, controles e valores usam a família quadrada.</li>
+<li>Valores comparáveis usam algarismos tabulares. Código, <code>pre</code> e <code>kbd</code> mantêm
+  pilha monoespaçada de sistema.</li>
+<li>Piso de texto: 11px. Não diminuir procedência ou ressalva para fazê-la caber.</li>
+<li>Títulos grandes fecham o tracking; não aplicar caixa alta e tracking de
+  telemetria a toda a interface.</li>
+<li>Lucide com ícones contextuais. Ação usa o desenho do verbo; seleção é
+  identificada pelo estado, não por um ícone arbitrário.</li>
+<li>Ícone decorativo leva <code>aria-hidden</code>; texto ou nome acessível diz a ação.</li>
+</ul>
+<h2 id="lp">LP<a class="headerlink" href="#lp" title="Permanent link">&para;</a></h2>
+<h3 id="estrutura-e-conteudo">Estrutura e conteúdo<a class="headerlink" href="#estrutura-e-conteudo" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Abertura:</strong> “O atendimento termina. A análise começa.” e ação para conhecer
+   o método. O FR é arte da marca, não um gráfico de resultados.</li>
+<li><strong>Contexto:</strong> “Ok, obrigado.” vem identificado como <strong>exemplo de linguagem</strong>.
+   Pedido, resposta e desfecho explicam o que conferir; cortesia isolada não
+   comprova satisfação ou insatisfação.</li>
+<li><strong>Sinais:</strong> detalhes nativos separam leitura textual da mensagem,
+   contribuições dos sinais e horários da conversa. Probabilidade textual não
+   vira causa isolada da nota fundida.</li>
+<li><strong>Uso:</strong> panorama → recorte → conversa, com destino real para <code>/dashboard</code>.</li>
+<li><strong>Limites:</strong> estimativa, não pesquisa; não avalia atendentes; tempo treinado
+   com dados sintéticos; sem sinal não é zero.</li>
+<li><strong>Fecho:</strong> entrar e criar conta, sem links ou rótulos de prancha de estudo.</li>
+</ol>
+<p>As leituras gravadas permanecem em expansão nativa. <code>carregarLeituras</code> valida o
+snapshot; seletor, transcrição, data, API e hash parcial acompanham resultados
+válidos. O hash das importâncias <strong>não</strong> identifica todos os checkpoints nem o
+pipeline. Sem snapshot válido, a LP nomeia a ausência; não publica resultado do
+dublê nem apresenta escolhas fictícias. Nenhuma análise é executada ao abrir a LP.</p>
+<h3 id="fundo-continuo">Fundo contínuo<a class="headerlink" href="#fundo-continuo" title="Permanent link">&para;</a></h3>
+<p>Uma única camada SVG de pincel cobre <strong>a raiz inteira da LP</strong>, do cabeçalho ao
+fecho. A raiz é posicionada e isolada; o pseudo-elemento usa <code>inset: 0</code>. Sua altura
+deve acompanhar a página, inclusive quando detalhes alteram o conteúdo. Não
+voltar a prender o fundo ao palco do FR ou a um viewport de altura fixa.</p>
+<p>O SVG é estático, local e sem filtros, scripts ou recursos externos. Não recebe
+interação. Widgets têm superfície opaca; a textura não atravessa o texto deles.
+A dashboard não herda o pincel.</p>
+<h3 id="fr-e-orcamento-de-renderizacao">FR e orçamento de renderização<a class="headerlink" href="#fr-e-orcamento-de-renderizacao" title="Permanent link">&para;</a></h3>
+<p>A geometria deriva do <strong>SVG oficial</strong>, incluindo a fenda diagonal. F claro e R
+champanhe, cinco camadas extrudadas. Essas cinco camadas <strong>não representam</strong>
+famílias, features ou contribuições do modelo.</p>
+<ul>
+<li>Desktop a partir de 900px, sem movimento reduzido: <strong>um canvas WebGL nativo</strong>
+  quando o contexto é elegível, importado sob demanda. O HTML inicial contém
+  a própria arte pré-renderizada; centenas de faces CSS não permanecem no DOM.</li>
+<li>Produção pede <code>failIfMajorPerformanceCaveat</code> e recusa backends CPU conhecidos,
+  como SwiftShader/llvmpipe. Nesse caso as poses continuam em WebP, sem replay,
+  triangulação ou upload de buffers. Identificação ocultada não prova hardware;
+  a decisão restante depende do caveat do navegador.</li>
+<li>A seção com maior porção visível escolhe a pose. Nova direção parte da
+  interpolação atual e substitui o alvo; não existe fila nem sequestro da rolagem.</li>
+<li>Com GL ativo, transições de 650ms; replay reexecuta a entrada sem mover o documento.</li>
+<li>Mobile: imagens WebP transparentes das mesmas poses, sem iniciar WebGL.
+  <code>picture</code> seleciona a variante de 800×640; desktop usa 1280×1024. As imagens
+  inferiores usam carregamento preguiçoso, sem baixar as duas variantes.</li>
+<li>Sem JS ou com <code>prefers-reduced-motion</code>: arte estática e conteúdo completo,
+  sem importar o renderizador nem oferecer replay.</li>
+<li>Um buffer estático e um draw por quadro, culling de faces traseiras e placas
+  próximas primeiro. rAF existe apenas durante transições; resize redesenha sob
+  demanda. Limites: DPR 1,5 e 1,6 megapixel.</li>
+<li>O raster só sai após o primeiro draw válido. WebGL indisponível ou contexto
+  perdido mantém a marca estática e remove replay; restauração recria recursos.
+  Desmontar libera buffers, programa, shaders, observadores e rAF.</li>
+<li>Não há device WebGPU, partículas ou laço permanente na LP. O WebGL serve
+  somente à arte da marca, não à inferência. Motion fica no layout da dashboard.</li>
+<li>Links para conta e ferramenta não antecipam o download dessas rotas na LP.</li>
+</ul>
+<p><code>npm run arte:lp</code>, com o produto local aberto, gera os WebP da própria escultura.
+<code>LP_URL</code> seleciona a prévia; o exportador usa Chromium e FFmpeg. Não recriar a
+geometria num segundo gerador. Depois de gerar novos arquivos públicos, reiniciar
+a prévia de produção antes de conferir as imagens.
+Em ambiente de captura sem aceleração, <code>LP_GL_SOFTWARE=1 npm run arte:lp</code>
+autoriza GL em software <strong>somente no Playwright de exportação</strong>. Não falsifica o
+driver nem habilita um modo oculto na LP. Isso produz arte real, não evidência
+de desempenho de hardware.</p>
+<h2 id="dashboard">Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h2>
+<p>Sidebar de <strong>224px</strong>, recolhida em um rail de <strong>64px</strong>, com ícones e nomes em
+caixa normal. Três grupos organizam tarefas: <strong>Acompanhar</strong> (visão geral e
+atendimentos), <strong>Investigar</strong> (analisar, grafo e operação) e <strong>Configurar</strong>
+(integrações, modelo e configurações, apenas para <code>dev</code>). Destinos, ícones,
+grupos e visibilidade têm uma fonte única em <code>lib/navegacao.ts</code>.</p>
+<ul>
+<li>Página atual usa <code>aria-current="page"</code>; sua seção ancestral usa <code>"location"</code>.
+  Links recolhidos mantêm nome acessível e tooltip por foco ou ponteiro.</li>
+<li>Somente <code>de</code> e <code>ate</code> acompanham a troca de tarefa. Busca, paginação e outros
+  parâmetros locais não vazam para a próxima seção.</li>
+<li>Recolhimento é restaurado no servidor pelo cookie de preferência. Ctrl/Meta+B
+  alterna a navegação sem interceptar input, textarea, select ou contenteditable.</li>
+<li>Ação de recolher/expandir fica junto à marca no desktop. No celular, o
+  cabeçalho abre a gaveta; fechamento explícito e Escape devolvem o foco.
+  Navegação comum fecha a gaveta; clique modificado para nova aba não a fecha.</li>
+<li>Marca interativa e link para a visão geral são controles separados. Tema,
+  documentação, sessão e saída permanecem disponíveis; o rodapé compacto não
+  trunca o aviso real de motor sintético.</li>
+</ul>
+<p>Permissões continuam sendo contratos do servidor, não consequência de mostrar
+ou esconder links. Não converter ausência de papel em permissão administrativa.</p>
+<p>A visão geral abre com título e filtro, faixa compacta de quatro indicadores e
+NPS × latência como região dominante. A faixa usa quatro colunas em telas largas
+e duas em larguras menores. Informação de amostra e incerteza continua próxima
+do NPS, sem transformar ressalva em rodapé invisível.</p>
+<p><code>Painel</code> preserva dominante/apoio, erros locais, vazios e aparato metodológico.
+Superfície opaca, borda simples; nenhum ateliê, brilho especular, vidro ou fundo
+animado interfere nos gráficos. <code>EstadoVazio</code> nomeia o que falta e a etapa ou o
+endpoint que pode resolver.</p>
+<h3 id="numeros-ausencia-e-proveniencia">Números, ausência e proveniência<a class="headerlink" href="#numeros-ausencia-e-proveniencia" title="Permanent link">&para;</a></h3>
+<p><code>ValorNumerico</code> recebe uma string já formatada, rótulo e ausência explícita.
+Não calcula score, nota ou categoria. <code>NotaInferida</code> apresenta a nota recebida.
+Zero observado continua zero; <code>null</code> continua ausência.</p>
+<ul>
+<li>NPS e CSAT carregam <strong>estimativa</strong>. Contenção e latência são observadas.</li>
+<li>Amostra insuficiente não ganha ponto de NPS; o intervalo amostral não mede o
+  erro do modelo.</li>
+<li><code>sem sinal</code>, <code>sem estimativa</code> e <code>sem dados</code> não são sinônimos; a região nomeia
+  a condição correta.</li>
+<li>Categoria medida: cabeça cheia; evidência fraca: tracejada com motivo;
+  ausência: cabeça vazada cinza e texto. Cinza fica fora da escala.</li>
+<li>Erro de uma consulta não apaga indicadores que responderam.</li>
+<li>O segredo da marca nunca modifica indicadores, gráficos ou transcrições.</li>
+</ul>
+<h3 id="encaixe-secreto">Encaixe secreto<a class="headerlink" href="#encaixe-secreto" title="Permanent link">&para;</a></h3>
+<p>Cinco cliques consecutivos na marca, com até dois segundos entre eles, abrem
+um quebra-cabeça do FR. Três fragmentos da arte pré-renderizada deslizam em
+trilhos nativos; o centro de cada trilho recompõe o monograma. A conclusão
+é uma brincadeira visual, não score, leitura psicológica ou resultado do modelo.</p>
+<p>O componente carrega apenas ao descobrir o segredo. Não usa canvas, áudio,
+relógio de jogo, API ou persistência; não fecha sozinho. Embaralhar oferece
+outro arranjo. <code>prefers-reduced-motion</code> elimina transições sem retirar o jogo.
+O diálogo contém foco, fecha por Escape/botão/clique fora e devolve foco à
+marca. No celular, fechar o segredo não fecha a gaveta que o abriu.</p>
+<p>A antiga revelação vaporwave, a pontuação do ritmo e o contexto que falsificava
+indicadores foram removidos, não mantidos como um segundo modo.</p>
+<h3 id="temas">Temas<a class="headerlink" href="#temas" title="Permanent link">&para;</a></h3>
+<p><strong>Escuro</strong> é o padrão; <strong>Claro</strong> é alternativa da dashboard. Preferência fica no
+navegador e acompanha abas e navegação. Valores legados Instrumento/Chuva não são
+aliases: retornam ao padrão. LP e acesso ficam escuros, sem apagar a preferência
+da ferramenta; voltar à dashboard restaura a escolha.</p>
+<p>O script inicial evita flash; <code>TemaDaRota</code> trata transições do App Router. O
+canvas do grafo invalida a paleta ao trocar tema sem recriar dados ou física.</p>
+<h2 id="acesso-acessibilidade-e-estados">Acesso, acessibilidade e estados<a class="headerlink" href="#acesso-acessibilidade-e-estados" title="Permanent link">&para;</a></h2>
+<p>O acesso mantém o FR pré-renderizado de luz de corte: uma passagem curta, sem
+loop, interrompida ao operar o formulário. Não carrega motor 3D no navegador.
+Convite, código administrativo, erros, disponibilidade de login e navegação são
+contratos do servidor, não efeitos visuais.</p>
+<ul>
+<li>Teclado: pular conteúdo, foco visível, abas com setas/Home/End e <code>details</code>
+  nativo com Enter. Controles da LP têm alvo mínimo de 44px.</li>
+<li>Carregamento: esqueleto com forma do resultado e estado ocupado, nunca zero ou
+  “sem sinal” antes da resposta.</li>
+<li>Erro: causa visível e ação real, sem ocultar os vizinhos que funcionam.</li>
+<li>Movimento reduzido remove deslocamento; não apenas o torna mais lento.</li>
+<li>Não pontuar atendentes, não alegar leitura de pensamentos e não apresentar
+  números de demonstração como resultados de clientes reais.</li>
+</ul>
+<h2 id="verificacao-e-manutencao">Verificação e manutenção<a class="headerlink" href="#verificacao-e-manutencao" title="Permanent link">&para;</a></h2>
+<p><code>npm test</code>, <code>npm run lint</code>, <code>npm run build</code>, <code>npm run contraste</code> e <code>npm run pisos</code>
+cobrem contratos diferentes. Nenhum substitui olhar e operar o produto.</p>
+<p><code>npm run test:lp</code> exercita desktop/mobile, teclado, snapshots/ausência, fundo com
+altura integral, pixels do FR, retarget/retorno, replay sem scroll, reduce
+inicial/dinâmico, resize, sem JS, indisponibilidade/perda/restauração de WebGL,
+ausência de draws ociosos, acesso e redirect de <code>/leitura</code>. <code>LP_EVIDENCIAS</code>
+guarda capturas e resultados fora do código.
+O relatório distingue GL exercitado de cenários não elegíveis. Para conferir
+geometria, retarget e ciclo de contexto sem uma GPU disponível,
+<code>LP_GL_SOFTWARE=1 npm run test:lp</code> autoriza renderização real em software apenas
+no navegador de QA; não é benchmark do caminho padrão.</p>
+<p><code>node scripts/validar-navegacao-playwright.mjs</code> opera rotas reais, período,
+recolhimento/reload, atalhos durante edição, tooltip por foco, tema, marca e
+gaveta móvel. <code>DASHBOARD_URL</code> aponta para o produto já iniciado; exige sessão
+válida ou o modo local aberto. Também conferir dashboard vazia, atendimento sem
+sinal, temas, grafo e navegação LP ↔ ferramenta.</p>
+<p><code>node scripts/validar-segredo-playwright.mjs</code> resolve o jogo por teclado,
+confere mudança dos pixels, reinício, embaralhar, foco e modais aninhados.
+Compara os quatro indicadores antes/durante/depois em desktop e celular,
+incluindo Claro e reduce. <code>SEGREDO_EVIDENCIAS</code> guarda as capturas opcionais.</p>
+<p>A documentação MkDocs mantém sua aparência própria nesta entrega; não presumir
+que o CSS do site foi redesenhado junto com o produto.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
