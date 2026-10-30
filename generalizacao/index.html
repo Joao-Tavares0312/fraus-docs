@@ -1,0 +1,2782 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../treinamento/">
+      
+      
+        <link rel="next" href="../cartao-do-modelo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Generalização e evidências - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generalizacao-e-evidencias" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Generalização e evidências
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banca e metodologia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Banca e metodologia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generalização e evidências
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generalização e evidências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estado-da-investigacao-27102026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estado da investigação — 27/10/2026
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matriz-de-evidencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matriz de evidências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Matriz de evidências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-a-reconstrucao-do-fusor-mostra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que a reconstrução do fusor mostra
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auditoria-integral-dos-corpora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auditoria integral dos corpora
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolo-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocolo de auditoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultados-da-reproducao-2627102026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultados da reprodução — 26–27/10/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resultados da reprodução — 26–27/10/2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tres-sementes-por-cabeca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Três sementes por cabeça
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curvas-comparaveis-evidencia-de-sobreajuste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curvas comparáveis: evidência de sobreajuste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transferencia-e-regua-operacional-dos-candidatos-escolhidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transferência e régua operacional dos candidatos escolhidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#candidato-do-fusor-e-ablacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candidato do fusor e ablações
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolo-da-campanha-fechada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocolo da campanha fechada
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocolo da campanha fechada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-de-implementacao-nao-e-resultado-cientifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação de implementação não é resultado científico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-do-sistema-e-ablacoes-do-fusor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste do sistema e ablações do fusor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-interpretar-as-conclusoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como interpretar as conclusões
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cartao-do-modelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cartão do modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ironia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e Laya
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diferenciais
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diferenciais
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/relatorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório de entrega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/concorrentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concorrentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/roteiro-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demonstração
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usuários
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usuários
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guia-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvedores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desenvolvedores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvimento local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redesign-2026-10-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antes e depois da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estado-da-investigacao-27102026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estado da investigação — 27/10/2026
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matriz-de-evidencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matriz de evidências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Matriz de evidências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-a-reconstrucao-do-fusor-mostra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que a reconstrução do fusor mostra
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auditoria-integral-dos-corpora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auditoria integral dos corpora
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolo-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocolo de auditoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultados-da-reproducao-2627102026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultados da reprodução — 26–27/10/2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resultados da reprodução — 26–27/10/2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tres-sementes-por-cabeca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Três sementes por cabeça
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curvas-comparaveis-evidencia-de-sobreajuste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curvas comparáveis: evidência de sobreajuste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transferencia-e-regua-operacional-dos-candidatos-escolhidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transferência e régua operacional dos candidatos escolhidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#candidato-do-fusor-e-ablacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candidato do fusor e ablações
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolo-da-campanha-fechada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocolo da campanha fechada
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocolo da campanha fechada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-de-implementacao-nao-e-resultado-cientifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação de implementação não é resultado científico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-do-sistema-e-ablacoes-do-fusor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste do sistema e ablações do fusor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-interpretar-as-conclusoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como interpretar as conclusões
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="generalizacao-e-evidencias">Generalização e evidências<a class="headerlink" href="#generalizacao-e-evidencias" title="Permanent link">&para;</a></h1>
+<h2 id="estado-da-investigacao-27102026">Estado da investigação — 27/10/2026<a class="headerlink" href="#estado-da-investigacao-27102026" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Campanha concluída; candidatos novos, não modelos publicados</p>
+<p>A reprodução de 26–27/10 concluiu <strong>nove treinos em T4</strong>, exportou os nove
+bundles e avaliou o candidato do fusor e suas ablações. As curvas comparáveis
+sustentam <strong>sobreajuste nesta reprodução</strong>, com padrões detalhados abaixo.
+O diagnóstico dos pesos antigos e dos publicados continua <strong>inconclusivo</strong>:
+suas curvas e proveniência não foram recuperadas. Os candidatos não foram
+promovidos; a sessão própria foi encerrada pela CLI.</p>
+</div>
+<p>Esta página distingue quatro perguntas: <strong>vazamento</strong>, <strong>sobreajuste</strong>,
+<strong>transferência de domínio</strong> e <strong>insuficiência de evidência</strong>. Uma métrica alta
+não responde às quatro; uma queda entre corpora tampouco prova overfitting.
+As medições históricas continuam no <a href="../cartao-do-modelo/">Cartão do modelo</a>
+e no <a href="../treinamento/">diário de treinamento</a>, com suas datas.</p>
+<h2 id="matriz-de-evidencias">Matriz de evidências<a class="headerlink" href="#matriz-de-evidencias" title="Permanent link">&para;</a></h2>
+<p>Os identificadores abaixo nomeiam saídas de pesquisa preservadas fora do site
+público. Não são links para manifestos individuais, dados brutos ou pesos.
+Base do inventário: commit <code>836d440bbe246018fb8808a4ede4c6f84d6a0ef9</code>.
+A data é a da observação, não uma alegação sobre quando o modelo foi treinado.</p>
+<p>A campanha nova usa a fonte congelada
+<code>03f91770ec92dec934d794cbad50ea3224f4cb8a</code>, vinculada por
+<code>manifesto-bundles.json</code>. O upload não continha <code>.git</code>: o campo de commit
+interno dos notebooks ficou nulo. A ligação externa com o commit resulta da
+comparação integral dos três <code>codigo_manifesto.json</code> com os bytes de
+<code>git archive</code> dessa fonte, não de um commit interno inventado. Pesos, logs e
+manifestos individuais permanecem fora do Git e do site.</p>
+<table>
+<thead>
+<tr>
+<th>artefato / componente</th>
+<th>dataset e divisão</th>
+<th>data</th>
+<th>o que foi observado</th>
+<th>limite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>inventario.json</code> / três cabeças Torch locais</td>
+<td>arquivos, configurações e hashes; sem inferência</td>
+<td>26/10/2026</td>
+<td>checkpoints locais identificados por bytes</td>
+<td>não identifica produção nem recupera manifestos históricos</td>
+</tr>
+<tr>
+<td><code>auditoria.json</code> / corpora locais completos</td>
+<td>leitores canônicos e splits 42, sem inferência</td>
+<td>26/10/2026</td>
+<td>auditoria integral concluída; duplicatas, conflitos e interseções normalizadas registrados</td>
+<td>a reconstrução não prova a origem supervisionada dos pesos antigos</td>
+</tr>
+<tr>
+<td><code>historico.json</code> / receita antiga do fusor</td>
+<td>pools posicionais B2W, 900 linhas de treino e 300 de teste</td>
+<td>26/10/2026</td>
+<td>zero textos normalizados comuns; <strong>41 produtos comuns</strong>, envolvendo 63 linhas de treino e 52 de teste</td>
+<td>reconstrução da receita atual, não prova de quais exemplos treinaram pesos antigos</td>
+</tr>
+<tr>
+<td><code>satisfacao-atual.json</code> / cabeça local de satisfação</td>
+<td>B2W, amostra estratificada de 5.000 dos 18.895 exemplos do teste reconstruído</td>
+<td>26/10/2026</td>
+<td>F1-macro <strong>0,764556</strong>, acurácia <strong>0,820000</strong>, ECE <strong>0,018971</strong></td>
+<td>pesos anteriores à divisão podem ter visto exemplos; independência histórica não verificável</td>
+</tr>
+<tr>
+<td><code>satisfacao-atual.json</code> / mesma cabeça</td>
+<td>ConsumerBR, amostra estratificada de 5.000 dos 143.717 exemplos do teste reconstruído</td>
+<td>26/10/2026</td>
+<td>F1-macro <strong>0,538760</strong>, acurácia <strong>0,690600</strong>, ECE <strong>0,090972</strong></td>
+<td>transferência já consultada; independência depende de treino somente em B2W, sem manifesto histórico que a comprove</td>
+</tr>
+<tr>
+<td><code>ironia-atual.json</code> / cabeça local de ironia</td>
+<td>teste reconstruído MultiPICo-PT, 462 exemplos</td>
+<td>26/10/2026</td>
+<td>F1-macro <strong>0,660294</strong>, acurácia <strong>0,683983</strong>, ECE <strong>0,055439</strong></td>
+<td>benchmark já consultado; independência histórica do sistema não verificável</td>
+</tr>
+<tr>
+<td><code>ironia-atual.json</code> / mesma cabeça</td>
+<td>régua de 20 frases de atendimento</td>
+<td>26/10/2026</td>
+<td>F1-macro <strong>0,520000</strong>, acurácia <strong>0,550000</strong>, ECE <strong>0,242688</strong></td>
+<td>conjunto pequeno e já consultado; não estima qualidade em produção</td>
+</tr>
+<tr>
+<td><code>emocao-atual.json</code> / cabeça local de emoção</td>
+<td>teste GoEmotions-PT reconstruído, 7.328 exemplos</td>
+<td>26/10/2026</td>
+<td>F1-macro <strong>0,691023</strong>, acurácia <strong>0,720524</strong>, ECE <strong>0,056790</strong></td>
+<td>pesos anteriores à nova divisão podem ter visto parte dos exemplos; independência histórica não verificável</td>
+</tr>
+<tr>
+<td><code>emocao-atual.json</code> / mesma cabeça</td>
+<td>XED-pt, 4.286 exemplos, seis classes presentes (sem neutro)</td>
+<td>26/10/2026</td>
+<td>F1-macro <strong>sete classes 0,240398</strong>; <strong>seis presentes 0,280465</strong>; acurácia <strong>0,285814</strong>, ECE <strong>0,451814</strong></td>
+<td>transferência já consultada; rótulos projetados de outras línguas, não validação de suporte real</td>
+</tr>
+<tr>
+<td>satisfação e emoção locais / curvas antigas</td>
+<td>treino supervisionado histórico</td>
+<td>26/10/2026</td>
+<td>curvas e manifestos individuais antigos não recuperados</td>
+<td>não permite medir gap treino–validação dos pesos atuais</td>
+</tr>
+<tr>
+<td><code>resumo-cientifico.json</code> + nove bundles / satisfação, emoção e ironia novas</td>
+<td>B2W, GoEmotions-PT e MultiPICo PT; splits congelados e sementes 13/42/77</td>
+<td>26–27/10/2026</td>
+<td>nove avaliações finais, ECE bruto/calibrado e curvas por época; tabelas abaixo</td>
+<td>reprodução nova, não recuperação do histórico nem identificação de produção</td>
+</tr>
+<tr>
+<td><code>fusor-candidato/metricas.json</code> / completo e ablações</td>
+<td>B2W agrupado + 900/120/300 conversas sintéticas de treino/validação/teste</td>
+<td>26–27/10/2026</td>
+<td>extração real com cabeças candidatas e avaliação de 39/4/7 features concluídas</td>
+<td>uma execução por variante, não atendimento real rotulado</td>
+</tr>
+<tr>
+<td><code>independencia-sistema.json</code> / prova complementar</td>
+<td>validação/teste B2W contra treinos reais das três cabeças novas</td>
+<td>27/10/2026</td>
+<td>fingerprints correspondem às receitas; zero colisões textuais normalizadas nos seis cruzamentos</td>
+<td>não detecta paráfrases; grupos entre fontes não são comparáveis</td>
+</tr>
+<tr>
+<td><code>transferencia-sobreposicoes.json</code> + <code>resumo-cientifico.json</code> / candidatos selecionados</td>
+<td>ConsumerBR amostrado (5.000) e XED integral (4.286) contra os treinos reais correspondentes</td>
+<td>27/10/2026</td>
+<td>zero colisões ConsumerBR × treino B2W; seis XED × treino GoEmotions, dois conflitos</td>
+<td>benchmarks já consultados, não testes virgens; XED não é textualmente independente</td>
+</tr>
+<tr>
+<td>produção</td>
+<td>checkpoint não identificado</td>
+<td>26/10/2026</td>
+<td>nenhuma inferência autenticada ou proveniência de pesos demonstrada nesta investigação</td>
+<td>saúde da API não comprova inferência nem igualdade com artefatos locais</td>
+</tr>
+</tbody>
+</table>
+<p>Os pesos locais de ironia medidos têm SHA-256
+<code>512841782d167327b21e1c2c98e602c28dbdf30d6fdafa9733b9f078f4d09388</code>.
+O conjunto MultiPICo medido tem fingerprint textual
+<code>4eee9c62e8c9a11fb5e39d1609238b7175420ca171e8352a3516e4785693595e</code>;
+a régua de 20 frases,
+<code>90f3ab25892bef90b09167120808ae9357919384667fdd74ec4132d4ef27e668</code>.
+Os pesos locais de emoção têm SHA-256
+<code>e9735f12ef459ba93102d868be7455d9a0d453099530597f3855269b5ab83cd9</code>;
+os fingerprints textuais de GoEmotions-PT e XED-pt são, respectivamente,
+<code>8b48cefed8df6595e35c6aee7b24fc33fae1237bede03b4436e51c7e51e182ec</code> e
+<code>a1d2cd6db52ca19183d9a4cbaa7d1f59aae74e1f1add01d7251ef9e5ecf4c49a</code>.
+Os pesos locais de satisfação têm SHA-256
+<code>9f9448aed6c655ce0fab2d3e32db485d0b8de986c6d907eb82336f69c62edad2</code>;
+os fingerprints textuais das amostras B2W e ConsumerBR são, respectivamente,
+<code>481da017399ae008fa610886c740b5e7b64dfa1f076b6a85e5a0473f7b38040a</code> e
+<code>99a53fd45904ac297d5cf62d4936945b413e8fc3b4f7720246d016e15309d237</code>.
+Essas impressões identificam conjuntos observados agora, não comprovam que
+ficaram fora de todo ajuste supervisionado ou de decisões históricas.</p>
+<p>No XED, o campo <code>f1_macro</code> do JSON representa as sete classes do contrato,
+enquanto <code>f1_macro_classes_presentes</code> representa as seis observadas. A leitura
+de console pode destacar o segundo; não é intercambiável com o primeiro.
+As métricas das três cabeças nas linhas de 26/10 acima são <strong>baselines dos
+artefatos locais anteriores</strong>, não resultados das nove rodadas novas.
+As quedas B2W → ConsumerBR e GoEmotions → XED mostram limites de transferência
+sob essas condições, sem
+identificar isoladamente a causa (domínio, variedade, projeção dos rótulos
+ou sobreajuste).</p>
+<h3 id="o-que-a-reconstrucao-do-fusor-mostra">O que a reconstrução do fusor mostra<a class="headerlink" href="#o-que-a-reconstrucao-do-fusor-mostra" title="Permanent link">&para;</a></h3>
+<p>A divisão por posição não isolava produtos, apesar de não repetir textos
+normalizados entre os dois pools. Logo, <strong>disjunção textual não é independência
+por produto</strong>. Não se mede aqui o efeito dessa dependência sobre a acurácia.</p>
+<p>Estrelas (alvo da cabeça de satisfação) e recomendação com precedência do
+neutro de três estrelas (alvo do fusor) discordam em <strong>16 linhas do pool de
+treino e 5 do pool de teste</strong>. São alvos diferentes: a discordância não deve
+ser apagada nem tratada automaticamente como erro de anotação. Os pools não
+são as conversas efetivamente sorteadas pelo simulador e não demonstram
+independência do treino supervisionado das cabeças.</p>
+<h2 id="auditoria-integral-dos-corpora">Auditoria integral dos corpora<a class="headerlink" href="#auditoria-integral-dos-corpora" title="Permanent link">&para;</a></h2>
+<p>Contagens aceitas pelos leitores, antes de qualquer amostragem. “Conflito”
+conta <strong>linhas</strong> removidas porque o mesmo texto normalizado recebeu rótulos
+diferentes dentro daquele corpus; não escolhe uma das respostas.</p>
+<table>
+<thead>
+<tr>
+<th>corpus</th>
+<th style="text-align: right;">aceitos</th>
+<th style="text-align: right;">duplicatas excedentes excluídas</th>
+<th style="text-align: right;">linhas conflitantes excluídas</th>
+<th style="text-align: right;">após limpeza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B2W</td>
+<td style="text-align: right;">129.098</td>
+<td style="text-align: right;">2.373</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">126.675</td>
+</tr>
+<tr>
+<td>ConsumerBR</td>
+<td style="text-align: right;">1.063.112</td>
+<td style="text-align: right;">32.414</td>
+<td style="text-align: right;">72.587</td>
+<td style="text-align: right;">958.111</td>
+</tr>
+<tr>
+<td>GoEmotions-PT</td>
+<td style="text-align: right;">49.469</td>
+<td style="text-align: right;">321</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">49.008</td>
+</tr>
+<tr>
+<td>MultiPICo PT</td>
+<td style="text-align: right;">1.891</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.880</td>
+</tr>
+<tr>
+<td>XED-pt</td>
+<td style="text-align: right;">4.286</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4.275</td>
+</tr>
+</tbody>
+</table>
+<p>O benchmark XED acima preserva seus <strong>4.286 exemplos integrais</strong>; a coluna
+“após limpeza” é uma contagem de auditoria, não uma mudança silenciosa
+desse benchmark. A divisão reconstruída de treino GoEmotions compartilha
+<strong>seis textos normalizados</strong> com XED, dois deles com rótulos conflitantes.
+Logo, nem separação por nome de corpus comprova disjunção textual.</p>
+<p>B2W e ConsumerBR aceitos compartilham nove textos normalizados, quatro com
+conflitos de rótulo. A demonstração de isolamento do auxiliar ConsumerBR
+removeu duas linhas conflitantes e quatro duplicatas do treino principal;
+<strong>não foi aplicada a um treino</strong> desta campanha.</p>
+<p>O pool posicional antigo de teste do fusor compartilha <strong>215 textos</strong> com
+o treino B2W da divisão 42 reconstruída. Misturar esse pool antigo com uma
+cabeça treinada nessa divisão nova contaminaria a avaliação do sistema.
+O manifesto prospectivo compartilhado entre cabeça e fusor evita essa
+mistura; não comprova retroativamente a independência dos modelos antigos.</p>
+<h2 id="protocolo-de-auditoria">Protocolo de auditoria<a class="headerlink" href="#protocolo-de-auditoria" title="Permanent link">&para;</a></h2>
+<p><code>scripts/auditar_generalizacao.py</code> reutiliza os leitores canônicos de corpora
+e gera JSON agregado versão 1, com corpora, artefatos, divisões,
+sobreposições e limitações, além de manifesto privado adjacente. Ele não
+treina, não infere e não desserializa pickle/joblib desconhecido.</p>
+<p>A auditoria registra contagens aceitas pelos leitores, classes, grupos,
+duplicatas, conflitos e hashes. Texto é normalizado antes da comparação;
+o fingerprint forte também incorpora rótulos e grupos. Índices do manifesto
+são posições <strong>aceitas pelo leitor</strong>, não números de linhas brutas.</p>
+<ul>
+<li>Congelar validação e teste antes de anexar dados auxiliares. Textos ou grupos
+  auxiliares que colidam com holdouts saem do treino auxiliar; os holdouts não
+  são movidos para acomodá-los. Conflitos de rótulo são registrados, não
+  resolvidos escolhendo silenciosamente uma fonte.</li>
+<li>Colisão entre validação e teste bloqueia o novo treino.</li>
+<li>Dividir por produto, autor ou post quando o leitor oferece essa identidade.
+  Sem grupo, usar identidade textual e declarar que autores/produtos
+  desconhecidos podem atravessar os lados.</li>
+<li>ConsumerBR não demonstra independência por empresa: o benchmark não usa esse
+  agrupamento, dada a concentração dos exemplos em grandes empresas.</li>
+<li>Hash calculado hoje não substitui manifesto histórico. Sem cadeia de
+  proveniência, escrever <strong>independência não verificável</strong>, não “sem vazamento”.</li>
+</ul>
+<h2 id="resultados-da-reproducao-2627102026">Resultados da reprodução — 26–27/10/2026<a class="headerlink" href="#resultados-da-reproducao-2627102026" title="Permanent link">&para;</a></h2>
+<p>Fonte: <code>resumo-cientifico.json</code>, derivado das receitas, históricos e avaliações
+finais preservados nos bundles. Os valores abaixo são arredondados, não
+substituem os registros completos. Precisão/recall/F1/suporte por classe,
+matrizes de confusão, temperaturas e hashes estão nesses artefatos externos;
+não publicamos exemplos individuais.</p>
+<h3 id="tres-sementes-por-cabeca">Três sementes por cabeça<a class="headerlink" href="#tres-sementes-por-cabeca" title="Permanent link">&para;</a></h3>
+<p>O desvio é <strong>amostral</strong> (<code>n − 1</code>, três sementes), não intervalo de confiança.
+Os tamanhos são os efetivamente usados, após limpeza e divisão agrupada.
+A semente escolhida é a mediana <strong>da validação</strong>, congelada antes do teste.</p>
+<table>
+<thead>
+<tr>
+<th>cabeça / corpus</th>
+<th style="text-align: right;">treino / validação / teste</th>
+<th style="text-align: right;">F1-macro validação, média ± desvio</th>
+<th style="text-align: right;">F1-macro teste, média ± desvio</th>
+<th style="text-align: right;">semente escolhida na validação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satisfação / B2W</td>
+<td style="text-align: right;">95.722 / 12.058 / 18.895</td>
+<td style="text-align: right;">0,757917 ± 0,002995</td>
+<td style="text-align: right;"><strong>0,755156 ± 0,005943</strong></td>
+<td style="text-align: right;"><strong>42</strong></td>
+</tr>
+<tr>
+<td>emoção / GoEmotions-PT</td>
+<td style="text-align: right;">36.806 / 4.874 / 7.328</td>
+<td style="text-align: right;">0,578719 ± 0,001800</td>
+<td style="text-align: right;"><strong>0,592371 ± 0,005218</strong></td>
+<td style="text-align: right;"><strong>13</strong></td>
+</tr>
+<tr>
+<td>ironia / MultiPICo PT</td>
+<td style="text-align: right;">1.126 / 292 / 462</td>
+<td style="text-align: right;">0,688503 ± 0,015942</td>
+<td style="text-align: right;"><strong>0,647941 ± 0,023741</strong></td>
+<td style="text-align: right;"><strong>42</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Detalhamento dos nove treinos. “Época” é a do checkpoint escolhido por
+F1-macro de validação, não necessariamente a de menor perda.</p>
+<table>
+<thead>
+<tr>
+<th>cabeça / semente</th>
+<th style="text-align: right;">época</th>
+<th style="text-align: right;">F1 validação</th>
+<th style="text-align: right;">F1 teste</th>
+<th style="text-align: right;">acurácia teste</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satisfação / 13</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,760614</td>
+<td style="text-align: right;">0,754337</td>
+<td style="text-align: right;">0,830590</td>
+</tr>
+<tr>
+<td>satisfação / <strong>42</strong></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,758444</td>
+<td style="text-align: right;">0,761466</td>
+<td style="text-align: right;">0,847208</td>
+</tr>
+<tr>
+<td>satisfação / 77</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,754693</td>
+<td style="text-align: right;">0,749664</td>
+<td style="text-align: right;">0,817253</td>
+</tr>
+<tr>
+<td>emoção / <strong>13</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,578321</td>
+<td style="text-align: right;">0,597280</td>
+<td style="text-align: right;">0,657751</td>
+</tr>
+<tr>
+<td>emoção / 42</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,577151</td>
+<td style="text-align: right;">0,586892</td>
+<td style="text-align: right;">0,659934</td>
+</tr>
+<tr>
+<td>emoção / 77</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,580685</td>
+<td style="text-align: right;">0,592943</td>
+<td style="text-align: right;">0,666075</td>
+</tr>
+<tr>
+<td>ironia / 13</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,675866</td>
+<td style="text-align: right;">0,665176</td>
+<td style="text-align: right;">0,681818</td>
+</tr>
+<tr>
+<td>ironia / <strong>42</strong></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,683228</td>
+<td style="text-align: right;">0,620862</td>
+<td style="text-align: right;">0,670996</td>
+</tr>
+<tr>
+<td>ironia / 77</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,706413</td>
+<td style="text-align: right;">0,657787</td>
+<td style="text-align: right;">0,686147</td>
+</tr>
+</tbody>
+</table>
+<p>ECE top-1 no mesmo teste: <strong>bruto, sem temperatura</strong>, e <strong>com temperatura
+ajustada somente na validação</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>cabeça / semente</th>
+<th style="text-align: right;">ECE bruto</th>
+<th style="text-align: right;">ECE com temperatura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satisfação / 13</td>
+<td style="text-align: right;">0,023847</td>
+<td style="text-align: right;">0,024383</td>
+</tr>
+<tr>
+<td>satisfação / <strong>42</strong></td>
+<td style="text-align: right;">0,075406</td>
+<td style="text-align: right;">0,020136</td>
+</tr>
+<tr>
+<td>satisfação / 77</td>
+<td style="text-align: right;">0,030691</td>
+<td style="text-align: right;">0,022800</td>
+</tr>
+<tr>
+<td>emoção / <strong>13</strong></td>
+<td style="text-align: right;">0,106976</td>
+<td style="text-align: right;">0,037097</td>
+</tr>
+<tr>
+<td>emoção / 42</td>
+<td style="text-align: right;">0,158665</td>
+<td style="text-align: right;">0,036317</td>
+</tr>
+<tr>
+<td>emoção / 77</td>
+<td style="text-align: right;">0,129541</td>
+<td style="text-align: right;">0,026192</td>
+</tr>
+<tr>
+<td>ironia / 13</td>
+<td style="text-align: right;">0,056899</td>
+<td style="text-align: right;">0,033080</td>
+</tr>
+<tr>
+<td>ironia / <strong>42</strong></td>
+<td style="text-align: right;">0,047387</td>
+<td style="text-align: right;">0,066038</td>
+</tr>
+<tr>
+<td>ironia / 77</td>
+<td style="text-align: right;">0,135616</td>
+<td style="text-align: right;">0,057866</td>
+</tr>
+</tbody>
+</table>
+<p>A mediana retrospectiva do <strong>teste</strong> seria 13/77/77, respectivamente; ela
+<strong>não</strong> substituiu 42/13/42. Temperatura não garante melhora de ECE em todo
+teste: piorou na satisfação 13 e na ironia 42. Não escolher outra temperatura
+ou semente por esse resultado final.</p>
+<h3 id="curvas-comparaveis-evidencia-de-sobreajuste">Curvas comparáveis: evidência de sobreajuste<a class="headerlink" href="#curvas-comparaveis-evidencia-de-sobreajuste" title="Permanent link">&para;</a></h3>
+<p>São medições por época em modo <strong>eval</strong>, sem dropout, no diagnóstico fixo
+estratificado de treino (até 2.000 exemplos, semente 42) e na validação, com
+a mesma função de perda ponderada. Não são médias de minibatches do treino.
+As séries completas observadas estão abaixo; o treino diagnóstico não é uma
+estimativa em dados independentes.</p>
+<table>
+<thead>
+<tr>
+<th>cabeça / semente</th>
+<th style="text-align: right;">época</th>
+<th style="text-align: right;">perda treino eval</th>
+<th style="text-align: right;">perda validação</th>
+<th style="text-align: right;">F1 treino eval</th>
+<th style="text-align: right;">F1 validação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satisfação / 13</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,4540</td>
+<td style="text-align: right;">0,5316</td>
+<td style="text-align: right;">0,8015</td>
+<td style="text-align: right;">0,7606</td>
+</tr>
+<tr>
+<td>satisfação / 13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,3661</td>
+<td style="text-align: right;">0,5393</td>
+<td style="text-align: right;">0,8063</td>
+<td style="text-align: right;">0,7474</td>
+</tr>
+<tr>
+<td>satisfação / 13</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,2742</td>
+<td style="text-align: right;">0,5789</td>
+<td style="text-align: right;">0,8581</td>
+<td style="text-align: right;">0,7545</td>
+</tr>
+<tr>
+<td>satisfação / 42</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,4754</td>
+<td style="text-align: right;">0,5455</td>
+<td style="text-align: right;">0,7538</td>
+<td style="text-align: right;">0,7195</td>
+</tr>
+<tr>
+<td>satisfação / 42</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,3681</td>
+<td style="text-align: right;">0,5231</td>
+<td style="text-align: right;">0,8314</td>
+<td style="text-align: right;">0,7567</td>
+</tr>
+<tr>
+<td>satisfação / 42</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,2823</td>
+<td style="text-align: right;">0,5619</td>
+<td style="text-align: right;">0,8349</td>
+<td style="text-align: right;">0,7424</td>
+</tr>
+<tr>
+<td>satisfação / 42</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,2231</td>
+<td style="text-align: right;">0,7633</td>
+<td style="text-align: right;">0,9054</td>
+<td style="text-align: right;">0,7584</td>
+</tr>
+<tr>
+<td>satisfação / 42</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,1816</td>
+<td style="text-align: right;">0,8071</td>
+<td style="text-align: right;">0,9165</td>
+<td style="text-align: right;">0,7560</td>
+</tr>
+<tr>
+<td>satisfação / 77</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,4444</td>
+<td style="text-align: right;">0,5172</td>
+<td style="text-align: right;">0,7930</td>
+<td style="text-align: right;">0,7547</td>
+</tr>
+<tr>
+<td>satisfação / 77</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,3507</td>
+<td style="text-align: right;">0,5359</td>
+<td style="text-align: right;">0,8343</td>
+<td style="text-align: right;">0,7513</td>
+</tr>
+<tr>
+<td>satisfação / 77</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,2565</td>
+<td style="text-align: right;">0,6102</td>
+<td style="text-align: right;">0,8620</td>
+<td style="text-align: right;">0,7488</td>
+</tr>
+<tr>
+<td>emoção / 13</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,8665</td>
+<td style="text-align: right;">1,1082</td>
+<td style="text-align: right;">0,5909</td>
+<td style="text-align: right;">0,5518</td>
+</tr>
+<tr>
+<td>emoção / 13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,6800</td>
+<td style="text-align: right;">1,1377</td>
+<td style="text-align: right;">0,6426</td>
+<td style="text-align: right;">0,5593</td>
+</tr>
+<tr>
+<td>emoção / 13</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,4778</td>
+<td style="text-align: right;">1,3006</td>
+<td style="text-align: right;">0,7625</td>
+<td style="text-align: right;">0,5783</td>
+</tr>
+<tr>
+<td>emoção / 13</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,3429</td>
+<td style="text-align: right;">1,3887</td>
+<td style="text-align: right;">0,7960</td>
+<td style="text-align: right;">0,5729</td>
+</tr>
+<tr>
+<td>emoção / 13</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,3100</td>
+<td style="text-align: right;">1,4869</td>
+<td style="text-align: right;">0,8175</td>
+<td style="text-align: right;">0,5769</td>
+</tr>
+<tr>
+<td>emoção / 42</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,8804</td>
+<td style="text-align: right;">1,0785</td>
+<td style="text-align: right;">0,5890</td>
+<td style="text-align: right;">0,5567</td>
+</tr>
+<tr>
+<td>emoção / 42</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,6518</td>
+<td style="text-align: right;">1,0771</td>
+<td style="text-align: right;">0,6619</td>
+<td style="text-align: right;">0,5691</td>
+</tr>
+<tr>
+<td>emoção / 42</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,4384</td>
+<td style="text-align: right;">1,2388</td>
+<td style="text-align: right;">0,7589</td>
+<td style="text-align: right;">0,5729</td>
+</tr>
+<tr>
+<td>emoção / 42</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,3380</td>
+<td style="text-align: right;">1,3445</td>
+<td style="text-align: right;">0,8057</td>
+<td style="text-align: right;">0,5709</td>
+</tr>
+<tr>
+<td>emoção / 42</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,2917</td>
+<td style="text-align: right;">1,4710</td>
+<td style="text-align: right;">0,8454</td>
+<td style="text-align: right;">0,5772</td>
+</tr>
+<tr>
+<td>emoção / 77</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,8492</td>
+<td style="text-align: right;">1,0976</td>
+<td style="text-align: right;">0,5838</td>
+<td style="text-align: right;">0,5311</td>
+</tr>
+<tr>
+<td>emoção / 77</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,6131</td>
+<td style="text-align: right;">1,0670</td>
+<td style="text-align: right;">0,6961</td>
+<td style="text-align: right;">0,5805</td>
+</tr>
+<tr>
+<td>emoção / 77</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,4550</td>
+<td style="text-align: right;">1,1954</td>
+<td style="text-align: right;">0,7433</td>
+<td style="text-align: right;">0,5741</td>
+</tr>
+<tr>
+<td>emoção / 77</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,3308</td>
+<td style="text-align: right;">1,3682</td>
+<td style="text-align: right;">0,8109</td>
+<td style="text-align: right;">0,5807</td>
+</tr>
+<tr>
+<td>emoção / 77</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,2968</td>
+<td style="text-align: right;">1,4625</td>
+<td style="text-align: right;">0,8246</td>
+<td style="text-align: right;">0,5760</td>
+</tr>
+<tr>
+<td>ironia / 13</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,6619</td>
+<td style="text-align: right;">0,6637</td>
+<td style="text-align: right;">0,5546</td>
+<td style="text-align: right;">0,4816</td>
+</tr>
+<tr>
+<td>ironia / 13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,5648</td>
+<td style="text-align: right;">0,6067</td>
+<td style="text-align: right;">0,7101</td>
+<td style="text-align: right;">0,6546</td>
+</tr>
+<tr>
+<td>ironia / 13</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,4430</td>
+<td style="text-align: right;">0,5903</td>
+<td style="text-align: right;">0,7829</td>
+<td style="text-align: right;">0,6638</td>
+</tr>
+<tr>
+<td>ironia / 13</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,3703</td>
+<td style="text-align: right;">0,6040</td>
+<td style="text-align: right;">0,8391</td>
+<td style="text-align: right;">0,6759</td>
+</tr>
+<tr>
+<td>ironia / 13</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,3441</td>
+<td style="text-align: right;">0,6132</td>
+<td style="text-align: right;">0,8608</td>
+<td style="text-align: right;">0,6746</td>
+</tr>
+<tr>
+<td>ironia / 42</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,6415</td>
+<td style="text-align: right;">0,6541</td>
+<td style="text-align: right;">0,6574</td>
+<td style="text-align: right;">0,5798</td>
+</tr>
+<tr>
+<td>ironia / 42</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,5308</td>
+<td style="text-align: right;">0,6095</td>
+<td style="text-align: right;">0,7471</td>
+<td style="text-align: right;">0,6832</td>
+</tr>
+<tr>
+<td>ironia / 42</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,3764</td>
+<td style="text-align: right;">0,6069</td>
+<td style="text-align: right;">0,8175</td>
+<td style="text-align: right;">0,6430</td>
+</tr>
+<tr>
+<td>ironia / 42</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,2986</td>
+<td style="text-align: right;">0,6320</td>
+<td style="text-align: right;">0,8714</td>
+<td style="text-align: right;">0,6520</td>
+</tr>
+<tr>
+<td>ironia / 77</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,6073</td>
+<td style="text-align: right;">0,6280</td>
+<td style="text-align: right;">0,6501</td>
+<td style="text-align: right;">0,6199</td>
+</tr>
+<tr>
+<td>ironia / 77</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,4684</td>
+<td style="text-align: right;">0,5897</td>
+<td style="text-align: right;">0,7915</td>
+<td style="text-align: right;">0,6826</td>
+</tr>
+<tr>
+<td>ironia / 77</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,3241</td>
+<td style="text-align: right;">0,5940</td>
+<td style="text-align: right;">0,8615</td>
+<td style="text-align: right;">0,6925</td>
+</tr>
+<tr>
+<td>ironia / 77</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,2517</td>
+<td style="text-align: right;">0,6364</td>
+<td style="text-align: right;">0,9152</td>
+<td style="text-align: right;">0,7064</td>
+</tr>
+<tr>
+<td>ironia / 77</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,2337</td>
+<td style="text-align: right;">0,6524</td>
+<td style="text-align: right;">0,9220</td>
+<td style="text-align: right;">0,7029</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Satisfação:</strong> perda de treino cai enquanto a de validação sobe nas épocas
+  1–3 de 13/77 e 2–5 de 42. O F1 de validação não acompanha o ganho do treino.</li>
+<li><strong>Emoção:</strong> o padrão de perdas persiste em 1–5 de 13 e 2–5 de 42/77.
+  O F1 de validação ainda melhora em algumas épocas, mas muito menos que o
+  de treino; seleção por F1 e seleção por perda não são a mesma decisão.</li>
+<li><strong>Ironia:</strong> perda de validação sobe em 3–5 de 13 e 2–5 de 77 enquanto o
+  treino melhora. Na 42, o F1 perde o pico da época 2; a perda só aumenta de
+  3 para 4, não desde a época 2. Não atribuímos uma subida monotônica inexistente.</li>
+</ul>
+<p>Esses padrões sustentam <strong>sobreajuste nas fases indicadas desta reprodução</strong>,
+não uma causa única, um limiar universal de gap ou um diagnóstico dos pesos
+publicados. O checkpoint continuou selecionado somente pela validação.</p>
+<h3 id="transferencia-e-regua-operacional-dos-candidatos-escolhidos">Transferência e régua operacional dos candidatos escolhidos<a class="headerlink" href="#transferencia-e-regua-operacional-dos-candidatos-escolhidos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>candidato / benchmark</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">F1-macro</th>
+<th style="text-align: right;">acurácia</th>
+<th style="text-align: right;">ECE com temperatura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satisfação 42 / ConsumerBR amostrado</td>
+<td style="text-align: right;">5.000</td>
+<td style="text-align: right;">0,573398</td>
+<td style="text-align: right;">0,756600</td>
+<td style="text-align: right;">0,063823</td>
+</tr>
+<tr>
+<td>emoção 13 / XED-pt integral</td>
+<td style="text-align: right;">4.286</td>
+<td style="text-align: right;"><strong>sete classes 0,233188; seis presentes 0,272053</strong></td>
+<td style="text-align: right;">0,278115</td>
+<td style="text-align: right;">0,371403</td>
+</tr>
+<tr>
+<td>ironia 42 / régua de atendimento já consultada</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0,520000</td>
+<td style="text-align: right;">não registrada</td>
+<td style="text-align: right;">não registrado</td>
+</tr>
+</tbody>
+</table>
+<p>O notebook 04 também registrou a régua operacional em
+<code>ironia-generalizacao-20261026/metricas.json</code>, campo <code>regua_20</code>: dois falsos
+positivos e sete falsos negativos. Não é um corpus novo de atendimento;
+acurácia e ECE dessa régua não constam nesse relatório, por isso ficam ausentes.
+ConsumerBR amostrado não colide textualmente com os 95.722 exemplos de treino B2W;
+isso não o torna teste virgem nem prova independência por empresa/autor.
+XED tem seis colisões textuais com os 36.806 exemplos de treino GoEmotions,
+duas com conflito de rótulo; o benchmark integral foi preservado, sem limpar
+retrospectivamente o holdout para melhorar a comparação. Grupos entre fontes
+não são comparáveis. Não há ECE bruto de transferência no resumo: não inferir
+uma melhora de calibração sem essa medição.</p>
+<p>As quedas fora do corpus-fonte descrevem transferência sob mudança de domínio,
+distribuição e alvo; não isolam causalmente sobreajuste. XED ainda usa rótulos
+projetados entre línguas e não contém neutro. Nenhum dos dois é um corpus novo
+de atendimentos reais rotulados.</p>
+<h3 id="candidato-do-fusor-e-ablacoes">Candidato do fusor e ablações<a class="headerlink" href="#candidato-do-fusor-e-ablacoes" title="Permanent link">&para;</a></h3>
+<p>São <strong>900/120/300 conversas sintéticas</strong> de treino/validação/teste, equilibradas
+por classe em cada lado, com textos dos grupos correspondentes do manifesto
+B2W reservado antes do treino de satisfação. Usaram os candidatos escolhidos
+pela validação; não os baselines locais antigos. Features excluídas foram
+removidas da matriz, cada scaler foi ajustado somente no treino, e as quatro
+esperas mantêm <code>log1p</code>. O cache vincula manifesto, checkpoints e contrato.</p>
+<table>
+<thead>
+<tr>
+<th>variante experimental</th>
+<th style="text-align: right;">features</th>
+<th style="text-align: right;">F1 validação</th>
+<th style="text-align: right;">F1 teste</th>
+<th style="text-align: right;">acurácia teste</th>
+<th style="text-align: right;">ECE teste</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>completo</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0,932486</td>
+<td style="text-align: right;"><strong>0,931557</strong></td>
+<td style="text-align: right;">0,933333</td>
+<td style="text-align: right;">0,030091</td>
+</tr>
+<tr>
+<td>somente texto</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,836454</td>
+<td style="text-align: right;"><strong>0,883318</strong></td>
+<td style="text-align: right;">0,886667</td>
+<td style="text-align: right;">0,044542</td>
+</tr>
+<tr>
+<td>somente tempo</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0,509600</td>
+<td style="text-align: right;"><strong>0,558372</strong></td>
+<td style="text-align: right;">0,573333</td>
+<td style="text-align: right;">0,048255</td>
+</tr>
+</tbody>
+</table>
+<p>Há uma execução por variante: <strong>não há média/desvio de três sementes do
+fusor</strong>. O ECE é das probabilidades do candidato; não houve nova temperatura
+do fusor nem avaliação conformal nesta campanha. Essas ablações não substituem
+o runtime nem medem causalidade dos sinais.</p>
+<p>O relatório original do instrumento conservou a ressalva de independência
+não verificável da emoção, pois só examina fingerprints agregados de outro
+corpus. Ele <strong>não foi sobrescrito</strong>. A prova complementar
+<code>independencia-sistema.json</code> confirma os fingerprints dos treinos reais das
+três cabeças e encontra zero colisões textuais normalizadas com validação e
+teste B2W. Em satisfação, há também isolamento por produto no manifesto.
+Isso estabelece independência <strong>observável por esses identificadores nesta
+reprodução</strong>; não cobre paráfrases, traduções, proveniência ausente ou grupos
+incomparáveis entre fontes. Não altera a insuficiência histórica dos pesos
+antigos, nem converte o teste sintético em generalização comprovada em suporte.</p>
+<h2 id="protocolo-da-campanha-fechada">Protocolo da campanha fechada<a class="headerlink" href="#protocolo-da-campanha-fechada" title="Permanent link">&para;</a></h2>
+<p>A <a href="../treinamento/#receita-vigente-de-pesquisa-26102026">receita vigente</a> fixa
+sementes <strong>13, 42 e 77</strong>, no máximo cinco épocas e os mesmos hiperparâmetros
+nas três rodadas de cada cabeça. Não há busca oportunista de encoders,
+regularizadores ou novos corpora. É uma <strong>nova reprodução datada</strong>, não
+recuperação do histórico perdido.</p>
+<p>Satisfação usa B2W completo após split, sem ConsumerBR auxiliar; emoção usa
+GoEmotions-PT; ironia usa MultiPICo em português <strong>sem IDPT auxiliar</strong>.
+A divisão usa semente 42, com 75/10/15 para B2W e GoEmotions e 60/15/25 para
+MultiPICo, respeitando os grupos disponíveis.</p>
+<p>Checkpoint e temperatura usam validação. A semente mediana é escolhida por
+F1-macro de validação; configuração e seleção são gravadas antes da avaliação
+final das três sementes no teste congelado. O fingerprint divergente bloqueia
+a avaliação. Não selecionar retrospectivamente outra semente pelo teste.</p>
+<p>Por época, preservar perda e F1 de validação e de um subconjunto diagnóstico
+fixo de treino (até 2.000 exemplos, seed 42, modo eval e mesma perda ponderada).
+Relatar melhor época, argumentos efetivos, F1-macro, acurácia, precisão,
+recall, F1 e suporte por classe, matriz de confusão e ECE antes/depois da
+temperatura. As três sementes fornecem média e <strong>desvio amostral</strong>.
+Não existe um limiar universal de gap que diagnostique sobreajuste.</p>
+<h3 id="verificacao-de-implementacao-nao-e-resultado-cientifico">Verificação de implementação não é resultado científico<a class="headerlink" href="#verificacao-de-implementacao-nao-e-resultado-cientifico" title="Permanent link">&para;</a></h3>
+<p>Em 26/10/2026, a verificação integrada da receita registrou 77 testes focados
+aprovados e um smoke real com BERT <strong>aleatório e minúsculo</strong>, treinado por duas
+épocas em dados construídos. O smoke salvou/recarregou o modelo, executou a
+avaliação final separada e recusou manifesto divergente. As 18 células Python
+dos três notebooks foram compiladas; esse smoke local não executou o caminho de GPU.
+Isso verifica contratos do código, <strong>não</strong> mede satisfação, emoção, ironia ou
+generalização do Fraus. A campanha T4 posterior é evidência separada, acima.</p>
+<h3 id="teste-do-sistema-e-ablacoes-do-fusor">Teste do sistema e ablações do fusor<a class="headerlink" href="#teste-do-sistema-e-ablacoes-do-fusor" title="Permanent link">&para;</a></h3>
+<p>Reservar os grupos do teste B2W <strong>antes</strong> de treinar a cabeça de satisfação.
+O manifesto explícito compartilhado entre notebook 01 e treino do fusor
+registra origem, índices aceitos, hashes de texto/grupo e rótulos de satisfação
+por lado. <code>--manifesto</code> é obrigatório no script local; caches são vinculados
+a esse manifesto, bytes dos checkpoints, features/<code>log1p</code>, simulador e léxicos.
+Cache antigo sem essa identidade não é comparável por nome de arquivo.</p>
+<p>O fusor continua usando recomendação e neutro de três estrelas; o rótulo de
+satisfação do manifesto identifica a divisão da cabeça, não troca o alvo do
+fusor. Treino, validação e teste do fusor só usam seus respectivos grupos.
+Comparar completo, somente texto e somente tempo removendo colunas e ajustando
+cada scaler <strong>só no treino</strong>. Nenhuma ablação é artefato de runtime.</p>
+<p>O experimento concluído preserva o relatório conservador original e o
+complementa com a comparação textual dos treinos reais, conforme a seção de
+resultados. Conversas sintéticas continuam não sendo atendimentos reais
+rotulados, ainda que os identificadores observados sejam disjuntos.</p>
+<h2 id="como-interpretar-as-conclusoes">Como interpretar as conclusões<a class="headerlink" href="#como-interpretar-as-conclusoes" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Vazamento/dependência observada:</strong> os 41 produtos atravessam os pools da
+   receita posicional reconstruída. Os atalhos históricos de latência e de
+   marcadores de ironia estão documentados no diário; não são diagnóstico
+   automático dos pesos publicados hoje.</li>
+<li><strong>Sobreajuste:</strong> as curvas novas mostram treino melhorando e perda de
+   validação piorando persistentemente nos intervalos explicitados acima.
+   A conclusão vale para <strong>esta reprodução de 26–27/10</strong>, sem limiar universal
+   de gap e sem diagnóstico causal. Para pesos antigos/publicados, faltam
+   curvas e proveniência: o diagnóstico continua <strong>inconclusivo</strong>, não
+   “sem sobreajuste”.</li>
+<li><strong>Transferência:</strong> ConsumerBR, XED e as réguas de ironia já foram consultados.
+   Medem desempenho em outro domínio sob essas condições, não teste virgem.
+   Para XED, distinguir <strong>F1-macro nas sete classes</strong> de F1-macro somente nas
+   classes presentes; não comparar os dois como se fossem a mesma métrica.
+   MultiPICo anota ironia vendo o post; o modelo lê só a resposta, uma limitação
+   contextual adicional.</li>
+<li><strong>Insuficiência:</strong> faltam curvas e proveniência completa dos treinos
+   <strong>históricos</strong>, checkpoint publicado identificado e corpus novo de
+   atendimento rotulado. Nem o baseline isolado de uma cabeça nem o teste
+   sintético novo autorizam promessa de acurácia operacional em suporte real.</li>
+</ol>
+<p>Para os limites de uso, veja <a href="../limitacoes/">Limitações</a> e
+<a href="../conformidade/">Conformidade</a>. O método e a hipótese estão em <a href="../tese/">A tese</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1924 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../../ironia/">
+      
+      
+        <link rel="next" href="../concorrentes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Relatório de entrega - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/fraus.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diferenciais-relatorio-de-entrega-14102026" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Relatório de entrega
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banca e metodologia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Banca e metodologia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generalização e evidências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cartao-do-modelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cartão do modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ironia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e Laya
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diferenciais
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diferenciais
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório de entrega
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório de entrega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-vale-para-todas-as-entregas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que vale para todas as entregas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e1-por-que-esta-nota-contrafactual-de-espera-e-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E1 — "Por que esta nota", contrafactual de espera e drivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e2-calibracao-abstencao-e-conjunto-conformal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E2 — Calibração, abstenção e conjunto conformal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e5-sinalizadores-por-regra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E5 — Sinalizadores por regra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e6-impacto-por-tema-e-inicio-da-deterioracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E6 — Impacto por tema e início da deterioração
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrato-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato da API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduzir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproduzir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pendencias-que-dependem-do-joao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pendências que dependem do João
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concorrentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concorrentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roteiro-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demonstração
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usuários
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usuários
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvedores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desenvolvedores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvimento local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../redesign-2026-10-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antes e depois da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-vale-para-todas-as-entregas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que vale para todas as entregas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e1-por-que-esta-nota-contrafactual-de-espera-e-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E1 — "Por que esta nota", contrafactual de espera e drivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e2-calibracao-abstencao-e-conjunto-conformal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E2 — Calibração, abstenção e conjunto conformal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e5-sinalizadores-por-regra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E5 — Sinalizadores por regra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e6-impacto-por-tema-e-inicio-da-deterioracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E6 — Impacto por tema e início da deterioração
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrato-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato da API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproduzir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproduzir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pendencias-que-dependem-do-joao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pendências que dependem do João
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="diferenciais-relatorio-de-entrega-14102026">Diferenciais — relatório de entrega (14/10/2026)<a class="headerlink" href="#diferenciais-relatorio-de-entrega-14102026" title="Permanent link">&para;</a></h1>
+<p>Este relatório fecha a missão "diferenciais do Fraus, ancorados em concorrentes reais e medidos". Para cada entrega, diz:</p>
+<ul>
+<li>o que entrou;</li>
+<li>o que foi medido;</li>
+<li>o que <strong>não foi verificado</strong>, e por quê;</li>
+<li>como reproduzir.</li>
+</ul>
+<p>Nenhum número aqui foi estimado à mão. Onde não houve medição, está escrito "não verificado" e o script já está pronto para rodar.</p>
+<h2 id="resumo">Resumo<a class="headerlink" href="#resumo" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>entrega</th>
+<th>estado</th>
+<th>medição real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1 — por que esta nota, contrafactual e drivers</td>
+<td>entregue</td>
+<td>aditividade exata provada no fusor sintético; <strong>no fusor real: não verificado</strong></td>
+</tr>
+<tr>
+<td>E2 — calibração, abstenção e conjunto conformal</td>
+<td>entregue</td>
+<td><strong>não verificado</strong> (artefato conformal não gerado)</td>
+</tr>
+<tr>
+<td>E3 — declarado × inferido</td>
+<td><strong>não iniciado</strong>: exige schema novo (<code>nota_declarada</code>), ainda não aprovado</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E4 — benchmark contra LLM</td>
+<td><strong>descartado</strong> em 14/10/2026</td>
+<td>—</td>
+</tr>
+<tr>
+<td>E5 — sinalizadores por regra</td>
+<td>entregue</td>
+<td>casos construídos e taxa de disparo no simulador; <strong>precisão e recall em dado real: não verificado</strong></td>
+</tr>
+<tr>
+<td>E6 — impacto por tema e início da deterioração</td>
+<td>entregue</td>
+<td><strong>não verificado</strong> no fusor real; o lead time do simulador é artefato do gerador</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Por que tanta coisa "não verificado".</strong> A máquina de desenvolvimento não tem o <code>fusor.joblib</code> treinado em <code>log1p</code>. O artefato que estava disponível foi treinado em segundos crus, e <code>Fusor.carregar</code> o recusa de propósito (invariante 10). Sem esse fusor:</p>
+<ul>
+<li>nenhuma métrica que dependa da nota real pôde ser medida;</li>
+<li>cada instrumento falha alto, sem motor dublê (invariante 7).</li>
+</ul>
+<p>Assim que o fusor estiver em <code>modelos/</code>, os comandos da seção <a href="#reproduzir">Reproduzir</a> produzem os números.</p>
+<h2 id="o-que-vale-para-todas-as-entregas">O que vale para todas as entregas<a class="headerlink" href="#o-que-vale-para-todas-as-entregas" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Sem LLM em runtime.</strong> Toda explicação é feita dos coeficientes ou por template, e nenhuma chamada de rede entra no caminho de predição.</li>
+<li><strong>Nada novo é gravado.</strong> O <code>score</code>, a nota e a categoria gravados não mudam. Nenhuma coluna, tabela ou chave de payload foi criada. Tudo é derivado na leitura.</li>
+<li><strong>Nenhuma régua nova.</strong> Nada retreina o modelo, e ficaram intocados:</li>
+<li><code>modelos/</code>;</li>
+<li><code>NOMES_FEATURES</code> (39);</li>
+<li><code>PESO_NEUTRO_NO_SCORE</code> (0,75);</li>
+<li><code>FEATURES_EM_LOG</code>;</li>
+<li>a cabeça de ironia.</li>
+<li><strong>Ausência não vira zero.</strong> Conversa sem sinal, n abaixo do mínimo ou campo ausente numa API antiga aparecem nomeados, nunca como 0.</li>
+<li><strong>Conformidade.</strong></li>
+<li>Nada pontua atendente.</li>
+<li>Tudo roda em lote, sobre conversa encerrada; nada alerta ao vivo.</li>
+<li>Nada decide sozinho: as marcas (abstenção, sinalizadores, deterioração) informam e não mudam a nota. O atendimento continua no NPS.</li>
+<li><strong>O sinal de tempo do fusor é sintético</strong>, e toda métrica nova declara isso.</li>
+</ul>
+<h2 id="e1-por-que-esta-nota-contrafactual-de-espera-e-drivers">E1 — "Por que esta nota", contrafactual de espera e drivers<a class="headerlink" href="#e1-por-que-esta-nota-contrafactual-de-espera-e-drivers" title="Permanent link">&para;</a></h2>
+<p><strong>O que entrou.</strong></p>
+<ul>
+<li><strong>Decomposição exata do fusor</strong> (<code>Fusor.decompor</code>). O intercepto mais as contribuições é igual ao log da razão contra a classe de referência, e o score é refeito a partir dos logits.</li>
+<li><strong>Efeito por família em pontos de score.</strong> É um recálculo exato, mas <strong>não é aditivo</strong>, e a tela diz isso.</li>
+<li><strong>Frases por template</strong> em <code>fraus/explicacao.py</code>, sem LLM. A explicação vem dentro de <code>GET /conversas/{id}/atribuicao</code>.</li>
+<li><strong><code>POST /conversas/{id}/contrafactual</code></strong>, que testa a primeira resposta ou um teto de espera. Ele recusa com 422 quando a conversa sai da faixa de treino (<code>|z| &gt; 4</code>).</li>
+<li><strong><code>GET /indicadores/drivers</code></strong>, sobre uma amostra por semente (50, com teto de 200). Mostra a média por família em detratores e em promotores, com IC por bootstrap, e o rótulo "associação no modelo, não causa".</li>
+<li><strong>Duas telas:</strong> um bloco na transcrição e um painel sob demanda na Visão geral.</li>
+</ul>
+<p><strong>Medido.</strong> No fusor sintético dos testes, a aditividade fecha com erro menor que 1e-9.</p>
+<p><strong>Não verificado.</strong> A aditividade e o tempo no fusor real. O script <code>scripts/medir_aditividade.py</code> está pronto.</p>
+<h2 id="e2-calibracao-abstencao-e-conjunto-conformal">E2 — Calibração, abstenção e conjunto conformal<a class="headerlink" href="#e2-calibracao-abstencao-e-conjunto-conformal" title="Permanent link">&para;</a></h2>
+<p><strong>O que entrou.</strong></p>
+<ul>
+<li><strong>Conjunto conformal Mondrian (por classe) sobre o score gravado</strong> (<code>fraus/conformal.py</code>). Para cada nota, diz quais classes de satisfação são compatíveis com ela, com cobertura-alvo de 90% por classe. O artefato <code>fraus/dados/conformal_fusor.json</code> é chaveado pela régua.</li>
+<li><strong>Falha explícita sem artefato.</strong> Se o artefato estiver ausente, inválido ou for de outra régua, as rotas respondem 503 ou 409 com o motivo. Nunca devolvem um conjunto vazio fingindo confiança.</li>
+<li><strong>Abstenção</strong> ("leitura sem confiança suficiente"):</li>
+<li>dispara quando o conjunto não tem exatamente uma classe ou, no detalhe, quando há deriva;</li>
+<li>informa e não corrige.</li>
+<li><strong>Rotas:</strong></li>
+<li><code>GET /conversas/{id}/confianca</code>;</li>
+<li><code>GET /indicadores/confianca</code>, que dá a fração de abstenção com IC de Wilson.</li>
+<li><strong>Instrumentos</strong> que não gravam nada:</li>
+<li><code>scripts/medir_calibracao.py</code> (ECE, MCE e por classe, com bootstrap);</li>
+<li><code>scripts/medir_abstencao.py</code>;</li>
+<li><code>scripts/calibrar_conformal.py</code>.</li>
+<li><strong>Selo de confiança no atendimento.</strong> Ele fala em "classe de satisfação", não em categoria NPS.</li>
+</ul>
+<p><strong>Não verificado.</strong> A cobertura empírica, o ECE e a curva de abstenção. O artefato conformal não foi gerado, então as rotas de confiança respondem 503 até alguém rodar <code>scripts/calibrar_conformal.py --gravar</code>.</p>
+<h2 id="e5-sinalizadores-por-regra">E5 — Sinalizadores por regra<a class="headerlink" href="#e5-sinalizadores-por-regra" title="Permanent link">&para;</a></h2>
+<p><strong>O que entrou.</strong></p>
+<ul>
+<li><strong>Cinco regras derivadas na leitura</strong> (<code>fraus/sinalizadores.py</code>):</li>
+<li><code>loop_do_bot</code>;</li>
+<li><code>cliente_repete</code>;</li>
+<li><code>pedido_de_humano_ignorado</code>;</li>
+<li><code>escalada_tardia</code>;</li>
+<li><code>abandono</code>.</li>
+<li><strong>Nenhuma regra lê o texto ou o relógio da fala do atendente.</strong> Um teste troca os dois e prova que o resultado não muda. A fala humana também nunca entra na evidência.</li>
+<li><strong>Conversa sem fala do cliente</strong> dá <code>None</code> ("não avaliado"), nunca <code>[]</code>.</li>
+<li><strong>Filtro <code>?sinalizador=</code></strong> em <code>GET /conversas</code>:</li>
+<li>pagina depois de filtrar;</li>
+<li>respeita o escopo por canal;</li>
+<li>responde 400 a regra desconhecida.</li>
+<li><strong>Lista de achados e marca ⚑</strong> na transcrição.</li>
+<li><strong>Instrumento:</strong> <code>scripts/medir_sinalizadores.py</code>.</li>
+</ul>
+<p><strong>Medido.</strong></p>
+<ul>
+<li>Os 15 casos construídos se comportam como declarado. Isso <strong>verifica a implementação, não mede qualidade</strong>.</li>
+<li>No simulador (60 conversas, sem rótulo de regra, só a taxa de disparo): <code>abandono</code> 15, <code>cliente_repete</code> 2, as outras 0.</li>
+<li><code>loop_do_bot</code> deixou de ser cúbico: 1.000 respostas do bot levavam 27,98 s e agora levam 0,083 s.</li>
+</ul>
+<p><strong>Não verificado.</strong> Precisão e recall em dado real. Falta a amostra anotada à mão, e a fonte dela é decisão do João. O script aceita <code>--anotada arquivo.jsonl</code>. O falso positivo de despedida do bot e o léxico fechado estão declarados em <a href="../../limitacoes/">Limitações</a>.</p>
+<h2 id="e6-impacto-por-tema-e-inicio-da-deterioracao">E6 — Impacto por tema e início da deterioração<a class="headerlink" href="#e6-impacto-por-tema-e-inicio-da-deterioracao" title="Permanent link">&para;</a></h2>
+<p><strong>O que entrou.</strong></p>
+<ul>
+<li><strong>Impacto por tema</strong> (<code>fraus/impacto.py</code>), em cada tema de <code>GET /operacao/radar</code>:</li>
+<li>é o NPS do tema menos o NPS do resto do recorte;</li>
+<li>o IC 95% sai de bootstrap multinomial (1.000 reamostras, semente fixa) e tem o rótulo "associação, não causa";</li>
+<li>abaixo de 30 conversas com sinal em qualquer um dos lados, o resultado é nulo, com o motivo e as duas contagens.</li>
+<li><strong>Início da deterioração</strong> (<code>fraus/deterioracao.py</code>), no campo <code>deterioracao</code> de <code>GET /operacao/replay/{id}</code>:</li>
+<li>é a mensagem a partir da qual a estimativa por prefixo fica detratora e não volta;</li>
+<li>traz o lead time em mensagens e em segundos;</li>
+<li>é retrospectivo e nunca alerta.</li>
+<li><strong>Teste de não vazamento.</strong> Alterar a mensagem <code>j</code> não muda nenhum prefixo <code>k &lt; j</code>, e o teste não passa no vazio.</li>
+<li><strong>Instrumento:</strong> <code>scripts/medir_deterioracao.py</code>.</li>
+</ul>
+<p><strong>Medido.</strong></p>
+<ul>
+<li>No teto do radar, o custo do bootstrap independe de n: com 15.000 conversas por lado, caiu de 1,58 s para 0,069 s.</li>
+<li>Conferência estrutural do simulador: ele sorteia todas as falas do cliente de um único rótulo, então <strong>não gera trajetória</strong>. O lead time medido nele é artefato do gerador, e o script diz isso antes de imprimir qualquer número.</li>
+<li>Por construção, o início da deterioração <strong>não aumenta o recall</strong> sobre o score final. O que ele acrescenta é o lead time.</li>
+</ul>
+<p><strong>Não verificado.</strong> Recall, falso alarme e lead time com o fusor real: o script sai com código 2. A conferência visual mostrou que a regra não tem margem em torno do limiar (na demonstração, a deterioração começou com uma queda de cerca de 67 para 61 pontos). Isso está declarado.</p>
+<h2 id="contrato-da-api">Contrato da API<a class="headerlink" href="#contrato-da-api" title="Permanent link">&para;</a></h2>
+<p>O OpenAPI foi de <strong>76</strong> caminhos (referência da Fase 0) para <strong>80</strong>. Os quatro novos:</p>
+<table>
+<thead>
+<tr>
+<th>caminho</th>
+<th>entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/conversas/{conversa_id}/contrafactual</code></td>
+<td>E1</td>
+</tr>
+<tr>
+<td><code>/indicadores/drivers</code></td>
+<td>E1</td>
+</tr>
+<tr>
+<td><code>/conversas/{conversa_id}/confianca</code></td>
+<td>E2</td>
+</tr>
+<tr>
+<td><code>/indicadores/confianca</code></td>
+<td>E2</td>
+</tr>
+</tbody>
+</table>
+<p>E5 e E6 acrescentaram só campos e parâmetros a rotas que já existiam:</p>
+<ul>
+<li><code>sinalizadores</code> e <code>?sinalizador=</code>;</li>
+<li><code>impacto</code> no radar;</li>
+<li><code>deterioracao</code> no replay.</li>
+</ul>
+<p>Nenhum caminho sumiu.</p>
+<h2 id="verificacao-final">Verificação final<a class="headerlink" href="#verificacao-final" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>comando</th>
+<th>resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv run pytest -q</code></td>
+<td>1585 passed, 5 skipped (baseline: 1395 passed, 7 skipped)</td>
+</tr>
+<tr>
+<td><code>cd dashboard &amp;&amp; npm test</code></td>
+<td>389 passed (baseline: 351)</td>
+</tr>
+<tr>
+<td><code>npx tsc --noEmit</code></td>
+<td>limpo</td>
+</tr>
+<tr>
+<td><code>uv run mkdocs build --strict</code></td>
+<td>limpo</td>
+</tr>
+<tr>
+<td><code>modelos/</code>, <code>modelos-onnx/</code>, <code>pyproject.toml</code>, <code>uv.lock</code>, <code>dashboard/package.json</code></td>
+<td>sem diff desde <code>cdaa9e2</code></td>
+</tr>
+<tr>
+<td><code>NOMES_FEATURES</code>, <code>PESO_NEUTRO_NO_SCORE</code>, <code>FEATURES_EM_LOG</code></td>
+<td>valores intactos (o E1 só moveu o cálculo do score para <code>_score_das_probabilidades</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reproduzir">Reproduzir<a class="headerlink" href="#reproduzir" title="Permanent link">&para;</a></h2>
+<p>Os instrumentos de medição do fusor pressupõem o artefato <code>log1p</code> compatível.
+Para a extração atual, <code>B2W</code> identifica o CSV, <code>EXPERIMENTO</code> um diretório
+externo ao repositório/checkpoints e <code>CABECAS</code> a raiz dos candidatos. Reserve
+o manifesto antes do notebook 01 (<code>FRAUS_MANIFESTO_FUSOR</code>), não depois do
+treino da cabeça. Cache posicional antigo não é reutilizável por nome; ver
+<a href="../../generalizacao/">Generalização</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/medir_aditividade.py
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/retreinar_fusor_local.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--b2w<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B2W</span><span class="s2">&quot;</span><span class="w"> </span>--manifesto<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/manifesto.json&quot;</span><span class="w"> </span>--gerar-manifesto
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/retreinar_fusor_local.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--b2w<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B2W</span><span class="s2">&quot;</span><span class="w"> </span>--manifesto<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/manifesto.json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--modelos<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CABECAS</span><span class="s2">&quot;</span><span class="w"> </span>--backend<span class="w"> </span>torch<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>--cache<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/features.json&quot;</span><span class="w"> </span>--saida<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/candidato&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/calibrar_conformal.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span>--fusor<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/candidato/fusor.joblib&quot;</span><span class="w"> </span>--cache<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/features.json&quot;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>uv<span class="w"> </span>run<span class="w"> </span>--with<span class="w"> </span>matplotlib<span class="w"> </span>python<span class="w"> </span>scripts/medir_calibracao.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span>--fusor<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/candidato/fusor.joblib&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span>--cache<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/features.json&quot;</span><span class="w"> </span>--png<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/calibracao.png&quot;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/medir_abstencao.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span>--fusor<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/candidato/fusor.joblib&quot;</span><span class="w"> </span>--cache<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EXPERIMENTO</span><span class="s2">/features.json&quot;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/medir_sinalizadores.py<span class="w"> </span>--simulador<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="o">[</span>--anotada<span class="w"> </span>amostra.jsonl<span class="o">]</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/medir_deterioracao.py<span class="w"> </span>--n<span class="w"> </span><span class="m">300</span>
+</code></pre></div>
+<h2 id="pendencias-que-dependem-do-joao">Pendências que dependem do João<a class="headerlink" href="#pendencias-que-dependem-do-joao" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Fusor <code>log1p</code> nesta máquina.</strong> Destrava todas as medições marcadas "não verificado".</li>
+<li><strong>Schema <code>nota_declarada</code> (E3).</strong> Precisa de aprovação, por causa da paridade SQLite × Postgres.</li>
+<li><strong>Amostra anotada dos sinalizadores (E5).</strong> Falta definir a fonte, quem anota e com qual material.</li>
+<li><strong>Concorrentes.</strong> As afirmações estão em <a href="../concorrentes/">concorrentes</a>, com URL e data. Elas não substituem uma leitura própria antes da banca.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
