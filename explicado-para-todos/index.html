@@ -1,0 +1,2444 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../tese/">
+      
+      
+        <link rel="next" href="../arquitetura/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>O Fraus explicado para todos - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/fraus.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#o-fraus-explicado-para-todos" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              O Fraus explicado para todos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../novidades-2026-11-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Novidades de 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banca e metodologia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Banca e metodologia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O Fraus explicado para todos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O Fraus explicado para todos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-ideia-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A ideia principal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. A ideia principal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-regra-de-ouro-do-projeto-sem-ia-gigante-na-hora-de-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A regra de ouro do projeto: sem IA gigante na hora de usar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-o-que-acontece-por-dentro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. O que acontece por dentro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. O que acontece por dentro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-o-caminho-de-uma-conversa-do-comeco-ao-fim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 O caminho de uma conversa, do começo ao fim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-as-categorias-de-nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 As categorias de nota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-as-sete-familias-de-pistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 As sete famílias de pistas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-onde-a-conta-roda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Onde a conta roda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-as-regras-que-nao-podem-ser-quebradas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. As regras que não podem ser quebradas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-a-gente-testou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Como a gente testou
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Como a gente testou">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-a-regra-da-prova-justa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 A regra da prova justa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-com-o-que-a-gente-testou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Com o que a gente testou
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-os-resultados-sem-enfeite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Os resultados, sem enfeite
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-o-experimento-com-o-jevos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. O experimento com o Jevos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. O experimento com o Jevos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-o-que-e-o-jevos-e-por-que-testamos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 O que é o Jevos e por que testamos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-como-foi-feito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Como foi feito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-o-resultado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 O resultado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-como-ler-isso-sem-se-enganar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Como ler isso sem se enganar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-o-que-o-fraus-nao-faz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. O que o Fraus não faz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-mini-dicionario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Mini dicionário
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generalização e evidências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cartao-do-modelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cartão do modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ironia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e régua
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diferenciais
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diferenciais
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/relatorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório de entrega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/concorrentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concorrentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diferenciais/roteiro-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demonstração
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usuários
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usuários
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guia-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvedores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desenvolvedores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvimento local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redesign-2026-10-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antes e depois da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-ideia-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A ideia principal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. A ideia principal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-regra-de-ouro-do-projeto-sem-ia-gigante-na-hora-de-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A regra de ouro do projeto: sem IA gigante na hora de usar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-o-que-acontece-por-dentro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. O que acontece por dentro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. O que acontece por dentro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-o-caminho-de-uma-conversa-do-comeco-ao-fim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 O caminho de uma conversa, do começo ao fim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-as-categorias-de-nota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 As categorias de nota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-as-sete-familias-de-pistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 As sete famílias de pistas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-onde-a-conta-roda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Onde a conta roda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-as-regras-que-nao-podem-ser-quebradas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. As regras que não podem ser quebradas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-a-gente-testou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Como a gente testou
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Como a gente testou">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-a-regra-da-prova-justa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 A regra da prova justa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-com-o-que-a-gente-testou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Com o que a gente testou
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-os-resultados-sem-enfeite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Os resultados, sem enfeite
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-o-experimento-com-o-jevos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. O experimento com o Jevos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. O experimento com o Jevos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-o-que-e-o-jevos-e-por-que-testamos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 O que é o Jevos e por que testamos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-como-foi-feito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Como foi feito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-o-resultado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 O resultado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-como-ler-isso-sem-se-enganar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Como ler isso sem se enganar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-o-que-o-fraus-nao-faz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. O que o Fraus não faz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-mini-dicionario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Mini dicionário
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="o-fraus-explicado-para-todos">O Fraus explicado para todos<a class="headerlink" href="#o-fraus-explicado-para-todos" title="Permanent link">&para;</a></h1>
+<p>Esta página é para quem <strong>não programa</strong>. Ela conta, em ordem: qual foi a ideia,
+como o sistema funciona por dentro (com desenhos), como a gente testou se ele
+acerta, e o que ele <strong>não</strong> consegue fazer. Quem quiser os detalhes técnicos
+encontra os links no fim de cada parte.</p>
+<hr />
+<h2 id="1-a-ideia-principal">1. A ideia principal<a class="headerlink" href="#1-a-ideia-principal" title="Permanent link">&para;</a></h2>
+<p>Quando você fala com o chatbot de uma empresa, ela quase nunca descobre <strong>se
+você saiu satisfeito</strong>. Existem dois jeitos comuns de tentar saber, e os dois
+têm problema:</p>
+<table>
+<thead>
+<tr>
+<th>jeito de medir</th>
+<th>o problema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pesquisa</strong> ("de 0 a 10, quanto você recomenda?")</td>
+<td>quase ninguém responde, e quem responde costuma ser quem ficou muito feliz ou muito bravo</td>
+</tr>
+<tr>
+<td><strong>Contenção</strong> ("o bot resolveu sem passar para um humano?")</td>
+<td>não diferencia quem <strong>foi resolvido</strong> de quem <strong>desistiu e foi embora</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>A ideia do Fraus:</strong> em vez de perguntar, <em>ler a conversa</em>. Um cliente deixa
+pistas sem querer: as palavras que escolhe, os emojis, quanto tempo esperou, se
+escreveu em CAIXA ALTA, se parou de responder de repente. O Fraus junta essas
+pistas e <strong>estima</strong> uma nota.</p>
+<div class="admonition warning">
+<p class="admonition-title">Estimativa, não resposta do cliente</p>
+<p>O Fraus <strong>não sabe</strong> o que o cliente sentiu. Ele faz uma estimativa, como um
+atendente experiente que lê o histórico e diz "esse aqui provavelmente saiu
+chateado". Por isso toda tela do Fraus mostra a etiqueta <strong>NPS inferido</strong>.</p>
+</div>
+<h3 id="a-regra-de-ouro-do-projeto-sem-ia-gigante-na-hora-de-usar">A regra de ouro do projeto: sem IA gigante na hora de usar<a class="headerlink" href="#a-regra-de-ouro-do-projeto-sem-ia-gigante-na-hora-de-usar" title="Permanent link">&para;</a></h3>
+<p>Hoje muita gente resolve tudo mandando o texto para um assistente de IA grande
+(como o ChatGPT). <strong>O Fraus não faz isso, de propósito.</strong> Os modelos que ele usa
+são pequenos, rodam no próprio computador e <strong>não mandam a conversa para fora</strong>.</p>
+<p>Por quê? Porque a pergunta do nosso trabalho é justamente: <em>"dá para medir
+satisfação só com modelos pequenos e explicáveis?"</em> Se a gente chamasse uma IA
+gigante, o sistema até poderia ficar melhor, mas a gente deixaria de responder
+à pergunta que o trabalho se propôs a responder.</p>
+<hr />
+<h2 id="2-o-que-acontece-por-dentro">2. O que acontece por dentro<a class="headerlink" href="#2-o-que-acontece-por-dentro" title="Permanent link">&para;</a></h2>
+<h3 id="21-o-caminho-de-uma-conversa-do-comeco-ao-fim">2.1 O caminho de uma conversa, do começo ao fim<a class="headerlink" href="#21-o-caminho-de-uma-conversa-do-comeco-ao-fim" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A["Conversa chega&lt;br/&gt;(arquivo, Discord, WhatsApp...)"] --&gt; B["O Fraus organiza tudo&lt;br/&gt;no mesmo formato"]
+    B --&gt; C["Cada mensagem do cliente&lt;br/&gt;é lida por 3 'leitores' de texto"]
+    B --&gt; D["Outras pistas são medidas:&lt;br/&gt;emoji, tempo de espera,&lt;br/&gt;palavras, estilo"]
+    C --&gt; E["As pistas são juntadas&lt;br/&gt;(39 números por conversa)"]
+    D --&gt; E
+    E --&gt; F["Um modelo simples&lt;br/&gt;decide a nota"]
+    F --&gt; G["Nota de 0 a 10&lt;br/&gt;e categoria"]
+    G --&gt; H["Telas e gráficos&lt;br/&gt;da dashboard"]</code></pre>
+<p>Em português simples:</p>
+<ol>
+<li><strong>A conversa chega</strong> de qualquer lugar. O Fraus converte tudo para um único
+   formato, para o resto do sistema não precisar saber de onde veio.</li>
+<li><strong>Três "leitores" de texto</strong> olham cada mensagem do cliente: um estima se ela
+   é de <strong>satisfação ou insatisfação</strong>, outro identifica <strong>a emoção</strong> (raiva,
+   alegria, tristeza...), outro olha <strong>ironia</strong>.</li>
+<li><strong>Outras pistas</strong> são medidas por contas simples: tempo de espera, emojis,
+   palavras de um dicionário de sentimentos, CAIXA ALTA, palavrão.</li>
+<li>Tudo vira uma lista de <strong>39 números</strong> que descreve aquela conversa.</li>
+<li>Um <strong>modelo simples</strong> (uma regressão logística, uma conta parecida com uma
+   balança de pesos) olha os 39 números e dá a nota.</li>
+<li>A nota vira <strong>categoria</strong> e aparece nos gráficos.</li>
+</ol>
+<h3 id="22-as-categorias-de-nota">2.2 As categorias de nota<a class="headerlink" href="#22-as-categorias-de-nota" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+    N0["Nota 0 a 6"] --&gt; D["Detrator&lt;br/&gt;saiu insatisfeito"]
+    N1["Nota 7 a 8"] --&gt; Ne["Neutro"]
+    N2["Nota 9 a 10"] --&gt; P["Promotor&lt;br/&gt;saiu satisfeito"]</code></pre>
+<p>É a mesma divisão do NPS tradicional. O <strong>NPS</strong> é uma conta: porcentagem de
+promotores <strong>menos</strong> porcentagem de detratores.</p>
+<h3 id="23-as-sete-familias-de-pistas">2.3 As sete famílias de pistas<a class="headerlink" href="#23-as-sete-familias-de-pistas" title="Permanent link">&para;</a></h3>
+<p>Pense em um <strong>júri de sete jurados</strong>. Cada um olha a conversa de um ângulo
+diferente, e a nota final nasce da opinião de todos juntos.</p>
+<table>
+<thead>
+<tr>
+<th>jurado</th>
+<th>o que ele observa</th>
+<th>exemplo do dia a dia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Texto</strong></td>
+<td>o sentido das palavras</td>
+<td>"adorei" × "péssimo"</td>
+</tr>
+<tr>
+<td><strong>Emoji</strong></td>
+<td>qual emoji e <strong>onde</strong> na conversa</td>
+<td>😡 no fim pesa mais que no começo</td>
+</tr>
+<tr>
+<td><strong>Tempo</strong></td>
+<td>quanto o cliente esperou, se desistiu</td>
+<td>esperar 3 horas irrita</td>
+</tr>
+<tr>
+<td><strong>Emoção</strong></td>
+<td>raiva, alegria, tristeza...</td>
+<td>raiva e frustração são insatisfações diferentes</td>
+</tr>
+<tr>
+<td><strong>Dicionário</strong></td>
+<td>palavras positivas e negativas, com negação</td>
+<td>"não gostei" ≠ "gostei"</td>
+</tr>
+<tr>
+<td><strong>Estilo</strong></td>
+<td>CAIXA ALTA, "!!!", palavrão, "aaaaaah"</td>
+<td>quanto o cliente está alterado</td>
+</tr>
+<tr>
+<td><strong>Contradição</strong></td>
+<td>elogio misturado com situação ruim</td>
+<td>"que atendimento ótimo, só esperei 3 horas"</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>ironia</strong> é lida e aparece na tela, mas <strong>não entra na nota</strong>. A gente
+descobriu que, nos dados de treino, ela estava confundindo "ironia" com "gente
+satisfeita" (ver o quadro abaixo), e uma pista que mede outra coisa é <strong>pior</strong>
+que nenhuma pista.</p>
+<div class="admonition info">
+<p class="admonition-title">Por que a ironia ficou de fora da nota</p>
+<p>Em uma medição, o leitor de ironia marcou <strong>74%</strong> das avaliações
+satisfeitas como irônicas e só <strong>9%</strong> das insatisfeitas. Ou seja: ele
+aprendeu a reconhecer "texto positivo", não "ironia". Se ele ficasse na
+nota, empurraria a nota para o lado errado sem ninguém perceber.</p>
+</div>
+<h3 id="24-onde-a-conta-roda">2.4 Onde a conta roda<a class="headerlink" href="#24-onde-a-conta-roda" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+    U["Pessoa usando&lt;br/&gt;a Dashboard"] --&gt; D["Dashboard&lt;br/&gt;(site)"]
+    D --&gt; L["API leve&lt;br/&gt;login, listas,&lt;br/&gt;gráficos"]
+    D --&gt; M["API do motor&lt;br/&gt;lê os textos com&lt;br/&gt;os modelos"]
+    L --&gt; DB[("Banco de dados")]
+    M --&gt; DB</code></pre>
+<p>Desde novembro a API foi dividida em <strong>duas partes</strong>: uma <strong>leve</strong>, que só mexe
+com login, listas e gráficos (rápida para abrir), e uma <strong>pesada</strong>, que carrega
+os modelos de leitura. Antes era uma só, e todo clique esperava os modelos
+carregarem.</p>
+<p><strong>Leia mais:</strong> <a href="../tese/">A tese</a> · <a href="../arquitetura/">Arquitetura</a></p>
+<hr />
+<h2 id="3-as-regras-que-nao-podem-ser-quebradas">3. As regras que não podem ser quebradas<a class="headerlink" href="#3-as-regras-que-nao-podem-ser-quebradas" title="Permanent link">&para;</a></h2>
+<p>O projeto tem 10 regras (as <a href="../invariantes/">invariantes</a>). Cada uma nasceu de
+um <strong>erro real</strong>. As cinco que mais importam para entender o trabalho:</p>
+<table>
+<thead>
+<tr>
+<th>regra</th>
+<th>em uma frase</th>
+<th>por quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sem IA gigante em tempo real</strong></td>
+<td>o sistema roda no próprio computador</td>
+<td>é a pergunta do trabalho</td>
+</tr>
+<tr>
+<td><strong>Sem dado não é insatisfação</strong></td>
+<td>conversa sem fala do cliente aparece como <strong>"sem sinal"</strong>, nunca como nota 0</td>
+<td>zero parece uma nota medida, e não foi</td>
+</tr>
+<tr>
+<td><strong>A nota é calculada no servidor</strong></td>
+<td>a tela nunca recalcula</td>
+<td>já gerou divergência de arredondamento</td>
+</tr>
+<tr>
+<td><strong>O corpus não pode entregar a resposta</strong></td>
+<td>não vale treinar com dados em que o gabarito está escrito na pista</td>
+<td>o primeiro modelo acertou 99% só olhando o relógio, o que era golpe, não inteligência</td>
+</tr>
+<tr>
+<td><strong>Não pontuar atendente</strong></td>
+<td>o Fraus mede o <strong>atendimento</strong>, não a <strong>pessoa</strong></td>
+<td>é limite ético e de lei (veja <a href="../conformidade/">conformidade</a>)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Acurácia alta demais é suspeita</p>
+<p>Se um modelo acerta 99%, a primeira pergunta é "onde ele está colando?".
+O projeto trata resultado perfeito como <strong>sintoma</strong>, não como vitória.</p>
+</div>
+<hr />
+<h2 id="4-como-a-gente-testou">4. Como a gente testou<a class="headerlink" href="#4-como-a-gente-testou" title="Permanent link">&para;</a></h2>
+<p>Treinar um modelo e ver que ele acerta <strong>no próprio treino</strong> não prova nada,
+como estudar só pela prova de anos anteriores. Por isso os testes têm regras.</p>
+<h3 id="41-a-regra-da-prova-justa">4.1 A regra da prova justa<a class="headerlink" href="#41-a-regra-da-prova-justa" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A["Banco de exemplos&lt;br/&gt;com a resposta certa"] --&gt; B["Treino&lt;br/&gt;o modelo estuda"]
+    A --&gt; C["Validação&lt;br/&gt;o modelo ajusta a si mesmo"]
+    A --&gt; D["Teste&lt;br/&gt;prova final, uma vez só"]
+    B --&gt; M["Modelo"]
+    C --&gt; M
+    M --&gt; D
+    D --&gt; R["Nota honesta"]</code></pre>
+<ul>
+<li><strong>Treino:</strong> o modelo estuda aqui.</li>
+<li><strong>Validação:</strong> serve para escolher o melhor entre as tentativas.</li>
+<li><strong>Teste:</strong> a "prova final". <strong>Nunca</strong> pode ter aparecido no estudo.</li>
+</ul>
+<p>Além disso, quem escreve os exemplos <strong>não pode estar nos dois lados</strong>. Se a
+mesma pessoa (ou o mesmo produto) aparece no treino e no teste, o modelo "decora
+o estilo" e o resultado fica inflado. O projeto confere isso por código e
+<strong>para com erro</strong> se a divisão sair errada.</p>
+<h3 id="42-com-o-que-a-gente-testou">4.2 Com o que a gente testou<a class="headerlink" href="#42-com-o-que-a-gente-testou" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>tarefa</th>
+<th>de onde vêm os exemplos</th>
+<th>para que serve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Satisfação</strong></td>
+<td><strong>B2W</strong> (avaliações de produto)</td>
+<td>treino e teste "da casa"</td>
+</tr>
+<tr>
+<td><strong>Satisfação</strong></td>
+<td><strong>ConsumerBR</strong> (reclamações de consumidor)</td>
+<td>teste <strong>de fora</strong>: dados que o modelo nunca viu</td>
+</tr>
+<tr>
+<td><strong>Emoção</strong></td>
+<td><strong>GoEmotions</strong> em português</td>
+<td>treino e teste "da casa"</td>
+</tr>
+<tr>
+<td><strong>Emoção</strong></td>
+<td><strong>XED-pt</strong> (legendas de filme)</td>
+<td>teste <strong>de fora</strong></td>
+</tr>
+<tr>
+<td><strong>Ironia</strong></td>
+<td><strong>MultiPICo</strong> (respostas de redes sociais)</td>
+<td>teste <strong>de fora</strong></td>
+</tr>
+<tr>
+<td><strong>Conversa inteira</strong></td>
+<td>conversas <strong>sintéticas</strong> (montadas por nós)</td>
+<td>o modelo que junta as pistas</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Uma limitação que precisa ser dita</p>
+<p>O <strong>tempo de espera</strong> das conversas de treino é <strong>simulado</strong>, porque não
+existe base pública em português com conversas reais e horários. Então os
+números do modelo final medem como ele se comporta <strong>nesse cenário
+montado</strong>, não em atendimento real de uma empresa. Isso está declarado no
+projeto, não escondido.</p>
+</div>
+<h3 id="43-os-resultados-sem-enfeite">4.3 Os resultados, sem enfeite<a class="headerlink" href="#43-os-resultados-sem-enfeite" title="Permanent link">&para;</a></h3>
+<p>Os números abaixo são do <strong>leitor de texto de satisfação</strong> (o principal),
+medidos em uma amostra de 5.000 exemplos de cada teste. <strong>F1</strong> é uma nota de 0
+a 1 que mistura "quanto acerta" e "quanto não deixa de ver"; quanto mais perto
+de 1, melhor.</p>
+<table>
+<thead>
+<tr>
+<th>teste</th>
+<th>o que é</th>
+<th style="text-align: right;">F1</th>
+<th>leitura simples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B2W</strong></td>
+<td>dados "da casa"</td>
+<td style="text-align: right;"><strong>0,76</strong></td>
+<td>vai bem onde foi treinado</td>
+</tr>
+<tr>
+<td><strong>ConsumerBR</strong></td>
+<td>dados "de fora"</td>
+<td style="text-align: right;"><strong>0,54</strong></td>
+<td>cai bastante fora de casa</td>
+</tr>
+</tbody>
+</table>
+<p><strong>O que isso quer dizer:</strong> o modelo funciona bem no tipo de texto em que
+estudou (avaliação de produto) e <strong>piora</strong> em texto diferente (reclamação de
+consumidor). Isso se chama <strong>perda de generalização</strong>, e a gente mostra, em vez
+de esconder.</p>
+<p>Em 13/11/2026 o leitor de <strong>ironia</strong> que está no ar foi trocado: no teste do
+MultiPICo o F1 subiu de 0,49 para 0,66. Um candidato a novo leitor de
+satisfação foi medido e não foi adotado, porque errava mais o neutro. Os
+gráficos estão em <a href="../novidades-2026-11-13/">Novidades de 13/11/2026</a>.</p>
+<p>Também treinamos cada leitor <strong>três vezes</strong> com sorteios diferentes e olhamos
+a média, para não confiar na sorte de uma tentativa só. O detalhe completo, com
+as tabelas, está em <a href="../generalizacao/">Generalização e evidências</a>.</p>
+<hr />
+<h2 id="5-o-experimento-com-o-jevos">5. O experimento com o Jevos<a class="headerlink" href="#5-o-experimento-com-o-jevos" title="Permanent link">&para;</a></h2>
+<h3 id="51-o-que-e-o-jevos-e-por-que-testamos">5.1 O que é o Jevos e por que testamos<a class="headerlink" href="#51-o-que-e-o-jevos-e-por-que-testamos" title="Permanent link">&para;</a></h3>
+<p>O <strong>Jevos</strong> é uma IA pequena, que roda no computador e responde perguntas de
+"sim/não" e de escolha. É parecido com um ChatGPT pequeno. A pergunta foi:</p>
+<blockquote>
+<p><em>Um modelo desses, </em><em>sem treino nenhum</em><em> para o nosso problema, consegue
+ganhar do nosso modelo (o BERTimbau) em satisfação e em ironia?</em></p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Isso é um teste de pesquisa, não uma mudança no produto</p>
+<p>O Jevos <strong>não está</strong> dentro do Fraus. Rodamos o teste à parte. E, mesmo que
+ele ganhasse, usá-lo exigiria <strong>quebrar a regra de ouro</strong> (nada de IA
+gigante em tempo real), que é requisito do trabalho.</p>
+</div>
+<h3 id="52-como-foi-feito">5.2 Como foi feito<a class="headerlink" href="#52-como-foi-feito" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    T["Mesmos textos&lt;br/&gt;dos testes"] --&gt; B["BERTimbau&lt;br/&gt;lê o texto em português"]
+    T --&gt; J1["Jevos&lt;br/&gt;lê o texto em português"]
+    T --&gt; TR["Tradutor&lt;br/&gt;português para inglês"]
+    TR --&gt; J2["Jevos&lt;br/&gt;lê o texto em inglês"]
+    B --&gt; C["Compara acertos&lt;br/&gt;nos MESMOS exemplos"]
+    J1 --&gt; C
+    J2 --&gt; C
+    C --&gt; V["Veredito"]</code></pre>
+<p>O Jevos <strong>só entende inglês</strong>. Por isso testamos de <strong>dois jeitos</strong>: lendo o
+texto em português cru, e lendo o texto <strong>traduzido</strong> para o inglês por um
+tradutor automático. Os dois modelos leem <strong>exatamente os mesmos exemplos</strong>.</p>
+<p><strong>O critério foi escrito antes de medir:</strong> o Jevos só seria considerado melhor
+se, no teste <strong>de fora</strong>, a vantagem dele sobrevivesse a uma checagem
+estatística (o "intervalo de confiança", que é uma faixa de erro: se a faixa
+inteira fica acima de zero, a vantagem é real e não sorte).</p>
+<h3 id="53-o-resultado">5.3 O resultado<a class="headerlink" href="#53-o-resultado" title="Permanent link">&para;</a></h3>
+<p>Na tabela, <strong>diferença de F1</strong> = nota do Jevos <strong>menos</strong> nota do BERTimbau.
+Número <strong>negativo</strong> = o Jevos perdeu.</p>
+<table>
+<thead>
+<tr>
+<th>tarefa</th>
+<th>teste</th>
+<th style="text-align: right;">Jevos em português</th>
+<th style="text-align: right;">Jevos traduzido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Satisfação</td>
+<td><strong>B2W</strong> (da casa do BERTimbau)</td>
+<td style="text-align: right;"><strong>−0,15</strong> (perde)</td>
+<td style="text-align: right;"><strong>−0,14</strong> (perde)</td>
+</tr>
+<tr>
+<td>Satisfação</td>
+<td><strong>ConsumerBR</strong> (de fora)</td>
+<td style="text-align: right;"><strong>+0,06</strong> (ganha)</td>
+<td style="text-align: right;"><strong>+0,08</strong> (ganha)</td>
+</tr>
+<tr>
+<td>Ironia</td>
+<td><strong>MultiPICo</strong> (de fora)</td>
+<td style="text-align: right;"><strong>−0,13</strong> (perde)</td>
+<td style="text-align: right;"><strong>−0,12</strong> (perde)</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    A["Ironia"] --&gt; A1["Jevos PERDE&lt;br/&gt;com folga"]
+    B["Satisfação&lt;br/&gt;onde o BERTimbau&lt;br/&gt;foi treinado"] --&gt; B1["Jevos PERDE"]
+    C["Satisfação&lt;br/&gt;fora do treino&lt;br/&gt;do BERTimbau"] --&gt; C1["Jevos ganha&lt;br/&gt;por pouco"]</code></pre>
+<h3 id="54-como-ler-isso-sem-se-enganar">5.4 Como ler isso sem se enganar<a class="headerlink" href="#54-como-ler-isso-sem-se-enganar" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Em ironia, o Jevos perde claramente</strong> e ainda erra mais na confiança que
+  declara (ele "tem certeza" de coisas em que erra).</li>
+<li><strong>Em satisfação, ele só ganha onde o BERTimbau está fora do que estudou</strong>
+  (ConsumerBR). Onde o BERTimbau estudou (B2W), o Jevos perde por bastante. Não
+  é um modelo melhor: é um modelo <strong>menos dependente do tipo de texto</strong>.</li>
+<li><strong>Na velocidade, depende da tarefa.</strong> Em satisfação, o Jevos leva de 3 a 4
+  vezes mais tempo por mensagem do que o BERTimbau (cerca de 440 ms contra 120
+  ms neste computador). Em ironia, o texto é curto e os dois empatam (cerca de
+  100 ms).</li>
+<li><strong>Limites do teste:</strong> o Jevos foi feito para inglês, e o teste traduzido mede
+  o Jevos <strong>mais</strong> o tradutor. Usamos 1.500 exemplos por teste de satisfação
+  (em vez dos 5.000 planejados) porque o Jevos é lento. Outra forma de
+  escrever as perguntas poderia mudar o resultado, e não exploramos isso para
+  não ajustar o teste a favor de ninguém.</li>
+<li><strong>Antes de comparar, conferimos a régua:</strong> medimos o BERTimbau sozinho com
+  5.000 exemplos e os números bateram <strong>exatamente</strong> com os que já tínhamos
+  publicado. Isso garante que a comparação com o Jevos usa as mesmas condições.</li>
+</ul>
+<p><strong>Conclusão em uma frase:</strong> o Jevos não derruba o BERTimbau, e trocar um pelo
+outro <strong>não compensaria</strong>.</p>
+<p>Os arquivos com todos os números estão no repositório em <code>docs/notas/</code>
+(<code>2026-11-06-benchmark-jevos*</code>).</p>
+<hr />
+<h2 id="6-o-que-o-fraus-nao-faz">6. O que o Fraus <strong>não</strong> faz<a class="headerlink" href="#6-o-que-o-fraus-nao-faz" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Não lê a mente do cliente.</strong> Estima a partir do texto e do ritmo.</li>
+<li><strong>Não avalia atendentes.</strong> Mede o atendimento, nunca a pessoa. Isso é regra
+  de ética e de conformidade com a lei europeia de IA.</li>
+<li><strong>Não decide nada sobre o cliente sozinho</strong> (crédito, prioridade, cobrança). A
+  nota é <strong>um alerta para um humano olhar</strong>, não uma sentença.</li>
+<li><strong>Não trata "sem dado" como "insatisfeito".</strong> Quem não falou aparece como
+  <em>sem sinal</em>.</li>
+<li><strong>Não afirma causa.</strong> Se o Fraus mostra que "esperar muito" anda junto com
+  notas baixas, isso é <strong>associação</strong>, não prova de que a espera causou a nota.</li>
+<li><strong>Não prova que funciona em qualquer empresa.</strong> Os testes mostram que ele
+  funciona nos dados que usamos; empresa nova precisa de validação própria.</li>
+</ul>
+<p><strong>Leia mais:</strong> <a href="../limitacoes/">Limitações conhecidas</a> ·
+<a href="../conformidade/">Conformidade</a> · <a href="../cartao-do-modelo/">Cartão do modelo</a></p>
+<hr />
+<h2 id="7-mini-dicionario">7. Mini dicionário<a class="headerlink" href="#7-mini-dicionario" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>palavra</th>
+<th>significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NPS</strong></td>
+<td>índice de recomendação: % que recomendaria <strong>menos</strong> % que não recomendaria</td>
+</tr>
+<tr>
+<td><strong>Inferido</strong></td>
+<td>estimado por nós a partir do texto, não perguntado ao cliente</td>
+</tr>
+<tr>
+<td><strong>Modelo</strong></td>
+<td>programa que aprendeu um padrão a partir de exemplos</td>
+</tr>
+<tr>
+<td><strong>BERTimbau</strong></td>
+<td>modelo de leitura de texto em português que serve de base ao Fraus</td>
+</tr>
+<tr>
+<td><strong>Treino / validação / teste</strong></td>
+<td>estudar / ajustar / prova final</td>
+</tr>
+<tr>
+<td><strong>F1</strong></td>
+<td>nota de 0 a 1 de acerto (quanto mais perto de 1, melhor)</td>
+</tr>
+<tr>
+<td><strong>Fora do domínio</strong></td>
+<td>texto de um tipo diferente do que o modelo estudou</td>
+</tr>
+<tr>
+<td><strong>Overfitting (sobreajuste)</strong></td>
+<td>decorar os exemplos em vez de aprender o padrão</td>
+</tr>
+<tr>
+<td><strong>Sintético</strong></td>
+<td>montado por nós, não vindo de clientes reais</td>
+</tr>
+<tr>
+<td><strong>Cold start (partida a frio)</strong></td>
+<td>a demora quando um servidor parado precisa "acordar"</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
