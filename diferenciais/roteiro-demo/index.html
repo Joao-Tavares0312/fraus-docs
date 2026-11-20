@@ -1,0 +1,1982 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../concorrentes/">
+      
+      
+        <link rel="next" href="../../guia-de-uso/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Roteiro da demonstração - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/fraus.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diferenciais-roteiro-da-demonstracao" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Roteiro da demonstração
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../novidades-2026-11-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Novidades de 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banca e metodologia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Banca e metodologia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explicado-para-todos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O Fraus explicado para todos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generalização e evidências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cartao-do-modelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cartão do modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ironia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e régua
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diferenciais
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diferenciais
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relatorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório de entrega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concorrentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concorrentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demonstração
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demonstração
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-comecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de começar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antes de começar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-e-sintetico-real-e-inferido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é sintético, real e inferido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-tese-1-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A tese (1 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-um-atendimento-de-ponta-a-ponta-4-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Um atendimento, de ponta a ponta (4 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-o-agregado-2-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. O agregado (2 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-retrospectiva-de-uma-conversa-1-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Retrospectiva de uma conversa (1 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-o-que-o-fraus-nao-faz-slide-1-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. O que o Fraus não faz (slide, 1 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-perguntas-provaveis-da-banca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Perguntas prováveis da banca
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-do-roteiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base do roteiro
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usuários
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usuários
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvedores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desenvolvedores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvimento local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../redesign-2026-10-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antes e depois da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/sinais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencia/diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-comecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de começar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antes de começar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-e-sintetico-real-e-inferido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é sintético, real e inferido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-tese-1-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A tese (1 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-um-atendimento-de-ponta-a-ponta-4-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Um atendimento, de ponta a ponta (4 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-o-agregado-2-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. O agregado (2 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-retrospectiva-de-uma-conversa-1-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Retrospectiva de uma conversa (1 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-o-que-o-fraus-nao-faz-slide-1-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. O que o Fraus não faz (slide, 1 min)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-perguntas-provaveis-da-banca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Perguntas prováveis da banca
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-do-roteiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base do roteiro
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="diferenciais-roteiro-da-demonstracao">Diferenciais — roteiro da demonstração<a class="headerlink" href="#diferenciais-roteiro-da-demonstracao" title="Permanent link">&para;</a></h1>
+<p>Roteiro para apresentar os diferenciais na banca de <strong>09/12/2026</strong>, em cerca de
+10 minutos. Conferido contra o código em 16/11/2026 e <strong>ensaiado localmente com
+o motor real em 19/11/2026</strong> (ids e propriedades abaixo, banco SQLite
+temporário, sem rede). Produção e projetor ainda precisam do ensaio físico.
+Cada passo diz:</p>
+<ul>
+<li>o que mostrar;</li>
+<li>o que falar;</li>
+<li>o que <strong>não</strong> afirmar.</li>
+</ul>
+<p>A comparação com produtos do mercado está em <a href="../concorrentes/">concorrentes</a>, e cada afirmação ali tem fonte e data.</p>
+<h2 id="antes-de-comecar">Antes de começar<a class="headerlink" href="#antes-de-comecar" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Dados.</strong> Empresa fictícia <strong>Lumen Telecom</strong> (provedor de internet):
+  156 atendimentos fabricados em <code>dados_demo/lumen-telecom.csv</code>
+  (<code>scripts/gerar_empresa_ficticia.py</code>), de 08/11 a 07/12/2026, ids
+  <code>sintetica-lumen-*</code>, canais webchat, WhatsApp e Instagram. O canal Telegram
+  traz atendimentos <strong>reais</strong> pelo Tars, com o voto Resolveu / Não resolveu.
+  Use o período <strong>08/11/2026 – 07/12/2026</strong> em toda a demo.</li>
+<li><strong>Carga.</strong> Uma conta <code>dev</code> cria em Integrações três fontes (canal <code>webchat</code>,
+  <code>whatsapp</code>, <code>instagram</code>) e gera a chave de cada uma; depois
+  <code>FRAUS_CHAVE_FONTE_WEBCHAT=… FRAUS_CHAVE_FONTE_WHATSAPP=… FRAUS_CHAVE_FONTE_INSTAGRAM=… uv run python scripts/carregar_empresa_ficticia.py --url &lt;API&gt;</code>.
+  Os ids gravados ficam <code>fonte:&lt;n&gt;:sintetica-lumen-*</code>; reenviar substitui.
+  Não use a tela Analisar para isso: ela troca o id por hash e para em 10
+  atendimentos por arquivo.</li>
+<li><strong>Com os modelos reais:</strong> a API precisa dos classificadores obrigatórios e
+  do fusor compatível com a escala <code>log1p</code>; a régua dos registros também precisa
+  ser compatível. Só execute explicação, contrafactual, drivers e Replay como
+  prova do modelo se esses requisitos estiverem atendidos.</li>
+<li><strong>Plano B (produção fora do ar).</strong> Na raiz, com <code>modelos-onnx/</code> e
+  <code>modelos/fusor.joblib</code> do pacote <code>42cd90c2…</code> extraídos:
+  <code>FRAUS_BACKEND=onnx uv run python -m uvicorn fraus.api.main:app --port 8001</code>
+  e, em <code>dashboard/</code>, <code>FRAUS_API_URL=http://127.0.0.1:8001 npm run dev</code>.
+  Carregue o CSV com <code>scripts/carregar_empresa_ficticia.py</code> (fontes criadas na
+  API local). Ensaiado em 19/11 <strong>sem rede</strong>: prontidão 200 com motor real,
+  156/156 aceitos, NPS inferido −26, confiança 200, dashboard renderizando.
+  Diga em voz alta que é ambiente local, mesmo motor, dados fabricados. As
+  conversas reais do Tars não existem no plano B: use as capturas de produção.
+  <code>scripts/api_demo.py</code> não é o plano B: pode subir com dublê.</li>
+<li><strong>Confiança (E2).</strong> O artefato conformal está versionado desde 19/11/2026,
+  com a régua do fusor de produção. Confira <code>/indicadores/confianca</code> em 200
+  pelo proxy antes da banca; se responder 503, mostre o estado indisponível e
+  não rode calibração para contornar. Modelos continuam congelados.</li>
+<li>Use conta <code>dev</code> se for mostrar <strong>Replay</strong>: essa aba não aparece para
+  <code>usuario</code>. Os dois papéis podem abrir <strong>Modelo</strong> e a explicação do detalhe.</li>
+<li><strong>Atendimentos escolhidos</strong> (propriedades conferidas no ensaio de 19/11; o
+  prefixo <code>fonte:&lt;n&gt;:</code> depende da ordem em que as fontes foram criadas):</li>
+<li><code>sintetica-lumen-tese</code> — abertura: o cliente reclama da espera, o bot
+     resolve tarde, ele fecha com “ok, obrigado 🙂” e a estimativa sai
+     <strong>detrator, nota 2</strong>. Sem sinalizador e sem abstenção.</li>
+<li><code>sintetica-lumen-espera</code> — primeira resposta em 420 s, nota 0. O
+     contrafactual de <strong>60 s</strong> foi aceito: +18,8 pontos no score, continua
+     detrator.</li>
+<li><code>sintetica-lumen-0145</code> — nota 9, promotor; conjunto conformal
+     {neutro, satisfeito} → <strong>abstenção por conjunto múltiplo</strong>; sinalizador
+     <code>abandono</code>, que aqui é o falso positivo declarado (despedida do bot).</li>
+<li><code>sintetica-lumen-replay</code> — 14 falas do cliente, de cordial a irritado; o
+     Replay marca a deterioração na mensagem 23 (4 falas antes do fim).
+  Se no dia algum não exibir a propriedade, troque por outro que exiba e anote
+  o id aqui. Não altere modelo nem dado para forçar.</li>
+<li>Confira <strong>Usar tema claro</strong> ou <strong>Usar tema escuro</strong> no menu da conta no
+  equipamento da apresentação. O tema já existe; legibilidade no projetor
+  precisa de ensaio físico, não de um novo “modo apresentação”.</li>
+</ul>
+<h3 id="o-que-e-sintetico-real-e-inferido">O que é sintético, real e inferido<a class="headerlink" href="#o-que-e-sintetico-real-e-inferido" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>o que é</th>
+<th>como dizer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sintético</td>
+<td>os 156 atendimentos da Lumen Telecom, escritos por gerador determinístico</td>
+<td>“atendimentos fabricados para a demonstração”</td>
+</tr>
+<tr>
+<td>Real</td>
+<td>os atendimentos do canal Telegram, feitos por colegas no bot do Tars, com voto</td>
+<td>“atendimentos reais, poucos; não validam o modelo”</td>
+</tr>
+<tr>
+<td>Inferido</td>
+<td>nota, categoria e NPS, pelo motor real</td>
+<td>“estimativa do texto, não pesquisa”</td>
+</tr>
+<tr>
+<td>Limitação</td>
+<td>tempo de treino sintético, ironia fora do vetor, generalização inconclusiva</td>
+<td>ver <a href="../../limitacoes/">Limitações</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-a-tese-1-min">1. A tese (1 min)<a class="headerlink" href="#1-a-tese-1-min" title="Permanent link">&para;</a></h2>
+<p><strong>Falar:</strong></p>
+<blockquote>
+<p>O Fraus estima a satisfação a partir da conversa, sem exigir pesquisa e sem
+LLM no caminho de predição. A inferência usa modelos locais em CPU.
+Vou mostrar as capacidades disponíveis neste ambiente:</p>
+<ul>
+<li>explica a estimativa a partir da decomposição do fusor;</li>
+<li>informa abstenção quando a confiança pode ser calculada;</li>
+<li>marca riscos sem pontuar o atendente;</li>
+<li>permite examinar influência dos sinais e associação entre tema e NPS.</li>
+</ul>
+</blockquote>
+<p><strong>Não afirmar:</strong> que o NPS foi perguntado ao cliente. Apresente-o como
+<strong>inferido</strong>, com a qualificação de estimativa, não como resposta de pesquisa.</p>
+<h2 id="2-um-atendimento-de-ponta-a-ponta-4-min">2. Um atendimento, de ponta a ponta (4 min)<a class="headerlink" href="#2-um-atendimento-de-ponta-a-ponta-4-min" title="Permanent link">&para;</a></h2>
+<p>Abra o atendimento 1 (<code>sintetica-lumen-espera</code>) em <strong>Atendimentos</strong> e comece pela <strong>Transcrição</strong>.
+Para mostrar os três gráficos por fala, use também o resultado de <strong>Analisar</strong>:
+<strong>Satisfação</strong>, <strong>Emoção</strong> e <strong>Ironia</strong> descrevem a mensagem, não a nota da
+conversa. Os detalhes da análise começam abertos; <strong>Ocultar detalhes da análise</strong>
+e <strong>Recolher os sinais</strong> permitem simplificar a leitura. A ironia não entra
+no vetor do fusor; uma probabilidade alta não confirma ironia real.</p>
+<ol>
+<li><strong>Nota, categoria e “estimativa”.</strong> A nota vem do servidor. Diferencie espera
+   observada de satisfação inferida; “contido no bot” não prova resolução.</li>
+<li>Expanda <strong>Por que esta nota?</strong>. Mostre <strong>Falas que inclinaram a nota</strong> e
+   <strong>Contribuições das features neste atendimento</strong> (E1).</li>
+<li><strong>Falar:</strong> “O saldo de probabilidades da fala e a contribuição das features
+     são objetos diferentes. A explicação por template usa a decomposição do
+     fusor; as contribuições com intercepto reproduzem seus logits.”</li>
+<li><strong>Não afirmar:</strong> que o destaque de uma frase mede efeito causal de palavras
+     ou que os efeitos por família somam a nota: esses recálculos não são aditivos.</li>
+<li>No campo <strong>E se a primeira resposta tivesse chegado em</strong>, digite <strong>60</strong>
+   segundos e clique em <strong>Calcular</strong>, se esse cenário tiver sido aceito no ensaio.</li>
+<li><strong>Falar:</strong> “Com estes horários hipotéticos, o modelo daria esta estimativa.
+     Nada é gravado. Isso não prevê como o cliente teria reagido.”</li>
+<li>Se houver recusa, leia o motivo. A rota pode recusar a própria conversa
+     original ou a hipótese por sair da faixa de treino; não force um número.</li>
+<li><strong>Confiança (E2).</strong> No atendimento 2 (<code>sintetica-lumen-0145</code>), leia a classe ou o conjunto compatível com
+   a nota e o alvo de calibração <strong>retornado pelo servidor</strong>. Não fixe 90% como
+   promessa do ambiente. A classe de satisfação não é a categoria NPS.</li>
+<li>Se existir um caso com <strong>Leitura sem confiança suficiente</strong>, mostre os
+     critérios e a frase <strong>Continua contando no NPS</strong>. O conjunto pode ser
+     múltiplo, vazio, ou a leitura pode ser marcada por deriva.</li>
+<li>Sem artefato compatível, mostre a indisponibilidade. Não rode o script de
+     calibração para contornar esse estado.</li>
+<li><strong>Não afirmar:</strong> garantia em atendimentos reais. O método exige
+     permutabilidade com o holdout, cujo tempo é sintético.</li>
+<li><strong>Sinalizadores (E5).</strong> Mostre as regras acima da transcrição e as mensagens
+   marcadas por elas.</li>
+<li><strong>Falar:</strong> “As regras usam sinais do cliente e do bot, contagens e posição;
+     não leem texto nem relógio da fala humana e não alteram a nota. Os testes
+     verificam a implementação; precisão e recall reais continuam não medidos.”</li>
+</ol>
+<h2 id="3-o-agregado-2-min">3. O agregado (2 min)<a class="headerlink" href="#3-o-agregado-2-min" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Em <strong>Modelo</strong>, expanda <strong>Como o modelo foi avaliado</strong>, encontre
+   <strong>O que influenciou as notas</strong> e clique em <strong>Ver influência dos sinais</strong> (E1).
+   O painel saiu da Visão geral e considera <strong>todo o histórico</strong> acessível,
+   não o período da Visão geral.</li>
+<li><strong>Falar:</strong> “Esta é a amostra declarada de elegíveis; as contribuições estão
+     na escala interna do modelo, não em pontos de nota. Intervalos só aparecem
+     quando há dados para calculá-los. É associação, não causa.”</li>
+<li>Menu da conta → <strong>Operação → Radar</strong>: abra <strong>Evidências e NPS estimado</strong> de
+   um tema para mostrar <strong>Impacto por tema (E6)</strong>. No ensaio, quatro temas
+   tiveram impacto numérico (cobrança indevida −52 [−81; −20]; segunda via do
+   boleto +74 [35; 107]; troca de plano e visita do técnico com intervalo
+   cruzando zero). “Internet caindo” se dividiu por vocabulário em grupos
+   abaixo de 30, que mostram “n abaixo do mínimo” — bom exemplo do estado.</li>
+<li><strong>Falar:</strong> “Compara o NPS inferido do tema ao restante do recorte, não
+     somente o NPS do tema isolado. O intervalo cobre incerteza amostral, não
+     erro do modelo. Com menos de 30 conversas com sinal em qualquer lado, o
+     sistema informa a falta em vez de mostrar impacto numérico.”</li>
+<li>Se não houver tema recorrente ou amostra suficiente, mostre o estado vazio
+     ou a insuficiência. Não produza conversas extras como se fossem dados reais.</li>
+<li>Abaixo dos quatro indicadores, a linha <strong>Voto do cliente</strong> compara o voto
+   dos atendimentos reais do Tars com a estimativa e mostra o denominador.</li>
+<li><strong>Falar:</strong> “Resolveu é resposta de resolução, não nota de NPS. Com este
+     punhado de votos, isto é ilustração do ciclo, não validação.”</li>
+</ol>
+<h2 id="4-retrospectiva-de-uma-conversa-1-min">4. Retrospectiva de uma conversa (1 min)<a class="headerlink" href="#4-retrospectiva-de-uma-conversa-1-min" title="Permanent link">&para;</a></h2>
+<p>Com conta <code>dev</code>, abra menu da conta → <strong>Operação → Replay</strong> e selecione o
+atendimento 3 (<code>sintetica-lumen-replay</code>) em <strong>Conversa do recorte</strong>. Use <strong>Anterior</strong>, <strong>Próxima</strong> ou a
+lista de mensagens. O limite é de 80 mensagens, até 40 do cliente; caso
+incompatível não deve ser substituído silenciosamente por outro resultado.</p>
+<ul>
+<li><strong>Falar:</strong> “Cada ponto considera somente o prefixo já ocorrido. Quando
+  existe, a linha tracejada marca o início a partir do qual a estimativa ficou
+  detratora e não voltou. É retrospectivo, não um alerta durante o atendimento.”</li>
+<li>Se não houver marca, mostre a ausência. Ela não é garantida para toda conversa.</li>
+<li><strong>Não afirmar:</strong></li>
+<li>que o lead time medido prevê o de produção, porque o simulador não gera trajetória;</li>
+<li>que essa marca detecta mais detratores que o score final, porque, por construção, não detecta.</li>
+</ul>
+<h2 id="5-o-que-o-fraus-nao-faz-slide-1-min">5. O que o Fraus não faz (slide, 1 min)<a class="headerlink" href="#5-o-que-o-fraus-nao-faz-slide-1-min" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>não faz</th>
+<th>por quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Não pontua atendente humano</td>
+<td>É política do produto. Os sinalizadores não leem texto nem relógio da fala humana; isso não significa que todo cálculo ignore a transferência ou o tempo de atendimento.</td>
+</tr>
+<tr>
+<td>Não oferece alerta ao vivo</td>
+<td>Ingestão pode atualizar a conversa a cada turno do Tars, mas a marca do Replay é retrospectiva, não previsão ou alerta operacional.</td>
+</tr>
+<tr>
+<td>Não decide nada sozinho</td>
+<td>Abstenção, sinalizadores e deterioração marcam e informam. A nota não muda.</td>
+</tr>
+<tr>
+<td>Não usa LLM na predição</td>
+<td>São classificadores locais e um fusor linear. A explicação vem da decomposição, não de geração por LLM.</td>
+</tr>
+<tr>
+<td>Não afirma causa</td>
+<td>Drivers e impacto por tema são associação.</td>
+</tr>
+<tr>
+<td>Não troca ausência por zero</td>
+<td>Sem sinal, ou com amostra pequena, a tela nomeia o que falta.</td>
+</tr>
+<tr>
+<td>Não chama de NPS declarado</td>
+<td>É NPS <strong>inferido</strong>, sempre com a etiqueta de estimativa.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-perguntas-provaveis-da-banca">6. Perguntas prováveis da banca<a class="headerlink" href="#6-perguntas-provaveis-da-banca" title="Permanent link">&para;</a></h2>
+<p><strong>"Por que não usar um LLM?"</strong> Custo, latência, determinismo e execução local. A explicação do Fraus é exata porque o modelo final é linear. A comparação numérica com LLM foi <strong>descartada</strong> do escopo (E4); não há número para citar.</p>
+<p><strong>"Esses números foram medidos no modelo real?"</strong> Identifique primeiro o motor
+do ambiente da apresentação. Depois consulte o <a href="../relatorio/">relatório</a>:
+implementação de E1/E2/E5/E6 não comprova a validação real que falta. Só cite
+resultados com fonte e data; a revisão documental não executou as medições.</p>
+<p><strong>"O sinal de tempo é real?"</strong> Os timestamps e as esperas de uma conversa podem
+ser observados. O <strong>treino do sinal de tempo</strong>, porém, usou dados sintéticos
+calibrados pela literatura, porque os corpora usados não traziam timestamps de
+diálogo. Isso limita a transferência para atendimentos reais.</p>
+<p><strong>"Como vocês sabem que os sinalizadores acertam?"</strong> Os casos construídos verificam a implementação. Precisão e recall em dado real dependem de uma amostra anotada que ainda não existe.</p>
+<p><strong>"Qual a diferença para os produtos do mercado?"</strong> Comece pelo mais próximo: o Intercom CX Score também infere sem pesquisa, explica por motivos, deixa sem nota a conversa sem informação e não avalia atendente individual. Diga isso antes que a banca diga. O que é diferente, com fonte em <a href="../concorrentes/">concorrentes</a>:</p>
+<ul>
+<li>o Fraus não usa LLM (o Intercom declara usar LLM de terceiros);</li>
+<li>a explicação do Fraus é a decomposição exata do modelo;</li>
+<li>o Fraus implementa incerteza conformal por classe, com pressupostos e artefato
+  explícitos; isso não demonstra cobertura real no ambiente desta apresentação.
+  Nos concorrentes consultados, a pesquisa não encontrou esse mesmo contrato;</li>
+<li>Zendesk QA, Observe.AI e Medallia incluem avaliação de agentes nos produtos
+  comparados; o Fraus não pontua atendentes.</li>
+</ul>
+<h2 id="base-do-roteiro">Base do roteiro<a class="headerlink" href="#base-do-roteiro" title="Permanent link">&para;</a></h2>
+<p>Controles conferidos em <code>dashboard/components/analisar/Analisador.tsx</code>,
+<code>dashboard/app/dashboard/atendimentos/[id]/page.tsx</code>,
+<code>dashboard/components/PorQueEstaNota.tsx</code>, <code>dashboard/components/SeloConfianca.tsx</code>,
+<code>dashboard/app/dashboard/modelo/page.tsx</code>,
+<code>dashboard/components/operacao/ConsoleOperacao.tsx</code>,
+<code>dashboard/components/operacao/Leituras.tsx</code> e
+<code>dashboard/components/operacao/Planejamento.tsx</code>. Recusas e limites vêm de
+<code>fraus/api/rotas/conversas.py</code>, <code>fraus/api/rotas/confianca.py</code> e
+<code>fraus/api/rotas/operacao.py</code>. O modo de demonstração está em
+<code>scripts/api_demo.py</code>. São evidências de código, não de ensaio ou deploy.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
