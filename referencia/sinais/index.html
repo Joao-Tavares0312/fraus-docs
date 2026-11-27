@@ -1,0 +1,4801 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Satisfação do cliente inferida de atendimentos de chatbot, sem LLM em runtime">
+      
+      
+        <meta name="author" content="João Pedro Tavares Vicente">
+      
+      
+      
+        <link rel="prev" href="../fusor/">
+      
+      
+        <link rel="next" href="../diagnostico/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/fraus-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Sinais - Fraus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/fraus.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#os-sinais" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <div class="fx-tele" role="note" aria-label="Fatos do produto">
+    <span>Fraus / documentação</span>
+    <span>Sinais <b>07</b> · Features <b>39</b> · LLM <b>00</b> · NPS <b>estimativa</b></span>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Fraus" class="md-header__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fraus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sinais
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fraus" class="md-nav__button md-logo" aria-label="Fraus" data-md-component="logo">
+      
+  <img src="../../assets/fraus-logo.svg" alt="logo">
+
+    </a>
+    Fraus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Joao-Tavares0312/Fraus" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fraus-one.vercel.app" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../novidades-2026-11-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Novidades de 13/11/2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Banca e metodologia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Banca e metodologia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A tese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explicado-para-todos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O Fraus explicado para todos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../treinamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Treinamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generalização e evidências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cartao-do-modelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cartão do modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limitacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitações conhecidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conformidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conformidade (AI Act)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ironia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ironia: corpus e régua
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diferenciais
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diferenciais
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diferenciais/relatorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relatório de entrega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diferenciais/concorrentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concorrentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diferenciais/roteiro-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteiro da demonstração
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usuários
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usuários
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia-de-uso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de uso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracao-tars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integração com o Tars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvedores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desenvolvedores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../desenvolvimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvimento local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../invariantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invariantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../redesign-2026-10-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antes e depois da interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encolhimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encolher os modelos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência de código
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referência de código
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indicadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indicadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelo canônico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fusor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sinais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#texto-satisfacao-por-mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Texto — satisfação por mensagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        texto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="texto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.ModeloAusenteError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ModeloAusenteError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.ClassificadorTexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorTexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ClassificadorTexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.ClassificadorTexto.prever_mensagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_mensagens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.temperatura_do_artefato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        temperatura_do_artefato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.carregar_torch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        carregar_torch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.prever_torch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_torch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emoção
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        emocao
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="emocao">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.ClassificadorEmocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorEmocao
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ClassificadorEmocao">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.ClassificadorEmocao.prever_mensagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_mensagens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.desprezo_derivado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        desprezo_derivado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.features_emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_emocao
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tempo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tempo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.tempo.latencias_da_conversa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        latencias_da_conversa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.tempo.features_tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_tempo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lexico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Léxico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lexico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lexico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.sem_acento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sem_acento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.polaridade_do_termo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        polaridade_do_termo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.anotar_texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        anotar_texto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.features_lexico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_lexico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emoji
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        emoji
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="emoji">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.score_do_emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        score_do_emoji
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.emojis_com_posicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        emojis_com_posicao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.linhas_lexicon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        linhas_lexicon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.features_emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_emoji
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ironia-leitura-por-mensagem-fora-do-vetor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ironia — leitura por mensagem, fora do vetor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ironia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ironia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia.ClassificadorIronia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorIronia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ClassificadorIronia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia.ClassificadorIronia.prever_mensagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_mensagens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia.features_ironia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_ironia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estilo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        estilo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="estilo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.carregar_palavroes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        carregar_palavroes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.normalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        normalizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.tem_censura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tem_censura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.casar_censurado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        casar_censurado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.estilo_da_mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        estilo_da_mensagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.features_estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_estilo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incongruencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incongruência
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.incongruencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        incongruencia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="incongruencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.incongruencia.features_incongruencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_incongruencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curadoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curadoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        curadoria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="curadoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria.Curadoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curadoria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Curadoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria.Curadoria.polaridade_de" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        polaridade_de
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria.Curadoria.score_de" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        score_de
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executor-onnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executor ONNX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        onnx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="onnx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.ModeloOnnxAusenteError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ModeloOnnxAusenteError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.TokenizadorOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TokenizadorOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.SessaoOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessaoOnnx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SessaoOnnx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.SessaoOnnx.prever" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.SessaoMultitarefaOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessaoMultitarefaOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.ClassificadorCabecaOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorCabecaOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.ClassificadorOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.classificadores_multitarefa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        classificadores_multitarefa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidência e deriva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#texto-satisfacao-por-mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Texto — satisfação por mensagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        texto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="texto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.ModeloAusenteError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ModeloAusenteError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.ClassificadorTexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorTexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ClassificadorTexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.ClassificadorTexto.prever_mensagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_mensagens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.temperatura_do_artefato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        temperatura_do_artefato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.carregar_torch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        carregar_torch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.texto.prever_torch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_torch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emoção
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        emocao
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="emocao">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.ClassificadorEmocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorEmocao
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ClassificadorEmocao">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.ClassificadorEmocao.prever_mensagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_mensagens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.desprezo_derivado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        desprezo_derivado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emocao.features_emocao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_emocao
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tempo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tempo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.tempo.latencias_da_conversa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        latencias_da_conversa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.tempo.features_tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_tempo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lexico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Léxico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lexico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lexico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.sem_acento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sem_acento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.polaridade_do_termo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        polaridade_do_termo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.anotar_texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        anotar_texto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.lexico.features_lexico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_lexico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emoji
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        emoji
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="emoji">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.score_do_emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        score_do_emoji
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.emojis_com_posicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        emojis_com_posicao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.linhas_lexicon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        linhas_lexicon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.emoji.features_emoji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_emoji
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ironia-leitura-por-mensagem-fora-do-vetor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ironia — leitura por mensagem, fora do vetor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ironia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ironia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia.ClassificadorIronia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorIronia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ClassificadorIronia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia.ClassificadorIronia.prever_mensagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever_mensagens
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.ironia.features_ironia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_ironia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estilo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        estilo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="estilo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.carregar_palavroes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        carregar_palavroes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.normalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        normalizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.tem_censura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tem_censura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.casar_censurado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        casar_censurado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.estilo_da_mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        estilo_da_mensagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.estilo.features_estilo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_estilo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incongruencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incongruência
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.incongruencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        incongruencia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="incongruencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.incongruencia.features_incongruencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        features_incongruencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curadoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curadoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        curadoria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="curadoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria.Curadoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curadoria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Curadoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria.Curadoria.polaridade_de" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        polaridade_de
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.curadoria.Curadoria.score_de" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        score_de
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executor-onnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executor ONNX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        onnx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="onnx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.ModeloOnnxAusenteError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ModeloOnnxAusenteError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.TokenizadorOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TokenizadorOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.SessaoOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessaoOnnx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SessaoOnnx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.SessaoOnnx.prever" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prever
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.SessaoMultitarefaOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessaoMultitarefaOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.ClassificadorCabecaOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorCabecaOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.ClassificadorOnnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClassificadorOnnx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraus.sinais.onnx.classificadores_multitarefa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        classificadores_multitarefa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="os-sinais">Os sinais<a class="headerlink" href="#os-sinais" title="Permanent link">&para;</a></h1>
+<p>Oito famílias observadas; sete fornecem as 39 entradas do fusor. Texto,
+emoção, ironia, emoji, léxico, estilo e incongruência analisam a fala do
+cliente. <strong>Tempo não é texto:</strong> deriva latências, duração, turnos, escalação
+e abandono da estrutura e dos timestamps, inclusive respostas do bot/humano.
+Isso não autoriza pontuar atendentes. Emoção em texto não implica
+enquadramento automático como reconhecimento biométrico de emoção; a
+fronteira de produto continua sendo não avaliar trabalhadores. Ver
+<a href="../../conformidade/">Conformidade</a>.</p>
+<p>Algumas docstrings preservam o histórico de treino e de quantidade de
+features. O contrato vigente é <code>NOMES_FEATURES</code>, em
+<a href="../fusor/">Fusor</a>: incongruência tem seis entradas, ironia nenhuma.</p>
+<h2 id="texto-satisfacao-por-mensagem">Texto — satisfação por mensagem<a class="headerlink" href="#texto-satisfacao-por-mensagem" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.texto" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.texto</span>
+
+
+<a href="#fraus.sinais.texto" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal de texto: BERTimbau fine-tunado, rodando em CPU.</p>
+<p>Predicao POR MENSAGEM, nunca por conversa inteira -- e isso que permite a
+atribuicao por sentenca na dashboard ("quais trechos puxaram a nota").</p>
+<p>BERTimbau supera as variantes multilingues em classificacao de sentimento
+PT-BR (Souza, Nogueira, Lotufo -- arXiv:2201.03382).</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.texto.ModeloAusenteError" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ModeloAusenteError</span>
+
+
+<a href="#fraus.sinais.texto.ModeloAusenteError" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="RuntimeError">RuntimeError</span></code></p>
+
+
+
+        <p>Modelo nao encontrado ou ilegivel. Falha alta: sem modelo nao ha predicao.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.texto.ClassificadorTexto" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ClassificadorTexto</span>
+
+
+<a href="#fraus.sinais.texto.ClassificadorTexto" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.sinais.texto.ClassificadorTexto.prever_mensagens" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">prever_mensagens</span>
+
+
+<a href="#fraus.sinais.texto.ClassificadorTexto.prever_mensagens" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">prever_mensagens</span><span class="p">(</span><span class="n">textos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Probabilidades [insatisfeito, neutro, satisfeito] para cada texto.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.texto.temperatura_do_artefato" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">temperatura_do_artefato</span>
+
+
+<a href="#fraus.sinais.texto.temperatura_do_artefato" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">temperatura_do_artefato</span><span class="p">(</span><span class="n">diretorio</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>A temperatura que <code>fraus.receita_treino</code> gravou ao lado do modelo; 1,0 se nao gravou.</p>
+<p>Artefato de antes de 19/10/2026 nao tem o arquivo: T=1 e o softmax de
+sempre, nenhuma probabilidade muda. Arquivo presente com valor invalido e
+falha alta -- cair para 1 em silencio serviria probabilidade descalibrada
+com a etiqueta de calibrada.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.texto.carregar_torch" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">carregar_torch</span>
+
+
+<a href="#fraus.sinais.texto.carregar_torch" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">carregar_torch</span><span class="p">(</span><span class="n">caminho_modelo</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">rotulo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Tokenizador e modelo do checkpoint, com o torch importado SO AQUI.</p>
+<p>O torch (497 MB) deixou de ser dependencia principal: com
+<code>FRAUS_BACKEND=onnx</code> a API pontua sem ele. Importar no topo do modulo faria
+<code>fraus.motor</code> -- que todo mundo importa -- exigir torch mesmo quando nenhum
+checkpoint torch vai ser carregado. Faltar o torch quando o backend E torch
+continua falha alta (invariante 7), com o remedio escrito.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.texto.prever_torch" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">prever_torch</span>
+
+
+<a href="#fraus.sinais.texto.prever_torch" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">prever_torch</span><span class="p">(</span><span class="n">tokenizador</span><span class="p">,</span> <span class="n">modelo</span><span class="p">,</span> <span class="n">textos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">temperatura</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Softmax de logits/T por texto, num lote com padding pela mensagem mais longa.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="emocao">Emoção<a class="headerlink" href="#emocao" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.emocao" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.emocao</span>
+
+
+<a href="#fraus.sinais.emocao" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal de emocao: segundo BERTimbau fine-tunado, rodando em CPU.</p>
+<p>Requisito de banca: distinguir as SETE emocoes humanas. A cabeca treinada tem
+sete classes -- as seis basicas de Ekman (1992) mais o neutro, que nao e
+emocao e sim a ausencia dela. A setima emocao, o DESPREZO, nao e treinada:
+nenhum corpus rotulado em portugues a anota, e treinar so ela em corpus de
+outra procedencia ensinaria o modelo a reconhecer o estilo do texto em vez do
+desprezo. Ela e derivada da diade primaria raiva + nojo, que e como o Plutchik
+(1980) a define -- ver <code>desprezo_derivado</code>.</p>
+<p>Corpus: <code>go_emotions_ptbr</code>, traducao PT-BR do GoEmotions (Demszky et al.,
+2020: 58k comentarios do Reddit, 27 emocoes + neutro), reduzido as seis de
+Ekman pelo mapeamento oficial que o proprio GoEmotions publica.</p>
+<p>LIMITACAO METODOLOGICA, a declarar no relatorio: o corpus foi traduzido por
+maquina, sem revisao humana. Por isso a avaliacao reporta tambem o XED-pt, que
+nao passou por traducao automatica. Ver docs/treinamento.md.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.emocao.ClassificadorEmocao" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ClassificadorEmocao</span>
+
+
+<a href="#fraus.sinais.emocao.ClassificadorEmocao" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.sinais.emocao.ClassificadorEmocao.prever_mensagens" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">prever_mensagens</span>
+
+
+<a href="#fraus.sinais.emocao.ClassificadorEmocao.prever_mensagens" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">prever_mensagens</span><span class="p">(</span><span class="n">textos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Probabilidades das sete classes, na ordem de NOMES_EMOCOES.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.emocao.desprezo_derivado" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">desprezo_derivado</span>
+
+
+<a href="#fraus.sinais.emocao.desprezo_derivado" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">desprezo_derivado</span><span class="p">(</span><span class="n">prob_raiva</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">prob_nojo</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Desprezo como diade primaria raiva + nojo (Plutchik, 1980).</p>
+<p>Media GEOMETRICA, nao aritmetica: desprezo exige as DUAS emocoes juntas, e
+a media aritmetica daria 0.5 para raiva pura sem nojo nenhum -- o que e
+raiva, nao desprezo. O produto puro subestimaria (0.7 e 0.7 viram 0.49); a
+geometrica devolve 0.7, que e a leitura certa de "as duas altas".</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.emocao.features_emocao" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">features_emocao</span>
+
+
+<a href="#fraus.sinais.emocao.features_emocao" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">features_emocao</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">,</span> <span class="n">classificador</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Media de cada emocao nas falas do cliente, mais o desprezo derivado.</p>
+<p>Sao OITO features: as sete classes treinadas e o desprezo da diade. A media
+e sobre as mensagens do cliente, coerente com o sinal de texto -- fala do
+bot nao carrega emocao do cliente.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="tempo">Tempo<a class="headerlink" href="#tempo" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.tempo" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.tempo</span>
+
+
+<a href="#fraus.sinais.tempo" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal de tempo.</p>
+<p>Latencia entra como FEATURE aprendida, nunca como penalidade linear: o efeito
+sobre satisfacao e nao-linear (CSAT pico entre 5-10s, queda de 2-3 pontos por
+minuto extra, 57% de abandono acima de 3min) e moderado por contexto --
+indicador de digitacao e suporte emocional atenuam o dano
+(From Seconds to Sentiments, IJHCI 2025).</p>
+<p>Nada aqui e persistido: tudo deriva dos timestamps do modelo canonico.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.tempo.latencias_da_conversa" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">latencias_da_conversa</span>
+
+
+<a href="#fraus.sinais.tempo.latencias_da_conversa" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">latencias_da_conversa</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Intervalo de cada mensagem do cliente ate a proxima resposta.</p>
+<p>PUBLICA de proposito: a serie temporal (<code>fraus.indicadores.serie_diaria</code>) e
+a transcricao da dashboard precisam da MESMA regra que vira feature do
+modelo. Duas definicoes de latencia -- uma para treinar, outra para exibir
+-- fariam o grafico contar uma historia que o fusor nunca viu.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.tempo.features_tempo" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">features_tempo</span>
+
+
+<a href="#fraus.sinais.tempo.features_tempo" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">features_tempo</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>As sete features de tempo; as tres latencias sao <code>None</code> sem resposta.</p>
+<p>Conversa que ninguem respondeu nao tem latencia MEDIDA. Ate 13/11/2026 ela
+saia 0,0 -- a mesma codificacao de "respondeu na hora" -- e a conversa
+ignorada pontuava alto (B01 da auditoria de 13/10/2026). Ausencia nao e
+zero: o fusor trata <code>None</code> como a media do treino (ver <code>Fusor._z</code>).</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><p>Sem resposta do bot ou humano, as três latências são <code>None</code>; duração, turnos,
+escalação e abandono continuam derivados da conversa. O fusor neutraliza
+latência não medida na padronização, sem tratá-la como resposta imediata.</p>
+<h2 id="lexico">Léxico<a class="headerlink" href="#lexico" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.lexico" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.lexico</span>
+
+
+<a href="#fraus.sinais.lexico" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal lexico: SentiLex-PT02 com escopo de negacao.</p>
+<p>Fonte: SentiLex-PT02 -- Silva, Carvalho e Sarmento, "Building a Sentiment
+Lexicon for Social Judgement Mining" (PROPOR 2012), CC-BY. 79.189 formas
+flexionadas depois da conversao, em fraus/dados/sentilex_pt02.csv. O
+<code>scripts/preparar_sentilex.py</code> documenta o que foi normalizado.</p>
+<p>POR QUE um lexicon se o BERTimbau ja le o texto: porque o lexicon nao foi
+treinado nos mesmos dados nem carrega os mesmos vieses. Dois sinais de
+procedencia independente que concordam sustentam a nota melhor que um sozinho,
+e discordancia entre eles e informacao -- e o formato tipico da IRONIA, texto
+lexicamente positivo com contexto negativo.</p>
+<p>A NEGACAO e tratada por escopo, nao por saco de palavras: "nao foi otimo"
+inverte a polaridade de "otimo". Sem isso o lexicon leria a frase como
+positiva, que e o erro classico de analise lexical de sentimento.</p>
+<p>LIMITACAO DO RECURSO, a declarar no relatorio: o SentiLex e um lexicon de
+JULGAMENTO SOCIAL -- anota polaridade dirigida a entidades humanas. Ele e forte
+no adjetivo que julga ("pessimo", "otimo", "incompetente") e NEUTRO em verbo de
+afeto do proprio falante: <code>gostar</code>, <code>adorar</code> e <code>odiar</code> valem 0 nele. Por isso o
+sinal lexico COMPLEMENTA o BERTimbau e nao o substitui -- o transformer e quem
+le "adorei o produto".</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.lexico.sem_acento" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">sem_acento</span>
+
+
+<a href="#fraus.sinais.lexico.sem_acento" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">sem_acento</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Remove diacriticos, preservando o resto.</p>
+<p>O cliente de chat nem sempre acentua, entao <code>otimo</code> precisa achar <code>otimo</code>.
+Quem consome constroi um INDICE com isto -- nunca compara termo a termo em
+laco, que seria varrer o lexicon inteiro a cada token.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.lexico.polaridade_do_termo" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">polaridade_do_termo</span>
+
+
+<a href="#fraus.sinais.lexico.polaridade_do_termo" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">polaridade_do_termo</span><span class="p">(</span><span class="n">termo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">curadoria</span><span class="p">:</span> <span class="n">Curadoria</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Polaridade em -1/0/1. Termo fora do lexicon e nao curado vale 0.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.lexico.anotar_texto" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">anotar_texto</span>
+
+
+<a href="#fraus.sinais.lexico.anotar_texto" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">anotar_texto</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">curadoria</span><span class="p">:</span> <span class="n">Curadoria</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Termos do lexicon achados em <code>texto</code>: (termo, polaridade final, negado).</p>
+<p>A polaridade final ja vem com a negacao aplicada. <code>negado</code> diz se ela foi
+invertida -- e o que alimenta a feature de negacao, e o que permite mostrar
+na dashboard POR QUE um termo positivo contou como negativo.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.lexico.features_lexico" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">features_lexico</span>
+
+
+<a href="#fraus.sinais.lexico.features_lexico" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">features_lexico</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">,</span> <span class="n">curadoria</span><span class="p">:</span> <span class="n">Curadoria</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Tres features do lexicon sobre as falas do cliente.</p>
+<p><code>lexico_cobertura</code> existe para o fusor saber QUANTA evidencia lexical
+sustenta a polaridade media: media de -1 apoiada em um termo vale menos que
+a mesma media apoiada em dez.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="emoji">Emoji<a class="headerlink" href="#emoji" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.emoji" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.emoji</span>
+
+
+<a href="#fraus.sinais.emoji" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal de emoji.</p>
+<p>Emojis NAO sao removidos no pre-processamento: carregam sinal de polaridade.
+Lexicon: Emoji Sentiment Ranking (Kralj Novak et al., PLOS ONE 2015) --
+751 emojis anotados por 83 anotadores sobre ~70k tweets.</p>
+<p>A posicao relativa entra como feature porque a polaridade do emoji aumenta
+conforme ele se aproxima do fim da mensagem.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.emoji.score_do_emoji" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">score_do_emoji</span>
+
+
+<a href="#fraus.sinais.emoji.score_do_emoji" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">score_do_emoji</span><span class="p">(</span><span class="n">caractere</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">curadoria</span><span class="p">:</span> <span class="n">Curadoria</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Polaridade em [-1, 1]. Emoji fora do lexicon e nao curado vale 0.</p>
+<p>A CURADORIA VEM PRIMEIRO. O Emoji Sentiment Ranking anotou 751 emojis em
+2015: tudo que o Unicode acrescentou depois vale 0 aqui, e e exatamente esse
+buraco que o analista preenche. Vencer o ranking, e nao so complementa-lo,
+tambem permite corrigir um emoji cuja leitura mudou de uso desde 2015.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.emoji.emojis_com_posicao" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">emojis_com_posicao</span>
+
+
+<a href="#fraus.sinais.emoji.emojis_com_posicao" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">emojis_com_posicao</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Emojis encontrados em <code>texto</code>, cada um com sua posicao relativa em [0, 1].</p>
+<p>Publica porque tanto <code>features_emoji</code> (agregado por conversa) quanto a
+rota de simulacao da API (emoji a emoji, texto avulso) precisam da mesma
+extracao -- reimplementar isso na API duplicaria a formula de posicao.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.emoji.linhas_lexicon" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">linhas_lexicon</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
+  </span>
+
+<a href="#fraus.sinais.emoji.linhas_lexicon" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">linhas_lexicon</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Lexicon cru: uma linha por emoji, com as contagens de anotacao.</p>
+<p>Publica para a rota <code>/modelo/lexicon</code> da API poder paginar e buscar sem
+reler o CSV por conta propria -- a API so enxerga esta funcao, nunca o
+caminho do arquivo.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.emoji.features_emoji" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">features_emoji</span>
+
+
+<a href="#fraus.sinais.emoji.features_emoji" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">features_emoji</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">,</span> <span class="n">curadoria</span><span class="p">:</span> <span class="n">Curadoria</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Agrega os emojis das mensagens DO CLIENTE numa linha de features.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="ironia-leitura-por-mensagem-fora-do-vetor">Ironia — leitura por mensagem, fora do vetor<a class="headerlink" href="#ironia-leitura-por-mensagem-fora-do-vetor" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.ironia" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.ironia</span>
+
+
+<a href="#fraus.sinais.ironia" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal de ironia: terceiro BERTimbau fine-tunado, classificacao binaria.</p>
+<p>Corpus: MultiPICo-PT (Casola et al., ACL 2024, CC BY 4.0), ~1,9 mil pares
+post-resposta de Reddit e Twitter, com as duas classes vindas das mesmas
+fontes; publicado em 13/11/2026. A cabeca anterior, de agosto, era treinada no
+IDPT 2021 (tweets e noticias), que entrega o rotulo pela procedencia.</p>
+<p>POR QUE uma cabeca separada e nao mais uma classe do sinal de texto: ironia
+nao e um sentimento, e uma relacao entre o que o texto DIZ e o que ele
+SIGNIFICA. "Que atendimento maravilhoso, so esperei 3 horas" e lexicamente
+positivo e pragmaticamente negativo -- as duas coisas ao mesmo tempo. Enfiar
+isso como quarta classe de satisfacao obrigaria o modelo a escolher uma, e a
+informacao de que ha conflito e justamente o que se perde.</p>
+<p>LIMITACAO METODOLOGICA, a declarar no relatorio: o MultiPICo e anotado em posts
+de redes sociais, nao em atendimento de chatbot. A transferencia de dominio
+nao e verificada -- a frase canonica de atendimento sai com 0,16 de ironia, e
+o F1-macro de 0,66 e medido no teste do proprio corpus.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.ironia.ClassificadorIronia" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ClassificadorIronia</span>
+
+
+<a href="#fraus.sinais.ironia.ClassificadorIronia" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.sinais.ironia.ClassificadorIronia.prever_mensagens" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">prever_mensagens</span>
+
+
+<a href="#fraus.sinais.ironia.ClassificadorIronia.prever_mensagens" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">prever_mensagens</span><span class="p">(</span><span class="n">textos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Probabilidades [nao_ironico, ironico] para cada texto.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.ironia.features_ironia" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">features_ironia</span>
+
+
+<a href="#fraus.sinais.ironia.features_ironia" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">features_ironia</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">,</span> <span class="n">classificador</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Media e maximo da probabilidade de ironia nas falas do cliente.</p>
+<p>O MAXIMO importa tanto quanto a media: uma unica frase irônica no fim
+("otimo servico, parabens") reverte a leitura da conversa inteira, e a
+media sozinha diluiria ela entre as falas neutras anteriores.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="estilo">Estilo<a class="headerlink" href="#estilo" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.estilo" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.estilo</span>
+
+
+<a href="#fraus.sinais.estilo" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal de estilo: a FORMA da escrita, nao o conteudo dela.</p>
+<p>Caixa alta, pontuacao repetida, alongamento de caractere, palavrao e censura
+carregam intensidade que nenhum dos outros sinais captura. E deterministico de
+proposito: o BERTimbau nao aprende enfase porque o B2W-Reviews01 -- resenha
+moderada de e-commerce -- praticamente nao contem gritaria nem xingamento.
+Modelo nao aprende fenomeno que o corpus nao tem, e mais epocas sobre o mesmo
+texto so reproduzem o mesmo artefato. Ver a spec de 21/08/2026.</p>
+<p>Le apenas as falas do cliente, coerente com os demais sinais: enfase do bot nao
+e enfase do cliente.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.estilo.carregar_palavroes" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">carregar_palavroes</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
+  </span>
+
+<a href="#fraus.sinais.estilo.carregar_palavroes" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">carregar_palavroes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Termo normalizado -&gt; (intensidade, dirigido a pessoa).</p>
+<p>A gradacao existe porque "que droga" e "vai tomar no cu" nao sao o mesmo
+evento, e o alvo existe porque xingar o PRODUTO e reclamacao enquanto
+xingar o ATENDENTE e ruptura da conversa.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.estilo.normalizar" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">normalizar</span>
+
+
+<a href="#fraus.sinais.estilo.normalizar" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">normalizar</span><span class="p">(</span><span class="n">palavra</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Minusculas, sem acento, homoglifos revertidos.</p>
+<p>Roda DEPOIS de <code>tem_censura</code>, nunca antes: ela apaga exatamente a marca que
+a outra funcao precisa ver.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.estilo.tem_censura" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">tem_censura</span>
+
+
+<a href="#fraus.sinais.estilo.tem_censura" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">tem_censura</span><span class="p">(</span><span class="n">palavra</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>A palavra mistura letra e simbolo de mascara, ou e so simbolo.</p>
+<p>Autocensura e raiva COM autocontrole -- estado diferente de raiva crua, e
+por isso tem feature propria em vez de virar so mais um palavrao.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.estilo.casar_censurado" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">casar_censurado</span>
+
+
+<a href="#fraus.sinais.estilo.casar_censurado" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">casar_censurado</span><span class="p">(</span><span class="n">palavra</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Casa palavra mascarada contra o lexicon tratando cada simbolo como UMA letra qualquer.</p>
+<p><code>p*rra</code> casa <code>porra</code>, <code>c*ralho</code> casa <code>caralho</code>. Mapear o simbolo para uma
+vogal fixa acertaria o primeiro e erraria o segundo -- e erraria calado,
+que e pior.</p>
+<p>O caractere que NAO e mascara passa pelo mapeamento de homoglifo antes de
+virar literal: sem isso <code>c@r@lh0</code> geraria o padrao <code>c.r.lh0</code>, que nao casa
+<code>caralho</code> porque o <code>0</code> continuaria digito.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.estilo.estilo_da_mensagem" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">estilo_da_mensagem</span>
+
+
+<a href="#fraus.sinais.estilo.estilo_da_mensagem" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">estilo_da_mensagem</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>A leitura de estilo de UMA fala, para a tela mostrar onde ela aconteceu.</p>
+<p><code>features_estilo</code> agrega a conversa inteira -- e o que o fusor consome, e
+e a media que pesa na nota. Esta funcao responde outra pergunta: em QUAL
+mensagem a marca apareceu. Uma conversa com 5% de caixa alta pode ser uma
+fala gritada entre dezenove calmas ou vinte falas levemente enfaticas, e a
+media nao distingue as duas.</p>
+<p>As duas leituras compartilham as MESMAS funcoes auxiliares de proposito:
+duas implementacoes da pergunta "isto e um grito?" divergiriam na
+fronteira, e a tela passaria a marcar o que a feature nao marcou.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.estilo.features_estilo" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">features_estilo</span>
+
+
+<a href="#fraus.sinais.estilo.features_estilo" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">features_estilo</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Agrega a FORMA da escrita das mensagens DO CLIENTE.</p>
+<p>Conversa sem fala do cliente devolve as seis features zeradas -- e ausencia
+de medida, e quem distingue "nao mediu" de "mediu e deu zero" e o
+<code>score: None</code> la em cima, nunca esta funcao (invariante 2).</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="incongruencia">Incongruência<a class="headerlink" href="#incongruencia" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.incongruencia" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.incongruencia</span>
+
+
+<a href="#fraus.sinais.incongruencia" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Sinal de incongruencia: o CONFLITO interno do texto, nao a polaridade dele.</p>
+<p>Ironia e uma relacao entre o que o texto DIZ e o que ele SIGNIFICA, e a marca
+computavel dessa relacao e a incongruencia -- polaridade que se contradiz
+dentro da mesma fala, exagero implausivel, aspas que negam a palavra que
+cercam. A literatura e consistente nisso: Riloff et al. (EMNLP 2013) definem
+sarcasmo como contraste entre sentimento positivo e situacao negativa, e
+Joshi et al. (ACL 2015) medem +8% F1 sobre features lexicas e pragmaticas so
+com incongruencia explicita. Ver a bibliografia da spec de 03/09/2026.</p>
+<p>POR QUE UM MODULO SEPARADO de <code>ironia.py</code>: aquele modulo E o classificador
+BERTimbau -- carrega peso, roda <code>torch</code>, falha alto se o artefato nao existe.
+Este nao carrega modelo nenhum: e lexico e regex, reusando <code>lexico.py</code> e
+<code>emoji.py</code>. Juntar os dois faria a heuristica deterministica ficar refem do
+artefato treinado, e um dos dois nao poderia rodar sem o outro sem motivo.</p>
+<p>POR QUE COMPLEMENTA em vez de substituir: o classificador de ironia nunca teve
+a transferencia para atendimento verificada -- nem o de agosto, treinado no
+IDPT 2021 (tweet e noticia), nem o do MultiPICo-PT publicado em 13/11/2026,
+que da 0,16 de ironia a frase canonica. Estas seis features tem procedencia
+independente dele e entram no fusor com peso aprendido. A probabilidade do
+classificador de ironia e apenas exibida por mensagem, fora do vetor desde
+04/09/2026; o fusor nao pondera as duas leituras.</p>
+<p>TODAS as seis leem SO a fala do cliente, coerente com os demais sinais.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.incongruencia.features_incongruencia" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">features_incongruencia</span>
+
+
+<a href="#fraus.sinais.incongruencia.features_incongruencia" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">features_incongruencia</span><span class="p">(</span><span class="n">conversa</span><span class="p">:</span> <span class="n">Conversa</span><span class="p">,</span> <span class="n">curadoria</span><span class="p">:</span> <span class="n">Curadoria</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>As seis features de incongruencia, media sobre as falas do cliente.</p>
+<p>Conversa sem fala do cliente devolve as seis zeradas -- e ausencia de
+medida, e quem distingue "nao mediu" de "mediu e deu zero" e o
+<code>score: None</code> la em cima, nunca esta funcao (invariante 2).</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="curadoria">Curadoria<a class="headerlink" href="#curadoria" title="Permanent link">&para;</a></h2>
+<p>Termos e emojis curados vencem os léxicos base; não sobrescrevem diretamente a
+nota e não são retreino. A versão acompanha a pontuação.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.curadoria" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.curadoria</span>
+
+
+<a href="#fraus.sinais.curadoria" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>O que o analista ensinou ao lexico, e que o treino nao pegou.</p>
+<p>O SentiLex-PT02 tem 79.189 formas e nao tem <code>lentissimo</code>. O Emoji Sentiment
+Ranking tem 751 emojis anotados em 2015. Nem um nem outro conhece o jargao da
+empresa que opera o atendimento. Este objeto e o que o analista acrescentou.</p>
+<p>A CURADORIA VENCE O LEXICO BASE, e isso a faz servir aos dois casos: preencher
+buraco (o termo nao existe) e corrigir polaridade errada para o dominio.</p>
+<p>O QUE ELA NAO FAZ: corrigir score. Ela alimenta o sinal lexico, e quem pontua
+continua sendo o fusor treinado -- o analista conserta o dicionario, nao a nota.
+Um ajuste por cima do numero do modelo criaria uma SEGUNDA REGUA, que e a dor
+que o README ja documenta com <code>PESO_NEUTRO_NO_SCORE</code>.</p>
+<p>ELA NAO VALIDA ESCALA: quem impoe -1/0/+1 na palavra e [-1,1] no emoji e a rota,
+onde a mensagem de recusa pode nomear a regua. Aqui ja chega valido.</p>
+<p>O QUE ELA SABE, e precisa saber, e ACENTO -- pelo mesmo motivo que o lexicon
+base tem indice de reserva: quem cura <code>lentissimo</code> com acento espera que o
+cliente que digitou sem acento seja alcancado. Quem possui a chave possui o
+indice dela; empurrar isso para o lexico o faria varrer os termos curados a cada
+token, em vez de consultar um dicionario pronto.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.curadoria.Curadoria" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">Curadoria</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#fraus.sinais.curadoria.Curadoria" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Os termos curados nesta instalacao, e a versao do conjunto.</p>
+<p><code>versao</code> acompanha o objeto porque ela e gravada na conversa no momento da
+pontuacao: e o que permite a tela dizer depois "41 de 62 atendimentos foram
+pontuados com um lexico anterior" em vez de misturar duas reguas em
+silencio.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.sinais.curadoria.Curadoria.polaridade_de" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">polaridade_de</span>
+
+
+<a href="#fraus.sinais.curadoria.Curadoria.polaridade_de" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">polaridade_de</span><span class="p">(</span><span class="n">termo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Polaridade curada, ou <code>None</code> se o termo nao foi curado.</p>
+<p><code>None</code> e "nao curado" -- o lexico base decide. ZERO e outra coisa: e
+"curado como neutro", que SILENCIA um termo que o SentiLex anota com
+polaridade errada para atendimento. As duas respostas nao podem colapsar
+numa so.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.sinais.curadoria.Curadoria.score_de" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">score_de</span>
+
+
+<a href="#fraus.sinais.curadoria.Curadoria.score_de" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">score_de</span><span class="p">(</span><span class="n">caractere</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Score curado do emoji, ou <code>None</code> se nao foi curado.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="executor-onnx">Executor ONNX<a class="headerlink" href="#executor-onnx" title="Permanent link">&para;</a></h2>
+<p>Executa grafos locais por <code>CPUExecutionProvider</code>, sem importar Torch. O
+backend é declarado, não detectado pela presença de arquivos; grafo ausente
+ou ilegível é falha explícita. As classes seguem a ordem do checkpoint.
+O executor lê a precisão do grafo fornecido (FP32 ou quantizado); não quantiza
+pesos durante a predição. As descrições históricas de INT8 nas docstrings não
+significam que toda cabeça deva ser quantizada.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="fraus.sinais.onnx" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">fraus.sinais.onnx</span>
+
+
+<a href="#fraus.sinais.onnx" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Inferencia por ONNX Runtime -- o mesmo modelo, sem os 497 MB do torch.</p>
+<p>POR QUE ELE EXISTE. Os tres BERTimbau em fp32 somam 1,25 GB e o <code>torch</code> que os
+executa pesa mais 497 MB: ~1,75 GB de imagem para multiplicar matrizes de 110M
+de parametros em CPU. Com o grafo exportado e quantizado (int8) e o
+<code>onnxruntime</code> no lugar do torch, a mesma predicao cabe numa fracao disso.</p>
+<p>O QUE ELE NAO E. Nao e um segundo modelo, nem uma aproximacao "boa o
+suficiente": e o MESMO checkpoint, exportado e com os pesos guardados em menor
+precisao. <code>scripts/encolher_modelos.py</code> so promove a conversao se o convertido
+responder o mesmo que o original dentro de um teto declarado -- e recusa se a
+classe vencedora mudar em qualquer sonda.</p>
+<p>A ORDEM DAS CLASSES E A INVARIANTE 8, e ela atravessa este arquivo sem
+transformacao nenhuma: a saida vem na mesma ordem do eixo de logits do
+checkpoint (0 insatisfeito, 1 neutro, 2 satisfeito). Nao ha reordenacao aqui,
+e nao pode haver -- inverter a ordem nao levanta erro, faz o sistema pontuar ao
+contrario em silencio.</p>
+<p>O softmax e feito a mao porque o grafo exportado termina nos LOGITS, e nao
+porque alguem quis reimplementar numpy: o <code>AutoModelForSequenceClassification</code>
+tambem devolve logits, e o softmax sempre morou do lado de fora.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.onnx.ModeloOnnxAusenteError" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ModeloOnnxAusenteError</span>
+
+
+<a href="#fraus.sinais.onnx.ModeloOnnxAusenteError" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="RuntimeError">RuntimeError</span></code></p>
+
+
+
+        <p>Grafo ONNX nao encontrado ou ilegivel. Falha alta, como a do torch.</p>
+<p>Invariante 7: servir predicao sem modelo carregado e pior que estar fora do
+ar. Trocar o backend nao afrouxa isso -- so muda qual arquivo falta.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.onnx.TokenizadorOnnx" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">TokenizadorOnnx</span>
+
+
+<a href="#fraus.sinais.onnx.TokenizadorOnnx" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>O <code>tokenizer.json</code> do artefato, lido direto pela biblioteca <code>tokenizers</code>.</p>
+<p>POR QUE NAO O <code>AutoTokenizer</code>. Ele so embrulha esta mesma biblioteca, e o
+<code>import transformers</code> custava de 2 a 3,5 s num processo frio (medido em
+20/11/2026) -- mais do que abrir uma sessao ONNX. Em serverless esse tempo
+cai dentro da primeira requisicao de cada instancia nova.</p>
+<p>O QUE TEM DE CONTINUAR IGUAL. A codificacao, id por id: trunca em
+<code>TAMANHO_MAXIMO</code>, preenche ate o maior texto DO LOTE, a direita, com o
+token de preenchimento do artefato. <code>tests/test_tokenizador_onnx.py</code>
+compara com o <code>AutoTokenizer</code>; um id diferente mudaria a entrada do modelo
+sem erro nenhum.</p>
+<p>Chamavel como o anterior: lista de textos entra, dicionario de matrizes
+<code>int64</code> sai. <code>encode_batch</code> e seguro entre threads; a configuracao so e
+mexida aqui, no construtor.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.onnx.SessaoOnnx" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">SessaoOnnx</span>
+
+
+<a href="#fraus.sinais.onnx.SessaoOnnx" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Um grafo ONNX quantizado mais o tokenizador dele.</p>
+<p>Expoe <code>prever</code>, com a MESMA forma de <code>ClassificadorTexto.prever_mensagens</code>:
+lista de textos entra, lista de listas de probabilidade sai. E o que
+permite trocar o backend sem que o <code>Motor</code>, os sinais ou o fusor saibam
+que a troca aconteceu.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fraus.sinais.onnx.SessaoOnnx.prever" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">prever</span>
+
+
+<a href="#fraus.sinais.onnx.SessaoOnnx.prever" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">prever</span><span class="p">(</span><span class="n">textos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Probabilidades por texto, na ORDEM DE CLASSES do checkpoint.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.onnx.SessaoMultitarefaOnnx" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">SessaoMultitarefaOnnx</span>
+
+
+<a href="#fraus.sinais.onnx.SessaoMultitarefaOnnx" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="SessaoOnnx (fraus.sinais.onnx.SessaoOnnx)" href="#fraus.sinais.onnx.SessaoOnnx">SessaoOnnx</a></code></p>
+
+
+
+        <p>Um unico encoder BERTimbau com tres cabecas de classificacao.</p>
+<p>Os nomes das saidas fazem parte do artefato: depender da ordem retornada
+pelo exportador permitiria trocar emocao por satisfacao sem erro visivel.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.onnx.ClassificadorCabecaOnnx" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ClassificadorCabecaOnnx</span>
+
+
+<a href="#fraus.sinais.onnx.ClassificadorCabecaOnnx" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Vista de uma cabeca; as tres vistas apontam para a mesma sessao.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="fraus.sinais.onnx.ClassificadorOnnx" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ClassificadorOnnx</span>
+
+
+<a href="#fraus.sinais.onnx.ClassificadorOnnx" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Adaptador: um <code>SessaoOnnx</code> com a MESMA interface dos tres do torch.</p>
+<p>Os tres classificadores (<code>ClassificadorTexto</code>, <code>ClassificadorEmocao</code>,
+<code>ClassificadorIronia</code>) expoem exatamente um metodo para quem consome --
+<code>prever_mensagens(textos) -&gt; list[list[float]]</code> -- e nada no <code>Motor</code>, nos
+sinais ou no fusor sabe qual biblioteca esta por baixo. Por isso trocar o
+backend nao exige tocar em nenhum deles: exige um objeto com este metodo.</p>
+<p>O que ele NAO faz: interpretar o significado das colunas. A ordem das
+classes e a do checkpoint, e cada sinal ja sabe ler a sua (invariante 8).
+Um adaptador que "arrumasse" a ordem seria o jeito mais rapido de inverter
+a pontuacao em silencio.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="fraus.sinais.onnx.classificadores_multitarefa" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">classificadores_multitarefa</span>
+
+
+<a href="#fraus.sinais.onnx.classificadores_multitarefa" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">classificadores_multitarefa</span><span class="p">(</span><span class="n">caminho_modelo</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Tres interfaces legadas sobre UMA sessao e UM conjunto de pesos.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="fx-rodape">
+    <span>Modelos locais · sem LLM em runtime</span>
+    <span>Todo número é inferido, nunca declarado</span>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
